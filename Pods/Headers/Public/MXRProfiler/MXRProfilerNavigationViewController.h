@@ -1,1 +1,0 @@
-../../../MXRProfiler/MXRProfiler/Modules/BaseModule/View/MXRProfilerNavigationViewController.h
