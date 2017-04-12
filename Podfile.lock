@@ -1,0 +1,74 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - BaiduMapKit (3.1.0)
+  - BmobSDK (2.1.2)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - JCore (1.1.0)
+  - JPush (3.0.1):
+    - JCore (~> 1.1.0)
+  - LKDBHelper (2.4.1):
+    - FMDB
+  - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
+  - MXRProfiler (0.0.3)
+  - RealReachability (1.1.8):
+    - RealReachability/Connection (= 1.1.8)
+    - RealReachability/Ping (= 1.1.8)
+  - RealReachability/Connection (1.1.8)
+  - RealReachability/Ping (1.1.8)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.1.2)
+  - UITableView+FDTemplateLayoutCell (1.4)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.1.0)
+  - BaiduMapKit (~> 3.1.0)
+  - BmobSDK (~> 2.1.2)
+  - FMDB (~> 2.6.2)
+  - JPush (~> 3.0.1)
+  - LKDBHelper (~> 2.4)
+  - Masonry (~> 1.0.2)
+  - MBProgressHUD (~> 1.0.0)
+  - MXRProfiler (~> 0.0.3)
+  - RealReachability (~> 1.1.8)
+  - SDWebImage (~> 3.8.2)
+  - SVProgressHUD (~> 2.1.2)
+  - UITableView+FDTemplateLayoutCell (~> 1.4)
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BaiduMapKit: 4cfaedb118cff7e157e9771859a4bf65a261b2a1
+  BmobSDK: 93b5534dd8c8bc543dd3ee9000b53c52319165f4
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  JCore: 7382f2c62e6fcf08305b735e91f0fb771f448d3d
+  JPush: 427daa60236d0faa9f379cd5bbeb923103162058
+  LKDBHelper: 531581fa6a7d0f14236cc028ce0d277bca73436a
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MXRProfiler: 00b20c3ceb1d11b514ee3839ea87566f1b583a08
+  RealReachability: e6c8a2bbffa316006e8c282efc1ee2567d61a920
+  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
+
+PODFILE CHECKSUM: 36bb7a1251f5afd1b707e1f530a22cbf07cfe63c
+
+COCOAPODS: 1.2.0
