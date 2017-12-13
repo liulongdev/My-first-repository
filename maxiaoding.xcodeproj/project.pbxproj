@@ -1,0 +1,848 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8531FE0D2CA00E85884 /* AppDelegate.m */; };
+		5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8561FE0D2CA00E85884 /* ViewController.m */; };
+		5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B25F8581FE0D2CA00E85884 /* Main.storyboard */; };
+		5B25F85C1FE0D2CA00E85884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B25F85B1FE0D2CA00E85884 /* Assets.xcassets */; };
+		5B25F85F1FE0D2CA00E85884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B25F85D1FE0D2CA00E85884 /* LaunchScreen.storyboard */; };
+		5B25F8621FE0D2CA00E85884 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8611FE0D2CA00E85884 /* main.m */; };
+		5B25F86C1FE0D2CA00E85884 /* maxiaodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F86B1FE0D2CA00E85884 /* maxiaodingTests.m */; };
+		5B25F8771FE0D2CA00E85884 /* maxiaodingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8761FE0D2CA00E85884 /* maxiaodingUITests.m */; };
+		5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8B91FE0F80500E85884 /* MARAppDelegate.m */; };
+		5B25F8CE1FE0F80500E85884 /* MARBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8BD1FE0F80500E85884 /* MARBaseViewController.m */; };
+		5B25F8CF1FE0F80500E85884 /* MARNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8BF1FE0F80500E85884 /* MARNetworkManager.m */; };
+		5B25F8D01FE0F80500E85884 /* MARNetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8C11FE0F80500E85884 /* MARNetworkResponse.m */; };
+		5B25F8D31FE0F90A00E85884 /* mob.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B25F8D21FE0F90A00E85884 /* mob.storyboard */; };
+		5B25F8D71FE0FABE00E85884 /* MARWXArticleCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8D61FE0FABE00E85884 /* MARWXArticleCategoryCell.m */; };
+		5B25F8DA1FE0FBCC00E85884 /* MARWXArticleCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8D91FE0FBCC00E85884 /* MARWXArticleCategoryVC.m */; };
+		5B25F8DD1FE1035A00E85884 /* MARWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8DC1FE1035A00E85884 /* MARWebViewController.m */; };
+		5B25F8E01FE1057800E85884 /* MARWXArticelListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8DF1FE1057800E85884 /* MARWXArticelListVC.m */; };
+		5B25F8E31FE1090B00E85884 /* MARWXArticleTabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8E21FE1090B00E85884 /* MARWXArticleTabelCell.m */; };
+		5B25F8EC1FE12B9000E85884 /* MARMobMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8EB1FE12B9000E85884 /* MARMobMenuVC.m */; };
+		5B25F8F41FE17CD300E85884 /* MARWXArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8EF1FE17CD200E85884 /* MARWXArticleModel.m */; };
+		5B25F8F51FE17CD300E85884 /* MARWXArticleCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8F01FE17CD300E85884 /* MARWXArticleCategoryModel.m */; };
+		5B25F8F61FE17CD300E85884 /* MARLoadPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8F11FE17CD300E85884 /* MARLoadPageModel.m */; };
+		5B25F8F91FE17D2900E85884 /* MARHistoryDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8F81FE17D2900E85884 /* MARHistoryDayModel.m */; };
+		5B25F8FC1FE17F9100E85884 /* MARHistoryDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8FB1FE17F9100E85884 /* MARHistoryDayViewController.m */; };
+		5B25F8FF1FE1808F00E85884 /* MARHistoryDayTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8FE1FE1808F00E85884 /* MARHistoryDayTableCell.m */; };
+		5B25F9021FE188C300E85884 /* MARBaseDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F9001FE188C200E85884 /* MARBaseDBModel.m */; };
+		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
+		83F79CD1B5F4E42CC3A4A9E0 /* libPods-maxiaoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5B25F8681FE0D2CA00E85884 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B25F8471FE0D2CA00E85884 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B25F84E1FE0D2CA00E85884;
+			remoteInfo = maxiaoding;
+		};
+		5B25F8731FE0D2CA00E85884 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B25F8471FE0D2CA00E85884 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B25F84E1FE0D2CA00E85884;
+			remoteInfo = maxiaoding;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5B25F84F1FE0D2CA00E85884 /* maxiaoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxiaoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B25F8521FE0D2CA00E85884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5B25F8531FE0D2CA00E85884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5B25F8551FE0D2CA00E85884 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5B25F8561FE0D2CA00E85884 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5B25F8591FE0D2CA00E85884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5B25F85B1FE0D2CA00E85884 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B25F85E1FE0D2CA00E85884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5B25F8601FE0D2CA00E85884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B25F8611FE0D2CA00E85884 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5B25F8671FE0D2CA00E85884 /* maxiaodingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = maxiaodingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B25F86B1FE0D2CA00E85884 /* maxiaodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = maxiaodingTests.m; sourceTree = "<group>"; };
+		5B25F86D1FE0D2CA00E85884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B25F8721FE0D2CA00E85884 /* maxiaodingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = maxiaodingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B25F8761FE0D2CA00E85884 /* maxiaodingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = maxiaodingUITests.m; sourceTree = "<group>"; };
+		5B25F8781FE0D2CA00E85884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B25F8851FE0D6FF00E85884 /* maxiaoding-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "maxiaoding-Prefix.pch"; sourceTree = "<group>"; };
+		5B25F8B81FE0F80500E85884 /* MARAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARAppDelegate.h; sourceTree = "<group>"; };
+		5B25F8B91FE0F80500E85884 /* MARAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARAppDelegate.m; sourceTree = "<group>"; };
+		5B25F8BC1FE0F80500E85884 /* MARBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARBaseViewController.h; sourceTree = "<group>"; };
+		5B25F8BD1FE0F80500E85884 /* MARBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARBaseViewController.m; sourceTree = "<group>"; };
+		5B25F8BE1FE0F80500E85884 /* MARNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARNetworkManager.h; sourceTree = "<group>"; };
+		5B25F8BF1FE0F80500E85884 /* MARNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARNetworkManager.m; sourceTree = "<group>"; };
+		5B25F8C01FE0F80500E85884 /* MARNetworkResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARNetworkResponse.h; sourceTree = "<group>"; };
+		5B25F8C11FE0F80500E85884 /* MARNetworkResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARNetworkResponse.m; sourceTree = "<group>"; };
+		5B25F8C31FE0F80500E85884 /* appkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appkey.h; sourceTree = "<group>"; };
+		5B25F8C41FE0F80500E85884 /* css.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = css.h; sourceTree = "<group>"; };
+		5B25F8C51FE0F80500E85884 /* enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enum.h; sourceTree = "<group>"; };
+		5B25F8C61FE0F80500E85884 /* macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macro.h; sourceTree = "<group>"; };
+		5B25F8C71FE0F80500E85884 /* notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notification.h; sourceTree = "<group>"; };
+		5B25F8D21FE0F90A00E85884 /* mob.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = mob.storyboard; sourceTree = "<group>"; };
+		5B25F8D51FE0FABE00E85884 /* MARWXArticleCategoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWXArticleCategoryCell.h; sourceTree = "<group>"; };
+		5B25F8D61FE0FABE00E85884 /* MARWXArticleCategoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWXArticleCategoryCell.m; sourceTree = "<group>"; };
+		5B25F8D81FE0FBCC00E85884 /* MARWXArticleCategoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWXArticleCategoryVC.h; sourceTree = "<group>"; };
+		5B25F8D91FE0FBCC00E85884 /* MARWXArticleCategoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWXArticleCategoryVC.m; sourceTree = "<group>"; };
+		5B25F8DB1FE1035A00E85884 /* MARWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWebViewController.h; sourceTree = "<group>"; };
+		5B25F8DC1FE1035A00E85884 /* MARWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWebViewController.m; sourceTree = "<group>"; };
+		5B25F8DE1FE1057800E85884 /* MARWXArticelListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWXArticelListVC.h; sourceTree = "<group>"; };
+		5B25F8DF1FE1057800E85884 /* MARWXArticelListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWXArticelListVC.m; sourceTree = "<group>"; };
+		5B25F8E11FE1090B00E85884 /* MARWXArticleTabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWXArticleTabelCell.h; sourceTree = "<group>"; };
+		5B25F8E21FE1090B00E85884 /* MARWXArticleTabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWXArticleTabelCell.m; sourceTree = "<group>"; };
+		5B25F8EA1FE12B9000E85884 /* MARMobMenuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMobMenuVC.h; sourceTree = "<group>"; };
+		5B25F8EB1FE12B9000E85884 /* MARMobMenuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMobMenuVC.m; sourceTree = "<group>"; };
+		5B25F8ED1FE17CD200E85884 /* MARWXArticleCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARWXArticleCategoryModel.h; sourceTree = "<group>"; };
+		5B25F8EE1FE17CD200E85884 /* mobmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mobmodel.h; sourceTree = "<group>"; };
+		5B25F8EF1FE17CD200E85884 /* MARWXArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARWXArticleModel.m; sourceTree = "<group>"; };
+		5B25F8F01FE17CD300E85884 /* MARWXArticleCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARWXArticleCategoryModel.m; sourceTree = "<group>"; };
+		5B25F8F11FE17CD300E85884 /* MARLoadPageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARLoadPageModel.m; sourceTree = "<group>"; };
+		5B25F8F21FE17CD300E85884 /* MARWXArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARWXArticleModel.h; sourceTree = "<group>"; };
+		5B25F8F31FE17CD300E85884 /* MARLoadPageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARLoadPageModel.h; sourceTree = "<group>"; };
+		5B25F8F71FE17D2900E85884 /* MARHistoryDayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayModel.h; sourceTree = "<group>"; };
+		5B25F8F81FE17D2900E85884 /* MARHistoryDayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHistoryDayModel.m; sourceTree = "<group>"; };
+		5B25F8FA1FE17F9100E85884 /* MARHistoryDayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayViewController.h; sourceTree = "<group>"; };
+		5B25F8FB1FE17F9100E85884 /* MARHistoryDayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHistoryDayViewController.m; sourceTree = "<group>"; };
+		5B25F8FD1FE1808F00E85884 /* MARHistoryDayTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayTableCell.h; sourceTree = "<group>"; };
+		5B25F8FE1FE1808F00E85884 /* MARHistoryDayTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHistoryDayTableCell.m; sourceTree = "<group>"; };
+		5B25F9001FE188C200E85884 /* MARBaseDBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARBaseDBModel.m; sourceTree = "<group>"; };
+		5B25F9011FE188C300E85884 /* MARBaseDBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARBaseDBModel.h; sourceTree = "<group>"; };
+		5BB1D1571FE190EB0004396E /* MARHistoryDayDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayDetailVC.h; sourceTree = "<group>"; };
+		5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHistoryDayDetailVC.m; sourceTree = "<group>"; };
+		62A83676F16EBD22EFEE8754 /* Pods-maxiaoding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxiaoding.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding.debug.xcconfig"; sourceTree = "<group>"; };
+		6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-maxiaoding.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F54FA193DE0A4D5843643552 /* Pods-maxiaoding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxiaoding.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5B25F84C1FE0D2CA00E85884 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83F79CD1B5F4E42CC3A4A9E0 /* libPods-maxiaoding.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B25F8641FE0D2CA00E85884 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B25F86F1FE0D2CA00E85884 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		31AC40C9E48F76669A089217 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B25F8461FE0D2CA00E85884 = {
+			isa = PBXGroup;
+			children = (
+				5B25F8511FE0D2CA00E85884 /* maxiaoding */,
+				5B25F86A1FE0D2CA00E85884 /* maxiaodingTests */,
+				5B25F8751FE0D2CA00E85884 /* maxiaodingUITests */,
+				5B25F8501FE0D2CA00E85884 /* Products */,
+				665DD05C9EEE5810E3C0563D /* Pods */,
+				31AC40C9E48F76669A089217 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5B25F8501FE0D2CA00E85884 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F84F1FE0D2CA00E85884 /* maxiaoding.app */,
+				5B25F8671FE0D2CA00E85884 /* maxiaodingTests.xctest */,
+				5B25F8721FE0D2CA00E85884 /* maxiaodingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B25F8511FE0D2CA00E85884 /* maxiaoding */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F8B11FE0F80500E85884 /* modules */,
+				5B25F8B61FE0F80500E85884 /* utility */,
+				5B25F8861FE0D79200E85884 /* Supporting Files */,
+				5B25F8521FE0D2CA00E85884 /* AppDelegate.h */,
+				5B25F8531FE0D2CA00E85884 /* AppDelegate.m */,
+				5B25F8551FE0D2CA00E85884 /* ViewController.h */,
+				5B25F8561FE0D2CA00E85884 /* ViewController.m */,
+				5B25F8581FE0D2CA00E85884 /* Main.storyboard */,
+				5B25F85B1FE0D2CA00E85884 /* Assets.xcassets */,
+				5B25F85D1FE0D2CA00E85884 /* LaunchScreen.storyboard */,
+			);
+			path = maxiaoding;
+			sourceTree = "<group>";
+		};
+		5B25F86A1FE0D2CA00E85884 /* maxiaodingTests */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F86B1FE0D2CA00E85884 /* maxiaodingTests.m */,
+				5B25F86D1FE0D2CA00E85884 /* Info.plist */,
+			);
+			path = maxiaodingTests;
+			sourceTree = "<group>";
+		};
+		5B25F8751FE0D2CA00E85884 /* maxiaodingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F8761FE0D2CA00E85884 /* maxiaodingUITests.m */,
+				5B25F8781FE0D2CA00E85884 /* Info.plist */,
+			);
+			path = maxiaodingUITests;
+			sourceTree = "<group>";
+		};
+		5B25F8861FE0D79200E85884 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F8601FE0D2CA00E85884 /* Info.plist */,
+				5B25F8611FE0D2CA00E85884 /* main.m */,
+				5B25F8851FE0D6FF00E85884 /* maxiaoding-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5B25F8B11FE0F80500E85884 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F8B21FE0F80500E85884 /* mob */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		5B25F8B21FE0F80500E85884 /* mob */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F8D21FE0F90A00E85884 /* mob.storyboard */,
+				5B25F8EA1FE12B9000E85884 /* MARMobMenuVC.h */,
+				5B25F8EB1FE12B9000E85884 /* MARMobMenuVC.m */,
+				5B25F8B31FE0F80500E85884 /* controller */,
+				5B25F8B41FE0F80500E85884 /* model */,
+				5B25F8B51FE0F80500E85884 /* view */,
+			);
+			path = mob;
+			sourceTree = "<group>";
+		};
+		5B25F8B31FE0F80500E85884 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		5B25F8B41FE0F80500E85884 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F8EE1FE17CD200E85884 /* mobmodel.h */,
+				5B25F8F31FE17CD300E85884 /* MARLoadPageModel.h */,
+				5B25F8F11FE17CD300E85884 /* MARLoadPageModel.m */,
+				5B25F8ED1FE17CD200E85884 /* MARWXArticleCategoryModel.h */,
+				5B25F8F01FE17CD300E85884 /* MARWXArticleCategoryModel.m */,
+				5B25F8F21FE17CD300E85884 /* MARWXArticleModel.h */,
+				5B25F8EF1FE17CD200E85884 /* MARWXArticleModel.m */,
+				5B25F8F71FE17D2900E85884 /* MARHistoryDayModel.h */,
+				5B25F8F81FE17D2900E85884 /* MARHistoryDayModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		5B25F8B51FE0F80500E85884 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F8D41FE0FA7A00E85884 /* cell */,
+				5B25F8D81FE0FBCC00E85884 /* MARWXArticleCategoryVC.h */,
+				5B25F8D91FE0FBCC00E85884 /* MARWXArticleCategoryVC.m */,
+				5B25F8DE1FE1057800E85884 /* MARWXArticelListVC.h */,
+				5B25F8DF1FE1057800E85884 /* MARWXArticelListVC.m */,
+				5B25F8FA1FE17F9100E85884 /* MARHistoryDayViewController.h */,
+				5B25F8FB1FE17F9100E85884 /* MARHistoryDayViewController.m */,
+				5BB1D1571FE190EB0004396E /* MARHistoryDayDetailVC.h */,
+				5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5B25F8B61FE0F80500E85884 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F8B71FE0F80500E85884 /* base */,
+				5B25F8C21FE0F80500E85884 /* macro */,
+				5B25F8C81FE0F80500E85884 /* mobmodel */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		5B25F8B71FE0F80500E85884 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F9011FE188C300E85884 /* MARBaseDBModel.h */,
+				5B25F9001FE188C200E85884 /* MARBaseDBModel.m */,
+				5B25F8B81FE0F80500E85884 /* MARAppDelegate.h */,
+				5B25F8B91FE0F80500E85884 /* MARAppDelegate.m */,
+				5B25F8BC1FE0F80500E85884 /* MARBaseViewController.h */,
+				5B25F8BD1FE0F80500E85884 /* MARBaseViewController.m */,
+				5B25F8BE1FE0F80500E85884 /* MARNetworkManager.h */,
+				5B25F8BF1FE0F80500E85884 /* MARNetworkManager.m */,
+				5B25F8C01FE0F80500E85884 /* MARNetworkResponse.h */,
+				5B25F8C11FE0F80500E85884 /* MARNetworkResponse.m */,
+				5B25F8DB1FE1035A00E85884 /* MARWebViewController.h */,
+				5B25F8DC1FE1035A00E85884 /* MARWebViewController.m */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		5B25F8C21FE0F80500E85884 /* macro */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F8C31FE0F80500E85884 /* appkey.h */,
+				5B25F8C41FE0F80500E85884 /* css.h */,
+				5B25F8C51FE0F80500E85884 /* enum.h */,
+				5B25F8C61FE0F80500E85884 /* macro.h */,
+				5B25F8C71FE0F80500E85884 /* notification.h */,
+			);
+			path = macro;
+			sourceTree = "<group>";
+		};
+		5B25F8C81FE0F80500E85884 /* mobmodel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = mobmodel;
+			sourceTree = "<group>";
+		};
+		5B25F8D41FE0FA7A00E85884 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				5B25F8D51FE0FABE00E85884 /* MARWXArticleCategoryCell.h */,
+				5B25F8D61FE0FABE00E85884 /* MARWXArticleCategoryCell.m */,
+				5B25F8E11FE1090B00E85884 /* MARWXArticleTabelCell.h */,
+				5B25F8E21FE1090B00E85884 /* MARWXArticleTabelCell.m */,
+				5B25F8FD1FE1808F00E85884 /* MARHistoryDayTableCell.h */,
+				5B25F8FE1FE1808F00E85884 /* MARHistoryDayTableCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		665DD05C9EEE5810E3C0563D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				62A83676F16EBD22EFEE8754 /* Pods-maxiaoding.debug.xcconfig */,
+				F54FA193DE0A4D5843643552 /* Pods-maxiaoding.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5B25F84E1FE0D2CA00E85884 /* maxiaoding */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B25F87B1FE0D2CA00E85884 /* Build configuration list for PBXNativeTarget "maxiaoding" */;
+			buildPhases = (
+				16AD03A21F52A400B0916FB8 /* [CP] Check Pods Manifest.lock */,
+				5B25F84B1FE0D2CA00E85884 /* Sources */,
+				5B25F84C1FE0D2CA00E85884 /* Frameworks */,
+				5B25F84D1FE0D2CA00E85884 /* Resources */,
+				7E1D026380398B5D98582CEF /* [CP] Embed Pods Frameworks */,
+				27F4BD3FECC3D30D095A0BCB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = maxiaoding;
+			productName = maxiaoding;
+			productReference = 5B25F84F1FE0D2CA00E85884 /* maxiaoding.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5B25F8661FE0D2CA00E85884 /* maxiaodingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B25F87E1FE0D2CA00E85884 /* Build configuration list for PBXNativeTarget "maxiaodingTests" */;
+			buildPhases = (
+				5B25F8631FE0D2CA00E85884 /* Sources */,
+				5B25F8641FE0D2CA00E85884 /* Frameworks */,
+				5B25F8651FE0D2CA00E85884 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B25F8691FE0D2CA00E85884 /* PBXTargetDependency */,
+			);
+			name = maxiaodingTests;
+			productName = maxiaodingTests;
+			productReference = 5B25F8671FE0D2CA00E85884 /* maxiaodingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5B25F8711FE0D2CA00E85884 /* maxiaodingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B25F8811FE0D2CA00E85884 /* Build configuration list for PBXNativeTarget "maxiaodingUITests" */;
+			buildPhases = (
+				5B25F86E1FE0D2CA00E85884 /* Sources */,
+				5B25F86F1FE0D2CA00E85884 /* Frameworks */,
+				5B25F8701FE0D2CA00E85884 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B25F8741FE0D2CA00E85884 /* PBXTargetDependency */,
+			);
+			name = maxiaodingUITests;
+			productName = maxiaodingUITests;
+			productReference = 5B25F8721FE0D2CA00E85884 /* maxiaodingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5B25F8471FE0D2CA00E85884 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = MAIERSI;
+				TargetAttributes = {
+					5B25F84E1FE0D2CA00E85884 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					5B25F8661FE0D2CA00E85884 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5B25F84E1FE0D2CA00E85884;
+					};
+					5B25F8711FE0D2CA00E85884 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5B25F84E1FE0D2CA00E85884;
+					};
+				};
+			};
+			buildConfigurationList = 5B25F84A1FE0D2CA00E85884 /* Build configuration list for PBXProject "maxiaoding" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5B25F8461FE0D2CA00E85884;
+			productRefGroup = 5B25F8501FE0D2CA00E85884 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5B25F84E1FE0D2CA00E85884 /* maxiaoding */,
+				5B25F8661FE0D2CA00E85884 /* maxiaodingTests */,
+				5B25F8711FE0D2CA00E85884 /* maxiaodingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5B25F84D1FE0D2CA00E85884 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B25F85F1FE0D2CA00E85884 /* LaunchScreen.storyboard in Resources */,
+				5B25F85C1FE0D2CA00E85884 /* Assets.xcassets in Resources */,
+				5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */,
+				5B25F8D31FE0F90A00E85884 /* mob.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B25F8651FE0D2CA00E85884 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B25F8701FE0D2CA00E85884 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16AD03A21F52A400B0916FB8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		27F4BD3FECC3D30D095A0BCB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E1D026380398B5D98582CEF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5B25F84B1FE0D2CA00E85884 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B25F8F41FE17CD300E85884 /* MARWXArticleModel.m in Sources */,
+				5B25F9021FE188C300E85884 /* MARBaseDBModel.m in Sources */,
+				5B25F8F51FE17CD300E85884 /* MARWXArticleCategoryModel.m in Sources */,
+				5B25F8D01FE0F80500E85884 /* MARNetworkResponse.m in Sources */,
+				5B25F8F61FE17CD300E85884 /* MARLoadPageModel.m in Sources */,
+				5B25F8CF1FE0F80500E85884 /* MARNetworkManager.m in Sources */,
+				5B25F8DD1FE1035A00E85884 /* MARWebViewController.m in Sources */,
+				5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */,
+				5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */,
+				5B25F8FC1FE17F9100E85884 /* MARHistoryDayViewController.m in Sources */,
+				5B25F8E01FE1057800E85884 /* MARWXArticelListVC.m in Sources */,
+				5B25F8D71FE0FABE00E85884 /* MARWXArticleCategoryCell.m in Sources */,
+				5B25F8621FE0D2CA00E85884 /* main.m in Sources */,
+				5B25F8F91FE17D2900E85884 /* MARHistoryDayModel.m in Sources */,
+				5B25F8EC1FE12B9000E85884 /* MARMobMenuVC.m in Sources */,
+				5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */,
+				5B25F8CE1FE0F80500E85884 /* MARBaseViewController.m in Sources */,
+				5B25F8E31FE1090B00E85884 /* MARWXArticleTabelCell.m in Sources */,
+				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */,
+				5B25F8DA1FE0FBCC00E85884 /* MARWXArticleCategoryVC.m in Sources */,
+				5B25F8FF1FE1808F00E85884 /* MARHistoryDayTableCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B25F8631FE0D2CA00E85884 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B25F86C1FE0D2CA00E85884 /* maxiaodingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B25F86E1FE0D2CA00E85884 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B25F8771FE0D2CA00E85884 /* maxiaodingUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5B25F8691FE0D2CA00E85884 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B25F84E1FE0D2CA00E85884 /* maxiaoding */;
+			targetProxy = 5B25F8681FE0D2CA00E85884 /* PBXContainerItemProxy */;
+		};
+		5B25F8741FE0D2CA00E85884 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B25F84E1FE0D2CA00E85884 /* maxiaoding */;
+			targetProxy = 5B25F8731FE0D2CA00E85884 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5B25F8581FE0D2CA00E85884 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B25F8591FE0D2CA00E85884 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5B25F85D1FE0D2CA00E85884 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B25F85E1FE0D2CA00E85884 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5B25F8791FE0D2CA00E85884 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5B25F87A1FE0D2CA00E85884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5B25F87C1FE0D2CA00E85884 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62A83676F16EBD22EFEE8754 /* Pods-maxiaoding.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BVQ3L55FPQ;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/maxiaoding/maxiaoding-Prefix.pch";
+				INFOPLIST_FILE = maxiaoding/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maiersi.maxiaoding;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5B25F87D1FE0D2CA00E85884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F54FA193DE0A4D5843643552 /* Pods-maxiaoding.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BVQ3L55FPQ;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/maxiaoding/maxiaoding-Prefix.pch";
+				INFOPLIST_FILE = maxiaoding/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maiersi.maxiaoding;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5B25F87F1FE0D2CA00E85884 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = maxiaodingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maiersi.maxiaodingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/maxiaoding.app/maxiaoding";
+			};
+			name = Debug;
+		};
+		5B25F8801FE0D2CA00E85884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = maxiaodingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maiersi.maxiaodingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/maxiaoding.app/maxiaoding";
+			};
+			name = Release;
+		};
+		5B25F8821FE0D2CA00E85884 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = maxiaodingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maiersi.maxiaodingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = maxiaoding;
+			};
+			name = Debug;
+		};
+		5B25F8831FE0D2CA00E85884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = maxiaodingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.maiersi.maxiaodingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = maxiaoding;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5B25F84A1FE0D2CA00E85884 /* Build configuration list for PBXProject "maxiaoding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B25F8791FE0D2CA00E85884 /* Debug */,
+				5B25F87A1FE0D2CA00E85884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B25F87B1FE0D2CA00E85884 /* Build configuration list for PBXNativeTarget "maxiaoding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B25F87C1FE0D2CA00E85884 /* Debug */,
+				5B25F87D1FE0D2CA00E85884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B25F87E1FE0D2CA00E85884 /* Build configuration list for PBXNativeTarget "maxiaodingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B25F87F1FE0D2CA00E85884 /* Debug */,
+				5B25F8801FE0D2CA00E85884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B25F8811FE0D2CA00E85884 /* Build configuration list for PBXNativeTarget "maxiaodingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B25F8821FE0D2CA00E85884 /* Debug */,
+				5B25F8831FE0D2CA00E85884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5B25F8471FE0D2CA00E85884 /* Project object */;
+}

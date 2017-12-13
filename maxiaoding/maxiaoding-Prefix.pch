@@ -1,0 +1,21 @@
+//
+//  maxiaoding-Prefix.pch
+//  maxiaoding
+//
+//  Created by Martin.Liu on 2017/12/13.
+//  Copyright © 2017年 MAIERSI. All rights reserved.
+//
+
+#ifndef maxiaoding_Prefix_pch
+#define maxiaoding_Prefix_pch
+
+#import <Availability.h>
+
+#ifdef __OBJC__
+#import <MAREXMacro.h>
+#import <MARCategory.h>
+#import "macro.h"
+#import "mobmodel.h"
+#endif
+
+#endif /* maxiaoding_Prefix_pch */

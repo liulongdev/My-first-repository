@@ -1,0 +1,163 @@
+//
+//  MARNetworkManager.h
+//  maxiaoding
+//
+//  Created by Martin.Liu on 2017/12/13.
+//  Copyright © 2017年 MAIERSI. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <AFNetworking/AFNetworking.h>
+#import "MARNetworkResponse.h"
+
+typedef NS_ENUM(NSUInteger, MARNetworkRequestType)
+{
+    MARNetworkRequestTypeGet = 0,
+    MARNetworkRequestTypePost = 1,
+    MARNetworkRequestTypeDelete
+};
+
+typedef NS_ENUM(NSUInteger, MARNetworkLoadingType) {
+    MARNetworkLoadingTypeNone = 0,
+    MARNetworkLoadingTypeNormal
+};
+
+typedef void (^MARNetworkSuccess)(NSURLSessionTask *task, MARNetworkResponse *response);
+typedef void (^MARNetworkFailure)(NSURLSessionTask *task, NSError *error);
+typedef void (^MARNetworkProgress)(CGFloat progress);
+
+
+
+@interface MARNetworkManager : AFHTTPSessionManager
+
+/**
+ *  单例方法
+ *
+ *  @return 实例对象
+ */
++ (instancetype)shareManager;
+
+/**
+ *  网络请求的类方法
+ *
+ *  @param type         get / post
+ *  @param urlString    请求的地址
+ *  @param parameters    请求的参数
+ *  @param success      请求成功的回调 responseObj未经过处理
+ *  @param failure      请求失败的回调
+ *  @param progress 进度
+ */
++ (NSURLSessionDataTask *)mar_requestType:(MARNetworkRequestType)type
+                                urlString:(NSString *)urlString
+                               parameters:(id)parameters
+                                 progress:(MARNetworkProgress)progress
+                                  success:(MARNetworkSuccess)success
+                                  failure:(MARNetworkFailure)failure;
+
+
+/**
+ *  网络请求的类方法 get请求
+ *
+ *  @param urlString    请求的地址
+ *  @param parameters    请求的参数
+ *  @param success      请求成功的回调 responseObj未经过处理
+ *  @param failure      请求失败的回调
+ *  @param progress     进度
+ */
++ (NSURLSessionDataTask *)mar_get:(NSString *)urlString
+                       parameters:(id)parameters
+                         progress:(MARNetworkProgress)progress
+                          success:(MARNetworkSuccess)success
+                          failure:(MARNetworkFailure)failure;
+
+/**
+ *  网络请求的类方法 get请求
+ *
+ *  @param urlString    请求的地址
+ *  @param parameters    请求的参数
+ *  @param success      请求成功的回调 responseObj未经过处理
+ *  @param failure      请求失败的回调
+ */
++ (NSURLSessionDataTask *)mar_get:(NSString *)urlString
+                       parameters:(id)parameters
+                          success:(MARNetworkSuccess)success
+                          failure:(MARNetworkFailure)failure;
+
+/**
+ *  网络请求的类方法 post请求
+ *
+ *  @param urlString    请求的地址
+ *  @param parameters    请求的参数
+ *  @param success      请求成功的回调 responseObj未经过处理
+ *  @param failure      请求失败的回调
+ *  @param progress     进度
+ */
++ (NSURLSessionDataTask *)mar_post:(NSString *)urlString
+                        parameters:(id)parameters
+                          progress:(MARNetworkProgress)progress
+                           success:(MARNetworkSuccess)success
+                           failure:(MARNetworkFailure)failure;
+
+/**
+ *  网络请求的类方法 post请求
+ *
+ *  @param urlString    请求的地址
+ *  @param parameters    请求的参数
+ *  @param success      请求成功的回调 responseObj未经过处理
+ *  @param failure      请求失败的回调
+ 
+ */
++ (NSURLSessionDataTask *)mar_post:(NSString *)urlString
+                        parameters:(id)parameters
+                           success:(MARNetworkSuccess)success
+                           failure:(MARNetworkFailure)failure;
+
+/**
+ *  网络请求的类方法 delete请求
+ *
+ *  @param urlString    请求的地址
+ *  @param parameters    请求的参数
+ *  @param success      请求成功的回调 responseObj未经过处理
+ *  @param failure      请求失败的回调
+ 
+ */
++ (NSURLSessionDataTask *)mar_delete:(NSString *)urlString
+                          parameters:(id)parameters
+                             success:(MARNetworkSuccess)success
+                             failure:(MARNetworkFailure)failure;
+
+/**
+ *  网络请求的类方法
+ *
+ *  @param request      request参数
+ *  @param success      请求成功的回调 responseObj未经过处理
+ *  @param failure      请求失败的回调
+ */
++ (NSURLSessionDataTask *)mar_request:(NSURLRequest*)request
+                              success:(void (^)(NSURLResponse *URLresponse, id responseObject))success
+                              failure:(void (^)(NSURLResponse *URLresponse, id error))failure;
+
+/**
+ *  网络请求的类方法
+ *
+ *  @param request      request参数
+ *  @param bodyData     上传的二进制对象
+ *  @param progress     上传文件的完成情况回调
+ *  @param success      请求成功的回调
+ *  @param failure      请求失败的回调
+ */
++ (NSURLSessionUploadTask *)mar_uploadRequest:(NSURLRequest *)request
+                                     fromData:(NSData *)bodyData
+                                     progress:(MARNetworkProgress)progress
+                                      success:(void (^)(NSURLResponse *URLResponse, id response))success
+                                      failure:(void (^)(NSURLResponse *URLResponse, NSError *error))failure;
+
+
+/**
+ 网络请求是否可到达
+ 
+ @return YES可达到，NO不可到达
+ */
++(BOOL)mar_reachable;
+
+@end
