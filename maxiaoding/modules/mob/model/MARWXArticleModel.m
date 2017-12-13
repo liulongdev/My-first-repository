@@ -10,6 +10,11 @@
 
 @implementation MARWXArticleModel
 
++ (NSString *)getPrimaryKey
+{
+    return @"id";
+}
+
 - (NSString *)getFirstThumbnail
 {
     NSArray<NSString *> *thumbnails = [self getThumbnailArray];

@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface MARWXArticleModel : NSObject
+#import "MARBaseDBModel.h"
+@interface MARWXArticleModel : MARBaseDBModel
 
 @property (nonatomic, assign) NSInteger cid;
 @property (nonatomic, assign) NSInteger hitCount;

@@ -58,6 +58,11 @@
             [weakSelf.tableView reloadData];
             [weakSelf.tableView.mj_footer endRefreshing];
             [weakSelf.tableView.mj_header endRefreshing];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                for (MARWXArticleModel *model in articles) {
+                    [model updateToDB];
+                }
+            });
         }
     }];
 }
