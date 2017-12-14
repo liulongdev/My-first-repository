@@ -8,8 +8,9 @@
 
 #import "MARMobMenuVC.h"
 
-static NSString * const mobTitle_wxArticle = @"微信热门";
-static NSString * const mobTitle_historyToday = @"历史上的今天";
+static NSString * const mobTitle_wxArticle          = @"微信热门";
+static NSString * const mobTitle_historyToday       = @"历史上的今天";
+static NSString * const mobTitle_phoneNumberSetting = @"手机设置";
 
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -35,7 +36,8 @@ static NSString * const mobTitle_historyToday = @"历史上的今天";
 {
     if (!_titleArray) {
         _titleArray = @[mobTitle_wxArticle,
-                        mobTitle_historyToday];
+                        mobTitle_historyToday,
+                        mobTitle_phoneNumberSetting];
     }
     return _titleArray;
 }
@@ -72,6 +74,10 @@ static NSString * const mobTitle_historyToday = @"历史上的今天";
     else if ([mobTitle_historyToday isEqualToString:label.text])
     {
         [self performSegueWithIdentifier:@"goHistoryDayVC" sender:nil];
+    }
+    else if ([mobTitle_phoneNumberSetting isEqualToString:label.text])
+    {
+        [self performSegueWithIdentifier:@"goPhoneNumberSettingVC" sender:nil];
     }
 }
 

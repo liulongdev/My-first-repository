@@ -33,10 +33,7 @@
     [super viewWillAppear:animated];
     UIView *naviBar = self.navigationController.navigationBar;
     [naviBar addSubview:self.monthDayView];
-    [self.monthDayView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(naviBar);
-        make.size.mas_equalTo(CGSizeMake(80, 44));
-    }];
+    self.monthDayView.mar_left = (kScreenWIDTH - self.monthDayView.mar_width)/2;
     
     [self.monthDayView addTarget:self action:@selector(getDataWithDateStr:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -140,6 +137,7 @@
 {
     if (!_monthDayView) {
         _monthDayView = [[MARMonthDayView alloc] initWithFrame:CGRectMake(0, 0, 80, 44)];
+        _monthDayView.flowLayout.itemSize = CGSizeMake(80, 44);
         _monthDayView.backgroundColor = [UIColor clearColor];
     }
     return _monthDayView;

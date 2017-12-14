@@ -98,6 +98,7 @@
     MARWXArticleCategoryModel *model = sender;
     if ([vc isKindOfClass:[MARWXArticelListVC class]] && [model isKindOfClass:[MARWXArticleCategoryModel class]]) {
         vc.cid = model.cid;
+        vc.title = model.name;
     }
 }
 

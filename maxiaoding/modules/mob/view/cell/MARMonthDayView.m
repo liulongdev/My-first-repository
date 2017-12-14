@@ -160,7 +160,10 @@
 - (void)_getMonthAndDayWithDaysIndex:(NSInteger)dayIndex callBack:(void (^)(NSInteger month, NSInteger day))monthDayCallBack
 {
     if (monthDayCallBack) {
-        NSInteger days = (dayIndex + 1) % [self _totalDay];
+        NSInteger days = dayIndex + 1;
+        if (days > [self _totalDay]) {
+            days = days % [self _totalDay];
+        }
         NSArray *monthDaysArray = [self _monthDaysArray];
         NSInteger month = 1;
         NSInteger day = 1;

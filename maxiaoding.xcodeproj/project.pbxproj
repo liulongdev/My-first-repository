@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029EF21FE25927008ED5CA /* MARPhoneNumberSettingVC.m */; };
+		5B029EF51FE2654B008ED5CA /* mob_error.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B029EF41FE2654B008ED5CA /* mob_error.plist */; };
 		5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8531FE0D2CA00E85884 /* AppDelegate.m */; };
 		5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8561FE0D2CA00E85884 /* ViewController.m */; };
 		5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B25F8581FE0D2CA00E85884 /* Main.storyboard */; };
@@ -56,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B029EF11FE25927008ED5CA /* MARPhoneNumberSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARPhoneNumberSettingVC.h; sourceTree = "<group>"; };
+		5B029EF21FE25927008ED5CA /* MARPhoneNumberSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARPhoneNumberSettingVC.m; sourceTree = "<group>"; };
+		5B029EF41FE2654B008ED5CA /* mob_error.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = mob_error.plist; sourceTree = "<group>"; };
 		5B25F84F1FE0D2CA00E85884 /* maxiaoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxiaoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B25F8521FE0D2CA00E85884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B25F8531FE0D2CA00E85884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -236,12 +241,13 @@
 		5B25F8B21FE0F80500E85884 /* mob */ = {
 			isa = PBXGroup;
 			children = (
-				5B25F8D21FE0F90A00E85884 /* mob.storyboard */,
-				5B25F8EA1FE12B9000E85884 /* MARMobMenuVC.h */,
-				5B25F8EB1FE12B9000E85884 /* MARMobMenuVC.m */,
 				5B25F8B31FE0F80500E85884 /* controller */,
 				5B25F8B41FE0F80500E85884 /* model */,
 				5B25F8B51FE0F80500E85884 /* view */,
+				5B25F8D21FE0F90A00E85884 /* mob.storyboard */,
+				5B25F8EA1FE12B9000E85884 /* MARMobMenuVC.h */,
+				5B25F8EB1FE12B9000E85884 /* MARMobMenuVC.m */,
+				5B029EF41FE2654B008ED5CA /* mob_error.plist */,
 			);
 			path = mob;
 			sourceTree = "<group>";
@@ -281,6 +287,8 @@
 				5B25F8FB1FE17F9100E85884 /* MARHistoryDayViewController.m */,
 				5BB1D1571FE190EB0004396E /* MARHistoryDayDetailVC.h */,
 				5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */,
+				5B029EF11FE25927008ED5CA /* MARPhoneNumberSettingVC.h */,
+				5B029EF21FE25927008ED5CA /* MARPhoneNumberSettingVC.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -470,6 +478,7 @@
 				5B25F85F1FE0D2CA00E85884 /* LaunchScreen.storyboard in Resources */,
 				5B25F85C1FE0D2CA00E85884 /* Assets.xcassets in Resources */,
 				5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */,
+				5B029EF51FE2654B008ED5CA /* mob_error.plist in Resources */,
 				5B25F8D31FE0F90A00E85884 /* mob.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +557,7 @@
 				5B25F8F51FE17CD300E85884 /* MARWXArticleCategoryModel.m in Sources */,
 				5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */,
 				5B25F8D01FE0F80500E85884 /* MARNetworkResponse.m in Sources */,
+				5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */,
 				5B25F8F61FE17CD300E85884 /* MARLoadPageModel.m in Sources */,
 				5B25F8CF1FE0F80500E85884 /* MARNetworkManager.m in Sources */,
 				5B25F8DD1FE1035A00E85884 /* MARWebViewController.m in Sources */,
