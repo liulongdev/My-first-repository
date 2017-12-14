@@ -122,13 +122,13 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_needDisplayDate) {
-        [self scrollToDateWithAnimated:YES];
+        [self scrollToDateWithAnimated:NO];
         _needDisplayDate = NO;
     }
     MARMonthDayCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MARMonthDayCollectionCell" forIndexPath:indexPath];
     __block NSString *monthDay = nil;
     [self _getMonthAndDayWithDaysIndex:indexPath.row callBack:^(NSInteger month, NSInteger day) {
-        monthDay = [NSString stringWithFormat:@"%02ld-%02ld", month, day];
+        monthDay = [NSString stringWithFormat:@"%02ld-%02ld", (long)month, (long)day];
     }];
     [cell setCellData:monthDay];
     return cell;

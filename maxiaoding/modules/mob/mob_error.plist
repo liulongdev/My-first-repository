@@ -72,5 +72,7 @@
 	<string>客户端在获取令牌的接口中没有传递aesKey</string>
 	<key>300500</key>
 	<string>服务端程序报错</string>
+	<key>523404</key>
+	<string>查询不到品牌的车型信息</string>
 </dict>
 </plist>

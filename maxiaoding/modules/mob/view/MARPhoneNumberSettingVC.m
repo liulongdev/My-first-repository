@@ -34,14 +34,7 @@
 
 - (NSDictionary *)mobErrorDictionary
 {
-    if (![_mobErrorDictionary isKindOfClass:[NSDictionary class]] || _mobErrorDictionary.allKeys.count <= 0) {
-        NSString *mobErrorPlistPath = [[NSBundle mainBundle] pathForResource:@"mob_error" ofType:@"plist"];
-        NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:mobErrorPlistPath];
-        if ([dic isKindOfClass:[NSDictionary class]]) {
-            _mobErrorDictionary = dic;
-        }
-    }
-    return _mobErrorDictionary;
+    return MARMOBUTIL.mobErrorDic;
 }
 
 /*

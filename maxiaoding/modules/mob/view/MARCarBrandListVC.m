@@ -8,6 +8,7 @@
 
 #import "MARCarBrandListVC.h"
 #import <MobAPI/MobAPI.h>
+#import "MARCardSeriesVC.h"
 
 @interface MARCarBrandListVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -19,9 +20,7 @@
 @synthesize carBrandArray = _carBrandArray;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadData];
 }
-
 
 - (void)UIGlobal
 {
@@ -41,17 +40,18 @@
         if (!response.error) {
             NSArray<MARCardBrandModel *> *cardBrandArray = [NSArray mar_modelArrayWithClass:[MARCardBrandModel class] json:response.responder[@"result"]];
             strongSelf.carBrandArray = cardBrandArray;
-           [weakSelf.tableView reloadData]; dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [weakSelf.tableView reloadData];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 for (MARCardBrandModel *model in cardBrandArray) {
                     [model updateToDB];
                 }
             });
-            
         }
         else
         {
-            ShowErrorMessage([response.error localizedDescription], 1.5f);
-            NSLog(@">>>> get carbrand error : %@", [response.error localizedDescription]);
+            NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
+            ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
+            NSLog(@">>> getVerifyCode error : %@", [response.error localizedDescription]);
         }
     }];
 }
@@ -59,7 +59,25 @@
 - (NSArray<MARCardBrandModel *> *)carBrandArray
 {
     if (!_carBrandArray || ![_carBrandArray isKindOfClass:[NSArray class]] || _carBrandArray.count <= 0) {
-        self.carBrandArray = (NSArray<MARCardBrandModel *> *)[MARCardBrandModel mar_getAllDBModelArray];
+        static BOOL simpleAsync = NO;
+        [self showActivityView:YES];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            if (!simpleAsync) {
+                simpleAsync = YES;
+                self.carBrandArray = (NSArray<MARCardBrandModel *> *)[MARCardBrandModel mar_getAllDBModelArray];
+                if (_carBrandArray.count <= 0) {
+                    [self loadData];
+                }
+                else
+                {
+                    mar_dispatch_async_on_main_queue(^{
+                        [self showActivityView:NO];
+                        [self.tableView reloadData];
+                    });
+                }
+                simpleAsync = NO;
+            }
+        });
     }
     return _carBrandArray;
 }
@@ -160,6 +178,28 @@
         }
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = indexPath.row;
+    if (self.carBrandArray.count > indexPath.section) {
+        NSArray<MARCarTypeInfoModel *> *carTypeInfoArray = self.carBrandArray[indexPath.section].son;
+        if (carTypeInfoArray.count > row) {
+            [self performSegueWithIdentifier:@"goCardSeriesVC" sender:carTypeInfoArray[row]];
+        }
+    }
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"goCardSeriesVC"]) {
+        MARCardSeriesVC *cardSeriesVC = segue.destinationViewController;
+        if ([cardSeriesVC isKindOfClass:[MARCardSeriesVC class]] && [sender isKindOfClass:[MARCarTypeInfoModel class]]) {
+            cardSeriesVC.cardTypeInfoModel = sender;
+        }
+    }
 }
 
 @end

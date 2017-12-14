@@ -20,21 +20,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadData];
+    self.title = @"微信精选";
+    [self wxArticleArray];
 }
 
 - (void)loadData
 {
-//    if (self.wxArticleArray.count > 0) {
+//    if (_wxArticleArray.count > 0) {
 //        return;
 //    }
     __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
     [MobAPI sendRequest:[MOBAWxArticleRequest wxArticleCategoryRequest] onResult:^(MOBAResponse *response) {
-        [weakSelf showActivityView:NO];
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        if (!strongSelf) return;
+        [strongSelf showActivityView:NO];
         if (!response.error) {
             NSArray<MARWXArticleCategoryModel *> *articleArray = [NSArray mar_modelArrayWithClass:[MARWXArticleCategoryModel class] json:response.responder[@"result"]];
-            weakSelf.wxArticleArray = articleArray;
+            strongSelf->_wxArticleArray = articleArray;
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 for (MARWXArticleCategoryModel *model in articleArray) {
                     [model updateToDB];
@@ -42,13 +45,37 @@
             });
             [weakSelf.collectionView reloadData];
         }
+        else
+        {
+            NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
+            ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
+            NSLog(@">>> getVerifyCode error : %@", [response.error localizedDescription]);
+        }
     }];
 }
 
 - (NSArray<MARWXArticleCategoryModel *> *)wxArticleArray
 {
     if (!_wxArticleArray) {
-        _wxArticleArray = (NSArray<MARWXArticleCategoryModel *> *)[MARWXArticleCategoryModel mar_getAllDBModelArray];
+        static BOOL simpleAsync = NO;
+        [self showActivityView:YES];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            if (!simpleAsync) {
+                simpleAsync = YES;
+                self.wxArticleArray = (NSArray<MARWXArticleCategoryModel *> *)[MARWXArticleCategoryModel mar_getAllDBModelArray];
+                if (_wxArticleArray.count <= 0) {
+                    [self loadData];
+                }
+                else
+                {
+                    mar_dispatch_async_on_main_queue(^{
+                        [self showActivityView:NO];
+                        [self.collectionView reloadData];
+                    });
+                }
+                simpleAsync = NO;
+            }
+        });
     }
     return _wxArticleArray;
 }
@@ -61,15 +88,15 @@
 #pragma UICollectionView delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.wxArticleArray.count;
+    return _wxArticleArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     MARWXArticleCategoryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MARWXArticleCategoryCell" forIndexPath:indexPath];
     NSInteger row = indexPath.row;
-    if (self.wxArticleArray.count > row) {
-        [cell setCellData:self.wxArticleArray[row].name];
+    if (_wxArticleArray.count > row) {
+        [cell setCellData:_wxArticleArray[row].name];
     }
     return cell;
 }
@@ -77,8 +104,8 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = indexPath.row;
-    if (self.wxArticleArray.count > row) {
-        CGSize labelSize = [self.wxArticleArray[row].name mar_sizeForFont:[UIFont systemFontOfSize:20.f] size:CGSizeMake(kScreenWidth, FLT_MAX) mode:NSLineBreakByWordWrapping];
+    if (_wxArticleArray.count > row) {
+        CGSize labelSize = [_wxArticleArray[row].name mar_sizeForFont:[UIFont systemFontOfSize:20.f] size:CGSizeMake(kScreenWidth, FLT_MAX) mode:NSLineBreakByWordWrapping];
         return CGSizeMake(labelSize.width + 16, labelSize.height + 16);
     }
     return CGSizeZero;
@@ -87,8 +114,8 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = indexPath.row;
-    if (self.wxArticleArray.count > row) {
-        [self performSegueWithIdentifier:@"goArticleListVC" sender:self.wxArticleArray[row]];
+    if (_wxArticleArray.count > row) {
+        [self performSegueWithIdentifier:@"goArticleListVC" sender:_wxArticleArray[row]];
     }
 }
 

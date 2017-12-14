@@ -9,6 +9,7 @@
 #ifndef mobmodel_h
 #define mobmodel_h
 
+#import "MARMobUtil.h"
 #import "MARLoadPageModel.h"
 #import "MARWXArticleCategoryModel.h"
 #import "MARWXArticleModel.h"

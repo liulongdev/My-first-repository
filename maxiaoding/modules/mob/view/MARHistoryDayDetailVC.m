@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = self.historyDayModel.title;
     self.detailLabel.attributedText = [[NSAttributedString alloc] initWithString:self.historyDayModel.event ?: @"" attributes:self.attrDic];
 }
 

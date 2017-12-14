@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = nil;
-    [self loadData];
+    [self historyDayArray];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,7 +54,7 @@
 
 - (void)getDataWithDateStr:(MARMonthDayView *)monthDayView
 {
-    self.dateStr = [NSString stringWithFormat:@"%02ld%02ld", monthDayView.month, monthDayView.day];
+    self.dateStr = [NSString stringWithFormat:@"%02ld%02ld", (long)monthDayView.month, (long)monthDayView.day];
     _historyDayArray = nil;
     [self.tableView reloadData];
     [self loadData];
@@ -107,7 +107,12 @@
                     [strongSelf getDataAndReloadData];
                 });
             });
-            
+        }
+        else
+        {
+            NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
+            ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
+            NSLog(@">>> getVerifyCode error : %@", [response.error localizedDescription]);
         }
     }];
 }
@@ -115,7 +120,25 @@
 - (NSArray *)historyDayArray
 {
     if (!_historyDayArray) {
-        _historyDayArray = [MARHistoryDayModel getHistoryDayArrayWithDateStr:self.dateStr];
+        static BOOL simpleAsync = NO;
+        [self showActivityView:YES];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            if (!simpleAsync) {
+                simpleAsync = YES;
+                _historyDayArray = [MARHistoryDayModel getHistoryDayArrayWithDateStr:self.dateStr];
+                if (_historyDayArray.count <= 0) {
+                    [self loadData];
+                }
+                else
+                {
+                    mar_dispatch_async_on_main_queue(^{
+                        [self showActivityView:NO];
+                        [self.tableView reloadData];
+                    });
+                }
+                simpleAsync = NO;
+            }
+        });
     }
     return _historyDayArray;
 }
