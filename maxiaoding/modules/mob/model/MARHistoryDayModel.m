@@ -28,8 +28,10 @@
 
 + (NSArray<MARHistoryDayModel *> *)getHistoryDayArrayWithDateStr:(NSString *)dateStr
 {
+    BOOL isDescSort = [MARUserDefault getBoolBy:USERDEFAULTKEY_HistoryDayDataDESCSort];
+    NSString *orderStr = [NSString stringWithFormat:@"date %@", (isDescSort ? @"desc" : @"asc")];
     NSString *sqlStr = [NSString stringWithFormat:@"date like '%%%@'", dateStr];
-    NSArray<MARHistoryDayModel *> *historyDayArray = [[self.class getUsingLKDBHelper] search:[self class] where:sqlStr orderBy:@"date asc" offset:0 count:0];
+    NSArray<MARHistoryDayModel *> *historyDayArray = [[self.class getUsingLKDBHelper] search:[self class] where:sqlStr orderBy:orderStr offset:0 count:0];
     return historyDayArray;
 }
 

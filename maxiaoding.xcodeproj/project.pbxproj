@@ -34,6 +34,7 @@
 		5B25F8FF1FE1808F00E85884 /* MARHistoryDayTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8FE1FE1808F00E85884 /* MARHistoryDayTableCell.m */; };
 		5B25F9021FE188C300E85884 /* MARBaseDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F9001FE188C200E85884 /* MARBaseDBModel.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
+		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
 		83F79CD1B5F4E42CC3A4A9E0 /* libPods-maxiaoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,9 @@
 		5B25F9011FE188C300E85884 /* MARBaseDBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARBaseDBModel.h; sourceTree = "<group>"; };
 		5BB1D1571FE190EB0004396E /* MARHistoryDayDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayDetailVC.h; sourceTree = "<group>"; };
 		5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHistoryDayDetailVC.m; sourceTree = "<group>"; };
+		5BC0F5731FE211DF004C62D4 /* userdefaultkey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userdefaultkey.h; sourceTree = "<group>"; };
+		5BC0F5741FE2218E004C62D4 /* MARMonthDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMonthDayView.h; sourceTree = "<group>"; };
+		5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMonthDayView.m; sourceTree = "<group>"; };
 		62A83676F16EBD22EFEE8754 /* Pods-maxiaoding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxiaoding.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding.debug.xcconfig"; sourceTree = "<group>"; };
 		6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-maxiaoding.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F54FA193DE0A4D5843643552 /* Pods-maxiaoding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxiaoding.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding.release.xcconfig"; sourceTree = "<group>"; };
@@ -313,11 +317,12 @@
 		5B25F8C21FE0F80500E85884 /* macro */ = {
 			isa = PBXGroup;
 			children = (
+				5B25F8C61FE0F80500E85884 /* macro.h */,
 				5B25F8C31FE0F80500E85884 /* appkey.h */,
 				5B25F8C41FE0F80500E85884 /* css.h */,
 				5B25F8C51FE0F80500E85884 /* enum.h */,
-				5B25F8C61FE0F80500E85884 /* macro.h */,
 				5B25F8C71FE0F80500E85884 /* notification.h */,
+				5BC0F5731FE211DF004C62D4 /* userdefaultkey.h */,
 			);
 			path = macro;
 			sourceTree = "<group>";
@@ -338,6 +343,8 @@
 				5B25F8E21FE1090B00E85884 /* MARWXArticleTabelCell.m */,
 				5B25F8FD1FE1808F00E85884 /* MARHistoryDayTableCell.h */,
 				5B25F8FE1FE1808F00E85884 /* MARHistoryDayTableCell.m */,
+				5BC0F5741FE2218E004C62D4 /* MARMonthDayView.h */,
+				5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -539,6 +546,7 @@
 				5B25F8F41FE17CD300E85884 /* MARWXArticleModel.m in Sources */,
 				5B25F9021FE188C300E85884 /* MARBaseDBModel.m in Sources */,
 				5B25F8F51FE17CD300E85884 /* MARWXArticleCategoryModel.m in Sources */,
+				5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */,
 				5B25F8D01FE0F80500E85884 /* MARNetworkResponse.m in Sources */,
 				5B25F8F61FE17CD300E85884 /* MARLoadPageModel.m in Sources */,
 				5B25F8CF1FE0F80500E85884 /* MARNetworkManager.m in Sources */,

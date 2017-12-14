@@ -8,8 +8,10 @@
 
 #import "MARBaseViewController.h"
 #import <objc/runtime.h>
+#import <Masonry.h>
 @interface MARBaseViewController ()
 @property (nonatomic, strong) UITapGestureRecognizer* resignFirstResponserGesture;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 @end
 
 @implementation MARBaseViewController
@@ -59,6 +61,14 @@
     return _resignFirstResponserGesture;
 }
 
+- (UIActivityIndicatorView *)activityIndicatorView
+{
+    if (!_activityIndicatorView) {
+        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    }
+    return _activityIndicatorView;
+}
+
 - (void)resignTFS
 {
     [self.view endEditing:YES];
@@ -102,6 +112,29 @@
 }
 
 - (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj{}
+
+- (void)showActivityView:(BOOL)show
+{
+    if (show) {
+        [self.view addSubview:self.activityIndicatorView];
+        [self.activityIndicatorView startAnimating];
+        [self.activityIndicatorView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerX.mas_equalTo(self.view);
+            make.top.mas_equalTo(self.mas_topLayoutGuide).mas_offset(kScreenHeight * 1/4);
+        }];
+    }
+    else
+    {
+        [_activityIndicatorView stopAnimating];
+//        [_activityIndicatorView removeFromSuperview];
+//        _activityIndicatorView = nil;
+    }
+}
+
+- (BOOL)isAnimating
+{
+    return _activityIndicatorView.isAnimating;
+}
 
 - (void)__removeObserverGlobal{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kMARGlobalNotification object:nil];

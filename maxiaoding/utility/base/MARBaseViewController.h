@@ -36,6 +36,11 @@
  */
 - (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj;
 
+- (void)showActivityView:(BOOL)show;
+
+- (BOOL)isAnimating;
+
+
 @end
 
 @interface UIViewController (MARBaseVCEX)

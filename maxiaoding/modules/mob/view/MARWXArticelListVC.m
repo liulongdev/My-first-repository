@@ -38,6 +38,7 @@
         if (![weakSelf.tableView.mj_footer isRefreshing]) {
             weakSelf.pageModel.pageIndex = 0;
             [weakSelf.articleArray removeAllObjects];
+            [weakSelf showActivityView:NO];
             [weakSelf loadData];
         }
     }];
@@ -50,8 +51,13 @@
 
 - (void)loadData
 {
+    if (self.isAnimating) {
+        return;
+    }
     __weak __typeof(self) weakSelf = self;
+    [self showActivityView:YES];
     [MobAPI sendRequest:[MOBAWxArticleRequest wxArticleListRequestByCID:self.cid page:(self.pageModel.pageIndex+1) size:self.pageModel.pageSize] onResult:^(MOBAResponse *response) {
+        [weakSelf showActivityView:NO];
         if (!response.error) {
             NSArray<MARWXArticleModel *> *articles = [NSArray mar_modelArrayWithClass:[MARWXArticleModel class] json:response.responder[@"result"][@"list"]];
             [weakSelf.articleArray addObjectsFromArray:articles];

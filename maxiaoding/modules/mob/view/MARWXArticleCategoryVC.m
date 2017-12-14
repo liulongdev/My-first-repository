@@ -29,7 +29,9 @@
 //        return;
 //    }
     __weak __typeof(self) weakSelf = self;
+    [self showActivityView:YES];
     [MobAPI sendRequest:[MOBAWxArticleRequest wxArticleCategoryRequest] onResult:^(MOBAResponse *response) {
+        [weakSelf showActivityView:NO];
         if (!response.error) {
             NSArray<MARWXArticleCategoryModel *> *articleArray = [NSArray mar_modelArrayWithClass:[MARWXArticleCategoryModel class] json:response.responder[@"result"]];
             weakSelf.wxArticleArray = articleArray;

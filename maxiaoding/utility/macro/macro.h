@@ -13,5 +13,6 @@
 #import "appkey.h"
 #import "enum.h"
 #import "notification.h"
+#import "userdefaultkey.h"
 
 #endif /* macro_h */
