@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029EF21FE25927008ED5CA /* MARPhoneNumberSettingVC.m */; };
 		5B029EF51FE2654B008ED5CA /* mob_error.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B029EF41FE2654B008ED5CA /* mob_error.plist */; };
+		5B029EFB1FE28098008ED5CA /* MARCarBrandListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029EFA1FE28098008ED5CA /* MARCarBrandListVC.m */; };
+		5B029EFE1FE2824C008ED5CA /* MARCardBrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029EFD1FE2824C008ED5CA /* MARCardBrandModel.m */; };
 		5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8531FE0D2CA00E85884 /* AppDelegate.m */; };
 		5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8561FE0D2CA00E85884 /* ViewController.m */; };
 		5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B25F8581FE0D2CA00E85884 /* Main.storyboard */; };
@@ -61,6 +63,10 @@
 		5B029EF11FE25927008ED5CA /* MARPhoneNumberSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARPhoneNumberSettingVC.h; sourceTree = "<group>"; };
 		5B029EF21FE25927008ED5CA /* MARPhoneNumberSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARPhoneNumberSettingVC.m; sourceTree = "<group>"; };
 		5B029EF41FE2654B008ED5CA /* mob_error.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = mob_error.plist; sourceTree = "<group>"; };
+		5B029EF91FE28098008ED5CA /* MARCarBrandListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCarBrandListVC.h; sourceTree = "<group>"; };
+		5B029EFA1FE28098008ED5CA /* MARCarBrandListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCarBrandListVC.m; sourceTree = "<group>"; };
+		5B029EFC1FE2824C008ED5CA /* MARCardBrandModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCardBrandModel.h; sourceTree = "<group>"; };
+		5B029EFD1FE2824C008ED5CA /* MARCardBrandModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCardBrandModel.m; sourceTree = "<group>"; };
 		5B25F84F1FE0D2CA00E85884 /* maxiaoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxiaoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B25F8521FE0D2CA00E85884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B25F8531FE0D2CA00E85884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -271,6 +277,8 @@
 				5B25F8EF1FE17CD200E85884 /* MARWXArticleModel.m */,
 				5B25F8F71FE17D2900E85884 /* MARHistoryDayModel.h */,
 				5B25F8F81FE17D2900E85884 /* MARHistoryDayModel.m */,
+				5B029EFC1FE2824C008ED5CA /* MARCardBrandModel.h */,
+				5B029EFD1FE2824C008ED5CA /* MARCardBrandModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -289,6 +297,8 @@
 				5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */,
 				5B029EF11FE25927008ED5CA /* MARPhoneNumberSettingVC.h */,
 				5B029EF21FE25927008ED5CA /* MARPhoneNumberSettingVC.m */,
+				5B029EF91FE28098008ED5CA /* MARCarBrandListVC.h */,
+				5B029EFA1FE28098008ED5CA /* MARCarBrandListVC.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -555,6 +565,7 @@
 				5B25F8F41FE17CD300E85884 /* MARWXArticleModel.m in Sources */,
 				5B25F9021FE188C300E85884 /* MARBaseDBModel.m in Sources */,
 				5B25F8F51FE17CD300E85884 /* MARWXArticleCategoryModel.m in Sources */,
+				5B029EFE1FE2824C008ED5CA /* MARCardBrandModel.m in Sources */,
 				5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */,
 				5B25F8D01FE0F80500E85884 /* MARNetworkResponse.m in Sources */,
 				5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */,
@@ -563,6 +574,7 @@
 				5B25F8DD1FE1035A00E85884 /* MARWebViewController.m in Sources */,
 				5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */,
 				5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */,
+				5B029EFB1FE28098008ED5CA /* MARCarBrandListVC.m in Sources */,
 				5B25F8FC1FE17F9100E85884 /* MARHistoryDayViewController.m in Sources */,
 				5B25F8E01FE1057800E85884 /* MARWXArticelListVC.m in Sources */,
 				5B25F8D71FE0FABE00E85884 /* MARWXArticleCategoryCell.m in Sources */,

@@ -13,5 +13,6 @@
 #import "MARWXArticleCategoryModel.h"
 #import "MARWXArticleModel.h"
 #import "MARHistoryDayModel.h"
+#import "MARCardBrandModel.h"
 
 #endif /* mobmodel_h */

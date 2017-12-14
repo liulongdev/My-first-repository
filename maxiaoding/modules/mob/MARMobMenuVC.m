@@ -11,6 +11,9 @@
 static NSString * const mobTitle_wxArticle          = @"微信热门";
 static NSString * const mobTitle_historyToday       = @"历史上的今天";
 static NSString * const mobTitle_phoneNumberSetting = @"手机设置";
+static NSString * const mobTitle_utilityTool        = @"实用工具";
+static NSString * const mobTitle_carBrand           = @"汽车";
+
 
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -37,7 +40,10 @@ static NSString * const mobTitle_phoneNumberSetting = @"手机设置";
     if (!_titleArray) {
         _titleArray = @[mobTitle_wxArticle,
                         mobTitle_historyToday,
-                        mobTitle_phoneNumberSetting];
+//                        mobTitle_phoneNumberSetting,
+//                        mobTitle_utilityTool,
+                        mobTitle_carBrand,
+                        ];
     }
     return _titleArray;
 }
@@ -79,6 +85,16 @@ static NSString * const mobTitle_phoneNumberSetting = @"手机设置";
     {
         [self performSegueWithIdentifier:@"goPhoneNumberSettingVC" sender:nil];
     }
+    else if ([mobTitle_utilityTool isEqualToString:label.text])
+    {
+        
+    }
+    else if ([mobTitle_carBrand isEqualToString:label.text])
+    {
+        [self performSegueWithIdentifier:@"goCarBrandListVC" sender:nil];
+        
+    }
+    
 }
 
 @end

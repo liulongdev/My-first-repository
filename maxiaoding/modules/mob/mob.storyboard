@@ -86,6 +86,7 @@
                         <segue destination="Eg6-Nn-q7k" kind="show" identifier="goArticleCategoryVC" id="gRP-Jk-T3V"/>
                         <segue destination="Rvo-IH-TOR" kind="show" identifier="goHistoryDayVC" id="50g-TQ-lRb"/>
                         <segue destination="AQy-eH-pIp" kind="show" identifier="goPhoneNumberSettingVC" id="6Hp-OX-9YH"/>
+                        <segue destination="KEQ-8Q-8am" kind="show" identifier="goCarBrandListVC" id="DQY-rv-YiE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vt2-Fu-lHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -438,6 +439,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQC-bX-Sey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="480.80000000000001" y="-161.46926536731635"/>
+        </scene>
+        <!--Car Brand ListVC-->
+        <scene sceneID="Xs1-tW-G0o">
+            <objects>
+                <viewController storyboardIdentifier="MARCarTrademarkListVC" id="KEQ-8Q-8am" customClass="MARCarBrandListVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NHX-aB-Xlr"/>
+                        <viewControllerLayoutGuide type="bottom" id="j04-dJ-DJU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ccu-St-wxo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nZf-tT-bhb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="KEQ-8Q-8am" id="JHa-3u-txW"/>
+                                    <outlet property="delegate" destination="KEQ-8Q-8am" id="dta-uV-Vvy"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nZf-tT-bhb" secondAttribute="trailing" id="4Rc-bX-ktw"/>
+                            <constraint firstItem="nZf-tT-bhb" firstAttribute="leading" secondItem="ccu-St-wxo" secondAttribute="leading" id="fWr-HT-O0C"/>
+                            <constraint firstItem="nZf-tT-bhb" firstAttribute="top" secondItem="NHX-aB-Xlr" secondAttribute="bottom" id="kM5-Wp-o9e"/>
+                            <constraint firstItem="j04-dJ-DJU" firstAttribute="top" secondItem="nZf-tT-bhb" secondAttribute="bottom" id="lm5-CR-E2P"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="nZf-tT-bhb" id="mW7-2X-h3V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9Z-Wo-Opc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1317.5999999999999" y="-161.46926536731635"/>
         </scene>
         <!--History Day DetailVC-->
         <scene sceneID="5kj-JE-f5Q">

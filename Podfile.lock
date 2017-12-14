@@ -29,6 +29,7 @@ PODS:
     - MOBFoundation
   - MOBFoundation (3.0.8)
   - MXRProfiler (0.0.5)
+  - PinYin4Objc (1.1.1)
   - RealReachability (1.1.9):
     - RealReachability/Connection (= 1.1.9)
     - RealReachability/Ping (= 1.1.9)
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - MJRefresh (~> 3.1.15.1)
   - mobAPI (~> 2.0.1)
   - MXRProfiler (~> 0.0.5)
+  - PinYin4Objc (~> 1.1.1)
   - RealReachability (~> 1.1.8)
   - SDWebImage (~> 3.8.2)
   - SMSSDK (~> 3.0.1)
@@ -66,11 +68,12 @@ SPEC CHECKSUMS:
   mobAPI: 7479e6c72caa61145120ad8bbb3cf7b8194f988b
   MOBFoundation: dc4419633249fa4f6a0c0a7ad29cbbb376421ed6
   MXRProfiler: b4ab82f597f74218fd49c2f2f8396e317bcb6f6c
+  PinYin4Objc: 3fa9673610368330e2dfb688b1d19a35c3930a78
   RealReachability: a8c483900986a0f3305733961effbfbb00637a02
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   SMSSDK: a811c8ea6e89393097037b7cf6493248a40e50f0
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
 
-PODFILE CHECKSUM: bfd8948ab6eaddd89d436a7a5bed4fdc27dc8660
+PODFILE CHECKSUM: f9ef1abb9e8f0c1fa1168804d803941f6599bee7
 
 COCOAPODS: 1.2.0
