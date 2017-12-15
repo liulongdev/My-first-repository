@@ -1,5 +1,5 @@
 //
-//  MARCardSeriesVC.h
+//  MARCarSeriesVC.h
 //  maxiaoding
 //
 //  Created by Martin.Liu on 2017/12/14.
@@ -8,7 +8,7 @@
 
 #import "MARBaseViewController.h"
 
-@interface MARCardSeriesVC : MARBaseViewController
+@interface MARCarSeriesVC : MARBaseViewController
 
 @property (nonatomic, strong) MARCarTypeInfoModel *cardTypeInfoModel;
 

@@ -19,7 +19,6 @@
     [super viewDidLoad];
     
 //    [self.tableView registerClass:[MARTestTableViewCell class] forCellReuseIdentifier:@"MARTestTableViewCell"];
-    
     [self.tableView registerNib:[UINib nibWithNibName:@"MARHomeCustomTableCell" bundle:nil] forCellReuseIdentifier:@"MARHomeCustomTableCell"];
 }
 

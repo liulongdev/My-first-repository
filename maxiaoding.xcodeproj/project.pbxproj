@@ -10,10 +10,10 @@
 		5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029EF21FE25927008ED5CA /* MARPhoneNumberSettingVC.m */; };
 		5B029EF51FE2654B008ED5CA /* mob_error.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B029EF41FE2654B008ED5CA /* mob_error.plist */; };
 		5B029EFB1FE28098008ED5CA /* MARCarBrandListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029EFA1FE28098008ED5CA /* MARCarBrandListVC.m */; };
-		5B029EFE1FE2824C008ED5CA /* MARCardBrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029EFD1FE2824C008ED5CA /* MARCardBrandModel.m */; };
-		5B029F011FE2C317008ED5CA /* MARCardSeriesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F001FE2C317008ED5CA /* MARCardSeriesVC.m */; };
+		5B029EFE1FE2824C008ED5CA /* MARCarBrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029EFD1FE2824C008ED5CA /* MARCarBrandModel.m */; };
+		5B029F011FE2C317008ED5CA /* MARCarSeriesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F001FE2C317008ED5CA /* MARCarSeriesVC.m */; };
 		5B029F041FE2E016008ED5CA /* MARMobUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F031FE2E016008ED5CA /* MARMobUtil.m */; };
-		5B029F071FE2EB61008ED5CA /* MARCardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F061FE2EB61008ED5CA /* MARCardDetailVC.m */; };
+		5B029F071FE2EB61008ED5CA /* MARCarDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F061FE2EB61008ED5CA /* MARCarDetailVC.m */; };
 		5B029F0C1FE3C311008ED5CA /* UIViewController+MXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F0B1FE3C311008ED5CA /* UIViewController+MXD.m */; };
 		5B029F0F1FE3C3D3008ED5CA /* MARSBConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F0E1FE3C3D3008ED5CA /* MARSBConstant.m */; };
 		5B029F161FE3C849008ED5CA /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B029F151FE3C849008ED5CA /* test.storyboard */; };
@@ -21,6 +21,13 @@
 		5B029F1E1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B029F1C1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib */; };
 		5B029F211FE3D4BC008ED5CA /* MARTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F201FE3D4BC008ED5CA /* MARTestTableViewCell.m */; };
 		5B029F241FE3D55E008ED5CA /* MARHomeTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F231FE3D55E008ED5CA /* MARHomeTestVC.m */; };
+		5B029F261FE40330008ED5CA /* homecustome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B029F251FE40330008ED5CA /* homecustome.storyboard */; };
+		5B029F2A1FE4043D008ED5CA /* MARHomeCustomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F281FE4043D008ED5CA /* MARHomeCustomVC.m */; };
+		5B029F2B1FE4043D008ED5CA /* MARHomeCustomVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B029F291FE4043D008ED5CA /* MARHomeCustomVC.xib */; };
+		5B029F2E1FE40E73008ED5CA /* MARGlobalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F2D1FE40E73008ED5CA /* MARGlobalModel.m */; };
+		5B029F311FE41C1F008ED5CA /* MARHomeDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F301FE41C1F008ED5CA /* MARHomeDateView.m */; };
+		5B029F351FE421AB008ED5CA /* MARHomeDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B029F341FE421AB008ED5CA /* MARHomeDateView.xib */; };
+		5B029F381FE42EBA008ED5CA /* MARMobCalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F371FE42EBA008ED5CA /* MARMobCalendarModel.m */; };
 		5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8531FE0D2CA00E85884 /* AppDelegate.m */; };
 		5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8561FE0D2CA00E85884 /* ViewController.m */; };
 		5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B25F8581FE0D2CA00E85884 /* Main.storyboard */; };
@@ -75,14 +82,14 @@
 		5B029EF41FE2654B008ED5CA /* mob_error.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = mob_error.plist; sourceTree = "<group>"; };
 		5B029EF91FE28098008ED5CA /* MARCarBrandListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCarBrandListVC.h; sourceTree = "<group>"; };
 		5B029EFA1FE28098008ED5CA /* MARCarBrandListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCarBrandListVC.m; sourceTree = "<group>"; };
-		5B029EFC1FE2824C008ED5CA /* MARCardBrandModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCardBrandModel.h; sourceTree = "<group>"; };
-		5B029EFD1FE2824C008ED5CA /* MARCardBrandModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCardBrandModel.m; sourceTree = "<group>"; };
-		5B029EFF1FE2C317008ED5CA /* MARCardSeriesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCardSeriesVC.h; sourceTree = "<group>"; };
-		5B029F001FE2C317008ED5CA /* MARCardSeriesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCardSeriesVC.m; sourceTree = "<group>"; };
+		5B029EFC1FE2824C008ED5CA /* MARCarBrandModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCarBrandModel.h; sourceTree = "<group>"; };
+		5B029EFD1FE2824C008ED5CA /* MARCarBrandModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCarBrandModel.m; sourceTree = "<group>"; };
+		5B029EFF1FE2C317008ED5CA /* MARCarSeriesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCarSeriesVC.h; sourceTree = "<group>"; };
+		5B029F001FE2C317008ED5CA /* MARCarSeriesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCarSeriesVC.m; sourceTree = "<group>"; };
 		5B029F021FE2E016008ED5CA /* MARMobUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMobUtil.h; sourceTree = "<group>"; };
 		5B029F031FE2E016008ED5CA /* MARMobUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMobUtil.m; sourceTree = "<group>"; };
-		5B029F051FE2EB61008ED5CA /* MARCardDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCardDetailVC.h; sourceTree = "<group>"; };
-		5B029F061FE2EB61008ED5CA /* MARCardDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCardDetailVC.m; sourceTree = "<group>"; };
+		5B029F051FE2EB61008ED5CA /* MARCarDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCarDetailVC.h; sourceTree = "<group>"; };
+		5B029F061FE2EB61008ED5CA /* MARCarDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCarDetailVC.m; sourceTree = "<group>"; };
 		5B029F0A1FE3C311008ED5CA /* UIViewController+MXD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MXD.h"; sourceTree = "<group>"; };
 		5B029F0B1FE3C311008ED5CA /* UIViewController+MXD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MXD.m"; sourceTree = "<group>"; };
 		5B029F0D1FE3C3D3008ED5CA /* MARSBConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARSBConstant.h; sourceTree = "<group>"; };
@@ -95,6 +102,17 @@
 		5B029F201FE3D4BC008ED5CA /* MARTestTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARTestTableViewCell.m; sourceTree = "<group>"; };
 		5B029F221FE3D55E008ED5CA /* MARHomeTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHomeTestVC.h; sourceTree = "<group>"; };
 		5B029F231FE3D55E008ED5CA /* MARHomeTestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHomeTestVC.m; sourceTree = "<group>"; };
+		5B029F251FE40330008ED5CA /* homecustome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = homecustome.storyboard; sourceTree = "<group>"; };
+		5B029F271FE4043D008ED5CA /* MARHomeCustomVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHomeCustomVC.h; sourceTree = "<group>"; };
+		5B029F281FE4043D008ED5CA /* MARHomeCustomVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHomeCustomVC.m; sourceTree = "<group>"; };
+		5B029F291FE4043D008ED5CA /* MARHomeCustomVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARHomeCustomVC.xib; sourceTree = "<group>"; };
+		5B029F2C1FE40E73008ED5CA /* MARGlobalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARGlobalModel.h; sourceTree = "<group>"; };
+		5B029F2D1FE40E73008ED5CA /* MARGlobalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARGlobalModel.m; sourceTree = "<group>"; };
+		5B029F2F1FE41C1F008ED5CA /* MARHomeDateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHomeDateView.h; sourceTree = "<group>"; };
+		5B029F301FE41C1F008ED5CA /* MARHomeDateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHomeDateView.m; sourceTree = "<group>"; };
+		5B029F341FE421AB008ED5CA /* MARHomeDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARHomeDateView.xib; sourceTree = "<group>"; };
+		5B029F361FE42EBA008ED5CA /* MARMobCalendarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMobCalendarModel.h; sourceTree = "<group>"; };
+		5B029F371FE42EBA008ED5CA /* MARMobCalendarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMobCalendarModel.m; sourceTree = "<group>"; };
 		5B25F84F1FE0D2CA00E85884 /* maxiaoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxiaoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B25F8521FE0D2CA00E85884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B25F8531FE0D2CA00E85884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -206,15 +224,16 @@
 			path = category;
 			sourceTree = "<group>";
 		};
-		5B029F101FE3C83C008ED5CA /* test */ = {
+		5B029F101FE3C83C008ED5CA /* homecustom */ = {
 			isa = PBXGroup;
 			children = (
 				5B029F111FE3C83C008ED5CA /* controller */,
 				5B029F121FE3C83C008ED5CA /* model */,
 				5B029F131FE3C83C008ED5CA /* view */,
 				5B029F151FE3C849008ED5CA /* test.storyboard */,
+				5B029F251FE40330008ED5CA /* homecustome.storyboard */,
 			);
-			path = test;
+			path = homecustom;
 			sourceTree = "<group>";
 		};
 		5B029F111FE3C83C008ED5CA /* controller */ = {
@@ -237,6 +256,9 @@
 				5B029F141FE3C83C008ED5CA /* cell */,
 				5B029F221FE3D55E008ED5CA /* MARHomeTestVC.h */,
 				5B029F231FE3D55E008ED5CA /* MARHomeTestVC.m */,
+				5B029F271FE4043D008ED5CA /* MARHomeCustomVC.h */,
+				5B029F281FE4043D008ED5CA /* MARHomeCustomVC.m */,
+				5B029F291FE4043D008ED5CA /* MARHomeCustomVC.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -249,6 +271,9 @@
 				5B029F1C1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib */,
 				5B029F1F1FE3D4BC008ED5CA /* MARTestTableViewCell.h */,
 				5B029F201FE3D4BC008ED5CA /* MARTestTableViewCell.m */,
+				5B029F2F1FE41C1F008ED5CA /* MARHomeDateView.h */,
+				5B029F301FE41C1F008ED5CA /* MARHomeDateView.m */,
+				5B029F341FE421AB008ED5CA /* MARHomeDateView.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -323,7 +348,7 @@
 		5B25F8B11FE0F80500E85884 /* modules */ = {
 			isa = PBXGroup;
 			children = (
-				5B029F101FE3C83C008ED5CA /* test */,
+				5B029F101FE3C83C008ED5CA /* homecustom */,
 				5B25F8B21FE0F80500E85884 /* mob */,
 			);
 			path = modules;
@@ -364,8 +389,10 @@
 				5B25F8EF1FE17CD200E85884 /* MARWXArticleModel.m */,
 				5B25F8F71FE17D2900E85884 /* MARHistoryDayModel.h */,
 				5B25F8F81FE17D2900E85884 /* MARHistoryDayModel.m */,
-				5B029EFC1FE2824C008ED5CA /* MARCardBrandModel.h */,
-				5B029EFD1FE2824C008ED5CA /* MARCardBrandModel.m */,
+				5B029EFC1FE2824C008ED5CA /* MARCarBrandModel.h */,
+				5B029EFD1FE2824C008ED5CA /* MARCarBrandModel.m */,
+				5B029F361FE42EBA008ED5CA /* MARMobCalendarModel.h */,
+				5B029F371FE42EBA008ED5CA /* MARMobCalendarModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -386,10 +413,10 @@
 				5B029EF21FE25927008ED5CA /* MARPhoneNumberSettingVC.m */,
 				5B029EF91FE28098008ED5CA /* MARCarBrandListVC.h */,
 				5B029EFA1FE28098008ED5CA /* MARCarBrandListVC.m */,
-				5B029EFF1FE2C317008ED5CA /* MARCardSeriesVC.h */,
-				5B029F001FE2C317008ED5CA /* MARCardSeriesVC.m */,
-				5B029F051FE2EB61008ED5CA /* MARCardDetailVC.h */,
-				5B029F061FE2EB61008ED5CA /* MARCardDetailVC.m */,
+				5B029EFF1FE2C317008ED5CA /* MARCarSeriesVC.h */,
+				5B029F001FE2C317008ED5CA /* MARCarSeriesVC.m */,
+				5B029F051FE2EB61008ED5CA /* MARCarDetailVC.h */,
+				5B029F061FE2EB61008ED5CA /* MARCarDetailVC.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -420,6 +447,8 @@
 				5B25F8C11FE0F80500E85884 /* MARNetworkResponse.m */,
 				5B25F8DB1FE1035A00E85884 /* MARWebViewController.h */,
 				5B25F8DC1FE1035A00E85884 /* MARWebViewController.m */,
+				5B029F2C1FE40E73008ED5CA /* MARGlobalModel.h */,
+				5B029F2D1FE40E73008ED5CA /* MARGlobalModel.m */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -582,9 +611,12 @@
 				5B029F1E1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib in Resources */,
 				5B25F85F1FE0D2CA00E85884 /* LaunchScreen.storyboard in Resources */,
 				5B25F85C1FE0D2CA00E85884 /* Assets.xcassets in Resources */,
+				5B029F2B1FE4043D008ED5CA /* MARHomeCustomVC.xib in Resources */,
+				5B029F351FE421AB008ED5CA /* MARHomeDateView.xib in Resources */,
 				5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */,
 				5B029EF51FE2654B008ED5CA /* mob_error.plist in Resources */,
 				5B029F161FE3C849008ED5CA /* test.storyboard in Resources */,
+				5B029F261FE40330008ED5CA /* homecustome.storyboard in Resources */,
 				5B25F8D31FE0F90A00E85884 /* mob.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,7 +693,7 @@
 				5B25F8F41FE17CD300E85884 /* MARWXArticleModel.m in Sources */,
 				5B25F9021FE188C300E85884 /* MARBaseDBModel.m in Sources */,
 				5B25F8F51FE17CD300E85884 /* MARWXArticleCategoryModel.m in Sources */,
-				5B029EFE1FE2824C008ED5CA /* MARCardBrandModel.m in Sources */,
+				5B029EFE1FE2824C008ED5CA /* MARCarBrandModel.m in Sources */,
 				5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */,
 				5B25F8D01FE0F80500E85884 /* MARNetworkResponse.m in Sources */,
 				5B029F041FE2E016008ED5CA /* MARMobUtil.m in Sources */,
@@ -671,14 +703,17 @@
 				5B25F8CF1FE0F80500E85884 /* MARNetworkManager.m in Sources */,
 				5B25F8DD1FE1035A00E85884 /* MARWebViewController.m in Sources */,
 				5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */,
+				5B029F2E1FE40E73008ED5CA /* MARGlobalModel.m in Sources */,
+				5B029F311FE41C1F008ED5CA /* MARHomeDateView.m in Sources */,
 				5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */,
 				5B029EFB1FE28098008ED5CA /* MARCarBrandListVC.m in Sources */,
 				5B029F241FE3D55E008ED5CA /* MARHomeTestVC.m in Sources */,
 				5B25F8FC1FE17F9100E85884 /* MARHistoryDayViewController.m in Sources */,
 				5B25F8E01FE1057800E85884 /* MARWXArticelListVC.m in Sources */,
 				5B25F8D71FE0FABE00E85884 /* MARWXArticleCategoryCell.m in Sources */,
-				5B029F011FE2C317008ED5CA /* MARCardSeriesVC.m in Sources */,
+				5B029F011FE2C317008ED5CA /* MARCarSeriesVC.m in Sources */,
 				5B25F8621FE0D2CA00E85884 /* main.m in Sources */,
+				5B029F2A1FE4043D008ED5CA /* MARHomeCustomVC.m in Sources */,
 				5B029F211FE3D4BC008ED5CA /* MARTestTableViewCell.m in Sources */,
 				5B25F8F91FE17D2900E85884 /* MARHistoryDayModel.m in Sources */,
 				5B25F8EC1FE12B9000E85884 /* MARMobMenuVC.m in Sources */,
@@ -689,7 +724,8 @@
 				5B029F0F1FE3C3D3008ED5CA /* MARSBConstant.m in Sources */,
 				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */,
 				5B25F8DA1FE0FBCC00E85884 /* MARWXArticleCategoryVC.m in Sources */,
-				5B029F071FE2EB61008ED5CA /* MARCardDetailVC.m in Sources */,
+				5B029F381FE42EBA008ED5CA /* MARMobCalendarModel.m in Sources */,
+				5B029F071FE2EB61008ED5CA /* MARCarDetailVC.m in Sources */,
 				5B25F8FF1FE1808F00E85884 /* MARHistoryDayTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -855,7 +891,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = BVQ3L55FPQ;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/maxiaoding/maxiaoding-Prefix.pch";
 				INFOPLIST_FILE = maxiaoding/Info.plist;

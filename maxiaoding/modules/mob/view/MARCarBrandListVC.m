@@ -8,11 +8,11 @@
 
 #import "MARCarBrandListVC.h"
 #import <MobAPI/MobAPI.h>
-#import "MARCardSeriesVC.h"
+#import "MARCarSeriesVC.h"
 
 @interface MARCarBrandListVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray<MARCardBrandModel *> *carBrandArray;
+@property (nonatomic, strong) NSArray<MARCarBrandModel *> *carBrandArray;
 @property (nonatomic, strong) NSMutableArray<NSString *> *titleIndexArray;
 @end
 
@@ -34,29 +34,29 @@
     }
     __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
-    [MobAPI sendRequest:[MOBACarRequest carBrandRequest] onResult:^(MOBAResponse *response) {
+    [MARMobUtil loadCarBrandListCallback:^(MOBAResponse *response, NSArray<MARCarBrandModel *> *cardBrandArray, NSString *errMsg) {
         [weakSelf showActivityView:NO];
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         if (!response.error) {
-            NSArray<MARCardBrandModel *> *cardBrandArray = [NSArray mar_modelArrayWithClass:[MARCardBrandModel class] json:response.responder[@"result"]];
+            NSArray<MARCarBrandModel *> *cardBrandArray = [NSArray mar_modelArrayWithClass:[MARCarBrandModel class] json:response.responder[@"result"]];
             strongSelf.carBrandArray = cardBrandArray;
             [weakSelf.tableView reloadData];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                for (MARCardBrandModel *model in cardBrandArray) {
+                for (MARCarBrandModel *model in cardBrandArray) {
                     [model updateToDB];
                 }
             });
         }
         else
         {
-            NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
+            NSString *codeKey = MARSTRWITHINT(response.error.code);
             ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
             NSLog(@">>> get car brand list error : %@", [response.error localizedDescription]);
         }
     }];
 }
 
-- (NSArray<MARCardBrandModel *> *)carBrandArray
+- (NSArray<MARCarBrandModel *> *)carBrandArray
 {
     if (!_carBrandArray || ![_carBrandArray isKindOfClass:[NSArray class]] || _carBrandArray.count <= 0) {
         static BOOL simpleAsync = NO;
@@ -64,7 +64,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             if (!simpleAsync) {
                 simpleAsync = YES;
-                self.carBrandArray = (NSArray<MARCardBrandModel *> *)[MARCardBrandModel mar_getAllDBModelArray];
+                self.carBrandArray = (NSArray<MARCarBrandModel *> *)[MARCarBrandModel mar_getAllDBModelArray];
                 if (_carBrandArray.count <= 0) {
                     [self loadData];
                 }
@@ -82,11 +82,11 @@
     return _carBrandArray;
 }
 
-- (void)setCarBrandArray:(NSArray<MARCardBrandModel *> *)carBrandArray
+- (void)setCarBrandArray:(NSArray<MARCarBrandModel *> *)carBrandArray
 {
     _carBrandArray = carBrandArray;
     [self.titleIndexArray removeAllObjects];
-    for (MARCardBrandModel *model in carBrandArray) {
+    for (MARCarBrandModel *model in carBrandArray) {
         NSString *name = model.name;
         if (name.length > 1) {
             [self.titleIndexArray addObject:[name substringToIndex:1]];
@@ -186,7 +186,7 @@
     if (self.carBrandArray.count > indexPath.section) {
         NSArray<MARCarTypeInfoModel *> *carTypeInfoArray = self.carBrandArray[indexPath.section].son;
         if (carTypeInfoArray.count > row) {
-            [self performSegueWithIdentifier:@"goCardSeriesVC" sender:carTypeInfoArray[row]];
+            [self performSegueWithIdentifier:@"goCarSeriesVC" sender:carTypeInfoArray[row]];
         }
     }
     
@@ -194,9 +194,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"goCardSeriesVC"]) {
-        MARCardSeriesVC *cardSeriesVC = segue.destinationViewController;
-        if ([cardSeriesVC isKindOfClass:[MARCardSeriesVC class]] && [sender isKindOfClass:[MARCarTypeInfoModel class]]) {
+    if ([segue.identifier isEqualToString:@"goCarSeriesVC"]) {
+        MARCarSeriesVC *cardSeriesVC = segue.destinationViewController;
+        if ([cardSeriesVC isKindOfClass:[MARCarSeriesVC class]] && [sender isKindOfClass:[MARCarTypeInfoModel class]]) {
             cardSeriesVC.cardTypeInfoModel = sender;
         }
     }

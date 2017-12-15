@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MARHomeCustomVC.h"
 @interface AppDelegate ()
 
 @end
@@ -17,7 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initAppearance];
-    // Override point for customization after application launch.
+    
+//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeCustomVC alloc] init]];
+//
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    self.window.rootViewController = navi;
+//    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

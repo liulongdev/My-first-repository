@@ -31,12 +31,11 @@
 //    }
     __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
-    [MobAPI sendRequest:[MOBAWxArticleRequest wxArticleCategoryRequest] onResult:^(MOBAResponse *response) {
+    [MARMobUtil loadWXArticleCategoryCallback:^(MOBAResponse *response, NSArray<MARWXArticleCategoryModel *> *articleArray, NSString *errMsg) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         if (!strongSelf) return;
         [strongSelf showActivityView:NO];
         if (!response.error) {
-            NSArray<MARWXArticleCategoryModel *> *articleArray = [NSArray mar_modelArrayWithClass:[MARWXArticleCategoryModel class] json:response.responder[@"result"]];
             strongSelf->_wxArticleArray = articleArray;
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 for (MARWXArticleCategoryModel *model in articleArray) {
@@ -47,19 +46,18 @@
         }
         else
         {
-            NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
-            ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
-            NSLog(@">>> getVerifyCode error : %@", [response.error localizedDescription]);
+            ShowErrorMessage(errMsg ?: [response.error localizedDescription], 1.f);
+            NSLog(@">>> getVerifyCode error : %@", errMsg ?: [response.error localizedDescription]);
         }
     }];
+    
 }
 
 - (NSArray<MARWXArticleCategoryModel *> *)wxArticleArray
 {
     if (!_wxArticleArray) {
         static BOOL simpleAsync = NO;
-        [self showActivityView:YES];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self showActivityView:YES]; dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             if (!simpleAsync) {
                 simpleAsync = YES;
                 self.wxArticleArray = (NSArray<MARWXArticleCategoryModel *> *)[MARWXArticleCategoryModel mar_getAllDBModelArray];

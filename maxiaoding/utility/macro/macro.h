@@ -17,6 +17,10 @@
 
 
 #import "UIViewController+MXD.h"
-
 #import "MARSBConstant.h"
+
 #endif /* macro_h */
+
+#ifndef MARSTRWITHINT
+#define MARSTRWITHINT(_value) [NSString stringWithFormat:@"%ld", (long)_value]
+#endif

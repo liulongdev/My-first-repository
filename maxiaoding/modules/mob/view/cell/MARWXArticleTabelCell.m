@@ -36,7 +36,7 @@
         MARWXArticleModel *model = data;
         self.marTitleLabel.text = model.title;
         self.marPubTimeLabel.text = model.pubTime;
-        self.marHitCountLabel.text = [NSString stringWithFormat:@"%ld", (long)model.hitCount];
+        self.marHitCountLabel.text = [NSString stringWithFormat:@"%@", MARSTRWITHINT(model.hitCount)];
         
         // 对第一次下载下来的图片进行圆弧剪切，并保存。 所以每次去找缓存、硬盘中找是否有，如果有就使用，不用再去做多余的圆弧剪切功能。
         NSURL *imageURL = [NSURL URLWithString:[model getFirstThumbnail] ?: @""];

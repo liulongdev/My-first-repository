@@ -1,21 +1,21 @@
 //
-//  MARCardSeriesVC.m
+//  MARCarSeriesVCh
 //  maxiaoding
 //
 //  Created by Martin.Liu on 2017/12/14.
 //  Copyright © 2017年 MAIERSI. All rights reserved.
 //
 
-#import "MARCardSeriesVC.h"
+#import "MARCarSeriesVC.h"
 #import <MobAPI/MobAPI.h>
-#import "MARCardDetailVC.h"
+#import "MARCarDetailVC.h"
 
-@interface MARCardSeriesVC ()<UITableViewDelegate, UITableViewDataSource>
+@interface MARCarSeriesVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray<MARCardSerieModel *> *cardSerieArray;
+@property (nonatomic, strong) NSArray<MARCarSerieModel *> *cardSerieArray;
 @end
 
-@implementation MARCardSeriesVC
+@implementation MARCarSeriesVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,7 +28,7 @@
     self.tableView.tableFooterView = [UIView new];
 }
 
-- (NSArray<MARCardSerieModel *> *)cardSerieArray
+- (NSArray<MARCarSerieModel *> *)cardSerieArray
 {
     if (!_cardSerieArray) {
         static BOOL simpleAsync = NO;
@@ -36,7 +36,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             if (!simpleAsync) {
                 simpleAsync = YES;
-                _cardSerieArray = [MARCardSerieModel getCardSerieArrayWithBrandName:(self.cardTypeInfoModel.type ?: @"")];
+                _cardSerieArray = [MARCarSerieModel getCardSerieArrayWithBrandName:(self.cardTypeInfoModel.type ?: @"")];
                 if (_cardSerieArray.count <= 0) {
                     [self loadData];
                 }
@@ -58,24 +58,22 @@
 {
     __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
-    [MobAPI sendRequest:[MOBACarRequest carSeriesNameRequestByName:(self.cardTypeInfoModel.type ?: @"")] onResult:^(MOBAResponse *response) {
+    [MARMobUtil loadCarSeriesName:(self.cardTypeInfoModel.type ?: @"") callback:^(MOBAResponse *response, NSArray<MARCarSerieModel *> *cardSerieArray, NSString *errMsg) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         if (!strongSelf) return ;
         [strongSelf showActivityView:NO];
         if (!response.error) {
-            NSArray<MARCardSerieModel *> *cardSerieArray = [NSArray mar_modelArrayWithClass:[MARCardSerieModel class] json:response.responder[@"result"]];
             strongSelf->_cardSerieArray = cardSerieArray;
             [strongSelf.tableView reloadData];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                for (MARCardSerieModel *model in cardSerieArray) {
+                for (MARCarBrandModel *model in cardSerieArray) {
                     [model updateToDB];
                 }
             });
         }
         else
         {
-            NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
-            ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
+            ShowErrorMessage(errMsg ?: [response.error localizedDescription], 1.f);
             NSLog(@">>> get carSeries error : %@", [response.error localizedDescription]);
         }
     }];
@@ -103,7 +101,7 @@
     }
     NSInteger row = indexPath.row;
     if (_cardSerieArray.count > row) {
-        MARCardSerieModel *cardSerieModel = _cardSerieArray[row];
+        MARCarSerieModel *cardSerieModel = _cardSerieArray[row];
         cell.textLabel.text = cardSerieModel.seriesName;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"参考价：%@", cardSerieModel.guidePrice];
     }
@@ -114,7 +112,7 @@
 {
     NSInteger row = indexPath.row;
     if (_cardSerieArray.count > row) {
-        MARCardSerieModel *cardSerieModel = _cardSerieArray[row];
+        MARCarSerieModel *cardSerieModel = _cardSerieArray[row];
         [self performSegueWithIdentifier:@"goCardDetailVC" sender:cardSerieModel];
     }
 }
@@ -122,9 +120,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"goCardDetailVC"]) {
-        MARCardDetailVC *cardDetailVC = segue.destinationViewController;
-        if ([cardDetailVC isKindOfClass:[MARCardDetailVC class]] && [sender isKindOfClass:[MARCardSerieModel class]]) {
-            cardDetailVC.cardSerieModel = (MARCardSerieModel *)sender;
+        MARCarDetailVC *cardDetailVC = segue.destinationViewController;
+        if ([cardDetailVC isKindOfClass:[MARCarDetailVC class]] && [sender isKindOfClass:[MARCarSerieModel class]]) {
+            cardDetailVC.cardSerieModel = (MARCarSerieModel *)sender;
         }
     }
 }

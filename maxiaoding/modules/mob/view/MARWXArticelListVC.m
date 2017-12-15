@@ -56,11 +56,10 @@
     }
     __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
-    [MobAPI sendRequest:[MOBAWxArticleRequest wxArticleListRequestByCID:self.cid page:(self.pageModel.pageIndex+1) size:self.pageModel.pageSize] onResult:^(MOBAResponse *response) {
+    [MARMobUtil loadWXArticleListWithCid:self.cid pageModel:self.pageModel callback:^(MOBAResponse *response, NSArray<MARWXArticleModel *> *articles, NSString *errMsg) {
         [weakSelf showActivityView:NO];
         if (!response.error) {
             weakSelf.pageModel.pageIndex ++;
-            NSArray<MARWXArticleModel *> *articles = [NSArray mar_modelArrayWithClass:[MARWXArticleModel class] json:response.responder[@"result"][@"list"]];
             [weakSelf.articleArray addObjectsFromArray:articles];
             [weakSelf.tableView reloadData];
             [weakSelf.tableView.mj_footer endRefreshing];
@@ -73,11 +72,11 @@
         }
         else
         {
-            NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
-            ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
-            NSLog(@">>> get ArticleList error : %@", [response.error localizedDescription]);
+            ShowErrorMessage(errMsg ?: [response.error localizedDescription], 1.f);
+            NSLog(@">>> get ArticleList error : %@", errMsg ?: [response.error localizedDescription]);
         }
     }];
+
 }
 
 - (MARLoadPageModel *)pageModel

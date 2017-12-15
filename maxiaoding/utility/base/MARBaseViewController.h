@@ -48,6 +48,6 @@
  *  YES will call [self.navigationController setNavigationBarHidden:NO animated:YES] when view will appeal,
  *  NO do nothing
  */
-@property (nonatomic, assign) BOOL showNaviBarViewWillAppeal;
+@property (nonatomic, assign) BOOL mar_preferredNavigationBarHidden;
 
 @end

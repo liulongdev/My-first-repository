@@ -22,8 +22,8 @@ NSString * const kSBID_Mob_WXArticelListVC              = @"MARWXArticelListVC";
 NSString * const kSBID_Mob_HistoryDayVC                 = @"MARHistoryDayViewController";
 NSString * const kSBID_Mob_HistoryDayDetailVC           = @"MARHistoryDayDetailVC";
 NSString * const kSBID_Mob_CarBrandListVC               = @"MARCarBrandListVC";
-NSString * const kSBID_Mob_CardSeriesVC                 = @"MARCardSeriesVC";
-NSString * const kSBID_Mob_CardDetailVC                 = @"MARCardDetailVC";
+NSString * const kSBID_Mob_CardSeriesVC                 = @"MARCarSeriesVC";
+NSString * const kSBID_Mob_CardDetailVC                 = @"MARCarDetailVC";
 
 
 

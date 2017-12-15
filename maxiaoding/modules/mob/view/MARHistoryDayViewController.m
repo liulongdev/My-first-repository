@@ -93,25 +93,22 @@
     }
     __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
-    [MobAPI sendRequest:[MOBAHistoryRequest historyRequestWithDay:self.dateStr] onResult:^(MOBAResponse *response) {
+    [MARMobUtil loadHistoryListWithDateStr:self.dateStr callback:^(MOBAResponse *response, NSArray<MARHistoryDayModel *> *historyDayArray, NSString *errMsg) {
         [weakSelf showActivityView:NO];
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        if (!strongSelf) return;
         if (!response.error) {
-            __strong __typeof(weakSelf) strongSelf = weakSelf;
-            NSArray<MARHistoryDayModel *> *historyDayArray = [NSArray mar_modelArrayWithClass:[MARHistoryDayModel class] json:response.responder[@"result"]];
             strongSelf->_historyDayArray = historyDayArray;
             [strongSelf.tableView reloadData];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 for (MARHistoryDayModel *model in historyDayArray) {
                     [model updateToDB];
                 }
-//                mar_dispatch_async_on_main_queue(^{
-//                    [strongSelf getDataAndReloadData];
-//                });
             });
         }
         else
         {
-            NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
+            NSString *codeKey = MARSTRWITHINT(response.error.code);
             ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
             NSLog(@">>> get history error : %@", [response.error localizedDescription]);
         }
@@ -123,18 +120,21 @@
     if (!_historyDayArray) {
         static BOOL simpleAsync = NO;
         [self showActivityView:YES];
+        __weak __typeof(self) weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+            if (!strongSelf) return;
             if (!simpleAsync) {
                 simpleAsync = YES;
-                _historyDayArray = [MARHistoryDayModel getHistoryDayArrayWithDateStr:self.dateStr];
-                if (_historyDayArray.count <= 0) {
-                    [self loadData];
+                strongSelf->_historyDayArray = [MARHistoryDayModel getHistoryDayArrayWithDateStr:strongSelf.dateStr];
+                if (strongSelf->_historyDayArray.count <= 0) {
+                    [strongSelf loadData];
                 }
                 else
                 {
                     mar_dispatch_async_on_main_queue(^{
-                        [self showActivityView:NO];
-                        [self.tableView reloadData];
+                        [strongSelf showActivityView:NO];
+                        [strongSelf.tableView reloadData];
                     });
                 }
                 simpleAsync = NO;

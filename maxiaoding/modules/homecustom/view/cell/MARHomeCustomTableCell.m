@@ -24,18 +24,6 @@
     
     self.bottomView.hidden = YES;
     
-    
-    UILabel *label = [UILabel new];
-    label.textColor = [UIColor blackColor];
-    label.font = [UIFont systemFontOfSize:18.f];
-    label.text = @"bottom Test";
-    [self.marContentView addSubview:label];
-    label.backgroundColor = [UIColor redColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    [label mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsMake(100, 15, 15, 100));
-    }];
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -46,6 +34,11 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    static BOOL needAutoScroll = NO;
+    if (!needAutoScroll && self.scrollView.isDragging) {
+        needAutoScroll = YES;
+    }
+
     if (self.scrollView == scrollView) {
         CGFloat offsetY = scrollView.contentOffset.y;
         CGFloat bottomOffsetY = 0;
@@ -64,8 +57,11 @@
                 }
                 
                 if (bottomOffsetY > 0) {
-                    if (bottomOffsetY > 44) {
-                        self.bottomAppearBlock();
+                    if (bottomOffsetY > 44 && scrollView.isDecelerating) {
+                        if (needAutoScroll) {
+                            self.bottomAppearBlock();
+                            needAutoScroll = NO;
+                        }
                         self.bottomView.hidden = YES;
                     }
                     self.bottomView.hidden = NO;
@@ -97,6 +93,5 @@
         }
     }
 }
-
 
 @end

@@ -32,12 +32,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (self.showNaviBarViewWillAppeal) {
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:self.mar_preferredNavigationBarHidden animated:YES];
+    if (!self.mar_preferredNavigationBarHidden) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
         self.navigationController.interactivePopGestureRecognizer.delegate = (id) self;
     }
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 #pragma mark - set YES/NO to indicate wheather resign first responder when tap view
@@ -167,14 +166,14 @@
 
 @implementation UIViewController (MARBaseVCEX)
 
-- (BOOL)showNaviBarViewWillAppeal
+- (BOOL)mar_preferredNavigationBarHidden
 {
-    return [objc_getAssociatedObject(self, @selector(showNaviBarViewWillAppeal)) boolValue];
+    return [objc_getAssociatedObject(self, @selector(mar_preferredNavigationBarHidden)) boolValue];
 }
 
-- (void)setShowNaviBarViewWillAppeal:(BOOL)showNaviBarViewWillAppeal
+- (void)setMar_preferredNavigationBarHidden:(BOOL)mar_preferredNavigationBarHidden
 {
-    objc_setAssociatedObject(self, @selector(showNaviBarViewWillAppeal), @(showNaviBarViewWillAppeal), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(mar_preferredNavigationBarHidden), @(mar_preferredNavigationBarHidden), OBJC_ASSOCIATION_ASSIGN);
 }
 
 @end

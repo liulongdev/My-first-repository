@@ -53,7 +53,7 @@
     [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:self.phoneNumberTF.text zone:self.areaCodeTF.text result:^(NSError *error) {
         [weakSelf showActivityView:NO];
         if (error != nil) {
-            NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)error.code];
+            NSString *codeKey = MARSTRWITHINT(error.code);
             if (self.mobErrorDictionary[codeKey]) {
                 ShowErrorMessage(self.mobErrorDictionary[codeKey], 1.f);
             }

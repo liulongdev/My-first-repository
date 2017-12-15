@@ -1,28 +1,28 @@
 //
-//  MARCardDetailVC.m
+//  MARCarDetailVC.m
 //  maxiaoding
 //
 //  Created by Martin.Liu on 2017/12/15.
 //  Copyright © 2017年 MAIERSI. All rights reserved.
 //
 
-#import "MARCardDetailVC.h"
+#import "MARCarDetailVC.h"
 #import <MobAPI/MobAPI.h>
 #import <UIImageView+WebCache.h>
 
-@interface MARCardDetailVC ()<UITableViewDelegate, UITableViewDataSource>
+@interface MARCarDetailVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *tableHeaderView;
 @property (strong, nonatomic) IBOutlet UIImageView *cardImageView;
 @property (strong, nonatomic) IBOutlet UILabel *cardInfoLabel;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraint_cardImageViewWidth;
 
-@property (nonatomic, strong) MARCardDetailModel *cardDetailModel;
+@property (nonatomic, strong) MARCarDetailModel *cardDetailModel;
 @property (nonatomic, strong) NSDictionary *attrDic;
 
 @end
 
-@implementation MARCardDetailVC
+@implementation MARCarDetailVC
 @synthesize cardDetailModel = _cardDetailModel;
 - (void)viewDidLoad {
     MARAdjustsScrollViewInsets_NO(self.tableView, self);
@@ -45,7 +45,7 @@
     [self.tableView reloadData];
 }
 
-- (MARCardDetailModel *)cardDetailModel
+- (MARCarDetailModel *)cardDetailModel
 {
     if (!_cardDetailModel) {
         static BOOL simpleAsync = NO;
@@ -53,7 +53,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             if (!simpleAsync) {
                 simpleAsync = YES;
-                NSArray *cardDetailArray = [MARCardDetailModel searchWithWhere:@{@"carId":self.cardSerieModel.carId ?: @""}];
+                NSArray *cardDetailArray = [MARCarDetailModel searchWithWhere:@{@"carId":self.cardSerieModel.carId ?: @""}];
                 if (cardDetailArray.count <= 0) {
                     [self loadData];
                 }
@@ -76,27 +76,26 @@
 {
     __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
-    [MobAPI sendRequest:[MOBACarRequest carSeriesDetailRequestByCid:self.cardSerieModel.carId] onResult:^(MOBAResponse *response) {
+    [MARMobUtil loadCarSeriesDetailWithCid:self.cardSerieModel.carId callback:^(MOBAResponse *response, MARCarDetailModel *carDetail, NSString *errMsg) {
         [weakSelf showActivityView:NO];
         if (!response.error) {
-            MARCardDetailModel *cardDetailModel = (MARCardDetailModel *)[MARCardDetailModel mar_modelWithJSON:response.responder[@"result"][0]];
-            cardDetailModel.carId = weakSelf.cardSerieModel.carId;
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [cardDetailModel updateToDB];
+                [carDetail updateToDB];
             });
-            weakSelf.cardDetailModel = cardDetailModel;
+            weakSelf.cardDetailModel = carDetail;
             [weakSelf.tableView reloadData];
         }
         else
         {
-            NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
+            NSString *codeKey = MARSTRWITHINT(response.error.code);
             ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
             NSLog(@">>> get carSeriesDetail error : %@", [response.error localizedDescription]);
         }
     }];
+    
 }
 
-- (void)setCardDetailModel:(MARCardDetailModel *)cardDetailModel
+- (void)setCardDetailModel:(MARCarDetailModel *)cardDetailModel
 {
     _cardDetailModel = cardDetailModel;
 
@@ -206,7 +205,7 @@
     if ([self _secionArray].count > indexPath.section) {
         NSArray *nameValueArray = [_cardDetailModel valueForKey:[self _secionArray][indexPath.section][0]];
         if ([nameValueArray isKindOfClass:[NSArray class]] && nameValueArray.count > indexPath.row) {
-            MARCardNameValueModel *nameValueModel = (MARCardNameValueModel *)nameValueArray[indexPath.row];
+            MARCarNameValueModel *nameValueModel = (MARCarNameValueModel *)nameValueArray[indexPath.row];
             cell.textLabel.text = nameValueModel.value;
             cell.detailTextLabel.text = nameValueModel.name;
         }

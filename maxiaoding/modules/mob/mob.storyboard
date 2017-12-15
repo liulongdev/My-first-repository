@@ -471,7 +471,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="nZf-tT-bhb" id="mW7-2X-h3V"/>
-                        <segue destination="ev6-bt-c52" kind="show" identifier="goCardSeriesVC" id="N95-8z-Opu"/>
+                        <segue destination="ev6-bt-c52" kind="show" identifier="goCarSeriesVC" id="N95-8z-Opu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9Z-Wo-Opc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -525,10 +525,10 @@
             </objects>
             <point key="canvasLocation" x="-514" y="743"/>
         </scene>
-        <!--Card SeriesVC-->
+        <!--Car SeriesVC-->
         <scene sceneID="94t-gi-LUc">
             <objects>
-                <viewController id="ev6-bt-c52" customClass="MARCardSeriesVC" sceneMemberID="viewController">
+                <viewController id="ev6-bt-c52" customClass="MARCarSeriesVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O2N-eE-Aw6"/>
                         <viewControllerLayoutGuide type="bottom" id="bWo-Z2-b81"/>
@@ -563,10 +563,10 @@
             </objects>
             <point key="canvasLocation" x="1318" y="743"/>
         </scene>
-        <!--Card DetailVC-->
+        <!--Car DetailVC-->
         <scene sceneID="Dpb-2z-cQH">
             <objects>
-                <viewController storyboardIdentifier="MARCardDetailVC" id="bsu-aV-5Hy" customClass="MARCardDetailVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MARCarDetailVC" id="bsu-aV-5Hy" customClass="MARCarDetailVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NwH-EL-9aO"/>
                         <viewControllerLayoutGuide type="bottom" id="oNI-KZ-Rg1"/>

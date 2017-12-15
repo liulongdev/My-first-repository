@@ -15,7 +15,7 @@
 #import <MAREXMacro.h>
 #import <MARCategory.h>
 #import "macro.h"
-#import "mobmodel.h"
+#import "MARMobUtil.h"
 #endif
 
 #endif /* maxiaoding_Prefix_pch */
