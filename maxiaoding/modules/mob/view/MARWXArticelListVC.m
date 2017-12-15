@@ -59,6 +59,7 @@
     [MobAPI sendRequest:[MOBAWxArticleRequest wxArticleListRequestByCID:self.cid page:(self.pageModel.pageIndex+1) size:self.pageModel.pageSize] onResult:^(MOBAResponse *response) {
         [weakSelf showActivityView:NO];
         if (!response.error) {
+            weakSelf.pageModel.pageIndex ++;
             NSArray<MARWXArticleModel *> *articles = [NSArray mar_modelArrayWithClass:[MARWXArticleModel class] json:response.responder[@"result"][@"list"]];
             [weakSelf.articleArray addObjectsFromArray:articles];
             [weakSelf.tableView reloadData];
