@@ -98,21 +98,22 @@
         if (!response.error) {
             __strong __typeof(weakSelf) strongSelf = weakSelf;
             NSArray<MARHistoryDayModel *> *historyDayArray = [NSArray mar_modelArrayWithClass:[MARHistoryDayModel class] json:response.responder[@"result"]];
-//            strongSelf->_historyDayArray = historyDayArray;
+            strongSelf->_historyDayArray = historyDayArray;
+            [strongSelf.tableView reloadData];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 for (MARHistoryDayModel *model in historyDayArray) {
                     [model updateToDB];
                 }
-                mar_dispatch_async_on_main_queue(^{
-                    [strongSelf getDataAndReloadData];
-                });
+//                mar_dispatch_async_on_main_queue(^{
+//                    [strongSelf getDataAndReloadData];
+//                });
             });
         }
         else
         {
             NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
             ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
-            NSLog(@">>> getVerifyCode error : %@", [response.error localizedDescription]);
+            NSLog(@">>> get history error : %@", [response.error localizedDescription]);
         }
     }];
 }

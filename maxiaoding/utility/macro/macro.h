@@ -15,4 +15,8 @@
 #import "notification.h"
 #import "userdefaultkey.h"
 
+
+#import "UIViewController+MXD.h"
+
+#import "MARSBConstant.h"
 #endif /* macro_h */

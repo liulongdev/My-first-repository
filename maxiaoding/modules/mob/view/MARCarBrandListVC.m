@@ -51,7 +51,7 @@
         {
             NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)response.error.code];
             ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
-            NSLog(@">>> getVerifyCode error : %@", [response.error localizedDescription]);
+            NSLog(@">>> get car brand list error : %@", [response.error localizedDescription]);
         }
     }];
 }

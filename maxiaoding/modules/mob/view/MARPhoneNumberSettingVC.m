@@ -55,14 +55,14 @@
         if (error != nil) {
             NSString *codeKey = [NSString stringWithFormat:@"%ld", (long)error.code];
             if (self.mobErrorDictionary[codeKey]) {
-                ShowErrorMessage(self.mobErrorDictionary[codeKey], 1.5f);
+                ShowErrorMessage(self.mobErrorDictionary[codeKey], 1.f);
             }
             else
-                ShowErrorMessage([error localizedDescription], 1.5f);
+                ShowErrorMessage([error localizedDescription], 1.f);
             NSLog(@">>> getVerifyCode error : %@", [error localizedDescription]);
         }
         else
-            ShowSuccessMessage(@"获取验证码成功", 1.5f);
+            ShowSuccessMessage(@"获取验证码成功", 1.f);
     }];
 }
 
