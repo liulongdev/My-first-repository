@@ -12,6 +12,13 @@
 @interface MARMonthDayView() <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) BOOL needDisplayDate;
+
+@property (nonatomic, strong) UIButton *leftBtn;
+@property (nonatomic, strong) UIButton *rightBtn;
+
+@property (nonatomic, strong) UILabel *leftLabel;
+@property (nonatomic, strong) UILabel *rightLabel;
+
 @end
 
 @implementation MARMonthDayView
@@ -50,6 +57,15 @@
         make.edges.mas_equalTo(UIEdgeInsetsZero);
     }];
     
+    [self addSubview:self.rightLabel];
+    [self.rightLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self);
+        make.trailing.mas_equalTo(self);
+        make.bottom.mas_equalTo(self);
+        make.width.mas_equalTo(@(25));
+    }];
+//    self.leftLabel.frame = CGRectMake(0, 0, 25, self.mar_height);
+    
     if (_month == 0 || _day == 0) {
         NSDate *date = [NSDate date];
         _month = [date mar_month];
@@ -59,7 +75,7 @@
 
 - (void)scrollToDateWithAnimated:(BOOL)animated
 {
-    NSInteger daysIndex = [[self _monthDaysArray][self.month - 2] integerValue] + self.day - 1;
+    NSInteger daysIndex = (self.month == 1 ? 0 : ([[self _monthDaysArray][(self.month + 9) %11] integerValue])) + self.day - 1;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:daysIndex inSection:0];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:animated];
 }
@@ -76,14 +92,39 @@
 
 - (void)setMonth:(NSInteger)month
 {
-    _month = month;
-    [self setNeedDisplayDate:YES];
+    _month = month % 13;
+//    [self setNeedDisplayDate:YES];
 }
 
 - (void)setDay:(NSInteger)day
 {
     _day = day;
+    if ([@[@(1),@(3),@(5),@(7),@(8),@(10), @(12)] containsObject:@(self.month)]) {
+        if (day > 31) {
+            self.month = self.month + 1;
+            self.day = 1;
+            return;
+        }
+    }
+    else if ([@[@(4),@(6),@(9),@(11)] containsObject:@(self.month)])
+    {
+        if (day > 30) {
+            self.month = self.month + 1;
+            self.day = 1;
+            return;
+        }
+    }
+    else
+    {
+        if (day > 29) {
+            self.month = self.month + 1;
+            self.day = 1;
+            return;
+        }
+    }
+            
     [self setNeedDisplayDate:YES];
+    [self scrollToDateWithAnimated:YES];
 }
 
 
@@ -110,6 +151,42 @@
         _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     }
     return _flowLayout;
+}
+
+- (UILabel *)leftLabel
+{
+    if (!_leftLabel) {
+        _leftLabel = [UILabel new];
+        _leftLabel.font = [UIFont systemFontOfSize:15.f];
+        _leftLabel.userInteractionEnabled = YES;
+        _leftLabel.text = @"<";
+        _leftLabel.textAlignment = NSTextAlignmentLeft;
+        _leftLabel.textColor = RGBHEX(0x333333);
+        _leftLabel.highlightedTextColor = RGBHEX(0xe0e0e0);
+        __weak __typeof(self) weakSelf = self;
+        [_leftLabel mar_whenTapped:^{
+            weakSelf.day ++;
+        }];
+    }
+    return _leftLabel;
+}
+
+- (UILabel *)rightLabel
+{
+    if (!_rightLabel) {
+        _rightLabel = [UILabel new];
+        _rightLabel.font = [UIFont systemFontOfSize:15.f];
+        _rightLabel.userInteractionEnabled = YES;
+        _rightLabel.text = @">";
+        _rightLabel.textAlignment = NSTextAlignmentRight;
+        _rightLabel.textColor = RGBHEX(0x333333);
+        _rightLabel.highlightedTextColor = RGBHEX(0xe0e0e0);
+        __weak __typeof(self) weakSelf = self;
+        [_rightLabel mar_whenTapped:^{
+            weakSelf.day ++;
+        }];
+    }
+    return _rightLabel;
 }
 
 #pragma mark - UICollection Delegate

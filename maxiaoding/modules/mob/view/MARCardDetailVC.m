@@ -99,7 +99,27 @@
 - (void)setCardDetailModel:(MARCardDetailModel *)cardDetailModel
 {
     _cardDetailModel = cardDetailModel;
-    [self.cardImageView sd_setImageWithURL:[NSURL URLWithString:cardDetailModel.carImage ?: @""] placeholderImage:nil];
+
+    // 对第一次下载下来的图片进行圆弧剪切，并保存。 所以每次去找缓存、硬盘中找是否有，如果有就使用，不用再去做多余的圆弧剪切功能。
+    NSURL *imageURL = [NSURL URLWithString:cardDetailModel.carImage ?: @""];
+    NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:imageURL];
+    __weak __typeof(self) weakSelf = self;
+    [[SDWebImageManager sharedManager].imageCache queryDiskCacheForKey:key done:^(UIImage *image, SDImageCacheType cacheType) {
+        if (image) {
+            weakSelf.cardImageView.image = image;
+        }
+        else
+        {
+            [weakSelf.cardImageView setShowActivityIndicatorView:YES];
+            [weakSelf.cardImageView setIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            
+            [weakSelf.cardImageView sd_setImageWithURL:imageURL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                image = [image mar_imageByRoundCornerRadius:(1/10.f * MIN(image.size.height, image.size.width))];
+                weakSelf.cardImageView.image = image;
+                [[SDWebImageManager sharedManager].imageCache storeImage:image recalculateFromImage:YES imageData:nil forKey:[[SDWebImageManager sharedManager] cacheKeyForURL:imageURL] toDisk:YES];
+            }];
+        }
+    }];
     
     NSString *infoStr = [NSString stringWithFormat:@"品牌名称 : %@\n车系名称 : %@\n车型名称 : %@\n子品牌或合资品牌:%@", cardDetailModel.brand, cardDetailModel.brandName, cardDetailModel.seriesName, cardDetailModel.sonBrand];
     NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:infoStr attributes:self.attrDic];
