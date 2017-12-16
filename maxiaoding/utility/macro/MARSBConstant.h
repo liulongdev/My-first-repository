@@ -24,6 +24,9 @@ extern NSString * const kSBID_Mob_HistoryDayDetailVC;
 extern NSString * const kSBID_Mob_CarBrandListVC;
 extern NSString * const kSBID_Mob_CardSeriesVC;
 extern NSString * const kSBID_Mob_CardDetailVC;
+extern NSString * const kSBID_Mob_CookCategoryListVC;
+extern NSString * const kSBID_Mob_SearchCookVC;
+extern NSString * const kSBID_Mob_CookDetailVC;
 
 @interface MARSBConstant : NSObject
 

@@ -8,11 +8,28 @@
 
 #import "MARBaseDBModel.h"
 
-@interface MARUserInfoModel : MARBaseDBModel<NSCoding>
+@interface MARUserInfoModel : MARBaseDBModel <NSCoding>
 
 @end
 
-@interface MARHomeConfigModel : MARBaseDBModel<NSCoding>
+@interface MARHomeConfigModel : MARBaseDBModel <NSCoding>
+
+@end
+
+#define MARSTYLEFORMAT [MARStyleFormat sharedInstance]
+@interface MARStyleFormat : MARBaseDBModel <NSCoding>
+
++ (instancetype) sharedInstance;
+
+@property (nonatomic, strong) NSDictionary *biaoTiAttrDic;
+
+@property (nonatomic, strong) NSDictionary *ziBiaoTiAttrDic;
+
+@property (nonatomic, strong) NSDictionary *zhengWenAttrDic;
+
+@property (nonatomic, strong) NSDictionary *shuoMingAttrDic;
+
+@property (nonatomic, strong) NSDictionary * tuPianJieShaoAttrDic;
 
 @end
 

@@ -15,5 +15,7 @@
 #import "MARHistoryDayModel.h"
 #import "MARCarBrandModel.h"
 #import "MARMobCalendarModel.h"
+#import "MARLaohuangliModel.h"
+#import "MARCookCategoryModel.h"
 
 #endif /* mobmodel_h */

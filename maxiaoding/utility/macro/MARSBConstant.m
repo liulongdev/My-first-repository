@@ -24,8 +24,9 @@ NSString * const kSBID_Mob_HistoryDayDetailVC           = @"MARHistoryDayDetailV
 NSString * const kSBID_Mob_CarBrandListVC               = @"MARCarBrandListVC";
 NSString * const kSBID_Mob_CardSeriesVC                 = @"MARCarSeriesVC";
 NSString * const kSBID_Mob_CardDetailVC                 = @"MARCarDetailVC";
-
-
+NSString * const kSBID_Mob_CookCategoryListVC           = @"MARCookCategoryListVC";
+NSString * const kSBID_Mob_SearchCookVC                 = @"MARSearchCookVC";
+NSString * const kSBID_Mob_CookDetailVC                 = @"MARCookDetailVC";
 
 /**
  StoryBoard Segue Identifier

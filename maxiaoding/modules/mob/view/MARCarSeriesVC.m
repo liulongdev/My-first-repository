@@ -65,11 +65,6 @@
         if (!response.error) {
             strongSelf->_cardSerieArray = cardSerieArray;
             [strongSelf.tableView reloadData];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                for (MARCarBrandModel *model in cardSerieArray) {
-                    [model updateToDB];
-                }
-            });
         }
         else
         {

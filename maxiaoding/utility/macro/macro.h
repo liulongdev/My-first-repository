@@ -17,6 +17,7 @@
 
 
 #import "UIViewController+MXD.h"
+#import "UIImageView+SDWEBEXT.h"
 #import "MARSBConstant.h"
 
 #endif /* macro_h */

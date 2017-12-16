@@ -100,11 +100,6 @@
         if (!response.error) {
             strongSelf->_historyDayArray = historyDayArray;
             [strongSelf.tableView reloadData];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                for (MARHistoryDayModel *model in historyDayArray) {
-                    [model updateToDB];
-                }
-            });
         }
         else
         {

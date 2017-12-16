@@ -28,6 +28,12 @@
 		5B029F311FE41C1F008ED5CA /* MARHomeDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F301FE41C1F008ED5CA /* MARHomeDateView.m */; };
 		5B029F351FE421AB008ED5CA /* MARHomeDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B029F341FE421AB008ED5CA /* MARHomeDateView.xib */; };
 		5B029F381FE42EBA008ED5CA /* MARMobCalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F371FE42EBA008ED5CA /* MARMobCalendarModel.m */; };
+		5B029F3B1FE4B5C2008ED5CA /* MARLaohuangliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F3A1FE4B5C2008ED5CA /* MARLaohuangliModel.m */; };
+		5B029F3E1FE4BA1A008ED5CA /* MARCookCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F3D1FE4BA1A008ED5CA /* MARCookCategoryModel.m */; };
+		5B029F411FE4E3BE008ED5CA /* MARCookCategoryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F401FE4E3BE008ED5CA /* MARCookCategoryListVC.m */; };
+		5B029F441FE4F125008ED5CA /* MARSearchCookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F431FE4F125008ED5CA /* MARSearchCookVC.m */; };
+		5B029F471FE4FE99008ED5CA /* MARCookInfoTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F461FE4FE99008ED5CA /* MARCookInfoTableCell.m */; };
+		5B029F4A1FE500C1008ED5CA /* UIImageView+SDWEBEXT.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F491FE500C1008ED5CA /* UIImageView+SDWEBEXT.m */; };
 		5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8531FE0D2CA00E85884 /* AppDelegate.m */; };
 		5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8561FE0D2CA00E85884 /* ViewController.m */; };
 		5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B25F8581FE0D2CA00E85884 /* Main.storyboard */; };
@@ -56,6 +62,8 @@
 		5B25F9021FE188C300E85884 /* MARBaseDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F9001FE188C200E85884 /* MARBaseDBModel.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
+		5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */; };
+		5BFCE71A1FE53F6900E86CCC /* MARCookStepTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7191FE53F6900E86CCC /* MARCookStepTableCell.m */; };
 		83F79CD1B5F4E42CC3A4A9E0 /* libPods-maxiaoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +121,18 @@
 		5B029F341FE421AB008ED5CA /* MARHomeDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARHomeDateView.xib; sourceTree = "<group>"; };
 		5B029F361FE42EBA008ED5CA /* MARMobCalendarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMobCalendarModel.h; sourceTree = "<group>"; };
 		5B029F371FE42EBA008ED5CA /* MARMobCalendarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMobCalendarModel.m; sourceTree = "<group>"; };
+		5B029F391FE4B5C2008ED5CA /* MARLaohuangliModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARLaohuangliModel.h; sourceTree = "<group>"; };
+		5B029F3A1FE4B5C2008ED5CA /* MARLaohuangliModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARLaohuangliModel.m; sourceTree = "<group>"; };
+		5B029F3C1FE4BA1A008ED5CA /* MARCookCategoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookCategoryModel.h; sourceTree = "<group>"; };
+		5B029F3D1FE4BA1A008ED5CA /* MARCookCategoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookCategoryModel.m; sourceTree = "<group>"; };
+		5B029F3F1FE4E3BE008ED5CA /* MARCookCategoryListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookCategoryListVC.h; sourceTree = "<group>"; };
+		5B029F401FE4E3BE008ED5CA /* MARCookCategoryListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookCategoryListVC.m; sourceTree = "<group>"; };
+		5B029F421FE4F124008ED5CA /* MARSearchCookVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARSearchCookVC.h; sourceTree = "<group>"; };
+		5B029F431FE4F125008ED5CA /* MARSearchCookVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARSearchCookVC.m; sourceTree = "<group>"; };
+		5B029F451FE4FE99008ED5CA /* MARCookInfoTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookInfoTableCell.h; sourceTree = "<group>"; };
+		5B029F461FE4FE99008ED5CA /* MARCookInfoTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookInfoTableCell.m; sourceTree = "<group>"; };
+		5B029F481FE500C1008ED5CA /* UIImageView+SDWEBEXT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SDWEBEXT.h"; sourceTree = "<group>"; };
+		5B029F491FE500C1008ED5CA /* UIImageView+SDWEBEXT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDWEBEXT.m"; sourceTree = "<group>"; };
 		5B25F84F1FE0D2CA00E85884 /* maxiaoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxiaoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B25F8521FE0D2CA00E85884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B25F8531FE0D2CA00E85884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -176,6 +196,10 @@
 		5BC0F5731FE211DF004C62D4 /* userdefaultkey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userdefaultkey.h; sourceTree = "<group>"; };
 		5BC0F5741FE2218E004C62D4 /* MARMonthDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMonthDayView.h; sourceTree = "<group>"; };
 		5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMonthDayView.m; sourceTree = "<group>"; };
+		5BFCE7151FE5257000E86CCC /* MARCookDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookDetailVC.h; sourceTree = "<group>"; };
+		5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookDetailVC.m; sourceTree = "<group>"; };
+		5BFCE7181FE53F6900E86CCC /* MARCookStepTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookStepTableCell.h; sourceTree = "<group>"; };
+		5BFCE7191FE53F6900E86CCC /* MARCookStepTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookStepTableCell.m; sourceTree = "<group>"; };
 		62A83676F16EBD22EFEE8754 /* Pods-maxiaoding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxiaoding.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding.debug.xcconfig"; sourceTree = "<group>"; };
 		6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-maxiaoding.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F54FA193DE0A4D5843643552 /* Pods-maxiaoding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxiaoding.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +244,8 @@
 			children = (
 				5B029F0A1FE3C311008ED5CA /* UIViewController+MXD.h */,
 				5B029F0B1FE3C311008ED5CA /* UIViewController+MXD.m */,
+				5B029F481FE500C1008ED5CA /* UIImageView+SDWEBEXT.h */,
+				5B029F491FE500C1008ED5CA /* UIImageView+SDWEBEXT.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -393,6 +419,10 @@
 				5B029EFD1FE2824C008ED5CA /* MARCarBrandModel.m */,
 				5B029F361FE42EBA008ED5CA /* MARMobCalendarModel.h */,
 				5B029F371FE42EBA008ED5CA /* MARMobCalendarModel.m */,
+				5B029F391FE4B5C2008ED5CA /* MARLaohuangliModel.h */,
+				5B029F3A1FE4B5C2008ED5CA /* MARLaohuangliModel.m */,
+				5B029F3C1FE4BA1A008ED5CA /* MARCookCategoryModel.h */,
+				5B029F3D1FE4BA1A008ED5CA /* MARCookCategoryModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -417,6 +447,12 @@
 				5B029F001FE2C317008ED5CA /* MARCarSeriesVC.m */,
 				5B029F051FE2EB61008ED5CA /* MARCarDetailVC.h */,
 				5B029F061FE2EB61008ED5CA /* MARCarDetailVC.m */,
+				5B029F3F1FE4E3BE008ED5CA /* MARCookCategoryListVC.h */,
+				5B029F401FE4E3BE008ED5CA /* MARCookCategoryListVC.m */,
+				5B029F421FE4F124008ED5CA /* MARSearchCookVC.h */,
+				5B029F431FE4F125008ED5CA /* MARSearchCookVC.m */,
+				5BFCE7151FE5257000E86CCC /* MARCookDetailVC.h */,
+				5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -486,6 +522,10 @@
 				5B25F8FE1FE1808F00E85884 /* MARHistoryDayTableCell.m */,
 				5BC0F5741FE2218E004C62D4 /* MARMonthDayView.h */,
 				5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */,
+				5B029F451FE4FE99008ED5CA /* MARCookInfoTableCell.h */,
+				5B029F461FE4FE99008ED5CA /* MARCookInfoTableCell.m */,
+				5BFCE7181FE53F6900E86CCC /* MARCookStepTableCell.h */,
+				5BFCE7191FE53F6900E86CCC /* MARCookStepTableCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -696,15 +736,22 @@
 				5B029EFE1FE2824C008ED5CA /* MARCarBrandModel.m in Sources */,
 				5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */,
 				5B25F8D01FE0F80500E85884 /* MARNetworkResponse.m in Sources */,
+				5BFCE71A1FE53F6900E86CCC /* MARCookStepTableCell.m in Sources */,
 				5B029F041FE2E016008ED5CA /* MARMobUtil.m in Sources */,
+				5B029F4A1FE500C1008ED5CA /* UIImageView+SDWEBEXT.m in Sources */,
 				5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */,
 				5B25F8F61FE17CD300E85884 /* MARLoadPageModel.m in Sources */,
+				5B029F471FE4FE99008ED5CA /* MARCookInfoTableCell.m in Sources */,
 				5B029F1D1FE3CCA7008ED5CA /* MARHomeCustomTableCell.m in Sources */,
+				5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */,
+				5B029F3E1FE4BA1A008ED5CA /* MARCookCategoryModel.m in Sources */,
 				5B25F8CF1FE0F80500E85884 /* MARNetworkManager.m in Sources */,
 				5B25F8DD1FE1035A00E85884 /* MARWebViewController.m in Sources */,
 				5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */,
 				5B029F2E1FE40E73008ED5CA /* MARGlobalModel.m in Sources */,
+				5B029F3B1FE4B5C2008ED5CA /* MARLaohuangliModel.m in Sources */,
 				5B029F311FE41C1F008ED5CA /* MARHomeDateView.m in Sources */,
+				5B029F411FE4E3BE008ED5CA /* MARCookCategoryListVC.m in Sources */,
 				5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */,
 				5B029EFB1FE28098008ED5CA /* MARCarBrandListVC.m in Sources */,
 				5B029F241FE3D55E008ED5CA /* MARHomeTestVC.m in Sources */,
@@ -720,6 +767,7 @@
 				5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */,
 				5B25F8CE1FE0F80500E85884 /* MARBaseViewController.m in Sources */,
 				5B029F0C1FE3C311008ED5CA /* UIViewController+MXD.m in Sources */,
+				5B029F441FE4F125008ED5CA /* MARSearchCookVC.m in Sources */,
 				5B25F8E31FE1090B00E85884 /* MARWXArticleTabelCell.m in Sources */,
 				5B029F0F1FE3C3D3008ED5CA /* MARSBConstant.m in Sources */,
 				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */,

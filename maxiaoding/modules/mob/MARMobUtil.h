@@ -10,7 +10,7 @@
 #import "mobmodel.h"
 #import <MobAPI/MobAPI.h>
 #define MARMOBUTIL [MARMobUtil sharedInstance]
-
+#define MARMOBERRMSG(_mobResponse) [MARMOBUTIL errorMessageWithMobResponse:_mobResponse]
 typedef void (^MobRequestCallBack)(MOBAResponse *response, id wrapperModel, NSString *errMsg);
 
 @interface MARMobUtil : NSObject
@@ -21,6 +21,10 @@ typedef void (^MobRequestCallBack)(MOBAResponse *response, id wrapperModel, NSSt
 
 + (NSDictionary *)mobErrorDic;
 
++ (NSString *)errorMessageWithMobResponse:(MOBAResponse *)response;
+- (NSString *)errorMessageWithMobResponse:(MOBAResponse *)response;
+
++ (void)test;
 
 /**
  获取mob万年历数据
@@ -41,6 +45,23 @@ typedef void (^MobRequestCallBack)(MOBAResponse *response, id wrapperModel, NSSt
 + (void)loadCalendarWithDate:(NSDate *)date
                     callback:(void (^)(MOBAResponse *response, MARMobCalendarModel *calendarModel, NSString *errMsg))callback;
 
+/**
+ 老黄历信息查询
+
+ @param dateStr 日期(日期年的范围1900-2099)，格式:yyyy-MM-dd，必填项，不允许为nil
+ @param callback 回调
+ */
++ (void)loadLaohuangliWithDateStr:(NSString *)dateStr
+                         callback:(void (^)(MOBAResponse *response, MARLaohuangliModel *laohuangliModel, NSString *errMsg))callback;
+
+/**
+ 老黄历信息查询
+
+ @param date 日期(日期年的范围1900-2099)
+ @param callback 回调
+ */
++ (void)loadLaohuangliWithDate:(NSDate *)date
+                      callback:(void (^)(MOBAResponse *response, MARLaohuangliModel *laohuangliModel, NSString *errMsg))callback;
 
 /**
  查询所有汽车品牌
@@ -95,5 +116,36 @@ typedef void (^MobRequestCallBack)(MOBAResponse *response, id wrapperModel, NSSt
 + (void)loadWXArticleListWithCid:(NSString *)cid
                        pageModel:(MARLoadPageModel *)pageModel
                         callback:(void (^)(MOBAResponse *response, NSArray<MARWXArticleModel *> *articles, NSString *errMsg))callback;
+
+/**
+ 查询菜谱分类
+
+ @param callback 回调
+ */
++ (void)loadCookCategoriesCallback:(void (^)(MOBAResponse *response, NSArray<MARCookCategoryMenuModel *> *cookCategoryMenuArray, NSString *errMsg))callback;
+
+
+/**
+ 获取菜谱详情信息
+
+ @param mid mid 菜谱ID, 必填项，不允许为nil
+ */
++ (void)loadCookDetailWithMid:(NSString *)mid
+                     callback:(void (^)(MOBAResponse *response, MARCookDetailModel *cookDetailModel, NSString *errMsg))callback;
+
+
+/**
+ 查询菜谱信息
+
+ @param cid 分类ID, 允许为nil
+ @param cookName 菜谱名称, 允许为nil
+ @param pageModel 分页
+ @param callback 回调 total表示总数量
+ */
++ (void)loadCookListWithCid:(NSString *)cid
+                    cookName:(NSString *)cookName
+                    loadPage:(MARLoadPageModel *)pageModel
+                    callback:(void (^)(MOBAResponse *response, NSArray<MARCookDetailModel *> *cookArray, NSInteger totalCount, NSString *errMsg))callback;
+
 
 @end

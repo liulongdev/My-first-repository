@@ -13,6 +13,9 @@ static NSString * const mobTitle_historyToday       = @"历史上的今天";
 static NSString * const mobTitle_phoneNumberSetting = @"手机设置";
 static NSString * const mobTitle_utilityTool        = @"实用工具";
 static NSString * const mobTitle_carBrand           = @"汽车";
+static NSString * const mobTitle_cookMenu           = @"菜谱";
+
+static NSString * const mobTitle_testFunction       = @"测试";
 
 
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>
@@ -43,6 +46,9 @@ static NSString * const mobTitle_carBrand           = @"汽车";
 //                        mobTitle_phoneNumberSetting,
 //                        mobTitle_utilityTool,
                         mobTitle_carBrand,
+                        mobTitle_cookMenu,
+                        
+                        mobTitle_testFunction,
                         ];
     }
     return _titleArray;
@@ -92,8 +98,17 @@ static NSString * const mobTitle_carBrand           = @"汽车";
     else if ([mobTitle_carBrand isEqualToString:label.text])
     {
         [self performSegueWithIdentifier:@"goCarBrandListVC" sender:nil];
-        
     }
+    else if ([mobTitle_cookMenu isEqualToString:label.text])
+    {
+        [self performSegueWithIdentifier:@"goCookCategoryListVC" sender:nil];
+    }
+    else if ([mobTitle_testFunction isEqualToString:label.text])
+    {
+        [MARMobUtil test];
+    }
+    
+    
     
 }
 

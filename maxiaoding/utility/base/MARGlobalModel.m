@@ -88,3 +88,79 @@ NSString * const MARGLobalModelId = @"10000";
 
 @end
 
+@implementation MARStyleFormat
+
++ (instancetype)sharedInstance
+{
+    MARSINGLE_INSTANCE_USING_BLOCK(^{
+        return [[self alloc] init];
+    })
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    return [self mar_modelInitWithCoder:aDecoder];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [self mar_modelEncodeWithCoder:aCoder];
+}
+
+- (NSDictionary *)biaoTiAttrDic
+{
+    if (!_biaoTiAttrDic) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 10;
+        style.lineBreakMode = NSLineBreakByWordWrapping;
+        _biaoTiAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:20.f], NSForegroundColorAttributeName : RGBHEX(0x333333)};
+    }
+    return _biaoTiAttrDic;
+}
+
+- (NSDictionary *)ziBiaoTiAttrDic
+{
+    if (!_ziBiaoTiAttrDic) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 10;
+        style.lineBreakMode = NSLineBreakByWordWrapping;
+        _ziBiaoTiAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:16.f], NSForegroundColorAttributeName : RGBHEX(0x333333)};
+    }
+    return _ziBiaoTiAttrDic;
+}
+
+- (NSDictionary *)zhengWenAttrDic
+{
+    if (!_zhengWenAttrDic) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 10;
+        style.lineBreakMode = NSLineBreakByWordWrapping;
+        _zhengWenAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:14.f], NSForegroundColorAttributeName : RGBHEX(0x666666)};
+    }
+    return _zhengWenAttrDic;
+}
+
+- (NSDictionary *)shuoMingAttrDic
+{
+    if (!_shuoMingAttrDic) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 10;
+        style.lineBreakMode = NSLineBreakByWordWrapping;
+        _shuoMingAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:12.f], NSForegroundColorAttributeName : RGBHEX(0x999999)};
+    }
+    return _shuoMingAttrDic;
+}
+
+- (NSDictionary *)tuPianJieShaoAttrDic
+{
+    if (!_tuPianJieShaoAttrDic) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 3;
+        style.lineBreakMode = NSLineBreakByWordWrapping;
+        _tuPianJieShaoAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:10.f], NSForegroundColorAttributeName : RGBHEX(0x999999)};
+    }
+    return _tuPianJieShaoAttrDic;
+}
+
+@end
+

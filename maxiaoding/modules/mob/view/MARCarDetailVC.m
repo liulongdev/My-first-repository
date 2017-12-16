@@ -79,9 +79,6 @@
     [MARMobUtil loadCarSeriesDetailWithCid:self.cardSerieModel.carId callback:^(MOBAResponse *response, MARCarDetailModel *carDetail, NSString *errMsg) {
         [weakSelf showActivityView:NO];
         if (!response.error) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [carDetail updateToDB];
-            });
             weakSelf.cardDetailModel = carDetail;
             [weakSelf.tableView reloadData];
         }

@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "MARBaseDBModel.h"
 
+/**
+ 万年历相关数据
+ */
 @interface MARMobCalendarModel : MARBaseDBModel
 
 @property (nonatomic, strong) NSString *date;       // 日期
