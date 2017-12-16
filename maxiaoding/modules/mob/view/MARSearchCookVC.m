@@ -11,15 +11,16 @@
 #import <MJRefresh/MJRefresh.h>
 #import "MARCookCategoryListVC.h"
 #import "MARCookDetailVC.h"
-@interface MARSearchCookVC () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface MARSearchCookVC () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *selectCategoryLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraint_tableViewBottom;
+@property (strong, nonatomic) IBOutlet UILabel *totalCountLabel;
 
 @property (nonatomic, strong) NSMutableArray<MARCookDetailModel *> *cookDetailArray;
 @property (nonatomic, strong) MARLoadPageModel *pageModel;
 @property (nonatomic, strong) NSString *searchParamName;
-
+@property (nonatomic, assign) NSInteger totalCount;
 - (IBAction)clickSelectCategoryAction:(id)sender;
 
 @end
@@ -49,7 +50,9 @@
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    self.tableView.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+//    MJRefreshBackStateFooter
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    self.tableView.mj_footer = footer;
     
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -65,6 +68,7 @@
     // 隐藏状态
     header.stateLabel.hidden = YES;
     self.tableView.mj_header = header;
+    self.totalCountLabel.alpha = 0;
 }
 
 - (void)loadData
@@ -91,6 +95,7 @@
             [strongSelf.cookDetailArray addObjectsFromArray:cookArray];
             [strongSelf.tableView reloadData];
             strongSelf.pageModel.pageIndex ++;
+            strongSelf.totalCount = totalCount;
         }
         else
         {
@@ -191,4 +196,40 @@
     cookCategoryListVC.selectCookCategory = [self.cookCategoryModel copy];
     [self.navigationController pushViewController:cookCategoryListVC animated:YES];
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.tableView == scrollView && self.totalCount > 0) {
+        if (scrollView.isTracking || scrollView.isDragging || scrollView.isDecelerating) {
+            self.totalCountLabel.text = MARSTRWITHINT(self.totalCount);
+            if (self.totalCountLabel.alpha == 0) {
+                [UIView animateWithDuration:0.25 animations:^{
+                    self.totalCountLabel.alpha = 1;
+                }];
+            }
+            NSIndexPath *indexPath = self.tableView.indexPathsForVisibleRows.lastObject;
+            NSString *countStr = [NSString stringWithFormat:@"%@/%@", MARSTRWITHINT(indexPath.row + 1), MARSTRWITHINT(self.totalCount)];
+            if (![self.totalCountLabel.text isEqualToString:countStr]) {
+                self.totalCountLabel.text = countStr;
+            }
+        }
+        else
+        {
+            
+        }
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (self.tableView == scrollView)
+    {
+        if (self.totalCountLabel.alpha == 1) {
+            [UIView animateWithDuration:0.25 animations:^{
+                self.totalCountLabel.alpha = 0;
+            }];
+        }
+    }
+}
+
 @end

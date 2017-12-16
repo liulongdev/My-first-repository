@@ -665,12 +665,20 @@
                                     <outlet property="delegate" destination="iLr-WR-Q1q" id="Pb4-dX-qaz"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbR-VX-mBa">
+                                <rect key="frame" x="0.0" y="599" width="375" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="7FZ-gk-5DL" secondAttribute="trailing" id="0tZ-sP-tYI"/>
                             <constraint firstItem="Py5-Pr-OYo" firstAttribute="leading" secondItem="YZb-mr-Ikz" secondAttribute="leading" id="0vp-l6-Y2f"/>
+                            <constraint firstAttribute="trailing" secondItem="GbR-VX-mBa" secondAttribute="trailing" id="CLD-1l-d5y"/>
                             <constraint firstItem="7FZ-gk-5DL" firstAttribute="top" secondItem="zBA-rQ-bwV" secondAttribute="bottom" id="D0R-T5-L1d"/>
+                            <constraint firstItem="GbR-VX-mBa" firstAttribute="leading" secondItem="tv1-2l-t94" secondAttribute="leading" id="Jlm-0o-99Q"/>
                             <constraint firstItem="irK-xZ-cJw" firstAttribute="trailing" secondItem="OWw-FX-rQ5" secondAttribute="trailing" id="SSI-Ux-vEu"/>
                             <constraint firstItem="55B-EC-mV7" firstAttribute="leading" secondItem="tv1-2l-t94" secondAttribute="leading" id="Sgs-0g-3b3"/>
                             <constraint firstItem="G4h-0l-OVu" firstAttribute="leading" secondItem="tv1-2l-t94" secondAttribute="leading" id="TAM-ag-Q8B"/>
@@ -678,6 +686,7 @@
                             <constraint firstItem="irK-xZ-cJw" firstAttribute="leading" secondItem="OWw-FX-rQ5" secondAttribute="leading" id="YrA-ZJ-BTX"/>
                             <constraint firstItem="55B-EC-mV7" firstAttribute="top" secondItem="7FZ-gk-5DL" secondAttribute="bottom" id="aT4-li-6Qz"/>
                             <constraint firstItem="7FZ-gk-5DL" firstAttribute="leading" secondItem="tv1-2l-t94" secondAttribute="leadingMargin" id="gZk-rr-06f"/>
+                            <constraint firstItem="s63-nv-UbI" firstAttribute="top" secondItem="GbR-VX-mBa" secondAttribute="bottom" constant="50" id="ijK-e4-Mhq"/>
                             <constraint firstItem="55B-EC-mV7" firstAttribute="height" secondItem="7FZ-gk-5DL" secondAttribute="height" id="n7m-dd-JmW"/>
                             <constraint firstAttribute="trailing" secondItem="G4h-0l-OVu" secondAttribute="trailing" id="uTw-Dg-GdI"/>
                             <constraint firstItem="s63-nv-UbI" firstAttribute="top" secondItem="G4h-0l-OVu" secondAttribute="bottom" id="vdD-Xv-rft"/>
@@ -688,6 +697,7 @@
                         <outlet property="constraint_tableViewBottom" destination="vdD-Xv-rft" id="YYr-NJ-wtd"/>
                         <outlet property="selectCategoryLabel" destination="OWw-FX-rQ5" id="txo-jx-h6f"/>
                         <outlet property="tableView" destination="G4h-0l-OVu" id="uwj-Ca-V0D"/>
+                        <outlet property="totalCountLabel" destination="GbR-VX-mBa" id="X2Q-Ik-F9Y"/>
                         <segue destination="6e7-f2-8wU" kind="show" identifier="goCookDetailVC" id="qlK-MF-Wy7"/>
                     </connections>
                 </viewController>
