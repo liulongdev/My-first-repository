@@ -38,12 +38,36 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.mar_preferredNavigationBarHidden = YES;
     self.title = self.cookDetail.name;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tableView.delegate = self;
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+//    self.navigationController.navigationBar.translucent = YES;
+//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//
+//    //去掉透明后导航栏下边的黑边
+//    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.tableView.delegate = nil;  // 防止返回崩溃
 }
 
 - (void)UIGlobal
 {
-    MARAdjustsScrollViewInsets_NO(self.tableView, self);
+//    MARAdjustsScrollViewInsets_NO(self.tableView, self);
     self.constraint_tableHeaderViewWidth.constant = self.constraint_tableFooterViewWidth.constant = kScreenWIDTH;
     
     self.view.backgroundColor = self.tableView.backgroundColor = RGBHEX(0xf4f4f4);
@@ -98,6 +122,7 @@
 - (void)_updateTableHeaderView
 {
     CGFloat height = [self.tableHeaderView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    self.tableHeaderView.mar_height = height;
     self.tableView.tableHeaderView = self.tableHeaderView;
     self.tableView.tableHeaderView.mar_height = height;
     self.tableView.tableHeaderView.mar_width = kScreenWIDTH;
@@ -107,6 +132,7 @@
 - (void)_updateTableFooterView
 {
     CGFloat height = [self.tableFooterView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    self.tableFooterView.mar_height = height;
     self.tableView.tableFooterView = self.tableFooterView;
     self.tableView.tableFooterView.mar_height = height;
     self.tableView.tableFooterView.mar_width = kScreenWIDTH;
@@ -159,10 +185,10 @@
 #pragma mark - UIScollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    
+    CGFloat offsetY = scrollView.contentOffset.y + MARCONTENTINSETTOP(self);
     CGFloat maxPicWidth = kScreenWIDTH - 25 * 2;
-
+    
+    
     if (loadImageSuccess && offsetY < 0) {
         self.constraint_cookImageBackGroundViewWidth.constant = MAX(150, MIN(maxPicWidth, 150 * (1 - offsetY / 150)));
     }

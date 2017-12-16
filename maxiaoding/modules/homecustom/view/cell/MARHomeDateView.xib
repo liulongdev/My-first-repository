@@ -35,9 +35,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="0or-C4-kQr"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="7zF-sa-8V0"/>
                         <constraint firstItem="Iig-LC-LFw" firstAttribute="centerY" secondItem="iZl-Y3-yE6" secondAttribute="centerY" multiplier="0.5" id="8K6-s3-YdK"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="240" id="DU0-RK-2iK"/>
                         <constraint firstItem="Iig-LC-LFw" firstAttribute="centerX" secondItem="iZl-Y3-yE6" secondAttribute="centerX" id="IB0-Yd-Ek7"/>
                         <constraint firstItem="XnD-jr-O5M" firstAttribute="centerY" secondItem="iZl-Y3-yE6" secondAttribute="centerY" multiplier="1.1" id="ekR-So-xbA"/>
                         <constraint firstAttribute="height" constant="240" id="lGd-IF-IfO"/>
@@ -45,9 +43,10 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="iZl-Y3-yE6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="IFH-uY-Cq6"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="iZl-Y3-yE6" secondAttribute="bottom" constant="100" id="KrS-hO-K7X"/>
                 <constraint firstItem="iZl-Y3-yE6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="88" id="ZMi-4h-xef"/>
             </constraints>
             <connections>

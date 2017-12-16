@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mar_preferredNavigationBarHidden = YES;
+    MARAdjustsScrollViewInsets_NO(self.tableView, self);
+    self.tableView.scrollEnabled = NO;
     [self setup];
 }
 
@@ -82,10 +84,24 @@
     }];
     
     __weak __typeof(self) weakSelf = self;
-    [cell setBottomAppearBlock:^{
-        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
-        [weakSelf.tableView scrollToRowAtIndexPath:nextIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }];
+    if (indexPath.row + 1 < [weakSelf tableView:tableView numberOfRowsInSection:0]) {
+        [cell setBottomAppearBlock:^{
+            NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
+            [weakSelf.tableView scrollToRowAtIndexPath:nextIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }];
+    }
+    else
+        [cell setBottomAppearBlock:nil];
+    
+    if (indexPath.row > 0) {
+        [cell setTopAppearBlock:^{
+            NSIndexPath *preIndexPath = [NSIndexPath indexPathForRow:(indexPath.row - 1) inSection:indexPath.section];
+            [weakSelf.tableView scrollToRowAtIndexPath:preIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }];
+    }
+    else
+        [cell setTopAppearBlock:nil];
+    
     return cell;
 }
 

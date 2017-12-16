@@ -22,6 +22,7 @@
     [super viewDidLoad];
     self.title = @"微信精选";
     [self wxArticleArray];
+    MARAdjustsScrollViewInsets_NO(self.collectionView, self);
 }
 
 - (void)loadData

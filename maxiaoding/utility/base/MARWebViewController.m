@@ -50,9 +50,18 @@
     self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [self.view addSubview:self.webView];
+
+    if (self.navigationController.navigationBar.translucent) {
+        self.webView.scrollView.contentInset = UIEdgeInsetsMake(MARCONTENTINSETTOP(self), 0, 0, 0);
+    }
 #if __has_include(<Masonry.h>)
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_topLayoutGuide);
+        if (self.navigationController.navigationBar.translucent)
+        {
+            make.top.mas_equalTo(self.view);
+        }
+        else
+            make.top.mas_equalTo(self.mas_topLayoutGuide);
         make.leading.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.mas_bottomLayoutGuide);
         make.trailing.mas_equalTo(self.view);
@@ -61,6 +70,7 @@
 }
 - (void) viewDidLoad{
     [super viewDidLoad];
+    MARAdjustsScrollViewInsets_NO(self.webView.scrollView, self);
     if(self.URL)
         [self.webView loadRequest:[NSURLRequest requestWithURL:self.URL]];
     else if(self.URLRequest)

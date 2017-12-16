@@ -25,3 +25,9 @@
 #ifndef MARSTRWITHINT
 #define MARSTRWITHINT(_value) [NSString stringWithFormat:@"%ld", (long)_value]
 #endif
+
+#ifndef MARCONTENTINSETTOP
+#define MARCONTENTINSETTOP(_vc) \
+            [UIApplication sharedApplication].statusBarFrame.size.height \
+            + _vc.navigationController.navigationBar.frame.size.height
+#endif

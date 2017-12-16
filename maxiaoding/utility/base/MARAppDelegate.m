@@ -125,6 +125,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(APPNaviBarTint, 1)];
     [[UINavigationBar appearance] setTintColor:UIColorFromRGB(APPNaviTint, 1)];
+    [UINavigationBar appearance].translucent = YES;
     NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:RGBHEX(APPNaviTint), NSForegroundColorAttributeName, [UIFont systemFontOfSize:kSCALE(15.f)], NSFontAttributeName, nil];
     [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
     

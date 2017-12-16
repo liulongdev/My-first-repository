@@ -22,18 +22,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-XI-hNy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="200" id="RjA-fS-8zj"/>
+                                    <constraint firstAttribute="height" priority="200" constant="20" id="RjA-fS-8zj"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8X-OG-5sp">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="aIJ-ie-1tN"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="C8X-OG-5sp" firstAttribute="leading" secondItem="dAr-7P-Z2z" secondAttribute="leading" id="0KG-6O-yDh"/>
+                            <constraint firstItem="C8X-OG-5sp" firstAttribute="bottom" secondItem="dAr-7P-Z2z" secondAttribute="top" constant="44" id="32s-5k-AzT"/>
                             <constraint firstItem="OSd-XI-hNy" firstAttribute="leading" secondItem="dAr-7P-Z2z" secondAttribute="leading" id="5m2-uZ-5cF"/>
-                            <constraint firstItem="OSd-XI-hNy" firstAttribute="width" secondItem="dAr-7P-Z2z" secondAttribute="width" priority="900" id="BF6-B1-nVk"/>
+                            <constraint firstItem="OSd-XI-hNy" firstAttribute="width" secondItem="dAr-7P-Z2z" secondAttribute="width" priority="999" id="BF6-B1-nVk"/>
                             <constraint firstAttribute="trailing" secondItem="OSd-XI-hNy" secondAttribute="trailing" id="CYA-Ks-ByD"/>
                             <constraint firstItem="OSd-XI-hNy" firstAttribute="top" secondItem="dAr-7P-Z2z" secondAttribute="top" id="Spi-TI-zCT"/>
+                            <constraint firstAttribute="trailing" secondItem="C8X-OG-5sp" secondAttribute="trailing" id="UY2-IM-cIJ"/>
                             <constraint firstAttribute="bottom" secondItem="OSd-XI-hNy" secondAttribute="bottom" id="sh6-Di-Sus"/>
                         </constraints>
                     </scrollView>
@@ -60,8 +70,10 @@
             <connections>
                 <outlet property="bottomView" destination="OKy-11-9Ar" id="zaM-PZ-zs7"/>
                 <outlet property="constraint_bottomViewTop" destination="l5z-LU-bCT" id="K6Z-eW-sGr"/>
+                <outlet property="constraint_topViewBottom" destination="32s-5k-AzT" id="GFS-zP-skz"/>
                 <outlet property="marContentView" destination="OSd-XI-hNy" id="7P3-DH-2lM"/>
                 <outlet property="scrollView" destination="dAr-7P-Z2z" id="c96-5u-B6J"/>
+                <outlet property="topView" destination="C8X-OG-5sp" id="ShA-Dt-iLy"/>
             </connections>
             <point key="canvasLocation" x="34" y="316"/>
         </tableViewCell>

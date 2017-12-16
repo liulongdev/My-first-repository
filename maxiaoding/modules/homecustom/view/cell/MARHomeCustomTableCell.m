@@ -9,6 +9,8 @@
 #import "MARHomeCustomTableCell.h"
 #import <Masonry.h>
 @interface MARHomeCustomTableCell()<UIScrollViewDelegate>
+@property (strong, nonatomic) IBOutlet UIView *topView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraint_topViewBottom;
 
 @property (strong, nonatomic) IBOutlet UIView *bottomView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraint_bottomViewTop;
@@ -21,9 +23,10 @@
     [super awakeFromNib];
     self.scrollView.delegate = self;
     self.scrollView.alwaysBounceVertical = YES;
-    
-    self.bottomView.hidden = YES;
-    
+    self.bottomView.alpha = 0;
+    self.topView.alpha = 0;
+    self.constraint_topViewBottom.constant = -10;
+    self.constraint_bottomViewTop.constant = 10;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -46,6 +49,7 @@
         // 下滑
         if (offsetY > 0)
         {
+            self.constraint_topViewBottom.constant = -10;
             if(self.bottomAppearBlock)
             {
                 if (scrollView.contentSize.height <= scrollView.mar_height) {
@@ -61,16 +65,20 @@
                         if (needAutoScroll) {
                             self.bottomAppearBlock();
                             needAutoScroll = NO;
+                            [UIView animateWithDuration:0.25 animations:^{
+                                self.bottomView.alpha = 0;
+                            }];
                         }
-                        self.bottomView.hidden = YES;
                     }
-                    self.bottomView.hidden = NO;
+                    if (scrollView.isTracking) {
+                        self.bottomView.alpha = 1;
+                    }
                     self.constraint_bottomViewTop.constant = -bottomOffsetY;
                 }
                 else
                 {
-                    if (!self.bottomView.hidden) {
-                        self.bottomView.hidden = YES;
+                    if (self.bottomView.alpha != 0) {
+                        self.bottomView.alpha = 0;
                     }
                 }
                     
@@ -78,17 +86,26 @@
         }
         else
         {
+            self.constraint_bottomViewTop.constant = 10;
             // 上滑
             if (self.topAppearBlock)
             {
-                if (offsetY < 0)
+                if (offsetY < -44 && scrollView.isDecelerating)
                 {
-                    
+                    if (needAutoScroll) {
+                        self.topAppearBlock();
+                        needAutoScroll = NO;
+                        [UIView animateWithDuration:0.25 animations:^{
+                            self.topView.alpha = 0;
+                        }];
+                    }
                 }
-                else
-                {
-                    
+                
+                if (scrollView.isTracking) {
+                    self.topView.alpha = 1;
                 }
+                self.constraint_topViewBottom.constant = -bottomOffsetY;
+                
             }
         }
     }

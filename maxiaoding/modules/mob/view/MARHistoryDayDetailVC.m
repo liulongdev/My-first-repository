@@ -9,6 +9,7 @@
 #import "MARHistoryDayDetailVC.h"
 
 @interface MARHistoryDayDetailVC ()
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UILabel *detailLabel;
 @property (nonatomic, strong) NSDictionary *attrDic;
 @end
@@ -17,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    MARAdjustsScrollViewInsets_NO(self.scrollView, self);
     self.title = self.historyDayModel.title;
     self.detailLabel.attributedText = [[NSAttributedString alloc] initWithString:self.historyDayModel.event ?: @"" attributes:self.attrDic];
 }

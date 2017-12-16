@@ -33,6 +33,7 @@ static NSString * const mobTitle_testFunction       = @"测试";
 
 - (void)UIGlobal
 {
+    MARAdjustsScrollViewInsets_NO(self.tableView, self);
     self.tableView.tableFooterView = [UIView new];
     self.tableView.estimatedRowHeight = 40;
     self.tableView.rowHeight = UITableViewAutomaticDimension;

@@ -25,6 +25,7 @@
 
 - (void)UIGlobal
 {
+    MARAdjustsScrollViewInsets_NO(self.tableView, self);
     self.tableView.tableFooterView = [UIView new];
 }
 

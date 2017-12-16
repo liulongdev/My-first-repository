@@ -27,6 +27,7 @@
 
 - (void)UIGlobal
 {
+    MARAdjustsScrollViewInsets_NO(self.tableView, self);
     self.tableView.tableFooterView = [UIView new];
     self.tableView.estimatedRowHeight = 230;
     self.tableView.rowHeight = UITableViewAutomaticDimension;

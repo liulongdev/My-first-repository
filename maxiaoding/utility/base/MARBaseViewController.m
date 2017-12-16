@@ -18,10 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
-    {
-        self.navigationController.navigationBar.translucent = NO;
-    }
+//    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
+//    {
+//        self.navigationController.navigationBar.translucent = NO;
+//    }
     self.view.backgroundColor = RGBHEX(MARColor_VCBackgound);
     [self addObserverGlobal];
     if ([self respondsToSelector:@selector(UIGlobal)]) {

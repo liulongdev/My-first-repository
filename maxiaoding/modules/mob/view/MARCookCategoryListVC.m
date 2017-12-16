@@ -25,6 +25,7 @@
 
 - (void)UIGlobal
 {
+    MARAdjustsScrollViewInsets_NO(self.tableView, self);
     self.tableView.tableFooterView = [UIView new];
     if (self.isSelectStyle) {
         self.navigationItem.rightBarButtonItem = nil;
@@ -42,7 +43,7 @@
             _cookCategoryMenuArray = (NSArray<MARCookCategoryMenuModel *> *)[MARCookCategoryMenuModel mar_getAllDBModelArray];
             if (_cookCategoryMenuArray.count > 0) {
                 mar_dispatch_async_on_main_queue(^{
-                    [self.tableView reloadInputViews];
+                    [self.tableView reloadData];
                 });
             }
             else
