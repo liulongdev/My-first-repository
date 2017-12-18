@@ -1,4 +1,6 @@
 platform :ios, '8.0'
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/aliyun/aliyun-specs.git'
 def shared_dependencies
   pod 'AFNetworking', '~>3.1.0'
   pod 'SDWebImage', '~> 3.8.2'
@@ -13,6 +15,7 @@ def shared_dependencies
   pod 'SMSSDK', '~> 3.0.1'
   pod 'MJRefresh', '~> 3.1.15.1'
   pod 'PinYin4Objc', '~> 1.1.1'
+  pod 'AlicloudMAN', '~> 1.0.10'
 end
 
 workspace "maxiaoding.xcodeproj"

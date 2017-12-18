@@ -14,6 +14,11 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AlicloudMAN (1.0.10):
+    - AlicloudUT
+  - AlicloudUT (5.2.0.1):
+    - AlicloudUTDID
+  - AlicloudUTDID (1.1.0.16)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
@@ -44,6 +49,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - AlicloudMAN (~> 1.0.10)
   - LKDBHelper (~> 2.4)
   - MAREXT (~> 0.0.7)
   - Masonry (~> 1.0.2)
@@ -59,6 +65,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AlicloudMAN: c0feaa5ba3c8955532d37a82a26b373fa0388be4
+  AlicloudUT: 9f20dcfd2753de09261b6c279245da1650a34932
+  AlicloudUTDID: f5a7bc1420c5f83e3bd40296e5ab2e5a804a12f8
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   LKDBHelper: 378aa31e334bbb4e7a64928b4e7bae8059386524
   MAREXT: ee2d971b834d5278de4f314a1fb7fc00ffee760c
@@ -74,6 +83,6 @@ SPEC CHECKSUMS:
   SMSSDK: a811c8ea6e89393097037b7cf6493248a40e50f0
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
 
-PODFILE CHECKSUM: f9ef1abb9e8f0c1fa1168804d803941f6599bee7
+PODFILE CHECKSUM: 996d7e520860b37d3d1aaf692777ae41480a64ac
 
 COCOAPODS: 1.2.0

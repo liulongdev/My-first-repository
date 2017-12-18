@@ -8,19 +8,33 @@
 
 #import "MARNetworkManager.h"
 #import <NSObject+MARModel.h>
+#import <AlicloudMobileAnalitics/ALBBMAN.h>
+@interface MARNetworkManager ()
+@property (nonatomic, strong) ALBBMANNetworkHitBuilder *builder;
+@end
 
 @implementation MARNetworkManager
 
 #pragma mark - shareManager
-+(instancetype)shareManager
+//+(instancetype)shareManager
+//{
+//    static MARNetworkManager * manager = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        manager = [[self alloc] initWithBaseURL:nil];
+//    });
+//
+//    return manager;
+//}
+
+- (instancetype)init
 {
-    static MARNetworkManager * manager = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        manager = [[self alloc] initWithBaseURL:nil];
-    });
-    
-    return manager;
+    return [[self.class alloc] initWithBaseURL:nil];
+}
+
++ (instancetype)instance
+{
+    return [[self.class alloc] initWithBaseURL:nil];
 }
 
 - (instancetype)initWithBaseURL:(NSURL *)url
@@ -73,6 +87,97 @@
     return self;
 }
 
+- (NSURLSessionDataTask *)_mar_requestType:(MARNetworkRequestType)type
+                                 urlString:(NSString *)urlString
+                                parameters:(id)parameters
+                                  progress:(MARNetworkProgress)progress
+                                   success:(MARNetworkSuccess)success
+                                   failure:(MARNetworkFailure)failure
+                               loadingType:(MARNetworkLoadingType)loadingType     // 备用
+                                    inView:(UIView *)inView
+{
+    NSURLSessionDataTask *task;
+    __weak __typeof(self) weakSelf = self;
+    switch (type) {
+        case MARNetworkRequestTypeGet:
+        {
+            task = [self GET:urlString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+                if (progress) progress(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                __strong __typeof(weakSelf) strongSelf = weakSelf;
+                if (!strongSelf) return;
+                [strongSelf _alynasisRequestEndWithTask:task];
+                if (success) {
+                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
+                    success(task, responce);
+                }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                __strong __typeof(weakSelf) strongSelf = weakSelf;
+                if (!strongSelf) return;
+                if(error)
+                {
+                    [strongSelf _alynasisRequestEndWithError:error];
+                }
+                if (failure) {
+                    failure(task, error);
+                }
+            }];
+        }
+            break;
+        case MARNetworkRequestTypePost:
+        {
+            task = [self POST:urlString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+                if (progress) progress(uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                __strong __typeof(weakSelf) strongSelf = weakSelf;
+                [strongSelf _alynasisRequestEndWithTask:task];
+                if (success) {
+                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
+                    success(task, responce);
+                }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                __strong __typeof(weakSelf) strongSelf = weakSelf;
+                if (!strongSelf) return;
+                if(error)
+                {
+                    [strongSelf _alynasisRequestEndWithError:error];
+                }
+                if (failure) {
+                    failure(task, error);
+                }
+            }];
+        }
+            break;
+        case MARNetworkRequestTypeDelete:
+        {
+            task = [self DELETE:urlString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                __strong __typeof(weakSelf) strongSelf = weakSelf;
+                [strongSelf _alynasisRequestEndWithTask:task];
+                if (success) {
+                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
+                    success(task, responce);
+                }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                __strong __typeof(weakSelf) strongSelf = weakSelf;
+                if (!strongSelf) return;
+                if(error)
+                {
+                    [strongSelf _alynasisRequestEndWithError:error];
+                }
+                if (failure) {
+                    failure(task, error);
+                }
+            }];
+        }
+            break;
+    }
+    if (task) {
+        _builder = [[ALBBMANNetworkHitBuilder alloc] initWithHost:task.originalRequest.URL.host method:task.originalRequest.HTTPMethod];
+        [_builder requestStart];
+    }
+    return task;
+}
+
 + (NSURLSessionDataTask *)_mar_requestType:(MARNetworkRequestType)type
                                  urlString:(NSString *)urlString
                                 parameters:(id)parameters
@@ -82,57 +187,7 @@
                                loadingType:(MARNetworkLoadingType)loadingType     // 备用
                                     inView:(UIView *)inView;                      // 备用
 {
-    NSURLSessionDataTask *task;
-    
-    switch (type) {
-        case MARNetworkRequestTypeGet:
-        {
-            task = [[self shareManager] GET:urlString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
-                if (progress) progress(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
-            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                if (success) {
-                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
-                    success(task, responce);
-                }
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                if (failure) {
-                    failure(task, error);
-                }
-            }];
-        }
-            break;
-        case MARNetworkRequestTypePost:
-        {
-            task = [[self shareManager] POST:urlString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-                if (progress) progress(uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
-            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                if (success) {
-                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
-                    success(task, responce);
-                }
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                if (failure) {
-                    failure(task, error);
-                }
-            }];
-        }
-            break;
-        case MARNetworkRequestTypeDelete:
-        {
-            task = [[self shareManager] DELETE:urlString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                if (success) {
-                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
-                    success(task, responce);
-                }
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                if (failure) {
-                    failure(task, error);
-                }
-            }];
-        }
-            break;
-    }
-    return task;
+    return [[self instance] _mar_requestType:type urlString:urlString parameters:parameters progress:progress success:success failure:failure loadingType:loadingType inView:inView];
 }
 
 + (NSURLSessionDataTask *)_mar_requestType:(MARNetworkRequestType)type
@@ -233,18 +288,30 @@
                           failure:failure];
 }
 
-+ (NSURLSessionDataTask*)mar_request:(NSURLRequest *)request
+- (NSURLSessionDataTask*)mar_request:(NSURLRequest *)request
                              success:(void (^)(NSURLResponse *, id))success
                              failure:(void (^)(NSURLResponse *, id))failure
 {
-    NSURLSessionDataTask* datatask = [[self shareManager] dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    if (request) {
+        _builder = [[ALBBMANNetworkHitBuilder alloc] initWithHost:request.URL.host method:request.HTTPMethod];
+        [_builder requestStart];
+    }
+    NSURLSessionDataTask *datatask = nil;
+    __weak __typeof(self) weakSelf = self;
+    datatask = [self dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+            if (!strongSelf) return;
+            [strongSelf _alynasisRequestEndWithError:error];
             if (failure) {
                 failure(response, error);
             }
         }
         else
         {
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+            if (!strongSelf) return;
+            [strongSelf _alynasisRequestEndWithTask:datatask];
             if (success) {
                 success(response, responseObject);
             }
@@ -255,22 +322,37 @@
     return datatask;
 }
 
-+ (NSURLSessionUploadTask *)mar_uploadRequest:(NSURLRequest *)request
++ (NSURLSessionDataTask*)mar_request:(NSURLRequest *)request
+                             success:(void (^)(NSURLResponse *, id))success
+                             failure:(void (^)(NSURLResponse *, id))failure
+{
+    return [[self instance] mar_request:request success:success failure:failure];
+}
+
+- (NSURLSessionUploadTask *)mar_uploadRequest:(NSURLRequest *)request
                                      fromData:(NSData *)bodyData
                                      progress:(MARNetworkProgress)progress
                                       success:(void (^)(NSURLResponse *, id))success
                                       failure:(void (^)(NSURLResponse *, NSError *))failure
 {
-    NSURLSessionUploadTask *uploadTask = [[self shareManager] uploadTaskWithRequest:request fromData:bodyData progress:^(NSProgress * _Nonnull uploadProgress) {
+    NSURLSessionUploadTask *uploadTask = nil;
+    __weak __typeof(self) weakSelf = self;
+    uploadTask = [self uploadTaskWithRequest:request fromData:bodyData progress:^(NSProgress * _Nonnull uploadProgress) {
         if (progress) progress(uploadProgress.completedUnitCount/uploadProgress.totalUnitCount);
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        if (!strongSelf) return;
         if (error) {
             if (failure) {
                 failure(response, error);
             }
+            [strongSelf _alynasisRequestEndWithError:error];
         }
         else
         {
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+            if (!strongSelf) return;
+            [strongSelf _alynasisRequestEndWithTask:uploadTask];
             if (success) {
                 MARNetworkResponse *responseModel = [MARNetworkResponse mar_modelWithDictionary:responseObject];
                 success(response,responseModel);
@@ -280,7 +362,21 @@
     }];
     [uploadTask resume];
     
+    if (uploadTask) {
+        _builder = [[ALBBMANNetworkHitBuilder alloc] initWithHost:uploadTask.originalRequest.URL.host method:uploadTask.originalRequest.HTTPMethod];
+        [_builder requestStart];
+    }
+
     return uploadTask;
+}
+
++ (NSURLSessionUploadTask *)mar_uploadRequest:(NSURLRequest *)request
+                                     fromData:(NSData *)bodyData
+                                     progress:(MARNetworkProgress)progress
+                                      success:(void (^)(NSURLResponse *, id))success
+                                      failure:(void (^)(NSURLResponse *, NSError *))failure
+{
+    return [[self instance] mar_uploadRequest:request fromData:bodyData progress:progress success:success failure:failure];
 }
 
 
@@ -291,6 +387,31 @@
  */
 +(BOOL)mar_reachable{
     return [AFNetworkReachabilityManager sharedManager].reachable;
+}
+
+- (void)_alynasisRequestEndWithError:(NSError *)error
+{
+    if (!_builder) return;
+    ALBBMANNetworkError *networkError = [[ALBBMANNetworkError alloc] initWithErrorCode:MARSTRWITHINT(error.code)];
+    [networkError setProperty:@"errMsg" value:error.localizedDescription ?: @"errMsg"];
+    [networkError setProperty:@"wifiip" value:[UIDevice currentDevice].mar_ipAddressWIFI ?: @"wifiip"];
+    [networkError setProperty:@"cellip" value:[UIDevice currentDevice].mar_ipAddressCell ?: @"cellip"];
+    [networkError setProperty:@"ip" value:[UIDevice currentDevice].mar_ipAddressWIFI ?: ([UIDevice currentDevice].mar_ipAddressCell ?: @"ip")];
+    [_builder requestEndWithError:networkError];
+    // 组装日志并发送
+    ALBBMANTracker *tracker = [[ALBBMANAnalytics getInstance] getDefaultTracker];
+    [tracker send:[_builder build]];
+}
+
+- (void)_alynasisRequestEndWithTask:(NSURLSessionDataTask *)task
+{
+    if (!_builder) return;
+    [_builder requestEndWithBytes:task.countOfBytesReceived];
+    [_builder setProperty:@"wifiip" value:[UIDevice currentDevice].mar_ipAddressWIFI ?: @"wifiip"];
+    [_builder setProperty:@"cellip" value:[UIDevice currentDevice].mar_ipAddressCell ?: @"cellip"];
+    [_builder setProperty:@"ip" value:[UIDevice currentDevice].mar_ipAddressWIFI ?: ([UIDevice currentDevice].mar_ipAddressCell ?: @"ip")];
+    ALBBMANTracker *tracker = [[ALBBMANAnalytics getInstance] getDefaultTracker];
+    [tracker send:[_builder build]];
 }
 
 @end

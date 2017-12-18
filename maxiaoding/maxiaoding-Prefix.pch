@@ -16,6 +16,7 @@
 #import <MARCategory.h>
 #import "macro.h"
 #import "MARMobUtil.h"
+#import "MARDataAnalysis.h"
 #import "MARGlobalModel.h"
 #endif
 

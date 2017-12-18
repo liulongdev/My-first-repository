@@ -578,7 +578,7 @@
                                         <rect key="frame" x="96" y="3" width="263" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                         <connections>
                                             <outlet property="delegate" destination="iLr-WR-Q1q" id="GjD-km-8IM"/>
                                         </connections>

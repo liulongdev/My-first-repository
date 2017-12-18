@@ -168,7 +168,9 @@
     NSInteger row = indexPath.row;
     if (_cookDetailArray.count > row) {
         MARCookDetailModel *model = _cookDetailArray[row];
-        [self performSegueWithIdentifier:@"goCookDetailVC" sender:model];
+        if (model.recipe.method.count > 0 || model.recipe.ingredients || model.recipe.sumary) {
+            [self performSegueWithIdentifier:@"goCookDetailVC" sender:model];
+        }
     }
 }
 

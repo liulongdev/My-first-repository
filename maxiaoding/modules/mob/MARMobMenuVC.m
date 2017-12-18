@@ -83,14 +83,17 @@ static NSString * const mobTitle_testFunction       = @"测试";
     UILabel *label = (UILabel *)[cell viewWithTag:1];
     if ([mobTitle_wxArticle isEqualToString:label.text]) {
         [self performSegueWithIdentifier:@"goArticleCategoryVC" sender:nil];
+        [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_wxArticle"];
     }
     else if ([mobTitle_historyToday isEqualToString:label.text])
     {
         [self performSegueWithIdentifier:@"goHistoryDayVC" sender:nil];
+        [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_historyDay"];
     }
     else if ([mobTitle_phoneNumberSetting isEqualToString:label.text])
     {
         [self performSegueWithIdentifier:@"goPhoneNumberSettingVC" sender:nil];
+        [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_phoneNumbeSetting"];
     }
     else if ([mobTitle_utilityTool isEqualToString:label.text])
     {
@@ -99,14 +102,17 @@ static NSString * const mobTitle_testFunction       = @"测试";
     else if ([mobTitle_carBrand isEqualToString:label.text])
     {
         [self performSegueWithIdentifier:@"goCarBrandListVC" sender:nil];
+        [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_carBrand"];
     }
     else if ([mobTitle_cookMenu isEqualToString:label.text])
     {
         [self performSegueWithIdentifier:@"goCookCategoryListVC" sender:nil];
+        [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_cookCategoryList"];
     }
     else if ([mobTitle_testFunction isEqualToString:label.text])
     {
         [MARMobUtil test];
+        [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_test"];
     }
     
     

@@ -12,4 +12,6 @@
 #define kMARGlobalNotification          @"kMARGlobalNotification"
 #define kMARGlobalLocalNotification     @"kMARGlobalLocalNotification"
 
+#define KMARUIApplicationDidBecomeActiveNotification @"KMARUIApplicationDidBecomeActiveNotification"
+#define kMARUIApplicationDidEnterBackgroundNotification @"kMARUIApplicationDidEnterBackgroundNotification"
 #endif /* notification_h */

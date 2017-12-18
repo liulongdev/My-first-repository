@@ -129,6 +129,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.isSelectStyle) {
+        [MARDataAnalysis setEventPage:@"cookCategoryList" EventLabel:@"select_cookCategory"];
+    }
+    else
+        [MARDataAnalysis setEventPage:@"cookCategoryList" EventLabel:@"click_cookCategory_to_cookSearchPage"];
     NSInteger row = indexPath.row;
     if (_cookCategoryMenuArray.count > indexPath.section) {
         if (_cookCategoryMenuArray[indexPath.section].childs.count > row) {
