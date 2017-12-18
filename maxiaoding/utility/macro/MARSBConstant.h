@@ -12,6 +12,7 @@
  StoreBoard Name
  */
 extern NSString * const kSBNAME_Mob;
+extern NSString * const kSBNAME_Mine;
 extern NSString * const kSBNAME_Test;
 /**
  StoreBoard ID of  UIViewcontroller in StoreBoard
@@ -27,6 +28,8 @@ extern NSString * const kSBID_Mob_CardDetailVC;
 extern NSString * const kSBID_Mob_CookCategoryListVC;
 extern NSString * const kSBID_Mob_SearchCookVC;
 extern NSString * const kSBID_Mob_CookDetailVC;
+extern NSString * const kSBID_Mine_MineVC;
+extern NSString * const kSBID_Mine_SettingVC;
 
 @interface MARSBConstant : NSObject
 

@@ -32,11 +32,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:self.mar_preferredNavigationBarHidden animated:YES];
-    if (!self.mar_preferredNavigationBarHidden) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-        self.navigationController.interactivePopGestureRecognizer.delegate = (id) self;
-    }
 }
 
 #pragma mark - set YES/NO to indicate wheather resign first responder when tap view
@@ -149,31 +144,6 @@
 - (void)dealloc
 {
     [self __removeObserverGlobal];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-@end
-
-
-@implementation UIViewController (MARBaseVCEX)
-
-- (BOOL)mar_preferredNavigationBarHidden
-{
-    return [objc_getAssociatedObject(self, @selector(mar_preferredNavigationBarHidden)) boolValue];
-}
-
-- (void)setMar_preferredNavigationBarHidden:(BOOL)mar_preferredNavigationBarHidden
-{
-    objc_setAssociatedObject(self, @selector(mar_preferredNavigationBarHidden), @(mar_preferredNavigationBarHidden), OBJC_ASSOCIATION_ASSIGN);
 }
 
 @end

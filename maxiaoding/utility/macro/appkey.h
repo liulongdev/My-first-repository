@@ -9,11 +9,15 @@
 #ifndef appkey_h
 #define appkey_h
 
-#define MobAppKey           @"2304b0aa06e05"
-#define MobSMSSDKAppKey     @"2304b0aa06e05"
-#define MobAPIAppKey        @"2304b0aa06e05"
+#define MobAppKey                   @"2304b0aa06e05"
+#define MobSMSSDKAppKey             @"2304b0aa06e05"
+#define MobAPIAppKey                @"2304b0aa06e05"
 
-#define AliDataAnalysisAppKey       @"24734133"
-#define AliDataAnalysisSecretKey    @"c2b6e3032526c5a91b1b91d0eb8aa597"
+#define AliAppKey                   @"24734133"
+#define AliSecretKey                @"c2b6e3032526c5a91b1b91d0eb8aa597"
+#define AliDataAnalysisAppKey       AliAppKey
+#define AliDataAnalysisSecretKey    AliSecretKey
+#define AliFeedbackAppKey           AliAppKey
+#define AliFeedbackSecretKey        AliSecretKey
 
 #endif /* appkey_h */

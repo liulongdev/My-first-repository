@@ -12,6 +12,7 @@
  StoreBoard Name
  */
 NSString * const kSBNAME_Mob                            = @"mob";
+NSString * const kSBNAME_Mine                           = @"mine";
 NSString * const kSBNAME_Test                           = @"test";
 /**
  StoryBoard ID of  UIViewcontroller in StoreBoard
@@ -27,6 +28,8 @@ NSString * const kSBID_Mob_CardDetailVC                 = @"MARCarDetailVC";
 NSString * const kSBID_Mob_CookCategoryListVC           = @"MARCookCategoryListVC";
 NSString * const kSBID_Mob_SearchCookVC                 = @"MARSearchCookVC";
 NSString * const kSBID_Mob_CookDetailVC                 = @"MARCookDetailVC";
+NSString * const kSBID_Mine_MineVC                      = @"MARMineVC";
+NSString * const kSBID_Mine_SettingVC                    = @"MARSettingVC";
 
 /**
  StoryBoard Segue Identifier

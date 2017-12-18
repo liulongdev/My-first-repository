@@ -62,6 +62,9 @@
 		5B25F9021FE188C300E85884 /* MARBaseDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F9001FE188C200E85884 /* MARBaseDBModel.m */; };
 		5B933B2C1FE767AD004C2038 /* MARDataAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B2B1FE767AD004C2038 /* MARDataAnalysis.m */; };
 		5B933B321FE79999004C2038 /* UIViewController+MAREX.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B311FE79998004C2038 /* UIViewController+MAREX.m */; };
+		5B933B351FE823B4004C2038 /* mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B933B341FE823B4004C2038 /* mine.storyboard */; };
+		5B933B3C1FE82421004C2038 /* MARMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B3B1FE82421004C2038 /* MARMineVC.m */; };
+		5B933B3F1FE82674004C2038 /* MARSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B3E1FE82674004C2038 /* MARSettingVC.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
 		5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */; };
@@ -197,6 +200,11 @@
 		5B933B2B1FE767AD004C2038 /* MARDataAnalysis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARDataAnalysis.m; sourceTree = "<group>"; };
 		5B933B301FE79998004C2038 /* UIViewController+MAREX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MAREX.h"; sourceTree = "<group>"; };
 		5B933B311FE79998004C2038 /* UIViewController+MAREX.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MAREX.m"; sourceTree = "<group>"; };
+		5B933B341FE823B4004C2038 /* mine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = mine.storyboard; sourceTree = "<group>"; };
+		5B933B3A1FE82421004C2038 /* MARMineVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMineVC.h; sourceTree = "<group>"; };
+		5B933B3B1FE82421004C2038 /* MARMineVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMineVC.m; sourceTree = "<group>"; };
+		5B933B3D1FE82674004C2038 /* MARSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARSettingVC.h; sourceTree = "<group>"; };
+		5B933B3E1FE82674004C2038 /* MARSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARSettingVC.m; sourceTree = "<group>"; };
 		5BB1D1571FE190EB0004396E /* MARHistoryDayDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayDetailVC.h; sourceTree = "<group>"; };
 		5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHistoryDayDetailVC.m; sourceTree = "<group>"; };
 		5BC0F5731FE211DF004C62D4 /* userdefaultkey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userdefaultkey.h; sourceTree = "<group>"; };
@@ -382,6 +390,7 @@
 		5B25F8B11FE0F80500E85884 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				5B933B331FE823A7004C2038 /* mine */,
 				5B029F101FE3C83C008ED5CA /* homecustom */,
 				5B25F8B21FE0F80500E85884 /* mob */,
 			);
@@ -548,6 +557,50 @@
 			path = dataanalysis;
 			sourceTree = "<group>";
 		};
+		5B933B331FE823A7004C2038 /* mine */ = {
+			isa = PBXGroup;
+			children = (
+				5B933B381FE823D4004C2038 /* controller */,
+				5B933B391FE823D4004C2038 /* model */,
+				5B933B361FE823D4004C2038 /* view */,
+				5B933B341FE823B4004C2038 /* mine.storyboard */,
+			);
+			path = mine;
+			sourceTree = "<group>";
+		};
+		5B933B361FE823D4004C2038 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B933B371FE823D4004C2038 /* cell */,
+				5B933B3A1FE82421004C2038 /* MARMineVC.h */,
+				5B933B3B1FE82421004C2038 /* MARMineVC.m */,
+				5B933B3D1FE82674004C2038 /* MARSettingVC.h */,
+				5B933B3E1FE82674004C2038 /* MARSettingVC.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5B933B371FE823D4004C2038 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		5B933B381FE823D4004C2038 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		5B933B391FE823D4004C2038 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		665DD05C9EEE5810E3C0563D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -669,6 +722,7 @@
 				5B029F1E1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib in Resources */,
 				5B25F85F1FE0D2CA00E85884 /* LaunchScreen.storyboard in Resources */,
 				5B25F85C1FE0D2CA00E85884 /* Assets.xcassets in Resources */,
+				5B933B351FE823B4004C2038 /* mine.storyboard in Resources */,
 				5B029F2B1FE4043D008ED5CA /* MARHomeCustomVC.xib in Resources */,
 				5B029F351FE421AB008ED5CA /* MARHomeDateView.xib in Resources */,
 				5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */,
@@ -755,6 +809,7 @@
 				5B029EFE1FE2824C008ED5CA /* MARCarBrandModel.m in Sources */,
 				5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */,
 				5B25F8D01FE0F80500E85884 /* MARNetworkResponse.m in Sources */,
+				5B933B3F1FE82674004C2038 /* MARSettingVC.m in Sources */,
 				5BFCE71A1FE53F6900E86CCC /* MARCookStepTableCell.m in Sources */,
 				5B029F041FE2E016008ED5CA /* MARMobUtil.m in Sources */,
 				5B029F4A1FE500C1008ED5CA /* UIImageView+SDWEBEXT.m in Sources */,
@@ -772,6 +827,7 @@
 				5B029F311FE41C1F008ED5CA /* MARHomeDateView.m in Sources */,
 				5B029F411FE4E3BE008ED5CA /* MARCookCategoryListVC.m in Sources */,
 				5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */,
+				5B933B3C1FE82421004C2038 /* MARMineVC.m in Sources */,
 				5B029EFB1FE28098008ED5CA /* MARCarBrandListVC.m in Sources */,
 				5B029F241FE3D55E008ED5CA /* MARHomeTestVC.m in Sources */,
 				5B25F8FC1FE17F9100E85884 /* MARHistoryDayViewController.m in Sources */,

@@ -12,6 +12,8 @@
 static char mar_prePageNameKey;
 static char mar_pageAppearTimeIntervalKey;
 static char mar_enterBackGroundTimeIntervalKey;
+static char mar_preferredNavigationBarHiddenKey;
+static char mar_naviBackPanGestureEnabelKey;
 
 @implementation UIViewController (MAREX)
 +(void)load
@@ -21,14 +23,26 @@ static char mar_enterBackGroundTimeIntervalKey;
     
 }
 
+- (void)mar_viewWillAppear:(BOOL)animated
+{
+    [self mar_viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:self.mar_preferredNavigationBarHidden animated:YES];
+    if (!self.mar_preferredNavigationBarHidden || self.mar_naviBackPanGestureEnabel) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        self.navigationController.interactivePopGestureRecognizer.delegate = (id) self;
+    }
+    else{
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
+}
+
 - (void)mar_viewDidAppear:(BOOL)animated
 {
     [self mar_viewDidAppear:animated];
     [self ex_marAddObserservs];
     self.mar_pageAppearTimeInterval = [NSDate new].timeIntervalSince1970;
     [MARDataAnalysis pageAppear:self];
-    
-    
 }
 
 - (void)mar_viewDidDisappear:(BOOL)animated
@@ -131,7 +145,6 @@ static char mar_enterBackGroundTimeIntervalKey;
 - (void)_refreshPageAppearTimeInterval:(NSNotification *)noti
 {
     if (self.mar_pageAppearTimeInterval > 0) {
-        NSLog(@"pretime: %lld", self.mar_pageAppearTimeInterval);
         if (self.mar_enterBackGroundTimeInterval > self.mar_pageAppearTimeInterval) {
             self.mar_pageAppearTimeInterval = (long long)[NSDate new].timeIntervalSince1970 - (self.mar_enterBackGroundTimeInterval - self.mar_pageAppearTimeInterval);
         }
@@ -140,5 +153,27 @@ static char mar_enterBackGroundTimeIntervalKey;
     }
 }
 
+/**
+ NavigationControler
+ */
+- (BOOL)mar_preferredNavigationBarHidden
+{
+    return [objc_getAssociatedObject(self, &mar_preferredNavigationBarHiddenKey) boolValue];
+}
+
+- (void)setMar_preferredNavigationBarHidden:(BOOL)mar_preferredNavigationBarHidden
+{
+    objc_setAssociatedObject(self, &mar_preferredNavigationBarHiddenKey, @(mar_preferredNavigationBarHidden), OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (BOOL)mar_naviBackPanGestureEnabel
+{
+    return ![objc_getAssociatedObject(self, &mar_naviBackPanGestureEnabelKey) boolValue];
+}
+
+- (void)setMar_naviBackPanGestureEnabel:(BOOL)mar_naviBackPanGestureEnabel
+{
+    objc_setAssociatedObject(self, &mar_naviBackPanGestureEnabel, @(!mar_naviBackPanGestureEnabel), OBJC_ASSOCIATION_ASSIGN);
+}
 
 @end

@@ -18,6 +18,7 @@
 #import "MARMobUtil.h"
 #import "MARDataAnalysis.h"
 #import "MARGlobalModel.h"
+#import "UIViewController+MAREX.h"
 #endif
 
 #endif /* maxiaoding_Prefix_pch */
