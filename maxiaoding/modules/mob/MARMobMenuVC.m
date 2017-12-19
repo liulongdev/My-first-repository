@@ -143,13 +143,13 @@ static NSString * const mobTitle_testFunction       = @"测试";
     {
         [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_aliFeedback"];
         self.feedbackVC.mar_naviBackPanGestureEnabel = NO;
-        [self.navigationController pushViewController:self.feedbackVC animated:YES];
+        [self mar_pushViewController:self.feedbackVC animated:YES];
     }
     else if ([mineCellTitle_mine isEqualToString:label.text])
     {
         [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_mine"];
         UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Mine storyboardId:kSBID_Mine_MineVC];
-        [self.navigationController pushViewController:vc animated:YES];
+        [self mar_pushViewController:vc animated:YES];
         
     }
 }

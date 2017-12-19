@@ -50,10 +50,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MARHomeCustomTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MARHomeCustomTableCell" forIndexPath:indexPath];
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     [cell setBottomAppearBlock:^{
         NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
-        [weakSelf.tableView scrollToRowAtIndexPath:nextIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [weak_self.tableView scrollToRowAtIndexPath:nextIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }];
     return cell;
 }

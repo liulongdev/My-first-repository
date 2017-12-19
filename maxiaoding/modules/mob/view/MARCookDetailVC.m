@@ -83,17 +83,17 @@
     self.cookImageBackGroundView.layer.cornerRadius = 10.f;
     
     NSURL *cookImageURL = [NSURL URLWithString:[self cookImageUrlStr] ?: @""];
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     [self.blurImageView sd_setImageWithURL:cookImageURL placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        @strongify(self)
+        if (!strong_self) return;
         if (error) {
             
         }
         else if (image)
         {
-            __strong __typeof(weakSelf) strongSelf = weakSelf;
-            if (!strongSelf) return;
-            strongSelf->loadImageSuccess = YES;
-            strongSelf.blurImageView.image = [image mar_imageByBlurRadius:40 tintColor:RGBAHEX(0x29AAFE, 0.3) tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
+            strong_self->loadImageSuccess = YES;
+            strong_self.blurImageView.image = [image mar_imageByBlurRadius:40 tintColor:RGBAHEX(0x29AAFE, 0.3) tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
         }
     }];
     
@@ -174,9 +174,9 @@
     if (self.cookDetail.recipe.wrapperMethods.count > indexPath.row) {
         MARCookStep *stepModel = self.cookDetail.recipe.wrapperMethods[indexPath.row];
         [cell setCellData:stepModel];
-        __weak __typeof(self) weakSelf = self;
+        @weakify(self)
         cell.loadAsyncImageCallback = ^{
-            [weakSelf.tableView reloadData];
+            [weak_self.tableView reloadData];
         };
     }
     return cell;

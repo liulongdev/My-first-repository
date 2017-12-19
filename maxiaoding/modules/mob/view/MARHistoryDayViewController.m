@@ -92,15 +92,17 @@
     if (self.historyDayArray.count > 0) {
         return;
     }
-    __weak __typeof(self) weakSelf = self;
+    
     [self showActivityView:YES];
+    @weakify(self)
     [MARMobUtil loadHistoryListWithDateStr:self.dateStr callback:^(MOBAResponse *response, NSArray<MARHistoryDayModel *> *historyDayArray, NSString *errMsg) {
-        [weakSelf showActivityView:NO];
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
-        if (!strongSelf) return;
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
+        if (!strong_self) return;
         if (!response.error) {
-            strongSelf->_historyDayArray = historyDayArray;
-            [strongSelf.tableView reloadData];
+            strong_self->_historyDayArray = historyDayArray;
+            [strong_self.tableView reloadData];
         }
         else
         {
@@ -116,21 +118,21 @@
     if (!_historyDayArray) {
         static BOOL simpleAsync = NO;
         [self showActivityView:YES];
-        __weak __typeof(self) weakSelf = self;
+        @weakify(self)
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            __strong __typeof(weakSelf) strongSelf = weakSelf;
-            if (!strongSelf) return;
+            @strongify(self)
+            if (!strong_self) return;
             if (!simpleAsync) {
                 simpleAsync = YES;
-                strongSelf->_historyDayArray = [MARHistoryDayModel getHistoryDayArrayWithDateStr:strongSelf.dateStr];
-                if (strongSelf->_historyDayArray.count <= 0) {
-                    [strongSelf loadData];
+                strong_self->_historyDayArray = [MARHistoryDayModel getHistoryDayArrayWithDateStr:strong_self.dateStr];
+                if (strong_self->_historyDayArray.count <= 0) {
+                    [strong_self loadData];
                 }
                 else
                 {
                     mar_dispatch_async_on_main_queue(^{
-                        [strongSelf showActivityView:NO];
-                        [strongSelf.tableView reloadData];
+                        [strong_self showActivityView:NO];
+                        [strong_self.tableView reloadData];
                     });
                 }
                 simpleAsync = NO;

@@ -20,6 +20,7 @@ static char mar_naviBackPanGestureEnabelKey;
 {
     [self mar_swizzleInstanceMethod:@selector(viewDidAppear:) with:@selector(mar_viewDidAppear:)];
     [self mar_swizzleInstanceMethod:@selector(viewDidDisappear:) with:@selector(mar_viewDidDisappear:)];
+    [self mar_swizzleClassMethod:@selector(prepareForSegue:sender:) with:@selector(mar_prepareForSegue:sender:)];
     
 }
 

@@ -34,14 +34,14 @@
 {
     [self.tableView reloadData];
     isCaculatingSDImageDiskSize = YES;
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     [[SDImageCache sharedImageCache] calculateSizeWithCompletionBlock:^(NSUInteger fileCount, NSUInteger totalSize) {
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
-        if (!strongSelf) return;
-        strongSelf->isCaculatingSDImageDiskSize = NO;
-        strongSelf->sdImageCount = fileCount;
-        strongSelf->sdImageDiskSize = totalSize;
-        [strongSelf.tableView reloadData];
+        @strongify(self);
+        if (!strong_self) return;
+        strong_self->isCaculatingSDImageDiskSize = NO;
+        strong_self->sdImageCount = fileCount;
+        strong_self->sdImageDiskSize = totalSize;
+        [strong_self.tableView reloadData];
     }];
 }
 

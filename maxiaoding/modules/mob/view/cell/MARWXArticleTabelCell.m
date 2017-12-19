@@ -38,26 +38,8 @@
         self.marPubTimeLabel.text = model.pubTime;
         self.marHitCountLabel.text = [NSString stringWithFormat:@"%@", MARSTRWITHINT(model.hitCount)];
         
-        // 对第一次下载下来的图片进行圆弧剪切，并保存。 所以每次去找缓存、硬盘中找是否有，如果有就使用，不用再去做多余的圆弧剪切功能。
         NSURL *imageURL = [NSURL URLWithString:[model getFirstThumbnail] ?: @""];
-        NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:imageURL];
-        __weak __typeof(self) weakSelf = self;
-        [[SDWebImageManager sharedManager].imageCache queryDiskCacheForKey:key done:^(UIImage *image, SDImageCacheType cacheType) {
-            if (image) {
-                weakSelf.marImageView.image = image;
-            }
-            else
-            {
-                [weakSelf.marImageView setShowActivityIndicatorView:YES];
-                [weakSelf.marImageView setIndicatorStyle:UIActivityIndicatorViewStyleGray];
-                
-                [weakSelf.marImageView sd_setImageWithURL:imageURL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                    image = [image mar_imageByRoundCornerRadius:(1/10.f * MIN(image.size.height, image.size.width))];
-                    weakSelf.marImageView.image = image;
-                    [[SDWebImageManager sharedManager].imageCache storeImage:image recalculateFromImage:YES imageData:nil forKey:[[SDWebImageManager sharedManager] cacheKeyForURL:imageURL] toDisk:YES];
-                }];
-            }
-        }];
+        [self.marImageView mar_setImageDefaultCornerRadiusWithURL:imageURL placeholderImage:nil];
     }
 }
 

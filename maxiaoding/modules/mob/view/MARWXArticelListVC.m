@@ -34,13 +34,13 @@
     
     self.tableView.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        if (![weakSelf.tableView.mj_footer isRefreshing]) {
-            weakSelf.pageModel.pageIndex = 0;
-            [weakSelf.articleArray removeAllObjects];
-            [weakSelf showActivityView:NO];
-            [weakSelf loadData];
+        if (![weak_self.tableView.mj_footer isRefreshing]) {
+            weak_self.pageModel.pageIndex = 0;
+            [weak_self.articleArray removeAllObjects];
+            [weak_self showActivityView:NO];
+            [weak_self loadData];
         }
     }];
     // 隐藏时间
@@ -55,16 +55,16 @@
     if (self.isAnimating) {
         return;
     }
-    __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
+    @weakify(self)
     [MARMobUtil loadWXArticleListWithCid:self.cid pageModel:self.pageModel callback:^(MOBAResponse *response, NSArray<MARWXArticleModel *> *articles, NSString *errMsg) {
-        [weakSelf showActivityView:NO];
+        [weak_self showActivityView:NO];
         if (!response.error) {
-            weakSelf.pageModel.pageIndex ++;
-            [weakSelf.articleArray addObjectsFromArray:articles];
-            [weakSelf.tableView reloadData];
-            [weakSelf.tableView.mj_footer endRefreshing];
-            [weakSelf.tableView.mj_header endRefreshing];
+            weak_self.pageModel.pageIndex ++;
+            [weak_self.articleArray addObjectsFromArray:articles];
+            [weak_self.tableView reloadData];
+            [weak_self.tableView.mj_footer endRefreshing];
+            [weak_self.tableView.mj_header endRefreshing];
         }
         else
         {
@@ -120,7 +120,7 @@
         MARWXArticleModel *articleModel = self.articleArray[row];
         if ([articleModel.sourceUrl mar_isValidUrl]) {
             MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:articleModel.sourceUrl]];
-            [self.navigationController pushViewController:webVC animated:YES];
+            [self mar_pushViewController:webVC animated:YES];
             
         }
     }

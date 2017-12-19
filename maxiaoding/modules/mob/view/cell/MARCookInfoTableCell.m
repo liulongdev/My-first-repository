@@ -33,7 +33,6 @@
     if ([data isKindOfClass:[MARCookDetailModel class]]) {
         MARCookDetailModel *model = data;
         
-        // 对第一次下载下来的图片进行圆弧剪切，并保存。 所以每次去找缓存、硬盘中找是否有，如果有就使用，不用再去做多余的圆弧剪切功能。
         NSURL *imageURL = [NSURL URLWithString:model.thumbnail ?: @""];
         [self.cookImageView mar_setImageDefaultCornerRadiusWithURL:imageURL placeholderImage:nil];
         

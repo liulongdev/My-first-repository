@@ -30,15 +30,15 @@
 //    if (_wxArticleArray.count > 0) {
 //        return;
 //    }
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     [self showActivityView:YES];
     [MARMobUtil loadWXArticleCategoryCallback:^(MOBAResponse *response, NSArray<MARWXArticleCategoryModel *> *articleArray, NSString *errMsg) {
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
-        if (!strongSelf) return;
-        [strongSelf showActivityView:NO];
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
         if (!response.error) {
-            strongSelf->_wxArticleArray = articleArray;
-            [weakSelf.collectionView reloadData];
+            strong_self->_wxArticleArray = articleArray;
+            [strong_self.collectionView reloadData];
         }
         else
         {

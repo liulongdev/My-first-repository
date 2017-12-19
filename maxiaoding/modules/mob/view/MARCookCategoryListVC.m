@@ -57,12 +57,13 @@
 
 - (void)loadData
 {
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     [MARMobUtil loadCookCategoriesCallback:^(MOBAResponse *response, NSArray<MARCookCategoryMenuModel *> *cookCategoryMenuArray, NSString *errMsg) {
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        @strongify(self)
+        if (!strong_self) return;
         if (!response.error) {
-            strongSelf->_cookCategoryMenuArray = cookCategoryMenuArray;
-            [strongSelf.tableView reloadData];
+            strong_self->_cookCategoryMenuArray = cookCategoryMenuArray;
+            [strong_self.tableView reloadData];
         }
         else
         {

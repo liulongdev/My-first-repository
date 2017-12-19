@@ -49,13 +49,15 @@
 
 - (IBAction)clickGetVerifyCodeAction:(id)sender {
     [self showActivityView:YES];
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:self.phoneNumberTF.text zone:self.areaCodeTF.text result:^(NSError *error) {
-        [weakSelf showActivityView:NO];
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
         if (error != nil) {
             NSString *codeKey = MARSTRWITHINT(error.code);
-            if (self.mobErrorDictionary[codeKey]) {
-                ShowErrorMessage(self.mobErrorDictionary[codeKey], 1.f);
+            if (strong_self.mobErrorDictionary[codeKey]) {
+                ShowErrorMessage(strong_self.mobErrorDictionary[codeKey], 1.f);
             }
             else
                 ShowErrorMessage([error localizedDescription], 1.f);
@@ -68,9 +70,11 @@
 
 - (IBAction)checkVerifyCodeAction:(id)sender {
     [self showActivityView:YES];
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     [SMSSDK commitVerificationCode:self.verifyCodeTF.text phoneNumber:self.phoneNumberTF.text zone:self.areaCodeTF.text result:^(NSError *error) {
-        [weakSelf showActivityView:NO];
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
         if (error != nil) {
             ShowErrorMessage([error localizedDescription], 1.5f);
         }
@@ -82,9 +86,9 @@
 
 - (IBAction)clickGetAreaCodeListAction:(id)sender {
     [self showActivityView:YES];
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     [SMSSDK getCountryZone:^(NSError *error, NSArray *zonesArray) {
-        [weakSelf showActivityView:NO];
+        [weak_self showActivityView:NO];
         if (error != nil) {
             ShowErrorMessage([error localizedDescription], 1.5f);
             NSLog(@">>> getAreaCodeList error : %@", [error localizedDescription]);

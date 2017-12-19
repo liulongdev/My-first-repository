@@ -57,15 +57,15 @@
 
 - (void)loadData
 {
-    __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
+    @weakify(self)
     [MARMobUtil loadCarSeriesName:(self.cardTypeInfoModel.type ?: @"") callback:^(MOBAResponse *response, NSArray<MARCarSerieModel *> *cardSerieArray, NSString *errMsg) {
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
-        if (!strongSelf) return ;
-        [strongSelf showActivityView:NO];
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
         if (!response.error) {
-            strongSelf->_cardSerieArray = cardSerieArray;
-            [strongSelf.tableView reloadData];
+            strong_self->_cardSerieArray = cardSerieArray;
+            [strong_self.tableView reloadData];
         }
         else
         {

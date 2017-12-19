@@ -91,7 +91,7 @@
     {
         if (self.navigationController && (navigationAction.navigationType == UIWebViewNavigationTypeFormSubmitted || navigationAction.navigationType == UIWebViewNavigationTypeLinkClicked)) {
             MARWebViewController *vc = [[[self class] alloc] initWithURLRequest:navigationAction.request];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self mar_pushViewController:vc animated:YES];
             decisionHandler(WKNavigationActionPolicyCancel);
         }
         else
@@ -139,8 +139,8 @@
     
     if(self.navigationController && (navigationType == UIWebViewNavigationTypeFormSubmitted || navigationType == UIWebViewNavigationTypeLinkClicked)){
         MARWebViewController *vc = [[[self class] alloc] initWithURLRequest:request];
-        //        [self.navigationController pushViewController:vc animated:YES];
-        [self.navigationController pushViewController:vc animated:YES];
+        //        [self mar_pushViewController:vc animated:YES];
+        [self mar_pushViewController:vc animated:YES];
         return NO;
     }
     
@@ -226,8 +226,7 @@
     
     if(self.navigationController && (navigationType == UIWebViewNavigationTypeFormSubmitted || navigationType == UIWebViewNavigationTypeLinkClicked)){
         MARWebViewController *vc = [[[self class] alloc] initWithURLRequest:request];
-        //        [self.navigationController pushViewController:vc animated:YES];
-        [self.navigationController pushViewController:vc animated:YES];
+        [self mar_pushViewController:vc animated:YES];
         return NO;
     }
     

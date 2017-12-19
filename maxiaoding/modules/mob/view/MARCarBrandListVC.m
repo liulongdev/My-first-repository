@@ -33,15 +33,16 @@
     if (self.carBrandArray.count > 0) {
         return;
     }
-    __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
+    @weakify(self)
     [MARMobUtil loadCarBrandListCallback:^(MOBAResponse *response, NSArray<MARCarBrandModel *> *cardBrandArray, NSString *errMsg) {
-        [weakSelf showActivityView:NO];
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
         if (!response.error) {
             NSArray<MARCarBrandModel *> *cardBrandArray = [NSArray mar_modelArrayWithClass:[MARCarBrandModel class] json:response.responder[@"result"]];
-            strongSelf.carBrandArray = cardBrandArray;
-            [weakSelf.tableView reloadData];
+            strong_self.carBrandArray = cardBrandArray;
+            [strong_self.tableView reloadData];
         }
         else
         {

@@ -54,13 +54,13 @@
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     self.tableView.mj_footer = footer;
     
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        if (![weakSelf.tableView.mj_footer isRefreshing]) {
-            weakSelf.pageModel.pageIndex = 0;
-            [weakSelf.cookDetailArray removeAllObjects];
-            [weakSelf showActivityView:NO];
-            [weakSelf loadData];
+        if (![weak_self.tableView.mj_footer isRefreshing]) {
+            weak_self.pageModel.pageIndex = 0;
+            [weak_self.cookDetailArray removeAllObjects];
+            [weak_self showActivityView:NO];
+            [weak_self loadData];
         }
     }];
     // 隐藏时间
@@ -79,7 +79,6 @@
     }
 //    isLoadingData = YES;
     
-    __weak __typeof(self) weakSelf = self;
     [self showActivityView:YES];
     if (needReloadData) {
         self.pageModel.pageIndex = 0;
@@ -88,21 +87,23 @@
         [self.tableView reloadData];
         needReloadData = NO;
     }
+    @weakify(self)
     [MARMobUtil loadCookListWithCid:self.cookCategoryModel.ctgId cookName:self.searchParamName loadPage:self.pageModel callback:^(MOBAResponse *response, NSArray<MARCookDetailModel *> *cookArray, NSInteger totalCount, NSString *errMsg) {
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf showActivityView:NO];
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
         if (!response.error) {
-            [strongSelf.cookDetailArray addObjectsFromArray:cookArray];
-            [strongSelf.tableView reloadData];
-            strongSelf.pageModel.pageIndex ++;
-            strongSelf.totalCount = totalCount;
+            [strong_self.cookDetailArray addObjectsFromArray:cookArray];
+            [strong_self.tableView reloadData];
+            strong_self.pageModel.pageIndex ++;
+            strong_self.totalCount = totalCount;
         }
         else
         {
             ShowErrorMessage(errMsg ?: [response.error localizedDescription], 1.f);
         }
-        [strongSelf.tableView.mj_footer endRefreshing];
-        [strongSelf.tableView.mj_header endRefreshing];
+        [strong_self.tableView.mj_footer endRefreshing];
+        [strong_self.tableView.mj_header endRefreshing];
     }];
     
 }
@@ -186,17 +187,18 @@
 
 - (IBAction)clickSelectCategoryAction:(id)sender {
     MARCookCategoryListVC *cookCategoryListVC = (MARCookCategoryListVC *)[UIViewController vcWithStoryboardName:kSBNAME_Mob storyboardId:kSBID_Mob_CookCategoryListVC];
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     cookCategoryListVC.selectedCallback = ^(MARCookCategoryModel *selectCategoryModel) {
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
-        if (![strongSelf.cookCategoryModel isEqual:selectCategoryModel] && (strongSelf.cookCategoryModel != nil || selectCategoryModel != nil)) {
-            strongSelf.cookCategoryModel = selectCategoryModel;
-            strongSelf->needReloadData = YES;
+        @strongify(self)
+        if (!strong_self) return;
+        if (![strong_self.cookCategoryModel isEqual:selectCategoryModel] && (strong_self.cookCategoryModel != nil || selectCategoryModel != nil)) {
+            strong_self.cookCategoryModel = selectCategoryModel;
+            strong_self->needReloadData = YES;
         }
     };
     cookCategoryListVC.isSelectStyle = YES;
     cookCategoryListVC.selectCookCategory = [self.cookCategoryModel copy];
-    [self.navigationController pushViewController:cookCategoryListVC animated:YES];
+    [self mar_pushViewController:cookCategoryListVC animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

@@ -50,30 +50,32 @@
         {
             self.constraint_stepImageMaxHeight.constant = 1000;
             NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:imageURL];
-            __weak __typeof(self) weakSelf = self;
+            @weakify(self)
             [[SDWebImageManager sharedManager].imageCache queryDiskCacheForKey:key done:^(UIImage *image, SDImageCacheType cacheType) {
                 if (image) {
-                    weakSelf.stepImageView.image = image;
-                    weakSelf.constraint_stepImageMaxHeight.constant = kScreenWIDTH * image.size.height / image.size.width;
-                    if (cacheType == SDImageCacheTypeDisk && weakSelf.loadAsyncImageCallback) {
-                        weakSelf.loadAsyncImageCallback();
+                    weak_self.stepImageView.image = image;
+                    weak_self.constraint_stepImageMaxHeight.constant = kScreenWIDTH * image.size.height / image.size.width;
+                    if (cacheType == SDImageCacheTypeDisk && weak_self.loadAsyncImageCallback) {
+                        weak_self.loadAsyncImageCallback();
                     }
                 }
                 else
                 {
-                    [weakSelf.stepImageView setShowActivityIndicatorView:YES];
-                    [weakSelf.stepImageView setIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                    [weak_self.stepImageView setShowActivityIndicatorView:YES];
+                    [weak_self.stepImageView setIndicatorStyle:UIActivityIndicatorViewStyleGray];
                     
-                    [weakSelf.stepImageView sd_setImageWithURL:imageURL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                    [weak_self.stepImageView sd_setImageWithURL:imageURL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                        @strongify(self)
+                        if (!strong_self) return;
                         if (error) {
                             
                         }
                         else if (image) {
                             image = [image mar_imageByRoundCornerRadius:(1/30.f * MIN(image.size.height, image.size.width))];
-                            weakSelf.stepImageView.image = image;
-                            weakSelf.constraint_stepImageMaxHeight.constant = kScreenWIDTH * image.size.height / image.size.width;
-                            if (weakSelf.loadAsyncImageCallback) {
-                                weakSelf.loadAsyncImageCallback();
+                            strong_self.stepImageView.image = image;
+                            strong_self.constraint_stepImageMaxHeight.constant = kScreenWIDTH * image.size.height / image.size.width;
+                            if (strong_self.loadAsyncImageCallback) {
+                                strong_self.loadAsyncImageCallback();
                             }
                             [[SDWebImageManager sharedManager].imageCache storeImage:image recalculateFromImage:YES imageData:nil forKey:[[SDWebImageManager sharedManager] cacheKeyForURL:imageURL] toDisk:YES];
                         }

@@ -163,9 +163,9 @@
         _leftLabel.textAlignment = NSTextAlignmentLeft;
         _leftLabel.textColor = RGBHEX(0x333333);
         _leftLabel.highlightedTextColor = RGBHEX(0xe0e0e0);
-        __weak __typeof(self) weakSelf = self;
+        @weakify(self)
         [_leftLabel mar_whenTapped:^{
-            weakSelf.day ++;
+            weak_self.day ++;
         }];
     }
     return _leftLabel;
@@ -181,9 +181,9 @@
         _rightLabel.textAlignment = NSTextAlignmentRight;
         _rightLabel.textColor = RGBHEX(0x333333);
         _rightLabel.highlightedTextColor = RGBHEX(0xe0e0e0);
-        __weak __typeof(self) weakSelf = self;
+        @weakify(self)
         [_rightLabel mar_whenTapped:^{
-            weakSelf.day ++;
+            weak_self.day ++;
         }];
     }
     return _rightLabel;
@@ -213,10 +213,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    __weak __typeof(self) weakSelf = self;
+    @weakify(self)
     [self _getMonthAndDayWithDaysIndex:indexPath.row callBack:^(NSInteger month, NSInteger day) {
-        weakSelf.month = month;
-        weakSelf.day = day;
+        weak_self.month = month;
+        weak_self.day = day;
     }];
     [self sendActionsForControlEvents:UIControlEventTouchUpInside];
 }

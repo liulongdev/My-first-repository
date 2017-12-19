@@ -83,11 +83,11 @@
         make.edges.mas_equalTo(UIEdgeInsetsZero);
     }];
     
-    __weak __typeof(self) weakSelf = self;
-    if (indexPath.row + 1 < [weakSelf tableView:tableView numberOfRowsInSection:0]) {
+    @weakify(self)
+    if (indexPath.row + 1 < [weak_self tableView:tableView numberOfRowsInSection:0]) {
         [cell setBottomAppearBlock:^{
             NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
-            [weakSelf.tableView scrollToRowAtIndexPath:nextIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [weak_self.tableView scrollToRowAtIndexPath:nextIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
         }];
     }
     else
@@ -96,7 +96,7 @@
     if (indexPath.row > 0) {
         [cell setTopAppearBlock:^{
             NSIndexPath *preIndexPath = [NSIndexPath indexPathForRow:(indexPath.row - 1) inSection:indexPath.section];
-            [weakSelf.tableView scrollToRowAtIndexPath:preIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [weak_self.tableView scrollToRowAtIndexPath:preIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
         }];
     }
     else
