@@ -41,5 +41,14 @@
 - (BOOL)isAnimating;
 
 
+/**
+ 增加提示视图, 可用于加载失败，网络异常等提示。
+ */
+- (void)hiddenEmptyView;
+
+- (void)showEmptyViewWithDescription:(NSString *)description;
+
+- (void)showEmptyViewWithImageimage:(UIImage *)image description:(NSString *)description;
+
 @end
 

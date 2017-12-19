@@ -20,4 +20,6 @@
 #define AliFeedbackAppKey           AliAppKey
 #define AliFeedbackSecretKey        AliSecretKey
 
+#define TianXingAppKey              @"8c4959808bd4723d8556c5c39a9828ec"
+
 #endif /* appkey_h */

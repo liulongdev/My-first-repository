@@ -14,6 +14,7 @@
 extern NSString * const kSBNAME_Mob;
 extern NSString * const kSBNAME_Mine;
 extern NSString * const kSBNAME_Test;
+extern NSString * const kSBNAME_Tianxing;
 /**
  StoreBoard ID of  UIViewcontroller in StoreBoard
  */
@@ -30,6 +31,8 @@ extern NSString * const kSBID_Mob_SearchCookVC;
 extern NSString * const kSBID_Mob_CookDetailVC;
 extern NSString * const kSBID_Mine_MineVC;
 extern NSString * const kSBID_Mine_SettingVC;
+extern NSString * const kSBID_Tianxing_TianxingMenuVC;
+extern NSString * const kSBID_Tianxing_TXNewsVC;
 
 @interface MARSBConstant : NSObject
 

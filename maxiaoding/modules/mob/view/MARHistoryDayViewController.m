@@ -103,12 +103,20 @@
         if (!response.error) {
             strong_self->_historyDayArray = historyDayArray;
             [strong_self.tableView reloadData];
+            if (historyDayArray.count > 0) {
+                [strong_self hiddenEmptyView];
+            }
+            else
+            {
+                [strong_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
+            }
         }
         else
         {
             NSString *codeKey = MARSTRWITHINT(response.error.code);
             ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
             NSLog(@">>> get history error : %@", [response.error localizedDescription]);
+            [strong_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
         }
     }];
 }

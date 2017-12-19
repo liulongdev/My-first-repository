@@ -20,7 +20,8 @@ static char mar_naviBackPanGestureEnabelKey;
 {
     [self mar_swizzleInstanceMethod:@selector(viewDidAppear:) with:@selector(mar_viewDidAppear:)];
     [self mar_swizzleInstanceMethod:@selector(viewDidDisappear:) with:@selector(mar_viewDidDisappear:)];
-    [self mar_swizzleClassMethod:@selector(prepareForSegue:sender:) with:@selector(mar_prepareForSegue:sender:)];
+    [self mar_swizzleInstanceMethod:@selector(prepareForSegue:sender:) with:@selector(mar_prepareForSegue:sender:)];
+    [self mar_swizzleInstanceMethod:@selector(viewWillAppear:) with:@selector(mar_viewWillAppear:)];
     
 }
 
@@ -32,10 +33,13 @@ static char mar_naviBackPanGestureEnabelKey;
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
         self.navigationController.interactivePopGestureRecognizer.delegate = (id) self;
     }
-    else{
+    
+    if (!self.mar_naviBackPanGestureEnabel) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     }
+
+    
 }
 
 - (void)mar_viewDidAppear:(BOOL)animated
@@ -174,7 +178,7 @@ static char mar_naviBackPanGestureEnabelKey;
 
 - (void)setMar_naviBackPanGestureEnabel:(BOOL)mar_naviBackPanGestureEnabel
 {
-    objc_setAssociatedObject(self, &mar_naviBackPanGestureEnabel, @(!mar_naviBackPanGestureEnabel), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, &mar_naviBackPanGestureEnabelKey, @(!mar_naviBackPanGestureEnabel), OBJC_ASSOCIATION_ASSIGN);
 }
 
 @end

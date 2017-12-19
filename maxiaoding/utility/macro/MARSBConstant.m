@@ -14,6 +14,7 @@
 NSString * const kSBNAME_Mob                            = @"mob";
 NSString * const kSBNAME_Mine                           = @"mine";
 NSString * const kSBNAME_Test                           = @"test";
+NSString * const kSBNAME_Tianxing                       = @"tianxing";
 /**
  StoryBoard ID of  UIViewcontroller in StoreBoard
  */
@@ -29,7 +30,9 @@ NSString * const kSBID_Mob_CookCategoryListVC           = @"MARCookCategoryListV
 NSString * const kSBID_Mob_SearchCookVC                 = @"MARSearchCookVC";
 NSString * const kSBID_Mob_CookDetailVC                 = @"MARCookDetailVC";
 NSString * const kSBID_Mine_MineVC                      = @"MARMineVC";
-NSString * const kSBID_Mine_SettingVC                    = @"MARSettingVC";
+NSString * const kSBID_Mine_SettingVC                   = @"MARSettingVC";
+NSString * const kSBID_Tianxing_TianxingMenuVC          = @"MARTianxingMenuVC";
+NSString * const kSBID_Tianxing_TXNewsVC                = @"MARTXNewsVC";
 
 /**
  StoryBoard Segue Identifier

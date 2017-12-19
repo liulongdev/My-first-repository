@@ -9,9 +9,11 @@
 #import "MARBaseViewController.h"
 #import <objc/runtime.h>
 #import <Masonry.h>
+#import "MAREmptyView.h"
 @interface MARBaseViewController ()
 @property (nonatomic, strong) UITapGestureRecognizer* resignFirstResponserGesture;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) MAREmptyView *tipEmptyView;
 @end
 
 @implementation MARBaseViewController
@@ -140,6 +142,48 @@
 {
     return _activityIndicatorView.isAnimating;
 }
+
+- (MAREmptyView *)tipEmptyView
+{
+    if (!_tipEmptyView) {
+        _tipEmptyView = [MAREmptyView new];
+    }
+    return _tipEmptyView;
+}
+
+- (void)hiddenEmptyView
+{
+    [_tipEmptyView removeFromSuperview];
+    [_tipEmptyView removeFromSuperview];
+}
+
+- (void)showEmptyViewWithDescription:(NSString *)description
+{
+    [self.view addSubview:self.tipEmptyView];
+    self.tipEmptyView.emptyDescription = description;
+    CGFloat width = kScreenWidth * 3 / 5;
+    [self.tipEmptyView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.centerY.mas_equalTo(self.view.mas_centerY).mas_offset(@(-40));
+        make.width.mas_equalTo(@(width));
+        make.height.mas_lessThanOrEqualTo(@(width * 4/3));
+    }];
+}
+
+- (void)showEmptyViewWithImageimage:(UIImage *)image description:(NSString *)description
+{
+    [self.view addSubview:self.tipEmptyView];
+    self.tipEmptyView.emptyImage = image;
+    self.tipEmptyView.emptyDescription = description;
+    CGFloat width = kScreenWidth * 3 / 5;
+    [self.tipEmptyView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.centerY.mas_equalTo(self.view.mas_centerY).mas_offset(@(-40));
+        make.width.mas_equalTo(@(width));
+        make.height.mas_lessThanOrEqualTo(@(width * 4/3));
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -16,9 +16,12 @@
 #import <MARCategory.h>
 #import "macro.h"
 #import "MARMobUtil.h"
+#import "MARTianxingUtil.h"
 #import "MARDataAnalysis.h"
 #import "MARGlobalModel.h"
 #import "UIViewController+MAREX.h"
+#import "MARNetworkManager.h"
+
 #endif
 
 #endif /* maxiaoding_Prefix_pch */

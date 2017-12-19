@@ -42,16 +42,29 @@
                         <constraint firstItem="XnD-jr-O5M" firstAttribute="centerX" secondItem="iZl-Y3-yE6" secondAttribute="centerX" id="s6a-IZ-Yud"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioR-46-q0X" customClass="MARAnalogClockView">
+                    <rect key="frame" x="72.5" y="218.5" width="230" height="230"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="230" id="21N-X8-8YO"/>
+                        <constraint firstAttribute="height" constant="230" id="z2W-JL-gbR"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ioR-46-q0X" secondAttribute="bottom" constant="120" id="6iE-gH-nQr"/>
                 <constraint firstItem="iZl-Y3-yE6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="IFH-uY-Cq6"/>
+                <constraint firstItem="ioR-46-q0X" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JZ6-NL-2Ag"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="iZl-Y3-yE6" secondAttribute="bottom" constant="100" id="KrS-hO-K7X"/>
                 <constraint firstItem="iZl-Y3-yE6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="88" id="ZMi-4h-xef"/>
+                <constraint firstItem="ioR-46-q0X" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zCt-He-bOe"/>
             </constraints>
             <connections>
+                <outlet property="clockView" destination="ioR-46-q0X" id="eMn-Y2-x8S"/>
                 <outlet property="dateTimeBackgroundView" destination="iZl-Y3-yE6" id="Gxm-aH-VsA"/>
             </connections>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>
 </document>

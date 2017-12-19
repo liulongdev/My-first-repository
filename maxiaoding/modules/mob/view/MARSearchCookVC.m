@@ -97,10 +97,18 @@
             [strong_self.tableView reloadData];
             strong_self.pageModel.pageIndex ++;
             strong_self.totalCount = totalCount;
+            if (strong_self.cookDetailArray.count > 0) {
+                [strong_self hiddenEmptyView];
+            }
+            else
+            {
+                [strong_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
+            }
         }
         else
         {
             ShowErrorMessage(errMsg ?: [response.error localizedDescription], 1.f);
+            [strong_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
         }
         [strong_self.tableView.mj_footer endRefreshing];
         [strong_self.tableView.mj_header endRefreshing];

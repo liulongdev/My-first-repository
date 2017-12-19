@@ -108,8 +108,9 @@
                 if (!strongSelf) return;
                 [strongSelf _alynasisRequestEndWithTask:task];
                 if (success) {
-                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
-                    success(task, responce);
+                    success(task, responseObject);
+//                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
+//                    success(task, responce);
                 }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 __strong __typeof(weakSelf) strongSelf = weakSelf;
@@ -132,8 +133,9 @@
                 __strong __typeof(weakSelf) strongSelf = weakSelf;
                 [strongSelf _alynasisRequestEndWithTask:task];
                 if (success) {
-                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
-                    success(task, responce);
+                    success(task, responseObject);
+//                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
+//                    success(task, responce);
                 }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 __strong __typeof(weakSelf) strongSelf = weakSelf;
@@ -154,8 +156,9 @@
                 __strong __typeof(weakSelf) strongSelf = weakSelf;
                 [strongSelf _alynasisRequestEndWithTask:task];
                 if (success) {
-                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
-                    success(task, responce);
+                    success(task, responseObject);
+//                    MARNetworkResponse *responce = [MARNetworkResponse mar_modelWithDictionary:responseObject];
+//                    success(task, responce);
                 }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 __strong __typeof(weakSelf) strongSelf = weakSelf;

@@ -88,6 +88,8 @@
                         <segue destination="AQy-eH-pIp" kind="show" identifier="goPhoneNumberSettingVC" id="6Hp-OX-9YH"/>
                         <segue destination="KEQ-8Q-8am" kind="show" identifier="goCarBrandListVC" id="DQY-rv-YiE"/>
                         <segue destination="uhe-QN-ei0" kind="show" identifier="goCookCategoryListVC" id="0AT-ho-vAb"/>
+                        <segue destination="UXx-3v-dGj" kind="show" identifier="goSettingVC" id="Ns1-sq-Yv9"/>
+                        <segue destination="pBd-i4-GVX" kind="show" identifier="goTianxingMenuVC" id="cbs-Yx-KFA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vt2-Fu-lHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -516,6 +518,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAT-5A-bgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2325.5999999999999" y="-161.46926536731635"/>
+        </scene>
+        <!--MARTianxingMenuVC-->
+        <scene sceneID="Gzq-qn-LXw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="tianxing" referencedIdentifier="MARTianxingMenuVC" id="pBd-i4-GVX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x9K-m3-S2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3158" y="-624"/>
+        </scene>
+        <!--MARSettingVC-->
+        <scene sceneID="qtg-be-yxu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="mine" referencedIdentifier="MARSettingVC" id="UXx-3v-dGj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ThI-S8-ANj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2879" y="-624"/>
         </scene>
         <!--Search CookVC-->
         <scene sceneID="EcD-1P-cPV">

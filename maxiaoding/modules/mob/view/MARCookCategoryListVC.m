@@ -64,10 +64,18 @@
         if (!response.error) {
             strong_self->_cookCategoryMenuArray = cookCategoryMenuArray;
             [strong_self.tableView reloadData];
+            if (cookCategoryMenuArray.count > 0) {
+                [strong_self hiddenEmptyView];
+            }
+            else
+            {
+                [strong_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
+            }
         }
         else
         {
             ShowErrorMessage(errMsg ?: [response.error localizedDescription], 1.f);
+            [strong_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
         }
     }];
 }

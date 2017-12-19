@@ -39,14 +39,21 @@
         if (!response.error) {
             strong_self->_wxArticleArray = articleArray;
             [strong_self.collectionView reloadData];
+            if (articleArray.count > 0) {
+                [strong_self hiddenEmptyView];
+            }
+            else
+            {
+                [strong_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
+            }
         }
         else
         {
             ShowErrorMessage(errMsg ?: [response.error localizedDescription], 1.f);
             NSLog(@">>> getVerifyCode error : %@", errMsg ?: [response.error localizedDescription]);
+            [strong_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
         }
     }];
-    
 }
 
 - (NSArray<MARWXArticleCategoryModel *> *)wxArticleArray

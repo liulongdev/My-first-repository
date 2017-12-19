@@ -17,10 +17,11 @@ static NSString * const mobTitle_utilityTool        = @"实用工具";
 static NSString * const mobTitle_carBrand           = @"汽车";
 static NSString * const mobTitle_cookMenu           = @"菜谱";
 static NSString * const mineCellTitle_mine          = @"我的";
-
+static NSString * const mineCellTitle_setting       = @"设置";
 static NSString * const aliFeedback_feedback        = @"我要反馈";
 
 static NSString * const mobTitle_testFunction       = @"测试";
+static NSString * const mobTitle_tianxingData       = @"天行数据";
 
 
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>
@@ -63,8 +64,9 @@ static NSString * const mobTitle_testFunction       = @"测试";
 //                        mobTitle_utilityTool,
                         mobTitle_carBrand,
                         mobTitle_cookMenu,
-                        
+                        mobTitle_tianxingData,
                         mobTitle_testFunction,
+                        mineCellTitle_setting,
                         mineCellTitle_mine,
 //                        aliFeedback_feedback,
                         ];
@@ -136,6 +138,8 @@ static NSString * const mobTitle_testFunction       = @"测试";
     }
     else if ([mobTitle_testFunction isEqualToString:label.text])
     {
+        [MARMobUtil test];
+//        return;
         [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_test"];
          [self getAliFeedbackUnreadCount];
     }
@@ -145,11 +149,21 @@ static NSString * const mobTitle_testFunction       = @"测试";
         self.feedbackVC.mar_naviBackPanGestureEnabel = NO;
         [self mar_pushViewController:self.feedbackVC animated:YES];
     }
+    else if ([mineCellTitle_setting isEqualToString:label.text])
+    {
+        [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_setting"];
+        [self performSegueWithIdentifier:@"goSettingVC" sender:nil];
+    }
     else if ([mineCellTitle_mine isEqualToString:label.text])
     {
         [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_mine"];
         UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Mine storyboardId:kSBID_Mine_MineVC];
         [self mar_pushViewController:vc animated:YES];
+    }
+    else if ([mobTitle_tianxingData isEqualToString:label.text])
+    {
+        [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_tianxingData"];
+        [self performSegueWithIdentifier:@"goTianxingMenuVC" sender:nil];
         
     }
 }
@@ -171,8 +185,9 @@ static NSString * const mobTitle_testFunction       = @"测试";
                             //                        mobTitle_utilityTool,
                             mobTitle_carBrand,
                             mobTitle_cookMenu,
-                            
+                            mobTitle_tianxingData,
                             mobTitle_testFunction,
+                            mineCellTitle_setting,
                             mineCellTitle_mine,
                             aliFeedback_feedback,
                             ];

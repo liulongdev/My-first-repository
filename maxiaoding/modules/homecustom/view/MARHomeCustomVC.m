@@ -75,13 +75,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MARHomeCustomTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MARHomeCustomTableCell" forIndexPath:indexPath];
-    
+
     [cell.marContentView mar_removeAllSubviews];
-    UIView *view = [MARHomeDateView nibView];
-    [cell.marContentView addSubview:view];
-    [view mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsZero);
-    }];
+        UIView *view = [MARHomeDateView nibView];
+        [cell.marContentView addSubview:view];
+        [view mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(UIEdgeInsetsZero);
+        }];
     
     @weakify(self)
     if (indexPath.row + 1 < [weak_self tableView:tableView numberOfRowsInSection:0]) {

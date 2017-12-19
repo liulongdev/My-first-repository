@@ -81,12 +81,14 @@
         if (!response.error) {
             weak_self.cardDetailModel = carDetail;
             [weak_self.tableView reloadData];
+            [weak_self hiddenEmptyView];
         }
         else
         {
             NSString *codeKey = MARSTRWITHINT(response.error.code);
             ShowErrorMessage(MARMOBUTIL.mobErrorDic[codeKey] ?: [response.error localizedDescription], 1.f);
             NSLog(@">>> get carSeriesDetail error : %@", [response.error localizedDescription]);
+            [weak_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
         }
     }];
     

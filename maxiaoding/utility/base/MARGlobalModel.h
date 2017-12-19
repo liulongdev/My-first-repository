@@ -29,6 +29,8 @@
 
 @property (nonatomic, strong) NSDictionary *shuoMingAttrDic;
 
+@property (nonatomic, strong) NSDictionary *shuoMingCenterAttrDic;
+
 @property (nonatomic, strong) NSDictionary * tuPianJieShaoAttrDic;
 
 @end

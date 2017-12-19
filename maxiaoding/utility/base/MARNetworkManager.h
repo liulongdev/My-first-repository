@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, MARNetworkLoadingType) {
     MARNetworkLoadingTypeNormal
 };
 
-typedef void (^MARNetworkSuccess)(NSURLSessionTask *task, MARNetworkResponse *response);
+typedef void (^MARNetworkSuccess)(NSURLSessionTask *task, id responseObject);
 typedef void (^MARNetworkFailure)(NSURLSessionTask *task, NSError *error);
 typedef void (^MARNetworkProgress)(CGFloat progress);
 

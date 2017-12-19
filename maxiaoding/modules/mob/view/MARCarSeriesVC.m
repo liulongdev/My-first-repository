@@ -64,13 +64,22 @@
         if (!strong_self) return;
         [strong_self showActivityView:NO];
         if (!response.error) {
+            [strong_self hiddenEmptyView];
             strong_self->_cardSerieArray = cardSerieArray;
             [strong_self.tableView reloadData];
+            if (cardSerieArray.count > 0) {
+                [strong_self hiddenEmptyView];
+            }
+            else
+            {
+                [strong_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
+                
+            }
         }
         else
         {
             ShowErrorMessage(errMsg ?: [response.error localizedDescription], 1.f);
-            NSLog(@">>> get carSeries error : %@", [response.error localizedDescription]);
+            [strong_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
         }
     }];
 }

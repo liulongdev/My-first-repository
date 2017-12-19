@@ -39,7 +39,19 @@
         self.marHitCountLabel.text = [NSString stringWithFormat:@"%@", MARSTRWITHINT(model.hitCount)];
         
         NSURL *imageURL = [NSURL URLWithString:[model getFirstThumbnail] ?: @""];
-        [self.marImageView mar_setImageDefaultCornerRadiusWithURL:imageURL placeholderImage:nil];
+//        [self.marImageView mar_setImageDefaultCornerRadiusWithURL:imageURL placeholderImage:nil];
+        [self.marImageView mar_setImageDefaultCornerRadiusWithURLa:imageURL placeholderImage:nil options:SDWebImageCacheMemoryOnly];
+    }
+    else if ([data isKindOfClass:[MARTXNewModel class]])
+    {
+        MARTXNewModel *model = data;
+        self.marTitleLabel.text = model.title;
+        self.marPubTimeLabel.text = model.ctime;
+        self.marHitCountLabel.text = nil;
+        
+        NSURL *imageURL = [NSURL URLWithString:model.picUrl ?: @""];
+//        [self.marImageView mar_setImageDefaultCornerRadiusWithURL:imageURL placeholderImage:nil];
+        [self.marImageView mar_setImageDefaultCornerRadiusWithURLa:imageURL placeholderImage:nil options:SDWebImageCacheMemoryOnly];
     }
 }
 

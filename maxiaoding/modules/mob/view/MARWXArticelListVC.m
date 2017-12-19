@@ -65,11 +65,21 @@
             [weak_self.tableView reloadData];
             [weak_self.tableView.mj_footer endRefreshing];
             [weak_self.tableView.mj_header endRefreshing];
+            if (weak_self.articleArray.count > 0) {
+                [weak_self hiddenEmptyView];
+            }
+            else
+            {
+                [weak_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
+            }
         }
         else
         {
             ShowErrorMessage(errMsg ?: [response.error localizedDescription], 1.f);
             NSLog(@">>> get ArticleList error : %@", errMsg ?: [response.error localizedDescription]);
+            if (weak_self.articleArray.count <= 0) {
+                [weak_self showEmptyViewWithDescription:@"我的腹中空空如也～"];
+            }
         }
     }];
 

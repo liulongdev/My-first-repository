@@ -65,6 +65,15 @@
 		5B933B351FE823B4004C2038 /* mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B933B341FE823B4004C2038 /* mine.storyboard */; };
 		5B933B3C1FE82421004C2038 /* MARMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B3B1FE82421004C2038 /* MARMineVC.m */; };
 		5B933B3F1FE82674004C2038 /* MARSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B3E1FE82674004C2038 /* MARSettingVC.m */; };
+		5B933B421FE8EFEA004C2038 /* MARAnalogClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B411FE8EFEA004C2038 /* MARAnalogClockView.m */; };
+		5B933B461FE8F054004C2038 /* MARHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B451FE8F054004C2038 /* MARHand.m */; };
+		5B933B4D1FE912A9004C2038 /* tianxing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B933B4C1FE912A8004C2038 /* tianxing.storyboard */; };
+		5B933B501FE91327004C2038 /* MARTianxingMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B4F1FE91327004C2038 /* MARTianxingMenuVC.m */; };
+		5B933B531FE91711004C2038 /* MARTXNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B521FE91711004C2038 /* MARTXNewsVC.m */; };
+		5B933B561FE94035004C2038 /* MARTXNewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B551FE94035004C2038 /* MARTXNewModel.m */; };
+		5B933B5B1FE9485C004C2038 /* MARTianxingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B5A1FE9485C004C2038 /* MARTianxingUtil.m */; };
+		5B933B5F1FE9706E004C2038 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B933B5E1FE9706E004C2038 /* images.xcassets */; };
+		5B933B621FE971EF004C2038 /* MAREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B611FE971EF004C2038 /* MAREmptyView.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
 		5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */; };
@@ -205,6 +214,23 @@
 		5B933B3B1FE82421004C2038 /* MARMineVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMineVC.m; sourceTree = "<group>"; };
 		5B933B3D1FE82674004C2038 /* MARSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARSettingVC.h; sourceTree = "<group>"; };
 		5B933B3E1FE82674004C2038 /* MARSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARSettingVC.m; sourceTree = "<group>"; };
+		5B933B401FE8EFEA004C2038 /* MARAnalogClockView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARAnalogClockView.h; sourceTree = "<group>"; };
+		5B933B411FE8EFEA004C2038 /* MARAnalogClockView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARAnalogClockView.m; sourceTree = "<group>"; };
+		5B933B441FE8F054004C2038 /* MARHand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHand.h; sourceTree = "<group>"; };
+		5B933B451FE8F054004C2038 /* MARHand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHand.m; sourceTree = "<group>"; };
+		5B933B4C1FE912A8004C2038 /* tianxing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tianxing.storyboard; sourceTree = "<group>"; };
+		5B933B4E1FE91327004C2038 /* MARTianxingMenuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARTianxingMenuVC.h; sourceTree = "<group>"; };
+		5B933B4F1FE91327004C2038 /* MARTianxingMenuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARTianxingMenuVC.m; sourceTree = "<group>"; };
+		5B933B511FE91711004C2038 /* MARTXNewsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARTXNewsVC.h; sourceTree = "<group>"; };
+		5B933B521FE91711004C2038 /* MARTXNewsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARTXNewsVC.m; sourceTree = "<group>"; };
+		5B933B541FE94035004C2038 /* MARTXNewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARTXNewModel.h; sourceTree = "<group>"; };
+		5B933B551FE94035004C2038 /* MARTXNewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARTXNewModel.m; sourceTree = "<group>"; };
+		5B933B581FE940D6004C2038 /* tianxingmodel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tianxingmodel.h; sourceTree = "<group>"; };
+		5B933B591FE9485C004C2038 /* MARTianxingUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARTianxingUtil.h; sourceTree = "<group>"; };
+		5B933B5A1FE9485C004C2038 /* MARTianxingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARTianxingUtil.m; sourceTree = "<group>"; };
+		5B933B5E1FE9706E004C2038 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
+		5B933B601FE971EF004C2038 /* MAREmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAREmptyView.h; sourceTree = "<group>"; };
+		5B933B611FE971EF004C2038 /* MAREmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAREmptyView.m; sourceTree = "<group>"; };
 		5BB1D1571FE190EB0004396E /* MARHistoryDayDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayDetailVC.h; sourceTree = "<group>"; };
 		5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHistoryDayDetailVC.m; sourceTree = "<group>"; };
 		5BC0F5731FE211DF004C62D4 /* userdefaultkey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userdefaultkey.h; sourceTree = "<group>"; };
@@ -308,6 +334,7 @@
 		5B029F141FE3C83C008ED5CA /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				5B933B431FE8F044004C2038 /* clockview */,
 				5B029F1A1FE3CCA7008ED5CA /* MARHomeCustomTableCell.h */,
 				5B029F1B1FE3CCA7008ED5CA /* MARHomeCustomTableCell.m */,
 				5B029F1C1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib */,
@@ -345,6 +372,7 @@
 		5B25F8511FE0D2CA00E85884 /* maxiaoding */ = {
 			isa = PBXGroup;
 			children = (
+				5B933B5C1FE97048004C2038 /* resource */,
 				5B25F8B11FE0F80500E85884 /* modules */,
 				5B25F8B61FE0F80500E85884 /* utility */,
 				5B25F8861FE0D79200E85884 /* Supporting Files */,
@@ -390,6 +418,7 @@
 		5B25F8B11FE0F80500E85884 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				5B933B471FE9129D004C2038 /* tianxing */,
 				5B933B331FE823A7004C2038 /* mine */,
 				5B029F101FE3C83C008ED5CA /* homecustom */,
 				5B25F8B21FE0F80500E85884 /* mob */,
@@ -493,6 +522,8 @@
 				5B25F9001FE188C200E85884 /* MARBaseDBModel.m */,
 				5B25F8B81FE0F80500E85884 /* MARAppDelegate.h */,
 				5B25F8B91FE0F80500E85884 /* MARAppDelegate.m */,
+				5B933B601FE971EF004C2038 /* MAREmptyView.h */,
+				5B933B611FE971EF004C2038 /* MAREmptyView.m */,
 				5B25F8BC1FE0F80500E85884 /* MARBaseViewController.h */,
 				5B25F8BD1FE0F80500E85884 /* MARBaseViewController.m */,
 				5B25F8BE1FE0F80500E85884 /* MARNetworkManager.h */,
@@ -599,6 +630,82 @@
 			children = (
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		5B933B431FE8F044004C2038 /* clockview */ = {
+			isa = PBXGroup;
+			children = (
+				5B933B401FE8EFEA004C2038 /* MARAnalogClockView.h */,
+				5B933B411FE8EFEA004C2038 /* MARAnalogClockView.m */,
+				5B933B441FE8F054004C2038 /* MARHand.h */,
+				5B933B451FE8F054004C2038 /* MARHand.m */,
+			);
+			path = clockview;
+			sourceTree = "<group>";
+		};
+		5B933B471FE9129D004C2038 /* tianxing */ = {
+			isa = PBXGroup;
+			children = (
+				5B933B481FE9129D004C2038 /* controller */,
+				5B933B491FE9129D004C2038 /* model */,
+				5B933B4A1FE9129D004C2038 /* view */,
+				5B933B4C1FE912A8004C2038 /* tianxing.storyboard */,
+				5B933B4E1FE91327004C2038 /* MARTianxingMenuVC.h */,
+				5B933B4F1FE91327004C2038 /* MARTianxingMenuVC.m */,
+				5B933B591FE9485C004C2038 /* MARTianxingUtil.h */,
+				5B933B5A1FE9485C004C2038 /* MARTianxingUtil.m */,
+			);
+			path = tianxing;
+			sourceTree = "<group>";
+		};
+		5B933B481FE9129D004C2038 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		5B933B491FE9129D004C2038 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				5B933B581FE940D6004C2038 /* tianxingmodel.h */,
+				5B933B541FE94035004C2038 /* MARTXNewModel.h */,
+				5B933B551FE94035004C2038 /* MARTXNewModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		5B933B4A1FE9129D004C2038 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B933B4B1FE9129D004C2038 /* cell */,
+				5B933B511FE91711004C2038 /* MARTXNewsVC.h */,
+				5B933B521FE91711004C2038 /* MARTXNewsVC.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5B933B4B1FE9129D004C2038 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		5B933B5C1FE97048004C2038 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				5B933B5D1FE97059004C2038 /* img */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		5B933B5D1FE97059004C2038 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				5B933B5E1FE9706E004C2038 /* images.xcassets */,
+			);
+			path = img;
 			sourceTree = "<group>";
 		};
 		665DD05C9EEE5810E3C0563D /* Pods */ = {
@@ -721,12 +828,14 @@
 			files = (
 				5B029F1E1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib in Resources */,
 				5B25F85F1FE0D2CA00E85884 /* LaunchScreen.storyboard in Resources */,
+				5B933B5F1FE9706E004C2038 /* images.xcassets in Resources */,
 				5B25F85C1FE0D2CA00E85884 /* Assets.xcassets in Resources */,
 				5B933B351FE823B4004C2038 /* mine.storyboard in Resources */,
 				5B029F2B1FE4043D008ED5CA /* MARHomeCustomVC.xib in Resources */,
 				5B029F351FE421AB008ED5CA /* MARHomeDateView.xib in Resources */,
 				5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */,
 				5B029EF51FE2654B008ED5CA /* mob_error.plist in Resources */,
+				5B933B4D1FE912A9004C2038 /* tianxing.storyboard in Resources */,
 				5B029F161FE3C849008ED5CA /* test.storyboard in Resources */,
 				5B029F261FE40330008ED5CA /* homecustome.storyboard in Resources */,
 				5B25F8D31FE0F90A00E85884 /* mob.storyboard in Resources */,
@@ -804,6 +913,7 @@
 			files = (
 				5B25F8F41FE17CD300E85884 /* MARWXArticleModel.m in Sources */,
 				5B25F9021FE188C300E85884 /* MARBaseDBModel.m in Sources */,
+				5B933B501FE91327004C2038 /* MARTianxingMenuVC.m in Sources */,
 				5B25F8F51FE17CD300E85884 /* MARWXArticleCategoryModel.m in Sources */,
 				5B933B321FE79999004C2038 /* UIViewController+MAREX.m in Sources */,
 				5B029EFE1FE2824C008ED5CA /* MARCarBrandModel.m in Sources */,
@@ -812,11 +922,13 @@
 				5B933B3F1FE82674004C2038 /* MARSettingVC.m in Sources */,
 				5BFCE71A1FE53F6900E86CCC /* MARCookStepTableCell.m in Sources */,
 				5B029F041FE2E016008ED5CA /* MARMobUtil.m in Sources */,
+				5B933B531FE91711004C2038 /* MARTXNewsVC.m in Sources */,
 				5B029F4A1FE500C1008ED5CA /* UIImageView+SDWEBEXT.m in Sources */,
 				5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */,
 				5B25F8F61FE17CD300E85884 /* MARLoadPageModel.m in Sources */,
 				5B029F471FE4FE99008ED5CA /* MARCookInfoTableCell.m in Sources */,
 				5B029F1D1FE3CCA7008ED5CA /* MARHomeCustomTableCell.m in Sources */,
+				5B933B561FE94035004C2038 /* MARTXNewModel.m in Sources */,
 				5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */,
 				5B029F3E1FE4BA1A008ED5CA /* MARCookCategoryModel.m in Sources */,
 				5B25F8CF1FE0F80500E85884 /* MARNetworkManager.m in Sources */,
@@ -840,14 +952,18 @@
 				5B25F8F91FE17D2900E85884 /* MARHistoryDayModel.m in Sources */,
 				5B25F8EC1FE12B9000E85884 /* MARMobMenuVC.m in Sources */,
 				5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */,
+				5B933B5B1FE9485C004C2038 /* MARTianxingUtil.m in Sources */,
 				5B25F8CE1FE0F80500E85884 /* MARBaseViewController.m in Sources */,
+				5B933B621FE971EF004C2038 /* MAREmptyView.m in Sources */,
 				5B029F0C1FE3C311008ED5CA /* UIViewController+MXD.m in Sources */,
 				5B029F441FE4F125008ED5CA /* MARSearchCookVC.m in Sources */,
 				5B933B2C1FE767AD004C2038 /* MARDataAnalysis.m in Sources */,
 				5B25F8E31FE1090B00E85884 /* MARWXArticleTabelCell.m in Sources */,
 				5B029F0F1FE3C3D3008ED5CA /* MARSBConstant.m in Sources */,
+				5B933B461FE8F054004C2038 /* MARHand.m in Sources */,
 				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */,
 				5B25F8DA1FE0FBCC00E85884 /* MARWXArticleCategoryVC.m in Sources */,
+				5B933B421FE8EFEA004C2038 /* MARAnalogClockView.m in Sources */,
 				5B029F381FE42EBA008ED5CA /* MARMobCalendarModel.m in Sources */,
 				5B029F071FE2EB61008ED5CA /* MARCarDetailVC.m in Sources */,
 				5B25F8FF1FE1808F00E85884 /* MARHistoryDayTableCell.m in Sources */,

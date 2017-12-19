@@ -162,5 +162,17 @@ NSString * const MARGLobalModelId = @"10000";
     return _tuPianJieShaoAttrDic;
 }
 
+- (NSDictionary *)shuoMingCenterAttrDic
+{
+    if (!_zhengWenAttrDic) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 10;
+        style.alignment = NSTextAlignmentCenter;
+        style.lineBreakMode = NSLineBreakByWordWrapping;
+        _zhengWenAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:14.f], NSForegroundColorAttributeName : RGBHEX(0x666666)};
+    }
+    return _zhengWenAttrDic;
+}
+
 @end
 
