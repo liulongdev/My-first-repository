@@ -14,16 +14,16 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initAppearance];
     [MARDataAnalysis initDataAnalysis];
+    
 //    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeCustomVC alloc] init]];
 //
 //    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 //    self.window.rootViewController = navi;
 //    [self.window makeKeyAndVisible];
-    
+
     return YES;
 }
 

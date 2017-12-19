@@ -18,10 +18,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
-//    {
+    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
+    {
 //        self.navigationController.navigationBar.translucent = NO;
-//    }
+        // 需要底栈VC的手势禁掉
+        if (self.navigationController.viewControllers[0] == self) {
+            self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        }
+    }
     self.view.backgroundColor = RGBHEX(MARColor_VCBackgound);
     [self addObserverGlobal];
     if ([self respondsToSelector:@selector(UIGlobal)]) {
@@ -107,6 +111,13 @@
 
 - (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj{}
 
+- (void)__removeObserverGlobal{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kMARGlobalNotification object:nil];
+}
+
+#pragma mark 全局通知  -- end
+#pragma mark -
+
 - (void)showActivityView:(BOOL)show
 {
     if (show) {
@@ -129,12 +140,6 @@
 {
     return _activityIndicatorView.isAnimating;
 }
-
-- (void)__removeObserverGlobal{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kMARGlobalNotification object:nil];
-}
-#pragma mark 全局通知  -- end
-#pragma mark -
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

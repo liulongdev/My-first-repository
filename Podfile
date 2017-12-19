@@ -10,7 +10,6 @@ def shared_dependencies
   pod 'SVProgressHUD', '~> 2.0.4'
   pod 'LKDBHelper', '~> 2.4'
   pod 'RealReachability', '~> 1.1.8'
-  pod 'MXRProfiler', '~> 0.0.5'
   pod 'mobAPI', '~> 2.0.1'
   pod 'SMSSDK', '~> 3.0.1'
   pod 'MJRefresh', '~> 3.1.15.1'
