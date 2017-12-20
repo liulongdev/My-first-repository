@@ -6,7 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,55 +17,50 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZl-Y3-yE6">
-                    <rect key="frame" x="67.5" y="88" width="240" height="240"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioR-46-q0X" customClass="MARAnalogClockView">
+                    <rect key="frame" x="97.5" y="60" width="180" height="180"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="21N-X8-8YO"/>
+                        <constraint firstAttribute="width" secondItem="ioR-46-q0X" secondAttribute="height" multiplier="1:1" id="lHq-pk-iJm"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I6u-ao-RHZ">
+                    <rect key="frame" x="31" y="270" width="313" height="0.0"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iig-LC-LFw">
-                            <rect key="frame" x="104.5" y="42" width="31.5" height="36"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XnD-jr-O5M">
-                            <rect key="frame" x="84.5" y="96" width="70" height="72"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzd-8r-nrw">
+                            <rect key="frame" x="0.0" y="0.0" width="313" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="240" id="0or-C4-kQr"/>
-                        <constraint firstItem="Iig-LC-LFw" firstAttribute="centerY" secondItem="iZl-Y3-yE6" secondAttribute="centerY" multiplier="0.5" id="8K6-s3-YdK"/>
-                        <constraint firstItem="Iig-LC-LFw" firstAttribute="centerX" secondItem="iZl-Y3-yE6" secondAttribute="centerX" id="IB0-Yd-Ek7"/>
-                        <constraint firstItem="XnD-jr-O5M" firstAttribute="centerY" secondItem="iZl-Y3-yE6" secondAttribute="centerY" multiplier="1.1" id="ekR-So-xbA"/>
-                        <constraint firstAttribute="height" constant="240" id="lGd-IF-IfO"/>
-                        <constraint firstItem="XnD-jr-O5M" firstAttribute="centerX" secondItem="iZl-Y3-yE6" secondAttribute="centerX" id="s6a-IZ-Yud"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioR-46-q0X" customClass="MARAnalogClockView">
-                    <rect key="frame" x="72.5" y="218.5" width="230" height="230"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="230" id="21N-X8-8YO"/>
-                        <constraint firstAttribute="height" constant="230" id="z2W-JL-gbR"/>
+                        <constraint firstAttribute="bottom" secondItem="Hzd-8r-nrw" secondAttribute="bottom" id="3lF-EH-jxY"/>
+                        <constraint firstItem="Hzd-8r-nrw" firstAttribute="top" secondItem="I6u-ao-RHZ" secondAttribute="top" id="Inn-ri-eTb"/>
+                        <constraint firstItem="Hzd-8r-nrw" firstAttribute="leading" secondItem="I6u-ao-RHZ" secondAttribute="leading" id="kmS-Df-UX7"/>
+                        <constraint firstAttribute="trailing" secondItem="Hzd-8r-nrw" secondAttribute="trailing" id="l0S-FM-2Wg"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ioR-46-q0X" secondAttribute="bottom" constant="120" id="6iE-gH-nQr"/>
-                <constraint firstItem="iZl-Y3-yE6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="IFH-uY-Cq6"/>
-                <constraint firstItem="ioR-46-q0X" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JZ6-NL-2Ag"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="iZl-Y3-yE6" secondAttribute="bottom" constant="100" id="KrS-hO-K7X"/>
-                <constraint firstItem="iZl-Y3-yE6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="88" id="ZMi-4h-xef"/>
-                <constraint firstItem="ioR-46-q0X" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zCt-He-bOe"/>
+                <constraint firstItem="ioR-46-q0X" firstAttribute="leading" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="300" id="1bZ-Cp-DD1"/>
+                <constraint firstItem="I6u-ao-RHZ" firstAttribute="top" secondItem="ioR-46-q0X" secondAttribute="bottom" constant="30" id="6Bg-qo-ejm"/>
+                <constraint firstItem="ioR-46-q0X" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="7Y5-De-wNe"/>
+                <constraint firstItem="ioR-46-q0X" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" priority="901" id="JZ6-NL-2Ag"/>
+                <constraint firstAttribute="trailingMargin" secondItem="I6u-ao-RHZ" secondAttribute="trailing" constant="15" id="SpL-Xt-Nzb"/>
+                <constraint firstItem="I6u-ao-RHZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="15" id="Xs1-7v-QwP"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="I6u-ao-RHZ" secondAttribute="bottom" constant="30" id="pZz-Lg-Ehe"/>
             </constraints>
             <connections>
+                <outlet property="calendarLabel" destination="Hzd-8r-nrw" id="PsH-Q3-I2F"/>
                 <outlet property="clockView" destination="ioR-46-q0X" id="eMn-Y2-x8S"/>
-                <outlet property="dateTimeBackgroundView" destination="iZl-Y3-yE6" id="Gxm-aH-VsA"/>
+                <outlet property="constraint_clockViewLELeading" destination="1bZ-Cp-DD1" id="FpC-8E-sSJ"/>
+                <outlet property="constraint_clockViewWidth" destination="21N-X8-8YO" id="x9r-Lh-MP8"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="53.5"/>
+            <point key="canvasLocation" x="82" y="60"/>
         </view>
     </objects>
 </document>

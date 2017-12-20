@@ -16,6 +16,7 @@ def shared_dependencies
   pod 'PinYin4Objc', '~> 1.1.1'
   pod 'AlicloudMAN', '~> 1.0.10'
   pod 'AlicloudFeedback', '~> 3.2.2'
+  pod 'FDFullscreenPopGesture', '~> 1.1'
 end
 
 workspace "maxiaoding.xcodeproj"

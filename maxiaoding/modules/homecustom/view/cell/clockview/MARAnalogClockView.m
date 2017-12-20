@@ -301,6 +301,8 @@
 }
 
 - (void)stopRealTime {
+    [_secondTimer invalidate];
+    _secondTimer = nil;
     _realTimeIsActivated = NO;
 }
 
@@ -505,6 +507,8 @@
 - (void)dealloc
 {
     [self removeObservers];
+    [_secondTimer invalidate];
+    _secondTimer = nil;
 }
 
 - (void)_updateCurrentTime:(NSNotification *)noti

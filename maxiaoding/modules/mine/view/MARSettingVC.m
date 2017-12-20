@@ -8,9 +8,15 @@
 
 #import "MARSettingVC.h"
 #import <UIImageView+WebCache.h>
+
+NSString * const settingCellTitle_cache = @"清除缓存";
+
+
 @interface MARSettingVC () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSByteCountFormatter *byteFormatter;
+
+@property (nonatomic, strong) NSArray *titleArray;
 @end
 
 @implementation MARSettingVC
@@ -30,10 +36,15 @@
     self.tableView.tableFooterView = [UIView new];
 }
 
+- (NSArray *)titleArray
+{
+    return @[settingCellTitle_cache];
+}
+
 - (void)caculateSDImageDiskSize
 {
-    [self.tableView reloadData];
     isCaculatingSDImageDiskSize = YES;
+    [self.tableView reloadData];
     @weakify(self)
     [[SDImageCache sharedImageCache] calculateSizeWithCompletionBlock:^(NSUInteger fileCount, NSUInteger totalSize) {
         @strongify(self);
@@ -61,7 +72,7 @@
 #pragma mark - UITableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.titleArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,20 +83,44 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.textLabel.text = @"缓存";
-    
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld张图片、%@", (long)[[SDImageCache sharedImageCache] getDiskCount], [self.byteFormatter stringFromByteCount:[[SDImageCache sharedImageCache] getSize]]];
-    if (isCaculatingSDImageDiskSize) {
-        cell.detailTextLabel.text = nil;
-        UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [activityIndicatorView startAnimating];
-        cell.accessoryView = activityIndicatorView;
+    if (self.titleArray.count > indexPath.row) {
+        cell.textLabel.text = self.titleArray[0];
     }
-    else
-    {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld张图片-%@", (long)sdImageCount, [self.byteFormatter stringFromByteCount:sdImageDiskSize]];
-        cell.accessoryView = nil;
+    if ([cell.textLabel.text isEqualToString:settingCellTitle_cache]) {
+        if (isCaculatingSDImageDiskSize) {
+            cell.detailTextLabel.text = nil;
+            UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [activityIndicatorView startAnimating];
+            cell.accessoryView = activityIndicatorView;
+        }
+        else
+        {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld张图片-%@", (long)sdImageCount, [self.byteFormatter stringFromByteCount:sdImageDiskSize]];
+            cell.accessoryView = nil;
+        }
     }
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([settingCellTitle_cache isEqualToString:cell.textLabel.text]) {
+        [self _clearImageCache];
+    }
+}
+
+- (void)_clearImageCache
+{
+    @weakify(self)
+    [[SDImageCache sharedImageCache] clearMemory];
+    isCaculatingSDImageDiskSize = YES;
+    [self.tableView reloadData];
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self caculateSDImageDiskSize];
+    }];
+}
+
 @end

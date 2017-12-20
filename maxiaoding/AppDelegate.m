@@ -18,11 +18,11 @@
     [self initAppearance];
     [MARDataAnalysis initDataAnalysis];
     
-//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeCustomVC alloc] init]];
-//
-//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    self.window.rootViewController = navi;
-//    [self.window makeKeyAndVisible];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeCustomVC alloc] init]];
+
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = navi;
+    [self.window makeKeyAndVisible];
 
     return YES;
 }

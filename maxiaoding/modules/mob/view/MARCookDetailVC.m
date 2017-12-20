@@ -38,7 +38,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.mar_preferredNavigationBarHidden = YES;
+//    self.fd_prefersNavigationBarHidden = YES;
     self.title = self.cookDetail.name;
 }
 

@@ -55,10 +55,13 @@
         // animate for one second (default best time to animate - for a second hand
         // it will take exactly 1 second to move, and for the other hands it doesn't
         // really matter how long it takes to move.
-        [UIView animateWithDuration:1.0
-                         animations:^{
-                             self.transform = transform;
-                         }];
+//        [UIView animateWithDuration:1.0
+//                         animations:^{
+//                             self.transform = transform;
+//                         }];
+        [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            self.transform = transform;
+        } completion:nil];
     } else {
         self.transform = transform;
     }

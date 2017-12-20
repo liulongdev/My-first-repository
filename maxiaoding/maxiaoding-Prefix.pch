@@ -21,6 +21,7 @@
 #import "MARGlobalModel.h"
 #import "UIViewController+MAREX.h"
 #import "MARNetworkManager.h"
+#import <UINavigationController+FDFullscreenPopGesture.h>
 
 #endif
 

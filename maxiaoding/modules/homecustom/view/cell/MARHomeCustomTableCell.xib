@@ -22,17 +22,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-XI-hNy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="200" constant="20" id="RjA-fS-8zj"/>
+                                    <constraint firstAttribute="height" priority="200" constant="500" id="RjA-fS-8zj"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8X-OG-5sp">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="aIJ-ie-1tN"/>
+                                    <constraint firstAttribute="height" priority="500" constant="44" id="aIJ-ie-1tN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -51,7 +51,7 @@
                         <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="Vgd-tG-pPL"/>
+                            <constraint firstAttribute="height" priority="500" constant="44" id="Vgd-tG-pPL"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -75,7 +75,7 @@
                 <outlet property="scrollView" destination="dAr-7P-Z2z" id="c96-5u-B6J"/>
                 <outlet property="topView" destination="C8X-OG-5sp" id="ShA-Dt-iLy"/>
             </connections>
-            <point key="canvasLocation" x="34" y="316"/>
+            <point key="canvasLocation" x="-31" y="290"/>
         </tableViewCell>
     </objects>
 </document>

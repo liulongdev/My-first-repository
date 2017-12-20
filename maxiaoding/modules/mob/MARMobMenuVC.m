@@ -146,7 +146,7 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
     else if ([aliFeedback_feedback isEqualToString:label.text])
     {
         [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_aliFeedback"];
-        self.feedbackVC.mar_naviBackPanGestureEnabel = NO;
+        self.feedbackVC.fd_interactivePopDisabled = YES;
         [self mar_pushViewController:self.feedbackVC animated:YES];
     }
     else if ([mineCellTitle_setting isEqualToString:label.text])

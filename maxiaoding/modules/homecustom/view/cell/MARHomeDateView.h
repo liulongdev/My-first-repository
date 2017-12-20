@@ -10,6 +10,8 @@
 
 @interface MARHomeDateView : UIView
 
+- (void)refreshTime;
+
 + (instancetype)nibView;
 
 @end

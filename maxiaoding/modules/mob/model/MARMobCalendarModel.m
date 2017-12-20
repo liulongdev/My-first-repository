@@ -15,4 +15,9 @@
     return @"date";
 }
 
+- (NSString *)description
+{
+    return [self mar_modelDescription];
+}
+
 @end

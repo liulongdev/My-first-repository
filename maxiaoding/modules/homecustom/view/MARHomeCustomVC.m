@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.mar_preferredNavigationBarHidden = YES;
+    self.fd_prefersNavigationBarHidden = YES;
     MARAdjustsScrollViewInsets_NO(self.tableView, self);
     self.tableView.scrollEnabled = NO;
     [self setup];
@@ -44,7 +44,13 @@
     [self.view addSubview:self.tableView];
     MARAdjustsScrollViewInsets_NO(self.tableView, self);
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_topLayoutGuide);
+        if (self.fd_prefersNavigationBarHidden) {
+            make.top.mas_equalTo(self.mas_topLayoutGuideTop);
+        }
+        else
+        {
+            make.top.mas_equalTo(self.mas_topLayoutGuide);
+        }
         make.leading.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.mas_bottomLayoutGuide);
         make.trailing.mas_equalTo(self.view);
@@ -64,7 +70,7 @@
 #pragma mark - UITableView Datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 100;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,31 +82,37 @@
 {
     MARHomeCustomTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MARHomeCustomTableCell" forIndexPath:indexPath];
 
-    [cell.marContentView mar_removeAllSubviews];
-        UIView *view = [MARHomeDateView nibView];
-        [cell.marContentView addSubview:view];
-        [view mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(UIEdgeInsetsZero);
-        }];
-    
-    @weakify(self)
-    if (indexPath.row + 1 < [weak_self tableView:tableView numberOfRowsInSection:0]) {
-        [cell setBottomAppearBlock:^{
-            NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
-            [weak_self.tableView scrollToRowAtIndexPath:nextIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        }];
+    if ([cell isKindOfClass:[MARHomeCustomTableCell class]]) {
+        [cell reset];
+        if (indexPath.row == 0) {
+            UIView *view = [MARHomeDateView nibView];
+            [cell.marContentView addSubview:view];
+            [cell setScrollViewBackgroundColor:RGBHEX(0x99ccff)];
+            [view mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.edges.mas_equalTo(UIEdgeInsetsZero);
+            }];
+        }
+
+        @weakify(self)
+        if (indexPath.row + 1 < [weak_self tableView:tableView numberOfRowsInSection:0]) {
+            [cell setBottomAppearBlock:^{
+                NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
+                [weak_self.tableView scrollToRowAtIndexPath:nextIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            }];
+            
+        }
+        else
+            [cell setBottomAppearBlock:nil];
+        if (indexPath.row > 0) {
+            [cell setTopAppearBlock:^{
+                NSIndexPath *preIndexPath = [NSIndexPath indexPathForRow:(indexPath.row - 1) inSection:indexPath.section];
+                [weak_self.tableView scrollToRowAtIndexPath:preIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            }];
+        }
+        else
+            [cell setTopAppearBlock:nil];
     }
-    else
-        [cell setBottomAppearBlock:nil];
     
-    if (indexPath.row > 0) {
-        [cell setTopAppearBlock:^{
-            NSIndexPath *preIndexPath = [NSIndexPath indexPathForRow:(indexPath.row - 1) inSection:indexPath.section];
-            [weak_self.tableView scrollToRowAtIndexPath:preIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        }];
-    }
-    else
-        [cell setTopAppearBlock:nil];
     
     return cell;
 }
