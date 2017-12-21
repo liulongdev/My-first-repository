@@ -225,7 +225,6 @@
 #pragma mark - Real Time
 
 - (void)updateEverySecond {
-    MARLog(@">>>>>> test");
     if (_realTimeIsActivated == YES) {
         self.seconds = self.seconds + 1;
         if (skipOneCycle == YES) {

@@ -192,8 +192,8 @@
     
     [self addSubview:self.moreBtn];
     [_moreBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.trailing.mas_equalTo(self).mas_offset(-15);
-        make.top.mas_equalTo(self).mas_offset(15);
+        make.leading.mas_equalTo(self.mas_leadingMargin).mas_offset(15);
+        make.bottom.mas_equalTo(self.mas_bottomMargin).mas_offset(-15);
     }];
     
     [self.topView addSubview:self.topLabel];

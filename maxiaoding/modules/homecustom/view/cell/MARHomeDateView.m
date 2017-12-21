@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraint_clockViewLELeading;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraint_clockViewWidth;
 @property (strong, nonatomic) IBOutlet UILabel *calendarLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *animalImageView;
 
 @property (nonatomic, strong) MARMobCalendarModel *calendarModel;
 @end
@@ -174,6 +175,10 @@
         }
         if (_calendarModel.zodiac.length > 0) {
             tip = [tip stringByAppendingFormat:@"\n生肖: %@", _calendarModel.zodiac];
+            UIImage *animalImage = [UIImage imageNamed:_calendarModel.zodiac];
+            if (animalImage) {
+                self.animalImageView.image = animalImage;
+            }
         }
         
         NSAttributedString *tipAttr = [[NSAttributedString alloc] initWithString:tip attributes:MARSTYLEFORMAT.shuoMingCenterAttrDic];

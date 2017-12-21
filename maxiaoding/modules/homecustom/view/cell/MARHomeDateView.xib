@@ -43,18 +43,28 @@
                         <constraint firstAttribute="trailing" secondItem="Hzd-8r-nrw" secondAttribute="trailing" id="l0S-FM-2Wg"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SQj-fe-p08">
+                    <rect key="frame" x="304" y="30" width="55" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="55" id="8ZV-IL-x0K"/>
+                        <constraint firstAttribute="height" constant="55" id="AMU-6e-p8Q"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ioR-46-q0X" firstAttribute="leading" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="300" id="1bZ-Cp-DD1"/>
                 <constraint firstItem="I6u-ao-RHZ" firstAttribute="top" secondItem="ioR-46-q0X" secondAttribute="bottom" constant="30" id="6Bg-qo-ejm"/>
-                <constraint firstItem="ioR-46-q0X" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="7Y5-De-wNe"/>
+                <constraint firstItem="ioR-46-q0X" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="40" id="7Y5-De-wNe"/>
+                <constraint firstItem="SQj-fe-p08" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="10" id="EhH-Sh-jUT"/>
                 <constraint firstItem="ioR-46-q0X" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" priority="901" id="JZ6-NL-2Ag"/>
                 <constraint firstAttribute="trailingMargin" secondItem="I6u-ao-RHZ" secondAttribute="trailing" constant="15" id="SpL-Xt-Nzb"/>
                 <constraint firstItem="I6u-ao-RHZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="15" id="Xs1-7v-QwP"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="I6u-ao-RHZ" secondAttribute="bottom" constant="30" id="pZz-Lg-Ehe"/>
+                <constraint firstAttribute="trailingMargin" secondItem="SQj-fe-p08" secondAttribute="trailing" id="rF8-18-s5k"/>
             </constraints>
             <connections>
+                <outlet property="animalImageView" destination="SQj-fe-p08" id="fDC-Ht-BSD"/>
                 <outlet property="calendarLabel" destination="Hzd-8r-nrw" id="PsH-Q3-I2F"/>
                 <outlet property="clockView" destination="ioR-46-q0X" id="eMn-Y2-x8S"/>
                 <outlet property="constraint_clockViewLELeading" destination="1bZ-Cp-DD1" id="FpC-8E-sSJ"/>

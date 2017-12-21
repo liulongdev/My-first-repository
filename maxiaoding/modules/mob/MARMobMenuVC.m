@@ -208,7 +208,6 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
 
 - (void)getAliFeedbackUnreadCount
 {
-    NSLog(@">>>>>  getAliFeedbackUnreadCount ");
     __weak typeof(self) weakSelf = self;
     [self.feedbackKit getUnreadCountWithCompletionBlock:^(NSInteger unreadCount, NSError *error) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;

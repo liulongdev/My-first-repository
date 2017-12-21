@@ -35,7 +35,7 @@ typedef void (^MARNetworkProgress)(CGFloat progress);
  *
  *  @return 实例对象
  */
-//+ (instancetype)shareManager;
++ (instancetype)shareManager;
 
 /**
  *  网络请求的类方法

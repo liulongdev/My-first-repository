@@ -84,6 +84,8 @@
 
     if ([cell isKindOfClass:[MARHomeCustomTableCell class]]) {
         [cell reset];
+        NSArray *colorArray = @[[UIColor brownColor], RGBHEX(0xffcccc), [UIColor orangeColor], [UIColor purpleColor]];
+        [cell setScrollViewBackgroundColor:[colorArray mar_randomObject]];
         if (indexPath.row == 0) {
             UIView *view = [MARHomeDateView nibView];
             [cell.marContentView addSubview:view];
