@@ -104,7 +104,7 @@
                                     inView:(UIView *)inView
 {
     NSURLSessionDataTask *task;
-    ALBBMANNetworkHitBuilder *builder = [[ALBBMANNetworkHitBuilder alloc] initWithHost:task.originalRequest.URL.host method:task.originalRequest.HTTPMethod];;
+    ALBBMANNetworkHitBuilder *builder = [[ALBBMANNetworkHitBuilder alloc] initWithHost:task.originalRequest.URL.host method:task.originalRequest.HTTPMethod];
     __weak __typeof(self) weakSelf = self;
     switch (type) {
         case MARNetworkRequestTypeGet:
@@ -139,6 +139,7 @@
                 if (progress) progress(uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 __strong __typeof(weakSelf) strongSelf = weakSelf;
+                if (!strongSelf) return;
                 [strongSelf _alynasisRequestEndWithTask:task builder:builder];
                 if (success) {
                     success(task, responseObject);
@@ -162,6 +163,7 @@
         {
             task = [self DELETE:urlString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 __strong __typeof(weakSelf) strongSelf = weakSelf;
+                if (!strongSelf) return;
                 [strongSelf _alynasisRequestEndWithTask:task builder:builder];
                 if (success) {
                     success(task, responseObject);

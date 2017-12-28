@@ -9,6 +9,7 @@
 #import "MARMobMenuVC.h"
 #import <YWFeedbackFMWK/YWFeedbackKit.h>
 #import <YWFeedbackFMWK/YWFeedbackViewController.h>
+#import "MARBaseRequest.h"
 
 static NSString * const mobTitle_wxArticle          = @"微信热门";
 static NSString * const mobTitle_historyToday       = @"历史上的今天";
@@ -77,7 +78,7 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
 #pragma mark getter
 - (YWFeedbackKit *)feedbackKit {
     if (!_feedbackKit) {
-        _feedbackKit = [[YWFeedbackKit alloc] initWithAppKey:AliDataAnalysisAppKey appSecret:AliDataAnalysisSecretKey];
+        _feedbackKit = [[YWFeedbackKit alloc] initWithAppKey:AliFeedbackAppKey appSecret:AliFeedbackSecretKey];
     }
     return _feedbackKit;
 }
@@ -133,7 +134,8 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
     }
     else if ([mobTitle_cookMenu isEqualToString:label.text])
     {
-        [self performSegueWithIdentifier:@"goCookCategoryListVC" sender:nil];
+        [self performSegueWithIdentifier:@"goCookCategoryCollectionVC" sender:nil];
+//        [self performSegueWithIdentifier:@"goCookCategoryListVC" sender:nil];
         [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_cookCategoryList"];
     }
     else if ([mobTitle_testFunction isEqualToString:label.text])
@@ -141,7 +143,6 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
         [MARMobUtil test];
 //        return;
         [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_test"];
-         [self getAliFeedbackUnreadCount];
     }
     else if ([aliFeedback_feedback isEqualToString:label.text])
     {
@@ -206,6 +207,10 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
     }];
 }
 
+
+/**
+ 获取阿里用户反馈未读数量
+ */
 - (void)getAliFeedbackUnreadCount
 {
     __weak typeof(self) weakSelf = self;

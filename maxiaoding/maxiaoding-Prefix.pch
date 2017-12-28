@@ -15,13 +15,14 @@
 #import <MAREXMacro.h>
 #import <MARCategory.h>
 #import "macro.h"
-#import "MARMobUtil.h"
-#import "MARTianxingUtil.h"
-#import "MARDataAnalysis.h"
-#import "MARGlobalModel.h"
-#import "UIViewController+MAREX.h"
-#import "MARNetworkManager.h"
+#import "MARMobUtil.h"          // 关于mob的数据整理工具
+#import "MARTianxingUtil.h"     // 关于天行数据的整理工具
+#import "MARDataAnalysis.h"     // 数据分析封装
+#import "MARGlobalModel.h"      // 
+#import "UIViewController+MAREX.h"  // 页面数据分析封装
+#import "MARNetworkManager.h"   // 网络请求封装
 #import <UINavigationController+FDFullscreenPopGesture.h>
+#import "MARSMS.h"              // 短信封装
 
 #endif
 

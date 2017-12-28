@@ -53,15 +53,8 @@
 
 + (void)test
 {
-    [MARNetworkManager mar_get:@"https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2017-12-23&leftTicketDTO.from_station=BJP&leftTicketDTO.to_station=SHH&purpose_codes=ADULT" parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@">>>>> huochexinxi : %@", responseObject);
-    } failure:^(NSURLSessionTask *task, NSError *error) {
-        NSLog(@">>>> huochexinxi error  : %@", [error localizedDescription]);
-    }];
-    
-    [self loadCookListWithCid:nil cookName:nil loadPage:nil callback:^(MOBAResponse *response, NSArray<MARCookDetailModel *> *cookArray, NSInteger totalCount, NSString *errMsg) {
-        NSLog(@">>>>>  responder: %@, model : %@, total: %ld err: %@", @"hello :>>>", cookArray, (long)totalCount, errMsg);
-    }];
+
+
 }
 
 + (void)loadCalendarWithDateStr:(NSString *)dateStr

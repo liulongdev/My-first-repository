@@ -59,7 +59,7 @@
 //                         animations:^{
 //                             self.transform = transform;
 //                         }];
-        [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveLinear animations:^{
             self.transform = transform;
         } completion:nil];
     } else {

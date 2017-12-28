@@ -110,10 +110,10 @@
     [self _updateTableHeaderView];
     
     self.tableView.tableFooterView = [UIView new];
-    self.tableView.estimatedRowHeight = 50;
+    self.tableView.estimatedRowHeight = 200;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
-    
+    self.tableView.showsVerticalScrollIndicator = NO;
     self.cookSumaryLabel.attributedText = [[NSAttributedString alloc] initWithString:self.cookDetail.recipe.sumary ?: @"" attributes:MARSTYLEFORMAT.zhengWenAttrDic];;
     
     [self _updateTableFooterView];

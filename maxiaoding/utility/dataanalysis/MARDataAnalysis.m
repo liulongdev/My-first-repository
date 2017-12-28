@@ -15,12 +15,12 @@
     // 获取MAN服务
     ALBBMANAnalytics *man = [ALBBMANAnalytics getInstance];
     // 打开调试日志，线上版本建议关闭
-     [man turnOnDebug];
+    [man turnOnDebug];
     // 初始化MAN
     [man initWithAppKey:AliDataAnalysisAppKey secretKey:AliDataAnalysisSecretKey];
     // appVersion默认从Info.list的CFBundleShortVersionString字段获取，如果没有指定，可在此调用setAppversion设定
     // 如果上述两个地方都没有设定，appVersion为"-"
-//    [man setAppVersion:@"2.3.1"];
+//    [man setAppVersion:@"0.0.1"];
     // 设置渠道（用以标记该app的分发渠道名称），如果不关心可以不设置即不调用该接口，渠道设置将影响控制台【渠道分析】栏目的报表展现。
     [man setChannel:@"1"];
 }

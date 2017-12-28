@@ -10,6 +10,7 @@
 #import "MARCookInfoTableCell.h"
 #import <MJRefresh/MJRefresh.h>
 #import "MARCookCategoryListVC.h"
+#import "MARCookCategoryCollectionVC.h"
 #import "MARCookDetailVC.h"
 @interface MARSearchCookVC () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *selectCategoryLabel;
@@ -194,7 +195,8 @@
 }
 
 - (IBAction)clickSelectCategoryAction:(id)sender {
-    MARCookCategoryListVC *cookCategoryListVC = (MARCookCategoryListVC *)[UIViewController vcWithStoryboardName:kSBNAME_Mob storyboardId:kSBID_Mob_CookCategoryListVC];
+//    MARCookCategoryListVC *cookCategoryListVC = (MARCookCategoryListVC *)[UIViewController vcWithStoryboardName:kSBNAME_Mob storyboardId:kSBID_Mob_CookCategoryListVC];
+    MARCookCategoryCollectionVC *cookCategoryListVC = (MARCookCategoryCollectionVC *)[UIViewController vcWithStoryboardName:kSBNAME_Mob storyboardId:kSBID_Mob_CookCategoryCollectionVC];
     @weakify(self)
     cookCategoryListVC.selectedCallback = ^(MARCookCategoryModel *selectCategoryModel) {
         @strongify(self)

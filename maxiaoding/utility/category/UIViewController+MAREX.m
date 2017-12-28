@@ -73,7 +73,7 @@ static char mar_enterBackGroundTimeIntervalKey;
 
 - (void)setMar_pageAppearTimeInterval:(long long)mar_pageAppearTimeInterval
 {
-    objc_setAssociatedObject(self, &mar_pageAppearTimeIntervalKey, @((long long)mar_pageAppearTimeInterval), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, &mar_pageAppearTimeIntervalKey, @((long long)mar_pageAppearTimeInterval), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (NSString *)mar_prePageName
@@ -93,7 +93,7 @@ static char mar_enterBackGroundTimeIntervalKey;
 
 - (void)setMar_enterBackGroundTimeInterval:(long long)mar_enterBackGroundTimeInterval
 {
-    objc_setAssociatedObject(self, &mar_enterBackGroundTimeIntervalKey, @((long long)mar_enterBackGroundTimeInterval), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, &mar_enterBackGroundTimeIntervalKey, @((long long)mar_enterBackGroundTimeInterval), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 

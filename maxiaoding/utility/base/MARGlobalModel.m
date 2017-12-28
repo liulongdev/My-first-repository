@@ -134,6 +134,7 @@ NSString * const MARGLobalModelId = @"10000";
     if (!_zhengWenAttrDic) {
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
         style.lineSpacing = 10;
+        style.alignment = NSTextAlignmentLeft;
         style.lineBreakMode = NSLineBreakByWordWrapping;
         _zhengWenAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:14.f], NSForegroundColorAttributeName : RGBHEX(0x666666)};
     }
@@ -146,7 +147,7 @@ NSString * const MARGLobalModelId = @"10000";
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
         style.lineSpacing = 10;
         style.lineBreakMode = NSLineBreakByWordWrapping;
-        _shuoMingAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:12.f], NSForegroundColorAttributeName : RGBHEX(0x999999)};
+        _shuoMingAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:14.f], NSForegroundColorAttributeName : RGBHEX(0x999999)};
     }
     return _shuoMingAttrDic;
 }
@@ -157,7 +158,7 @@ NSString * const MARGLobalModelId = @"10000";
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
         style.lineSpacing = 3;
         style.lineBreakMode = NSLineBreakByWordWrapping;
-        _tuPianJieShaoAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:10.f], NSForegroundColorAttributeName : RGBHEX(0x999999)};
+        _tuPianJieShaoAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : [UIFont systemFontOfSize:12.f], NSForegroundColorAttributeName : RGBHEX(0x999999)};
     }
     return _tuPianJieShaoAttrDic;
 }

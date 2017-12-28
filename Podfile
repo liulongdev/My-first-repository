@@ -17,6 +17,7 @@ def shared_dependencies
   pod 'AlicloudMAN', '~> 1.0.10'
   pod 'AlicloudFeedback', '~> 3.2.2'
   pod 'FDFullscreenPopGesture', '~> 1.1'
+  pod 'FCUUID', '~> 1.3.1'   
 end
 
 workspace "maxiaoding.xcodeproj"

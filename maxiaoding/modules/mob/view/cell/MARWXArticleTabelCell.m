@@ -22,6 +22,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.marTitleLabel.preferredMaxLayoutWidth = kScreenWIDTH - 15 * 2;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

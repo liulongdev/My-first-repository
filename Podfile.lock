@@ -25,6 +25,8 @@ PODS:
   - AlicloudUtils (1.2.2):
     - AlicloudUT
     - AlicloudUTDID
+  - FCUUID (1.3.1):
+    - UICKeyChainStore (~> 2.1.0)
   - FDFullscreenPopGesture (1.1)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
@@ -52,11 +54,13 @@ PODS:
   - SMSSDK (3.0.1):
     - MOBFoundation
   - SVProgressHUD (2.0.4)
+  - UICKeyChainStore (2.1.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AlicloudFeedback (~> 3.2.2)
   - AlicloudMAN (~> 1.0.10)
+  - FCUUID (~> 1.3.1)
   - FDFullscreenPopGesture (~> 1.1)
   - LKDBHelper (~> 2.4)
   - MAREXT (~> 0.0.7)
@@ -77,6 +81,7 @@ SPEC CHECKSUMS:
   AlicloudUT: 9f20dcfd2753de09261b6c279245da1650a34932
   AlicloudUTDID: f5a7bc1420c5f83e3bd40296e5ab2e5a804a12f8
   AlicloudUtils: 2437ae7fd2b39343539e8f48aa1f7bf6f5a6cff1
+  FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   LKDBHelper: 378aa31e334bbb4e7a64928b4e7bae8059386524
@@ -91,7 +96,8 @@ SPEC CHECKSUMS:
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   SMSSDK: a811c8ea6e89393097037b7cf6493248a40e50f0
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
+  UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
 
-PODFILE CHECKSUM: c1f48281f373a5eb996276dbed7d5467cf282447
+PODFILE CHECKSUM: 6b6c354e4a3482ddc6707003560ba60e55b42827
 
 COCOAPODS: 1.2.0

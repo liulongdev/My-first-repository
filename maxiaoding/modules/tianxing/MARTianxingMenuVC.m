@@ -33,7 +33,9 @@ NSString * const tianxingMenuCellTitle_ITZiXun = @"IT资讯";
 @end
 
 @implementation MARTianxingMenuVC
-
+{
+    NSString *selectTitle;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.menuTitleArray = @[tianxingMenuCellTitle_VRKeJi,
@@ -157,7 +159,7 @@ NSString * const tianxingMenuCellTitle_ITZiXun = @"IT资讯";
     {
         typeNumber = [NSNumber numberWithInteger:TXNEWSType_ITZiXun];;
     }
-    
+    selectTitle = title;
     [self performSegueWithIdentifier:@"goTXNewsVC" sender:typeNumber];
 }
 
@@ -166,6 +168,7 @@ NSString * const tianxingMenuCellTitle_ITZiXun = @"IT资讯";
     MARTXNewsVC *TXNewsVC = segue.destinationViewController;
     if ([TXNewsVC isKindOfClass:[MARTXNewsVC class]] && [sender isKindOfClass:[NSNumber class]]) {
         TXNewsVC.type = [sender integerValue];
+        TXNewsVC.title = selectTitle;
     }
 }
 

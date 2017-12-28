@@ -27,6 +27,7 @@ NSString * const kSBID_Mob_CarBrandListVC               = @"MARCarBrandListVC";
 NSString * const kSBID_Mob_CardSeriesVC                 = @"MARCarSeriesVC";
 NSString * const kSBID_Mob_CardDetailVC                 = @"MARCarDetailVC";
 NSString * const kSBID_Mob_CookCategoryListVC           = @"MARCookCategoryListVC";
+NSString * const kSBID_Mob_CookCategoryCollectionVC     = @"MARCookCategoryCollectionVC";
 NSString * const kSBID_Mob_SearchCookVC                 = @"MARSearchCookVC";
 NSString * const kSBID_Mob_CookDetailVC                 = @"MARCookDetailVC";
 NSString * const kSBID_Mine_MineVC                      = @"MARMineVC";
