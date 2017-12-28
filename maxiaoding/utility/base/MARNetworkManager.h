@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
-#import "MARNetworkResponse.h"
+#import "MARBaseRequest.h"
 
 typedef NS_ENUM(NSUInteger, MARNetworkRequestType)
 {
@@ -149,7 +149,7 @@ typedef void (^MARNetworkProgress)(CGFloat progress);
 + (NSURLSessionUploadTask *)mar_uploadRequest:(NSURLRequest *)request
                                      fromData:(NSData *)bodyData
                                      progress:(MARNetworkProgress)progress
-                                      success:(void (^)(NSURLResponse *URLResponse, id response))success
+                                      success:(void (^)(NSURLResponse *URLResponse, id responseObject))success
                                       failure:(void (^)(NSURLResponse *URLResponse, NSError *error))failure;
 
 

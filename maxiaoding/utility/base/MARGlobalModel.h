@@ -9,7 +9,14 @@
 #import "MARBaseDBModel.h"
 
 @interface MARUserInfoModel : MARBaseDBModel <NSCoding>
-
+@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *iphone;
+@property (nonatomic, strong) NSString *userNickName;
+@property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *userImageIcon;
+@property (nonatomic, strong) NSString *gender;
+@property (nonatomic, assign) NSInteger sex;
 @end
 
 @interface MARHomeConfigModel : MARBaseDBModel <NSCoding>

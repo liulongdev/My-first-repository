@@ -41,7 +41,7 @@
     if (!_topLabel) {
         _topLabel = [UILabel new];
         _topLabel.text = @"别再拉我，胸罩要掉了";
-        _topLabel.font = [UIFont systemFontOfSize:14.f];
+        _topLabel.font = MARFont(14.f);
         _topLabel.textAlignment = NSTextAlignmentCenter;
         _topLabel.numberOfLines = 0;
         _topLabel.textColor = RGBHEX(0x999999);
@@ -54,7 +54,7 @@
     if (!_bottomLabel) {
         _bottomLabel = [UILabel new];
         _bottomLabel.text = @"你再拉，我就翻脸了哦";
-        _bottomLabel.font = [UIFont systemFontOfSize:14.f];
+        _bottomLabel.font = MARFont(14.f);
         _bottomLabel.textAlignment = NSTextAlignmentCenter;
         _bottomLabel.numberOfLines = 0;
         _bottomLabel.textColor = RGBHEX(0x999999);

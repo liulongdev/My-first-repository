@@ -54,7 +54,6 @@
 + (void)test
 {
 
-
 }
 
 + (void)loadCalendarWithDateStr:(NSString *)dateStr
@@ -75,7 +74,6 @@
         if (callback) {
             callback(response, calendarModel, MARMOBERRMSG(response));
         }
-        NSLog(@"response >>>> %@", response.responder);
     }];
 }
 

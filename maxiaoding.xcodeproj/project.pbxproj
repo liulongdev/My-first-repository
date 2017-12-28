@@ -22,7 +22,6 @@
 		5B029F161FE3C849008ED5CA /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B029F151FE3C849008ED5CA /* test.storyboard */; };
 		5B029F1D1FE3CCA7008ED5CA /* MARHomeCustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F1B1FE3CCA7008ED5CA /* MARHomeCustomTableCell.m */; };
 		5B029F1E1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B029F1C1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib */; };
-		5B029F211FE3D4BC008ED5CA /* MARTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F201FE3D4BC008ED5CA /* MARTestTableViewCell.m */; };
 		5B029F241FE3D55E008ED5CA /* MARHomeTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F231FE3D55E008ED5CA /* MARHomeTestVC.m */; };
 		5B029F261FE40330008ED5CA /* homecustome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B029F251FE40330008ED5CA /* homecustome.storyboard */; };
 		5B029F2A1FE4043D008ED5CA /* MARHomeCustomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F281FE4043D008ED5CA /* MARHomeCustomVC.m */; };
@@ -82,6 +81,7 @@
 		5B933B621FE971EF004C2038 /* MAREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B611FE971EF004C2038 /* MAREmptyView.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
+		5BD1D2CB1FF4E49C00610DDE /* MARRegisterUserR.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1D2CA1FF4E49C00610DDE /* MARRegisterUserR.m */; };
 		5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */; };
 		5BFCE71A1FE53F6900E86CCC /* MARCookStepTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7191FE53F6900E86CCC /* MARCookStepTableCell.m */; };
 		83F79CD1B5F4E42CC3A4A9E0 /* libPods-maxiaoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */; };
@@ -131,8 +131,6 @@
 		5B029F1A1FE3CCA7008ED5CA /* MARHomeCustomTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHomeCustomTableCell.h; sourceTree = "<group>"; };
 		5B029F1B1FE3CCA7008ED5CA /* MARHomeCustomTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHomeCustomTableCell.m; sourceTree = "<group>"; };
 		5B029F1C1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARHomeCustomTableCell.xib; sourceTree = "<group>"; };
-		5B029F1F1FE3D4BC008ED5CA /* MARTestTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARTestTableViewCell.h; sourceTree = "<group>"; };
-		5B029F201FE3D4BC008ED5CA /* MARTestTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARTestTableViewCell.m; sourceTree = "<group>"; };
 		5B029F221FE3D55E008ED5CA /* MARHomeTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHomeTestVC.h; sourceTree = "<group>"; };
 		5B029F231FE3D55E008ED5CA /* MARHomeTestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHomeTestVC.m; sourceTree = "<group>"; };
 		5B029F251FE40330008ED5CA /* homecustome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = homecustome.storyboard; sourceTree = "<group>"; };
@@ -253,6 +251,9 @@
 		5BC0F5731FE211DF004C62D4 /* userdefaultkey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userdefaultkey.h; sourceTree = "<group>"; };
 		5BC0F5741FE2218E004C62D4 /* MARMonthDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMonthDayView.h; sourceTree = "<group>"; };
 		5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMonthDayView.m; sourceTree = "<group>"; };
+		5BD1D2C91FF4E49C00610DDE /* MARRegisterUserR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARRegisterUserR.h; sourceTree = "<group>"; };
+		5BD1D2CA1FF4E49C00610DDE /* MARRegisterUserR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARRegisterUserR.m; sourceTree = "<group>"; };
+		5BD1D2CC1FF4E9D600610DDE /* request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = request.h; sourceTree = "<group>"; };
 		5BFCE7151FE5257000E86CCC /* MARCookDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookDetailVC.h; sourceTree = "<group>"; };
 		5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookDetailVC.m; sourceTree = "<group>"; };
 		5BFCE7181FE53F6900E86CCC /* MARCookStepTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookStepTableCell.h; sourceTree = "<group>"; };
@@ -364,8 +365,6 @@
 				5B029F1A1FE3CCA7008ED5CA /* MARHomeCustomTableCell.h */,
 				5B029F1B1FE3CCA7008ED5CA /* MARHomeCustomTableCell.m */,
 				5B029F1C1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib */,
-				5B029F1F1FE3D4BC008ED5CA /* MARTestTableViewCell.h */,
-				5B029F201FE3D4BC008ED5CA /* MARTestTableViewCell.m */,
 				5B029F2F1FE41C1F008ED5CA /* MARHomeDateView.h */,
 				5B029F301FE41C1F008ED5CA /* MARHomeDateView.m */,
 				5B029F341FE421AB008ED5CA /* MARHomeDateView.xib */,
@@ -609,10 +608,10 @@
 		5B4805321FF27B94000C9FD3 /* network */ = {
 			isa = PBXGroup;
 			children = (
-				5B4805331FF27B94000C9FD3 /* request */,
-				5B4805341FF27B94000C9FD3 /* response */,
+				5BD1D2C81FF4E46600610DDE /* user */,
 				5B4805351FF27BAE000C9FD3 /* MARBaseRequest.h */,
 				5B4805361FF27BAE000C9FD3 /* MARBaseRequest.m */,
+				5BD1D2CC1FF4E9D600610DDE /* request.h */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -620,6 +619,8 @@
 		5B4805331FF27B94000C9FD3 /* request */ = {
 			isa = PBXGroup;
 			children = (
+				5BD1D2C91FF4E49C00610DDE /* MARRegisterUserR.h */,
+				5BD1D2CA1FF4E49C00610DDE /* MARRegisterUserR.m */,
 			);
 			path = request;
 			sourceTree = "<group>";
@@ -758,6 +759,15 @@
 				5B933B5E1FE9706E004C2038 /* images.xcassets */,
 			);
 			path = img;
+			sourceTree = "<group>";
+		};
+		5BD1D2C81FF4E46600610DDE /* user */ = {
+			isa = PBXGroup;
+			children = (
+				5B4805331FF27B94000C9FD3 /* request */,
+				5B4805341FF27B94000C9FD3 /* response */,
+			);
+			path = user;
 			sourceTree = "<group>";
 		};
 		665DD05C9EEE5810E3C0563D /* Pods */ = {
@@ -992,6 +1002,7 @@
 				5B029F2E1FE40E73008ED5CA /* MARGlobalModel.m in Sources */,
 				5B029F3B1FE4B5C2008ED5CA /* MARLaohuangliModel.m in Sources */,
 				5B029F311FE41C1F008ED5CA /* MARHomeDateView.m in Sources */,
+				5BD1D2CB1FF4E49C00610DDE /* MARRegisterUserR.m in Sources */,
 				5B029F411FE4E3BE008ED5CA /* MARCookCategoryListVC.m in Sources */,
 				5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */,
 				5B933B3C1FE82421004C2038 /* MARMineVC.m in Sources */,
@@ -1004,7 +1015,6 @@
 				5B029F011FE2C317008ED5CA /* MARCarSeriesVC.m in Sources */,
 				5B25F8621FE0D2CA00E85884 /* main.m in Sources */,
 				5B029F2A1FE4043D008ED5CA /* MARHomeCustomVC.m in Sources */,
-				5B029F211FE3D4BC008ED5CA /* MARTestTableViewCell.m in Sources */,
 				5B25F8F91FE17D2900E85884 /* MARHistoryDayModel.m in Sources */,
 				5B25F8EC1FE12B9000E85884 /* MARMobMenuVC.m in Sources */,
 				5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */,

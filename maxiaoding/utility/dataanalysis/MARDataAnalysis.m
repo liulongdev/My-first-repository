@@ -15,7 +15,7 @@
     // 获取MAN服务
     ALBBMANAnalytics *man = [ALBBMANAnalytics getInstance];
     // 打开调试日志，线上版本建议关闭
-    [man turnOnDebug];
+//    [man turnOnDebug];
     // 初始化MAN
     [man initWithAppKey:AliDataAnalysisAppKey secretKey:AliDataAnalysisSecretKey];
     // appVersion默认从Info.list的CFBundleShortVersionString字段获取，如果没有指定，可在此调用setAppversion设定

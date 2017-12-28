@@ -368,8 +368,7 @@
             if (!strongSelf) return;
             [strongSelf _alynasisRequestEndWithTask:uploadTask builder:builder];
             if (success) {
-                MARNetworkResponse *responseModel = [MARNetworkResponse mar_modelWithDictionary:responseObject];
-                success(response,responseModel);
+                success(response,responseObject);
             }
         }
         

@@ -14,12 +14,14 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray<MARCarBrandModel *> *carBrandArray;
 @property (nonatomic, strong) NSMutableArray<NSString *> *titleIndexArray;
+@property (nonatomic, strong) NSMutableSet *expandSecionSet;
 @end
 
 @implementation MARCarBrandListVC
 @synthesize carBrandArray = _carBrandArray;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self carBrandArray];
 }
 
 - (void)UIGlobal
@@ -30,7 +32,7 @@
 
 - (void)loadData
 {
-    if (self.carBrandArray.count > 0) {
+    if (_carBrandArray.count > 0) {
         return;
     }
     [self showActivityView:YES];
@@ -87,6 +89,14 @@
     return _carBrandArray;
 }
 
+- (NSMutableSet *)expandSecionSet
+{
+    if (!_expandSecionSet) {
+        _expandSecionSet = [NSMutableSet set];
+    }
+    return _expandSecionSet;
+}
+
 - (void)setCarBrandArray:(NSArray<MARCarBrandModel *> *)carBrandArray
 {
     _carBrandArray = carBrandArray;
@@ -116,7 +126,7 @@
 #pragma mark - UITableView Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.carBrandArray.count;
+    return _carBrandArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -124,26 +134,44 @@
     return 44;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    CGFloat height = [self tableView:tableView heightForHeaderInSection:section];
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.mar_width, height)];
-//    view.backgroundColor = RGBHEX(0xf8f8f8);
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, view.mar_width - 15 * 2, height)];
-//    [view addSubview:label];
-//    if (self.carBrandArray.count > section) {
-//        label.text = self.carBrandArray[section].name;
-//    }
-//    return view;
-//}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (self.carBrandArray.count > section) {
-        return self.carBrandArray[section].name;
+    CGFloat height = [self tableView:tableView heightForHeaderInSection:section];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.mar_width, height)];
+    view.backgroundColor = RGBHEX(0xf8f8f8);
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, view.mar_width - 15 * 2, height)];
+    [view addSubview:label];
+    label.font = MARBoldFont(15.f);
+    label.textColor = RGBHEX(0x666666);
+    NSString *arowStr = @"↓";
+    if ([self.expandSecionSet containsObject:@(section)]) {
+        arowStr = @"↑";
     }
-    return @"";
+    if (_carBrandArray.count > section) {
+        label.text = [NSString stringWithFormat:@"%@\t%@\t\t(%ld)", arowStr, _carBrandArray[section].name, (long)_carBrandArray[section].son.count];
+    }
+    @weakify(self)
+    [view mar_whenTapped:^{
+        @strongify(self)
+        if (!strong_self) return;
+        if ([strong_self.expandSecionSet containsObject:@(section)]) {
+            [strong_self.expandSecionSet removeObject:@(section)];
+        }
+        else
+            [strong_self.expandSecionSet addObject:@(section)];
+        [strong_self.tableView reloadData];
+    }];
+    
+    return view;
 }
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    if (_carBrandArray.count > section) {
+//        return _carBrandArray[section].name;
+//    }
+//    return @"";
+//}
 
 //添加索引栏标题数组
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -160,8 +188,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.carBrandArray.count > section) {
-        return self.carBrandArray[section].son.count;
+    if ([self.expandSecionSet containsObject:@(section)]) {
+        if (_carBrandArray.count > section) {
+            return _carBrandArray[section].son.count;
+        }
     }
     return 0;
 }
@@ -173,10 +203,13 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+        cell.textLabel.font = MARFont(12.f);
+        cell.detailTextLabel.font = MARFont(12.f);
+        cell.detailTextLabel.textColor = RGBHEX(0x999999);
     }
     NSInteger row = indexPath.row;
-    if (self.carBrandArray.count > indexPath.section) {
-        NSArray<MARCarTypeInfoModel *> *carTypeInfoArray = self.carBrandArray[indexPath.section].son;
+    if (_carBrandArray.count > indexPath.section) {
+        NSArray<MARCarTypeInfoModel *> *carTypeInfoArray = _carBrandArray[indexPath.section].son;
         if (carTypeInfoArray.count > row) {
             cell.textLabel.text = carTypeInfoArray[row].car;
             cell.detailTextLabel.text = carTypeInfoArray[row].type;
@@ -188,13 +221,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = indexPath.row;
-    if (self.carBrandArray.count > indexPath.section) {
-        NSArray<MARCarTypeInfoModel *> *carTypeInfoArray = self.carBrandArray[indexPath.section].son;
+    if (_carBrandArray.count > indexPath.section) {
+        NSArray<MARCarTypeInfoModel *> *carTypeInfoArray = _carBrandArray[indexPath.section].son;
         if (carTypeInfoArray.count > row) {
             [self performSegueWithIdentifier:@"goCarSeriesVC" sender:carTypeInfoArray[row]];
         }
     }
-    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
