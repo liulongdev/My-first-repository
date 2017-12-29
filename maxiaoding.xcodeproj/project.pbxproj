@@ -79,6 +79,8 @@
 		5B933B5B1FE9485C004C2038 /* MARTianxingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B5A1FE9485C004C2038 /* MARTianxingUtil.m */; };
 		5B933B5F1FE9706E004C2038 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B933B5E1FE9706E004C2038 /* images.xcassets */; };
 		5B933B621FE971EF004C2038 /* MAREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B611FE971EF004C2038 /* MAREmptyView.m */; };
+		5B9498AA1FF5DDDB00FF9731 /* HYXiXingKaiW.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B9498A91FF5DDD900FF9731 /* HYXiXingKaiW.ttf */; };
+		5B9498D21FF617D500FF9731 /* MARFontConfigVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9498D11FF617D500FF9731 /* MARFontConfigVC.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
 		5BD1D2CB1FF4E49C00610DDE /* MARRegisterUserR.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1D2CA1FF4E49C00610DDE /* MARRegisterUserR.m */; };
@@ -246,6 +248,9 @@
 		5B933B5E1FE9706E004C2038 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		5B933B601FE971EF004C2038 /* MAREmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAREmptyView.h; sourceTree = "<group>"; };
 		5B933B611FE971EF004C2038 /* MAREmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAREmptyView.m; sourceTree = "<group>"; };
+		5B9498A91FF5DDD900FF9731 /* HYXiXingKaiW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HYXiXingKaiW.ttf; sourceTree = "<group>"; };
+		5B9498D01FF617D500FF9731 /* MARFontConfigVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARFontConfigVC.h; sourceTree = "<group>"; };
+		5B9498D11FF617D500FF9731 /* MARFontConfigVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARFontConfigVC.m; sourceTree = "<group>"; };
 		5BB1D1571FE190EB0004396E /* MARHistoryDayDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayDetailVC.h; sourceTree = "<group>"; };
 		5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHistoryDayDetailVC.m; sourceTree = "<group>"; };
 		5BC0F5731FE211DF004C62D4 /* userdefaultkey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userdefaultkey.h; sourceTree = "<group>"; };
@@ -660,6 +665,8 @@
 				5B933B3B1FE82421004C2038 /* MARMineVC.m */,
 				5B933B3D1FE82674004C2038 /* MARSettingVC.h */,
 				5B933B3E1FE82674004C2038 /* MARSettingVC.m */,
+				5B9498D01FF617D500FF9731 /* MARFontConfigVC.h */,
+				5B9498D11FF617D500FF9731 /* MARFontConfigVC.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -748,6 +755,7 @@
 		5B933B5C1FE97048004C2038 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				5B9498A81FF5DDB600FF9731 /* font */,
 				5B933B5D1FE97059004C2038 /* img */,
 			);
 			path = resource;
@@ -759,6 +767,14 @@
 				5B933B5E1FE9706E004C2038 /* images.xcassets */,
 			);
 			path = img;
+			sourceTree = "<group>";
+		};
+		5B9498A81FF5DDB600FF9731 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				5B9498A91FF5DDD900FF9731 /* HYXiXingKaiW.ttf */,
+			);
+			path = font;
 			sourceTree = "<group>";
 		};
 		5BD1D2C81FF4E46600610DDE /* user */ = {
@@ -893,6 +909,7 @@
 				5B933B5F1FE9706E004C2038 /* images.xcassets in Resources */,
 				5B25F85C1FE0D2CA00E85884 /* Assets.xcassets in Resources */,
 				5B933B351FE823B4004C2038 /* mine.storyboard in Resources */,
+				5B9498AA1FF5DDDB00FF9731 /* HYXiXingKaiW.ttf in Resources */,
 				5B029F2B1FE4043D008ED5CA /* MARHomeCustomVC.xib in Resources */,
 				5B029F351FE421AB008ED5CA /* MARHomeDateView.xib in Resources */,
 				5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */,
@@ -1004,6 +1021,7 @@
 				5B029F311FE41C1F008ED5CA /* MARHomeDateView.m in Sources */,
 				5BD1D2CB1FF4E49C00610DDE /* MARRegisterUserR.m in Sources */,
 				5B029F411FE4E3BE008ED5CA /* MARCookCategoryListVC.m in Sources */,
+				5B9498D21FF617D500FF9731 /* MARFontConfigVC.m in Sources */,
 				5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */,
 				5B933B3C1FE82421004C2038 /* MARMineVC.m in Sources */,
 				5B029EFB1FE28098008ED5CA /* MARCarBrandListVC.m in Sources */,

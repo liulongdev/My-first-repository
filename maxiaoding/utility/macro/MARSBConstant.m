@@ -32,9 +32,9 @@ NSString * const kSBID_Mob_SearchCookVC                 = @"MARSearchCookVC";
 NSString * const kSBID_Mob_CookDetailVC                 = @"MARCookDetailVC";
 NSString * const kSBID_Mine_MineVC                      = @"MARMineVC";
 NSString * const kSBID_Mine_SettingVC                   = @"MARSettingVC";
+NSString * const kSBID_Mine_FontConfigVC                = @"MARFontConfigVC";
 NSString * const kSBID_Tianxing_TianxingMenuVC          = @"MARTianxingMenuVC";
 NSString * const kSBID_Tianxing_TXNewsVC                = @"MARTXNewsVC";
-
 /**
  StoryBoard Segue Identifier
  */

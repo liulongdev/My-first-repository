@@ -10,7 +10,7 @@
 #import <UIImageView+WebCache.h>
 
 NSString * const settingCellTitle_cache = @"清除缓存";
-
+NSString * const settingCellTitle_font = @"字体相关";
 
 @interface MARSettingVC () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -38,7 +38,8 @@ NSString * const settingCellTitle_cache = @"清除缓存";
 
 - (NSArray *)titleArray
 {
-    return @[settingCellTitle_cache];
+    return @[settingCellTitle_cache,
+             settingCellTitle_font];
 }
 
 - (void)caculateSDImageDiskSize
@@ -84,7 +85,7 @@ NSString * const settingCellTitle_cache = @"清除缓存";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (self.titleArray.count > indexPath.row) {
-        cell.textLabel.text = self.titleArray[0];
+        cell.textLabel.text = self.titleArray[indexPath.row];
     }
     if ([cell.textLabel.text isEqualToString:settingCellTitle_cache]) {
         if (isCaculatingSDImageDiskSize) {
@@ -105,8 +106,13 @@ NSString * const settingCellTitle_cache = @"清除缓存";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([settingCellTitle_cache isEqualToString:cell.textLabel.text]) {
+    NSString *title = cell.textLabel.text;
+    if ([settingCellTitle_cache isEqualToString:title]) {
         [self _clearImageCache];
+    }
+    else if ([settingCellTitle_font isEqualToString:title])
+    {
+        [self performSegueWithIdentifier:@"goFontConfigVC" sender:nil];
     }
 }
 

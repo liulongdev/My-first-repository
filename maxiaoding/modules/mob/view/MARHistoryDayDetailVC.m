@@ -30,7 +30,7 @@
         style.lineSpacing = 8;
         style.lineBreakMode = NSLineBreakByWordWrapping;
         _attrDic = @{NSParagraphStyleAttributeName: style,
-                     NSFontAttributeName: [UIFont systemFontOfSize:18.f],
+                     NSFontAttributeName: MAREXTFont(18.f),
                      NSForegroundColorAttributeName: RGBHEX(0x333333)
                      };
     }

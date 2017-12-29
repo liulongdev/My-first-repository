@@ -159,7 +159,7 @@
         }
         else
             [strong_self.expandSecionSet addObject:@(section)];
-        [strong_self.tableView reloadData];
+        [strong_self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:section]  withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
     
     return view;

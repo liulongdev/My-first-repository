@@ -105,11 +105,49 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="pcw-XI-eQz" id="bDX-UK-rXC"/>
+                        <segue destination="2xp-mi-zpC" kind="show" identifier="goFontConfigVC" id="2l2-vM-Sd3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PM9-OO-87U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="402.39999999999998" y="174.96251874062969"/>
+            <point key="canvasLocation" x="446" y="175"/>
+        </scene>
+        <!--Font ConfigVC-->
+        <scene sceneID="bFd-1o-RXy">
+            <objects>
+                <viewController storyboardIdentifier="MARFontConfigVC" id="2xp-mi-zpC" customClass="MARFontConfigVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="prb-fN-I1E"/>
+                        <viewControllerLayoutGuide type="bottom" id="K41-Tu-zNL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kYZ-IS-MXx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HGp-dP-sDc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2xp-mi-zpC" id="5YC-AC-Mr0"/>
+                                    <outlet property="delegate" destination="2xp-mi-zpC" id="FTz-na-8DH"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="HGp-dP-sDc" secondAttribute="trailing" id="67N-SZ-DGG"/>
+                            <constraint firstItem="K41-Tu-zNL" firstAttribute="top" secondItem="HGp-dP-sDc" secondAttribute="bottom" id="7Sf-MY-mAx"/>
+                            <constraint firstItem="HGp-dP-sDc" firstAttribute="top" secondItem="prb-fN-I1E" secondAttribute="bottom" id="jnn-cj-RBu"/>
+                            <constraint firstItem="HGp-dP-sDc" firstAttribute="leading" secondItem="kYZ-IS-MXx" secondAttribute="leading" id="re2-je-nEN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="HGp-dP-sDc" id="yY6-PP-EEX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IXl-r5-7xL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1336.8" y="174.96251874062969"/>
         </scene>
     </scenes>
 </document>
