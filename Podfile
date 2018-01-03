@@ -17,7 +17,18 @@ def shared_dependencies
   pod 'AlicloudMAN', '~> 1.0.10'
   pod 'AlicloudFeedback', '~> 3.2.2'
   pod 'FDFullscreenPopGesture', '~> 1.1'
-  pod 'FCUUID', '~> 1.3.1'   
+  pod 'FCUUID', '~> 1.3.1'
+  pod 'pop', '~> 1.0.10'
+  
+  pod 'UMengUShare/Social/WeChat', '~> 6.4.7'
+  pod 'UMengUShare/Social/QQ', '~> 6.4.7'
+  pod 'UMengUShare/Social/Sina', '~> 6.4.7'
+  pod 'UMengUShare/UI', '~> 6.4.7'
+
+#  pod 'UMengUShare/Social/ReducedWeChat', '~> 6.4.7'
+#  pod 'UMengUShare/Social/ReducedQQ', '~> 6.4.7'
+#  pod 'UMengUShare/Social/ReducedSina', '~> 6.4.7'
+
 end
 
 workspace "maxiaoding.xcodeproj"

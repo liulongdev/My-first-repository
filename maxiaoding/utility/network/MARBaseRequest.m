@@ -17,6 +17,7 @@
     _appVersion = AppVersion;
     _deviceType = @"iOS";
     _deviceUUID = [FCUUID uuidForDevice];
+    _machineModel = [UIDevice currentDevice].mar_machineModel;
     _machineModelName = [UIDevice currentDevice].mar_machineModelName;
     _osVersion = [[UIDevice currentDevice] systemVersion];
     _timeStamp = MARSTRWITHINT((long)([[NSDate new] timeIntervalSince1970]));
@@ -26,7 +27,7 @@
 
 - (NSString *)signature
 {
-    NSString *originalSig = [NSString stringWithFormat:@"appVersion%@deviceType%@deviceUUID%@machineModelName%@osVersion%@timeStamp%@", _appVersion?:@"",_deviceType?:@"",_deviceUUID?:@"",_machineModelName?:@"",_osVersion?:@"",_timeStamp?:@""];
+    NSString *originalSig = [NSString stringWithFormat:@"appVersion%@deviceType%@deviceUUID%@machineModel%@machineModelName%@osVersion%@timeStamp%@", _appVersion?:@"",_deviceType?:@"",_deviceUUID?:@"",_machineModel?:@"",_machineModelName?:@"",_osVersion?:@"",_timeStamp?:@""];
     return [originalSig mar_hmacSHA256StringWithKey:MARCRYPTOHMACSHA256KEY];
 }
 

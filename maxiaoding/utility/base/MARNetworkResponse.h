@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <NSObject+MARModel.h>
 
-@interface MARNetworkResponse : NSObject
+@interface MARNetworkResponse : NSObject <MARModelDelegate>
+
+@property (nonatomic, assign) NSInteger errCode;
+@property (nonatomic, strong) NSString *errMsg;
+@property (nonatomic, strong) NSString *body;
+
+- (BOOL)isSuccess;
 
 @end

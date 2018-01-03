@@ -10,4 +10,17 @@
 
 @implementation MARNetworkResponse
 
++ (NSDictionary<NSString *,id> *)mar_modelCustomPropertyMapper
+{
+    return @{@"errCode"     :   @"header.errCode",
+             @"errMsg"      :   @"header.errMsg"};
+}
+
+- (BOOL)isSuccess
+{
+    return self.errCode == 0;
+}
+
 @end
+
+

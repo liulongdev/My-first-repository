@@ -10,7 +10,8 @@
 #define request_h
 
 #import "MARBaseRequest.h"
-#import "MARRegisterUserR.h"
-
+#import "MARUserRequest.h"
+#import "requesturl.h"
+#import "MARNetworkResponse.h"
 
 #endif /* request_h */

@@ -14,4 +14,11 @@
 
 #define KMARUIApplicationDidBecomeActiveNotification @"KMARUIApplicationDidBecomeActiveNotification"
 #define kMARUIApplicationDidEnterBackgroundNotification @"kMARUIApplicationDidEnterBackgroundNotification"
+
+
+typedef NS_ENUM(NSInteger, kMARNotificationType) {
+    kMARNotificationType_PhoneCodeCount = 1,
+};
+
+
 #endif /* notification_h */

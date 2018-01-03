@@ -22,4 +22,12 @@
 
 #define TianXingAppKey              @"8c4959808bd4723d8556c5c39a9828ec"
 
+
+// UMSDK
+#define UMSHARE_AppKey      @"5a466c97a40fa323ff000120"
+#define QQAppID             @"1106649148"
+#define QQAppKey            @"pdob7Qhf4yYb8D11"
+#define SINAAppKey          @"415710572"
+#define SINAAppSecretKey    @"85cc8447312d14636229a9ed1bb0eb7e"
+
 #endif /* appkey_h */

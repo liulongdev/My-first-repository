@@ -18,7 +18,7 @@
 #import "MARMobUtil.h"          // 关于mob的数据整理工具
 #import "MARTianxingUtil.h"     // 关于天行数据的整理工具
 #import "MARDataAnalysis.h"     // 数据分析封装
-#import "MARGlobalModel.h"      // 
+#import "MARUtility.h"      // 
 #import "UIViewController+MAREX.h"  // 页面数据分析封装
 #import "MARNetworkManager.h"   // 网络请求封装
 #import <UINavigationController+FDFullscreenPopGesture.h>

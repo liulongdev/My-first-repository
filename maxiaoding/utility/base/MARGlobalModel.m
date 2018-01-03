@@ -11,7 +11,7 @@
 NSString * const MARGLobalModelId = @"10000";
 
 @interface MARGlobalModel()
-@property (nonatomic, strong, readonly) NSString *globalId;
+@property (nonatomic, strong) NSString *globalId;
 @end
 
 @implementation MARGlobalModel
@@ -50,6 +50,16 @@ NSString * const MARGLobalModelId = @"10000";
     return instance;
 }
 
+- (BOOL)isLogin
+{
+    return [self.userInfo._id isKindOfClass:[NSString class]] && self.userInfo._id.length > 0;
+}
+
+- (BOOL)isBindPhone
+{
+    return [self.userInfo.phone mar_isMobileNumber];
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -70,6 +80,11 @@ NSString * const MARGLobalModelId = @"10000";
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [self mar_modelEncodeWithCoder:aCoder];
+}
+
+- (NSString *)description
+{
+    return [self mar_modelDescription];
 }
 
 @end

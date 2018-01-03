@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MARGlobalManager.h"
+#import <UMSocialCore/UMSocialCore.h>
 
 #define MARAPPDELEGATE_RegisterDeviceToken          // 申请devicetoken
 
@@ -21,5 +22,7 @@
 
 #pragma mark - 全局设置导航栏样式
 - (void) initAppearance;
+
+- (void)initUMShare;
 
 @end

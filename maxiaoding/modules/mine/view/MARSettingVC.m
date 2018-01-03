@@ -8,8 +8,11 @@
 
 #import "MARSettingVC.h"
 #import <UIImageView+WebCache.h>
+#import "MARPhoneOperationVC.h"
 
 NSString * const settingCellTitle_cache = @"清除缓存";
+NSString * const settingCellTitle_bindPhone = @"绑定手机";
+NSString * const settingCellTitle_setPassword = @"设置密码";
 NSString * const settingCellTitle_font = @"字体相关";
 
 @interface MARSettingVC () <UITableViewDataSource, UITableViewDelegate>
@@ -30,6 +33,13 @@ NSString * const settingCellTitle_font = @"字体相关";
     [self caculateSDImageDiskSize];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self titleArray];
+    [self.tableView reloadData];
+}
+
 - (void)UIGlobal
 {
     MARAdjustsScrollViewInsets_NO(self.tableView, self);
@@ -38,8 +48,26 @@ NSString * const settingCellTitle_font = @"字体相关";
 
 - (NSArray *)titleArray
 {
-    return @[settingCellTitle_cache,
-             settingCellTitle_font];
+    if ([MARUTILITY isLogin]) {
+        if ([MARUTILITY isBindPhone]) {
+            _titleArray = @[settingCellTitle_cache,
+                            settingCellTitle_setPassword,
+                            settingCellTitle_font];
+        }
+        else
+        {
+            _titleArray = @[settingCellTitle_cache,
+                            settingCellTitle_bindPhone,
+                            settingCellTitle_font];
+        }
+    }
+    else
+    {
+        _titleArray = @[settingCellTitle_cache,
+          settingCellTitle_font];
+        
+    }
+    return _titleArray;
 }
 
 - (void)caculateSDImageDiskSize
@@ -73,7 +101,7 @@ NSString * const settingCellTitle_font = @"字体相关";
 #pragma mark - UITableView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.titleArray.count;
+    return _titleArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,8 +112,8 @@ NSString * const settingCellTitle_font = @"字体相关";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    if (self.titleArray.count > indexPath.row) {
-        cell.textLabel.text = self.titleArray[indexPath.row];
+    if (_titleArray.count > indexPath.row) {
+        cell.textLabel.text = _titleArray[indexPath.row];
     }
     if ([cell.textLabel.text isEqualToString:settingCellTitle_cache]) {
         if (isCaculatingSDImageDiskSize) {
@@ -114,6 +142,19 @@ NSString * const settingCellTitle_font = @"字体相关";
     {
         [self performSegueWithIdentifier:@"goFontConfigVC" sender:nil];
     }
+    else if ([settingCellTitle_bindPhone isEqualToString:title])
+    {
+        MARPhoneOperationVC *phoneOperationVC = (MARPhoneOperationVC *)[UIViewController vcWithStoryboardName:kSBNAME_Login storyboardId:kSBID_Login_PhoneOperationVC];
+        phoneOperationVC.operationType = MARPhoneOperationTypeBind;
+        [self mar_pushViewController:phoneOperationVC animated:YES];
+    }
+    else if ([settingCellTitle_setPassword isEqualToString:title])
+    {
+        MARPhoneOperationVC *phoneOperationVC = (MARPhoneOperationVC *)[UIViewController vcWithStoryboardName:kSBNAME_Login storyboardId:kSBID_Login_PhoneOperationVC];
+        phoneOperationVC.operationType = MARPhoneOperationTypeSetPassword;
+        [self mar_pushViewController:phoneOperationVC animated:YES];
+    }
+    
 }
 
 - (void)_clearImageCache

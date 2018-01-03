@@ -65,6 +65,13 @@
 		5B4805371FF27BAE000C9FD3 /* MARBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4805361FF27BAE000C9FD3 /* MARBaseRequest.m */; };
 		5B48053A1FF29474000C9FD3 /* MARCookCategoryCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4805391FF29474000C9FD3 /* MARCookCategoryCollectionVC.m */; };
 		5B48053D1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B48053C1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.m */; };
+		5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FF41FF82E9A000BA56A /* MARUserRequest.m */; };
+		5B765FFB1FF8323A000BA56A /* MARUserNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FFA1FF8323A000BA56A /* MARUserNetworkManager.m */; };
+		5B765FFE1FF8E647000BA56A /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B765FFD1FF8E647000BA56A /* login.storyboard */; };
+		5B7660051FF8E776000BA56A /* MARLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7660041FF8E776000BA56A /* MARLoginViewController.m */; };
+		5B7660221FFCABDE000BA56A /* MARSetPasswrodVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7660211FFCABDE000BA56A /* MARSetPasswrodVC.m */; };
+		5B7660251FFCABFA000BA56A /* MARPhoneOperationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7660241FFCABFA000BA56A /* MARPhoneOperationVC.m */; };
+		5B76602A1FFCE066000BA56A /* MARUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7660291FFCE066000BA56A /* MARUtility.m */; };
 		5B933B2C1FE767AD004C2038 /* MARDataAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B2B1FE767AD004C2038 /* MARDataAnalysis.m */; };
 		5B933B321FE79999004C2038 /* UIViewController+MAREX.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B311FE79998004C2038 /* UIViewController+MAREX.m */; };
 		5B933B351FE823B4004C2038 /* mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B933B341FE823B4004C2038 /* mine.storyboard */; };
@@ -79,11 +86,9 @@
 		5B933B5B1FE9485C004C2038 /* MARTianxingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B5A1FE9485C004C2038 /* MARTianxingUtil.m */; };
 		5B933B5F1FE9706E004C2038 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B933B5E1FE9706E004C2038 /* images.xcassets */; };
 		5B933B621FE971EF004C2038 /* MAREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B611FE971EF004C2038 /* MAREmptyView.m */; };
-		5B9498AA1FF5DDDB00FF9731 /* HYXiXingKaiW.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B9498A91FF5DDD900FF9731 /* HYXiXingKaiW.ttf */; };
 		5B9498D21FF617D500FF9731 /* MARFontConfigVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9498D11FF617D500FF9731 /* MARFontConfigVC.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
-		5BD1D2CB1FF4E49C00610DDE /* MARRegisterUserR.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1D2CA1FF4E49C00610DDE /* MARRegisterUserR.m */; };
 		5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */; };
 		5BFCE71A1FE53F6900E86CCC /* MARCookStepTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7191FE53F6900E86CCC /* MARCookStepTableCell.m */; };
 		83F79CD1B5F4E42CC3A4A9E0 /* libPods-maxiaoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */; };
@@ -222,6 +227,20 @@
 		5B4805391FF29474000C9FD3 /* MARCookCategoryCollectionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookCategoryCollectionVC.m; sourceTree = "<group>"; };
 		5B48053B1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookCategoryCollecitonCell.h; sourceTree = "<group>"; };
 		5B48053C1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookCategoryCollecitonCell.m; sourceTree = "<group>"; };
+		5B765FF31FF82E9A000BA56A /* MARUserRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARUserRequest.h; sourceTree = "<group>"; };
+		5B765FF41FF82E9A000BA56A /* MARUserRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARUserRequest.m; sourceTree = "<group>"; };
+		5B765FF61FF8302E000BA56A /* requesturl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = requesturl.h; sourceTree = "<group>"; };
+		5B765FF91FF8323A000BA56A /* MARUserNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARUserNetworkManager.h; sourceTree = "<group>"; };
+		5B765FFA1FF8323A000BA56A /* MARUserNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARUserNetworkManager.m; sourceTree = "<group>"; };
+		5B765FFD1FF8E647000BA56A /* login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
+		5B7660031FF8E776000BA56A /* MARLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARLoginViewController.h; sourceTree = "<group>"; };
+		5B7660041FF8E776000BA56A /* MARLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARLoginViewController.m; sourceTree = "<group>"; };
+		5B7660201FFCABDE000BA56A /* MARSetPasswrodVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARSetPasswrodVC.h; sourceTree = "<group>"; };
+		5B7660211FFCABDE000BA56A /* MARSetPasswrodVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARSetPasswrodVC.m; sourceTree = "<group>"; };
+		5B7660231FFCABFA000BA56A /* MARPhoneOperationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARPhoneOperationVC.h; sourceTree = "<group>"; };
+		5B7660241FFCABFA000BA56A /* MARPhoneOperationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARPhoneOperationVC.m; sourceTree = "<group>"; };
+		5B7660281FFCE066000BA56A /* MARUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARUtility.h; sourceTree = "<group>"; };
+		5B7660291FFCE066000BA56A /* MARUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARUtility.m; sourceTree = "<group>"; };
 		5B933B2A1FE767AD004C2038 /* MARDataAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARDataAnalysis.h; sourceTree = "<group>"; };
 		5B933B2B1FE767AD004C2038 /* MARDataAnalysis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARDataAnalysis.m; sourceTree = "<group>"; };
 		5B933B301FE79998004C2038 /* UIViewController+MAREX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MAREX.h"; sourceTree = "<group>"; };
@@ -248,7 +267,6 @@
 		5B933B5E1FE9706E004C2038 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		5B933B601FE971EF004C2038 /* MAREmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAREmptyView.h; sourceTree = "<group>"; };
 		5B933B611FE971EF004C2038 /* MAREmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAREmptyView.m; sourceTree = "<group>"; };
-		5B9498A91FF5DDD900FF9731 /* HYXiXingKaiW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HYXiXingKaiW.ttf; sourceTree = "<group>"; };
 		5B9498D01FF617D500FF9731 /* MARFontConfigVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARFontConfigVC.h; sourceTree = "<group>"; };
 		5B9498D11FF617D500FF9731 /* MARFontConfigVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARFontConfigVC.m; sourceTree = "<group>"; };
 		5BB1D1571FE190EB0004396E /* MARHistoryDayDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayDetailVC.h; sourceTree = "<group>"; };
@@ -256,8 +274,6 @@
 		5BC0F5731FE211DF004C62D4 /* userdefaultkey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userdefaultkey.h; sourceTree = "<group>"; };
 		5BC0F5741FE2218E004C62D4 /* MARMonthDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMonthDayView.h; sourceTree = "<group>"; };
 		5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMonthDayView.m; sourceTree = "<group>"; };
-		5BD1D2C91FF4E49C00610DDE /* MARRegisterUserR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARRegisterUserR.h; sourceTree = "<group>"; };
-		5BD1D2CA1FF4E49C00610DDE /* MARRegisterUserR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARRegisterUserR.m; sourceTree = "<group>"; };
 		5BD1D2CC1FF4E9D600610DDE /* request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = request.h; sourceTree = "<group>"; };
 		5BFCE7151FE5257000E86CCC /* MARCookDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookDetailVC.h; sourceTree = "<group>"; };
 		5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookDetailVC.m; sourceTree = "<group>"; };
@@ -448,6 +464,7 @@
 		5B25F8B11FE0F80500E85884 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				5B765FFC1FF8E637000BA56A /* login */,
 				5B933B471FE9129D004C2038 /* tianxing */,
 				5B933B331FE823A7004C2038 /* mine */,
 				5B029F101FE3C83C008ED5CA /* homecustom */,
@@ -567,6 +584,8 @@
 				5B25F8DC1FE1035A00E85884 /* MARWebViewController.m */,
 				5B029F2C1FE40E73008ED5CA /* MARGlobalModel.h */,
 				5B029F2D1FE40E73008ED5CA /* MARGlobalModel.m */,
+				5B7660281FFCE066000BA56A /* MARUtility.h */,
+				5B7660291FFCE066000BA56A /* MARUtility.m */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -616,6 +635,7 @@
 				5BD1D2C81FF4E46600610DDE /* user */,
 				5B4805351FF27BAE000C9FD3 /* MARBaseRequest.h */,
 				5B4805361FF27BAE000C9FD3 /* MARBaseRequest.m */,
+				5B765FF61FF8302E000BA56A /* requesturl.h */,
 				5BD1D2CC1FF4E9D600610DDE /* request.h */,
 			);
 			path = network;
@@ -624,8 +644,8 @@
 		5B4805331FF27B94000C9FD3 /* request */ = {
 			isa = PBXGroup;
 			children = (
-				5BD1D2C91FF4E49C00610DDE /* MARRegisterUserR.h */,
-				5BD1D2CA1FF4E49C00610DDE /* MARRegisterUserR.m */,
+				5B765FF31FF82E9A000BA56A /* MARUserRequest.h */,
+				5B765FF41FF82E9A000BA56A /* MARUserRequest.m */,
 			);
 			path = request;
 			sourceTree = "<group>";
@@ -635,6 +655,52 @@
 			children = (
 			);
 			path = response;
+			sourceTree = "<group>";
+		};
+		5B765FFC1FF8E637000BA56A /* login */ = {
+			isa = PBXGroup;
+			children = (
+				5B7660011FF8E75F000BA56A /* controller */,
+				5B7660021FF8E75F000BA56A /* model */,
+				5B765FFF1FF8E75F000BA56A /* view */,
+				5B765FFD1FF8E647000BA56A /* login.storyboard */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		5B765FFF1FF8E75F000BA56A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B7660001FF8E75F000BA56A /* cell */,
+				5B7660031FF8E776000BA56A /* MARLoginViewController.h */,
+				5B7660041FF8E776000BA56A /* MARLoginViewController.m */,
+				5B7660231FFCABFA000BA56A /* MARPhoneOperationVC.h */,
+				5B7660241FFCABFA000BA56A /* MARPhoneOperationVC.m */,
+				5B7660201FFCABDE000BA56A /* MARSetPasswrodVC.h */,
+				5B7660211FFCABDE000BA56A /* MARSetPasswrodVC.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5B7660001FF8E75F000BA56A /* cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		5B7660011FF8E75F000BA56A /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		5B7660021FF8E75F000BA56A /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		5B933B291FE7679D004C2038 /* dataanalysis */ = {
@@ -772,7 +838,6 @@
 		5B9498A81FF5DDB600FF9731 /* font */ = {
 			isa = PBXGroup;
 			children = (
-				5B9498A91FF5DDD900FF9731 /* HYXiXingKaiW.ttf */,
 			);
 			path = font;
 			sourceTree = "<group>";
@@ -782,6 +847,8 @@
 			children = (
 				5B4805331FF27B94000C9FD3 /* request */,
 				5B4805341FF27B94000C9FD3 /* response */,
+				5B765FF91FF8323A000BA56A /* MARUserNetworkManager.h */,
+				5B765FFA1FF8323A000BA56A /* MARUserNetworkManager.m */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -904,12 +971,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B765FFE1FF8E647000BA56A /* login.storyboard in Resources */,
 				5B029F1E1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib in Resources */,
 				5B25F85F1FE0D2CA00E85884 /* LaunchScreen.storyboard in Resources */,
 				5B933B5F1FE9706E004C2038 /* images.xcassets in Resources */,
 				5B25F85C1FE0D2CA00E85884 /* Assets.xcassets in Resources */,
 				5B933B351FE823B4004C2038 /* mine.storyboard in Resources */,
-				5B9498AA1FF5DDDB00FF9731 /* HYXiXingKaiW.ttf in Resources */,
 				5B029F2B1FE4043D008ED5CA /* MARHomeCustomVC.xib in Resources */,
 				5B029F351FE421AB008ED5CA /* MARHomeDateView.xib in Resources */,
 				5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */,
@@ -1002,6 +1069,7 @@
 				5B933B3F1FE82674004C2038 /* MARSettingVC.m in Sources */,
 				5BFCE71A1FE53F6900E86CCC /* MARCookStepTableCell.m in Sources */,
 				5B029F041FE2E016008ED5CA /* MARMobUtil.m in Sources */,
+				5B7660051FF8E776000BA56A /* MARLoginViewController.m in Sources */,
 				5B933B531FE91711004C2038 /* MARTXNewsVC.m in Sources */,
 				5B029F4A1FE500C1008ED5CA /* UIImageView+SDWEBEXT.m in Sources */,
 				5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */,
@@ -1019,17 +1087,19 @@
 				5B029F2E1FE40E73008ED5CA /* MARGlobalModel.m in Sources */,
 				5B029F3B1FE4B5C2008ED5CA /* MARLaohuangliModel.m in Sources */,
 				5B029F311FE41C1F008ED5CA /* MARHomeDateView.m in Sources */,
-				5BD1D2CB1FF4E49C00610DDE /* MARRegisterUserR.m in Sources */,
 				5B029F411FE4E3BE008ED5CA /* MARCookCategoryListVC.m in Sources */,
 				5B9498D21FF617D500FF9731 /* MARFontConfigVC.m in Sources */,
 				5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */,
+				5B765FFB1FF8323A000BA56A /* MARUserNetworkManager.m in Sources */,
 				5B933B3C1FE82421004C2038 /* MARMineVC.m in Sources */,
 				5B029EFB1FE28098008ED5CA /* MARCarBrandListVC.m in Sources */,
 				5B48053D1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.m in Sources */,
 				5B029F241FE3D55E008ED5CA /* MARHomeTestVC.m in Sources */,
 				5B25F8FC1FE17F9100E85884 /* MARHistoryDayViewController.m in Sources */,
+				5B76602A1FFCE066000BA56A /* MARUtility.m in Sources */,
 				5B25F8E01FE1057800E85884 /* MARWXArticelListVC.m in Sources */,
 				5B25F8D71FE0FABE00E85884 /* MARWXArticleCategoryCell.m in Sources */,
+				5B7660221FFCABDE000BA56A /* MARSetPasswrodVC.m in Sources */,
 				5B029F011FE2C317008ED5CA /* MARCarSeriesVC.m in Sources */,
 				5B25F8621FE0D2CA00E85884 /* main.m in Sources */,
 				5B029F2A1FE4043D008ED5CA /* MARHomeCustomVC.m in Sources */,
@@ -1037,6 +1107,7 @@
 				5B25F8EC1FE12B9000E85884 /* MARMobMenuVC.m in Sources */,
 				5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */,
 				5B933B5B1FE9485C004C2038 /* MARTianxingUtil.m in Sources */,
+				5B7660251FFCABFA000BA56A /* MARPhoneOperationVC.m in Sources */,
 				5B25F8CE1FE0F80500E85884 /* MARBaseViewController.m in Sources */,
 				5B01CD611FF38FAC003D2875 /* MARSMS.m in Sources */,
 				5B933B621FE971EF004C2038 /* MAREmptyView.m in Sources */,
@@ -1048,6 +1119,7 @@
 				5B933B461FE8F054004C2038 /* MARHand.m in Sources */,
 				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */,
 				5B25F8DA1FE0FBCC00E85884 /* MARWXArticleCategoryVC.m in Sources */,
+				5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */,
 				5B48053A1FF29474000C9FD3 /* MARCookCategoryCollectionVC.m in Sources */,
 				5B933B421FE8EFEA004C2038 /* MARAnalogClockView.m in Sources */,
 				5B029F381FE42EBA008ED5CA /* MARMobCalendarModel.m in Sources */,

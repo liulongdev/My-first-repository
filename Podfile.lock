@@ -43,6 +43,7 @@ PODS:
     - MOBFoundation
   - MOBFoundation (3.0.8)
   - PinYin4Objc (1.1.1)
+  - pop (1.0.10)
   - RealReachability (1.1.9):
     - RealReachability/Connection (= 1.1.9)
     - RealReachability/Ping (= 1.1.9)
@@ -55,6 +56,26 @@ PODS:
     - MOBFoundation
   - SVProgressHUD (2.0.4)
   - UICKeyChainStore (2.1.1)
+  - UMengUShare/Core (6.4.7):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.7)
+  - UMengUShare/Social/QQ (6.4.7):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedQQ (6.4.7):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedSina (6.4.7):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedWeChat (6.4.7):
+    - UMengUShare/Core
+  - UMengUShare/Social/Sina (6.4.7):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/WeChat (6.4.7):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedWeChat
+  - UMengUShare/UI (6.4.7):
+    - UMengUShare/Core
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -69,10 +90,15 @@ DEPENDENCIES:
   - MJRefresh (~> 3.1.15.1)
   - mobAPI (~> 2.0.1)
   - PinYin4Objc (~> 1.1.1)
+  - pop (~> 1.0.10)
   - RealReachability (~> 1.1.8)
   - SDWebImage (~> 3.8.2)
   - SMSSDK (~> 3.0.1)
   - SVProgressHUD (~> 2.0.4)
+  - UMengUShare/Social/QQ (~> 6.4.7)
+  - UMengUShare/Social/Sina (~> 6.4.7)
+  - UMengUShare/Social/WeChat (~> 6.4.7)
+  - UMengUShare/UI (~> 6.4.7)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -92,12 +118,14 @@ SPEC CHECKSUMS:
   mobAPI: 7479e6c72caa61145120ad8bbb3cf7b8194f988b
   MOBFoundation: dc4419633249fa4f6a0c0a7ad29cbbb376421ed6
   PinYin4Objc: 3fa9673610368330e2dfb688b1d19a35c3930a78
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   RealReachability: a8c483900986a0f3305733961effbfbb00637a02
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   SMSSDK: a811c8ea6e89393097037b7cf6493248a40e50f0
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
+  UMengUShare: 5055d0e01c844379e173bdca0840fc9fa9297d88
 
-PODFILE CHECKSUM: 6b6c354e4a3482ddc6707003560ba60e55b42827
+PODFILE CHECKSUM: 154ff96587192c2ac3def38db9e50ca64597a509
 
 COCOAPODS: 1.2.0

@@ -10,6 +10,8 @@
 #import <YWFeedbackFMWK/YWFeedbackKit.h>
 #import <YWFeedbackFMWK/YWFeedbackViewController.h>
 #import "MARBaseRequest.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "MARUserNetworkManager.h"
 
 static NSString * const mobTitle_wxArticle          = @"微信热门";
 static NSString * const mobTitle_historyToday       = @"历史上的今天";
@@ -140,8 +142,47 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
     }
     else if ([mobTitle_testFunction isEqualToString:label.text])
     {
+        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Login storyboardId:kSBID_Login_LoginViewController];
+        [self mar_pushViewController:vc animated:YES];
+        
+        return;
+        
+        [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:nil completion:^(id result, NSError *error) {
+            if (error) {
+                
+            } else {
+                UMSocialUserInfoResponse *resp = result;
+                
+                MARThirdPlatFormLoginR *thirdPlatFromLoginR = [MARThirdPlatFormLoginR new];
+                [thirdPlatFromLoginR mar_modelSetWithJSON:[resp mar_modelToJSONObject]];
+                
+                [MARUserNetworkManager thirdPlatformLogin:thirdPlatFromLoginR success:^(NSURLSessionTask *task, id responseObject) {
+                    NSLog(@">>>>>> third login success : %@", responseObject);
+                } failure:^(NSURLSessionTask *task, NSError *error) {
+                    NSLog(@">>>>> third login failure: %@", error);
+                }];
+                
+                // 授权信息
+                NSLog(@"QQ uid: %@", resp.uid);
+                NSLog(@"QQ openid: %@", resp.openid);
+                NSLog(@"QQ unionid: %@", resp.unionId);
+                NSLog(@"QQ accessToken: %@", resp.accessToken);
+                NSLog(@"QQ expiration: %@", resp.expiration);
+                NSLog(@"QQ usid: %@", resp.usid);
+                
+                // 用户信息
+                NSLog(@"QQ name: %@", resp.name);
+                NSLog(@"QQ iconurl: %@", resp.iconurl);
+                NSLog(@"QQ gender: %@", resp.unionGender);
+                
+                // 第三方平台SDK源数据
+                NSLog(@"QQ originalResponse: %@", resp.originalResponse);
+            }
+        }];
+        return;
+        
+        
         [MARMobUtil test];
-//        return;
         [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_test"];
     }
     else if ([aliFeedback_feedback isEqualToString:label.text])
