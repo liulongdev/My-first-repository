@@ -19,6 +19,7 @@ def shared_dependencies
   pod 'FDFullscreenPopGesture', '~> 1.1'
   pod 'FCUUID', '~> 1.3.1'
   pod 'pop', '~> 1.0.10'
+  pod 'VTMagic', '~> 1.2.4'
   
   pod 'UMengUShare/Social/WeChat', '~> 6.4.7'
   pod 'UMengUShare/Social/QQ', '~> 6.4.7'

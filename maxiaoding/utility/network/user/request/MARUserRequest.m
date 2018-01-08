@@ -36,3 +36,10 @@
 
 @end
 
+@implementation MARExistUserWithPhoneR
+
+@end
+
+@implementation MARBindPhoneR
+
+@end

@@ -48,7 +48,8 @@
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self;
     self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
+    self.webView.multipleTouchEnabled = YES;
+    self.webView.userInteractionEnabled = YES;
     [self.view addSubview:self.webView];
 
     if (self.navigationController.navigationBar.translucent) {
@@ -75,6 +76,8 @@
         [self.webView loadRequest:[NSURLRequest requestWithURL:self.URL]];
     else if(self.URLRequest)
         [self.webView loadRequest:self.URLRequest];
+    else if(self.htmlString)
+        [self.webView loadHTMLString:self.htmlString baseURL:nil];
 }
 
 #pragma mark UIWebviewDelegate
@@ -192,6 +195,8 @@
         [self.webView loadRequest:[NSURLRequest requestWithURL:self.URL]];
     else if(self.URLRequest)
         [self.webView loadRequest:self.URLRequest];
+    else if(self.htmlString)
+        [self.webView loadHTMLString:self.htmlString baseURL:nil];
 }
 
 #pragma mark UIWebviewDelegate

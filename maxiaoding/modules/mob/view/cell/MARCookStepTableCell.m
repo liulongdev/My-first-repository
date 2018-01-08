@@ -78,6 +78,10 @@
                                 strong_self.loadAsyncImageCallback();
                             }
                             [[SDWebImageManager sharedManager].imageCache storeImage:image recalculateFromImage:YES imageData:nil forKey:[[SDWebImageManager sharedManager] cacheKeyForURL:imageURL] toDisk:YES];
+                            strong_self.stepImageView.alpha = 0;
+                            [UIView animateWithDuration:3 animations:^{
+                                strong_self.stepImageView.alpha = 1;
+                            }];
                         }
                     }];
                 }

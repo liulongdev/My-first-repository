@@ -14,6 +14,7 @@
 NSString * const kSBNAME_Login                          = @"login";
 NSString * const kSBNAME_Mob                            = @"mob";
 NSString * const kSBNAME_Mine                           = @"mine";
+NSString * const kSBNAME_Wangyi                         = @"wangyi";
 NSString * const kSBNAME_Test                           = @"test";
 NSString * const kSBNAME_Tianxing                       = @"tianxing";
 /**
@@ -42,11 +43,15 @@ NSString * const kSBID_Mine_FontConfigVC                = @"MARFontConfigVC";
 
 NSString * const kSBID_Tianxing_TianxingMenuVC          = @"MARTianxingMenuVC";
 NSString * const kSBID_Tianxing_TXNewsVC                = @"MARTXNewsVC";
+
+NSString * const kSBID_Wangyi_WYNewViewController       = @"MARWYNewViewController";
+NSString * const kSBID_Wangyi_WYNewListVC               = @"MARWYNewListVC";
+NSString * const kSBID_Wangyi_WYVideoNewListVC          = @"MARWYVideoNewListVC";
+
 /**
  StoryBoard Segue Identifier
  */
 NSString * const kSEGUE_Mob_   = @"testModel";
-
 
 @implementation MARSBConstant
 

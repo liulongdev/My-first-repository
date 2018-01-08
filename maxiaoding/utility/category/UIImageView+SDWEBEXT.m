@@ -12,10 +12,10 @@
 
 - (void)mar_setImageDefaultCornerRadiusWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)image
 {
-    [self mar_setImageDefaultCornerRadiusWithURLa:imageURL placeholderImage:nil options:0];
+    [self mar_setImageDefaultCornerRadiusWithURL:imageURL placeholderImage:nil options:0];
 }
 
-- (void)mar_setImageDefaultCornerRadiusWithURLa:(NSURL *)imageURL placeholderImage:(UIImage *)image options:(SDWebImageOptions)options
+- (void)mar_setImageDefaultCornerRadiusWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)image options:(SDWebImageOptions)options
 {
     NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:imageURL];
     __weak __typeof(self) weakSelf = self;
@@ -34,10 +34,14 @@
                     weakSelf.image = image;
                     
                     [[SDWebImageManager sharedManager].imageCache storeImage:image recalculateFromImage:YES imageData:nil forKey:[[SDWebImageManager sharedManager] cacheKeyForURL:imageURL] toDisk:YES];
+                    weakSelf.alpha = 0;
+                    [UIView animateWithDuration:1 animations:^{
+                        weakSelf.alpha = 1;
+                    }];
                 }
                 else if (error)
                 {
-                    weakSelf.image = [UIImage imageNamed:@"img_loadimg_failure"];
+                    weakSelf.image = [[UIImage imageNamed:@"img_loadimg_failure"] mar_imageByResizeToSize:weakSelf.mar_size contentMode:UIViewContentModeScaleAspectFit];
                 }
             }];
         }

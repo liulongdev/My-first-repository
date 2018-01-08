@@ -57,6 +57,7 @@
 {
     if (!_resignFirstResponserGesture) {
         _resignFirstResponserGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignTFS)];
+        _resignFirstResponserGesture.cancelsTouchesInView = NO;
     }
     return _resignFirstResponserGesture;
 }

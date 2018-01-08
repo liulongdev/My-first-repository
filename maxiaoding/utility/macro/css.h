@@ -21,6 +21,6 @@
 #define MARFont(_fontSize) ([UIFont systemFontOfSize:kSCALE(_fontSize)])
 #define MARBoldFont(_fontSize) ([UIFont boldSystemFontOfSize:kSCALE(_fontSize)])
 
-#define MAREXTFont(_fontSize)  ([UIFont boldSystemFontOfSize:kSCALE(_fontSize)]) //([UIFont fontWithName:@"HYXiXingKaiW" size:kSCALE(_fontSize)])
+#define MAREXTFont(_fontSize) ([UIFont fontWithName:@"HYXiXingKaiW" size:kSCALE(_fontSize)])
 
 #endif /* css_h */

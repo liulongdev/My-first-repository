@@ -43,12 +43,15 @@
     switch (self.operationType) {
         case MARPhoneOperationTypeQuickLogin:
             timer = MARUTILITY.quickLoginPhoneCodeTimer;
+            self.title = @"快速登录";
             break;
         case MARPhoneOperationTypeBind:
             timer = MARUTILITY.bindPhoneCodeTimer;
+            self.title = @"绑定手机";
             break;
         case MARPhoneOperationTypeSetPassword:
             timer = MARUTILITY.setPasswordPhoneCodeTimer;
+            self.title = @"设置密码";
             break;
     }
     
@@ -95,10 +98,14 @@
     }
     @weakify(self)
     self.phoneNumber = phone;
+    [self showActivityView:YES];
+    self.getCodeBtn.enabled = NO;
     [MARSMS getPhoneCodeWithPhone:phone result:^(NSError *err) {
         @strongify(self)
         if (!strong_self) return;
+        [strong_self showActivityView:NO];
         if (err) {
+            strong_self.getCodeBtn.enabled = YES;
             ShowErrorMessage(@"发送验证码失败!", 1.5f);
         }
         else
@@ -124,6 +131,7 @@
     }
     if ([code mar_stringByTrim].length == 0) {
         ShowInfoMessage(@"请输入验证码", 1.f);
+        return;
     }
     self.phoneNumber = phone;
     @weakify(self)
@@ -147,7 +155,9 @@
             [self quickLoginAction];
             break;
         case MARPhoneOperationTypeBind:
-        {}
+        {
+            [self bindPhoneAction];
+        }
             break;
         case MARPhoneOperationTypeSetPassword:
         {
@@ -178,6 +188,35 @@
         
     } failure:^(NSURLSessionTask *task, NSError *error) {
         NSLog(@"quick login error : %@", error);
+    }];
+}
+
+- (void)bindPhoneAction
+{
+    MARBindPhoneR *bindPhoneR = [MARBindPhoneR new];
+    bindPhoneR.phone = self.phoneNumber;
+    bindPhoneR.userId = MARGLOBALMODEL.userInfo._id;
+    @weakify(self)
+    [self showActivityView:YES];
+    self.operationBtn.enabled = NO;
+    [MARUserNetworkManager bindPhone:bindPhoneR success:^(NSURLSessionTask *task, id responseObject) {
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
+        strong_self.operationBtn.enabled = YES;
+        MARNetworkResponse *response = [MARNetworkResponse mar_modelWithJSON:responseObject];
+        if (response.isSuccess) {
+            MARGLOBALMODEL.userInfo.phone = strong_self.phoneNumber;
+            ShowSuccessMessage(@"手机绑定成功", 1.f);
+        }
+        else
+        {
+            ShowErrorMessage(response.errMsg ?: @"手机绑定失败", 1.5f);
+        }
+    } failure:^(NSURLSessionTask *task, NSError *error) {
+        [weak_self showActivityView:NO];
+        weak_self.operationBtn.enabled = YES;
+        ShowErrorMessage(@"手机绑定失败 !", 1.5f);
     }];
 }
 

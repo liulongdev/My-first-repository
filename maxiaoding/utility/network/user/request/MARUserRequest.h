@@ -54,3 +54,11 @@
 @property (nonatomic, strong) NSString  *password;
 @end
 
+@interface MARExistUserWithPhoneR : MARBaseRequest
+@property (nonatomic, strong) NSString  *phone;
+@end
+
+@interface MARBindPhoneR : MARBaseRequest
+@property (nonatomic, strong) NSString  *userId;
+@property (nonatomic, strong) NSString  *phone;
+@end

@@ -31,4 +31,8 @@
                success:(MARNetworkSuccess)success
                failure:(MARNetworkFailure)failure;
 
++ (void)bindPhone:(MARBindPhoneR *)param
+          success:(MARNetworkSuccess)success
+          failure:(MARNetworkFailure)failure;
+
 @end

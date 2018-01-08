@@ -76,6 +76,9 @@ PODS:
     - UMengUShare/Social/ReducedWeChat
   - UMengUShare/UI (6.4.7):
     - UMengUShare/Core
+  - VTMagic (1.2.4):
+    - VTMagic/Core (= 1.2.4)
+  - VTMagic/Core (1.2.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -99,6 +102,7 @@ DEPENDENCIES:
   - UMengUShare/Social/Sina (~> 6.4.7)
   - UMengUShare/Social/WeChat (~> 6.4.7)
   - UMengUShare/UI (~> 6.4.7)
+  - VTMagic (~> 1.2.4)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -125,7 +129,8 @@ SPEC CHECKSUMS:
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
   UMengUShare: 5055d0e01c844379e173bdca0840fc9fa9297d88
+  VTMagic: b49e5f456dbcbfd9a3588ba92417233a105bc193
 
-PODFILE CHECKSUM: 154ff96587192c2ac3def38db9e50ca64597a509
+PODFILE CHECKSUM: da3eeca190959f23262dd6ee3e0042f718e5b971
 
 COCOAPODS: 1.2.0

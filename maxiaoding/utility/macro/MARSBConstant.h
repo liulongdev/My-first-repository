@@ -14,6 +14,7 @@
 extern NSString * const kSBNAME_Login;
 extern NSString * const kSBNAME_Mob;
 extern NSString * const kSBNAME_Mine;
+extern NSString * const kSBNAME_Wangyi;
 extern NSString * const kSBNAME_Test;
 extern NSString * const kSBNAME_Tianxing;
 
@@ -44,6 +45,9 @@ extern NSString * const kSBID_Mine_FontConfigVC;
 extern NSString * const kSBID_Tianxing_TianxingMenuVC;
 extern NSString * const kSBID_Tianxing_TXNewsVC;
 
+extern NSString * const kSBID_Wangyi_WYNewViewController;
+extern NSString * const kSBID_Wangyi_WYNewListVC;
+extern NSString * const kSBID_Wangyi_WYVideoNewListVC;
 
 @interface MARSBConstant : NSObject
 

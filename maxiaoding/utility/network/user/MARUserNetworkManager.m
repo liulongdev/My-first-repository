@@ -45,4 +45,11 @@
     [MARUserNetworkManager mar_get:SERVERAPI_LoginWithPhone parameters:param success:success failure:failure];
 }
 
++ (void)bindPhone:(MARBindPhoneR *)param
+          success:(MARNetworkSuccess)success
+          failure:(MARNetworkFailure)failure
+{
+    [MARNetworkManager mar_post:SERVERAPI_BindPhone parameters:param success:success failure:failure];
+}
+
 @end

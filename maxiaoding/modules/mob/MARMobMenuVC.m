@@ -12,6 +12,9 @@
 #import "MARBaseRequest.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "MARUserNetworkManager.h"
+#import "MARWYNewNetworkManager.h"
+#import "MARWYNewViewController.h"
+#import "MARWYVideoNewVC.h"
 
 static NSString * const mobTitle_wxArticle          = @"微信热门";
 static NSString * const mobTitle_historyToday       = @"历史上的今天";
@@ -19,13 +22,15 @@ static NSString * const mobTitle_phoneNumberSetting = @"手机设置";
 static NSString * const mobTitle_utilityTool        = @"实用工具";
 static NSString * const mobTitle_carBrand           = @"汽车";
 static NSString * const mobTitle_cookMenu           = @"菜谱";
+static NSString * const mineCellTitle_login         = @"登录模块";
 static NSString * const mineCellTitle_mine          = @"我的";
 static NSString * const mineCellTitle_setting       = @"设置";
 static NSString * const aliFeedback_feedback        = @"我要反馈";
 
 static NSString * const mobTitle_testFunction       = @"测试";
 static NSString * const mobTitle_tianxingData       = @"天行数据";
-
+static NSString * const mobTitle_wangyi             = @"网易";
+static NSString * const mobTitle_wangyiVideo        = @"网易视频";
 
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -71,6 +76,9 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
                         mobTitle_testFunction,
                         mineCellTitle_setting,
                         mineCellTitle_mine,
+                        mineCellTitle_login,
+                        mobTitle_wangyi,
+                        mobTitle_wangyiVideo,
 //                        aliFeedback_feedback,
                         ];
     }
@@ -142,8 +150,13 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
     }
     else if ([mobTitle_testFunction isEqualToString:label.text])
     {
-        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Login storyboardId:kSBID_Login_LoginViewController];
-        [self mar_pushViewController:vc animated:YES];
+        [MARWYNewNetworkManager getNewTitleListSuccess:^(NSArray<MARWYNewCategoryTitleModel *> *categoryTitleArray) {
+            NSLog(@">>>>>> titleArray : %@", categoryTitleArray);
+        } failure:^(NSURLSessionTask *task, NSError *error) {
+            NSLog(@">>>>>> get WY titles error : %@", error);
+        }];
+//        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Login storyboardId:kSBID_Login_LoginViewController];
+//        [self mar_pushViewController:vc animated:YES];
         
         return;
         
@@ -206,8 +219,23 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
     {
         [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_tianxingData"];
         [self performSegueWithIdentifier:@"goTianxingMenuVC" sender:nil];
-        
     }
+    else if ([mobTitle_wangyi isEqualToString:label.text])
+    {
+        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Wangyi storyboardId:kSBID_Wangyi_WYNewViewController];
+        [self mar_pushViewController:vc animated:YES];
+    }
+    else if ([mobTitle_wangyiVideo isEqualToString:label.text])
+    {
+        UIViewController *vc = [MARWYVideoNewVC new];
+        [self mar_pushViewController:vc animated:YES];
+    }
+    else if ([mineCellTitle_login isEqualToString:label.text])
+    {
+        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Login storyboardId:kSBID_Login_LoginViewController];
+        [self mar_pushViewController:vc animated:YES];
+    }
+    
 }
 
 - (void)getAliFeedbackVC
@@ -231,6 +259,9 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
                             mobTitle_testFunction,
                             mineCellTitle_setting,
                             mineCellTitle_mine,
+                            mineCellTitle_login,
+                            mobTitle_wangyi,
+                            mobTitle_wangyiVideo,
                             aliFeedback_feedback,
                             ];
             [weakSelf.tableView reloadData];

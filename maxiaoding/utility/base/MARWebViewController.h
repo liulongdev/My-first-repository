@@ -33,6 +33,9 @@
 /** The URLRequest that will be loaded by the web view. */
 @property (nonatomic,strong) NSURLRequest *URLRequest;
 
+/** The html that will be loaded by the web view. */
+@property (nonatomic,strong) NSString *htmlString;
+
 /** Returns the `UIWebView`    managed by the controller object. */
 #if __has_include(<WebKit/WebKit.h>)
 @property (nonatomic,strong) WKWebView *webView;

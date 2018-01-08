@@ -11,6 +11,7 @@
 #import "MARPhoneOperationVC.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import <WXApi.h>
+#import <TencentOpenAPI/QQApiInterface.h>
 @interface MARThirdLoginModel : NSObject
 @property (nonatomic, strong) NSString *imageName;
 @property (nonatomic, assign) UMSocialPlatformType platformType;
@@ -86,6 +87,9 @@
     self.loginScrollView.bounces = NO;
     self.loginScrollView.showsHorizontalScrollIndicator = NO;
     self.loginScrollView.scrollEnabled = NO;
+    
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
 
 }
 
@@ -228,6 +232,50 @@
         cell.imageView.image = [UIImage imageNamed:model.imageName];
     }
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    MARLog(@"》》》》》》》》》》》》>>>>>>>>>>> ");
+    if (self.thirdLoginArray.count > indexPath.row) {
+        MARThirdLoginModel *model = self.thirdLoginArray[indexPath.row];
+        @weakify(self)
+        [[UMSocialManager defaultManager] getUserInfoWithPlatform:model.platformType currentViewController:nil completion:^(id result, NSError *error) {
+            if (error) {
+                ShowErrorMessage(@"登录失败", 1.5f);
+                MARLog(@"第三方登录失败 error : %@", error);
+            } else {
+                UMSocialUserInfoResponse *resp = result;
+                
+                MARThirdPlatFormLoginR *thirdPlatFromLoginR = [MARThirdPlatFormLoginR new];
+                [thirdPlatFromLoginR mar_modelSetWithJSON:[resp mar_modelToJSONObject]];
+                
+                [MARUserNetworkManager thirdPlatformLogin:thirdPlatFromLoginR success:^(NSURLSessionTask *task, id responseObject) {
+                    @strongify(self)
+                    if (!strong_self) return;
+                    MARNetworkResponse *response = [MARNetworkResponse mar_modelWithJSON:responseObject];
+                    if (response.isSuccess) {
+                        ShowSuccessMessage(@"登录成功", 1.f);
+                        MARUserInfoModel *userInfo = [MARUserInfoModel mar_modelWithJSON:response.body];
+                        MARGLOBALMODEL.userInfo = userInfo;
+                        UIViewController *settingVC = [UIViewController vcWithStoryboardName:kSBNAME_Mine storyboardId:kSBID_Mine_MineVC];
+                        [strong_self mar_pushViewController:settingVC animated:YES];
+                    }
+                    else
+                    {
+                        ShowErrorMessage(@"登录失败! 请稍后再试", 1.5);
+                    }
+                    NSLog(@">>>>>> third login success : %@", responseObject);
+                } failure:^(NSURLSessionTask *task, NSError *error) {
+                    NSLog(@">>>>> third login failure: %@", error);
+                }];
+                
+                // 第三方平台SDK源数据
+                NSLog(@"data of third login: %@", [resp mar_modelDescription]);
+            }
+        }];
+        
+    }
 }
 
 @end
