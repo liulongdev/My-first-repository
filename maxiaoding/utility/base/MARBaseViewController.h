@@ -50,5 +50,8 @@
 
 - (void)showEmptyViewWithImageimage:(UIImage *)image description:(NSString *)description;
 
+// 隐藏音量
+- (void)hiddenSystemVolume:(BOOL)hidden;
+
 @end
 

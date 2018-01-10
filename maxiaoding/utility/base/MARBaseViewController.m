@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import <Masonry.h>
 #import "MAREmptyView.h"
+#import <MediaPlayer/MediaPlayer.h>
 @interface MARBaseViewController ()
 @property (nonatomic, strong) UITapGestureRecognizer* resignFirstResponserGesture;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
@@ -189,6 +190,39 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (void)hiddenSystemVolume:(BOOL)hidden
+{
+    if (hidden) {
+        MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(10, 200, 300, 100)];
+        volumeView.userInteractionEnabled = NO;
+        volumeView.alpha = 0.0001;
+        //把自定义的MPVolumeView贴在view上
+        [self.view addSubview: volumeView];
+    }
+    else
+    {
+        for (UIView *view in [self.view subviews]) {
+            if ([view isKindOfClass:[MPVolumeView class]]) {
+                [view removeFromSuperview];
+            }
+        }
+    }
 }
 
 - (void)dealloc

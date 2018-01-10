@@ -9,7 +9,6 @@
 #import "MARBaseViewController.h"
 #import "MARWYNewModel.h"
 
-
 @interface MARWYVideoNewListPropertyModel : NSObject
 @property (nonatomic, strong) MARWYVideoCategoryTitleModel *categoryModel;
 @property (nonatomic, assign) CGPoint contentOffset;

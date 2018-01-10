@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "MARGlobalModel.h"
+
+typedef void(^MARCalculateSizeBlock)(NSUInteger fileCount, NSUInteger totalSize);
+
 #define MARUTILITY [MARUtility sharedInstance]
 @interface MARUtility : NSObject
 
@@ -27,6 +30,19 @@
 
 @property (nonatomic, strong) NSTimer *bindPhoneCodeTimer;
 
+- (NSString *)videoDiskPath;
+
+- (void)clearImgDiskOnCompletion:(void (^)(void))completion;
+
+- (void)clearVideoDiskOnCompletion:(void (^)(void))completion;
+
 - (void)setPhoneCodeTimerWithType:(MARPhoneOperationType)operationType phone:(NSString *)phone;
+
+- (void)calculateVideoCacheSizeWithCompletionBlock:(MARCalculateSizeBlock)completionBlock;
+
+- (void)calculateImgCacheSizeWithCompletionBlock:(MARCalculateSizeBlock)completionBlock;
+
+- (void)calculateSizeWithFolderPath:(NSString *)filePath
+                    completionBlock:(MARCalculateSizeBlock)completionBlock;
 
 @end

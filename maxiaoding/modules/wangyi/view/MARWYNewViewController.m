@@ -92,7 +92,7 @@
 {
     if (!_categoryArray) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            _categoryArray = (NSArray<MARWYNewCategoryTitleModel *> *)[MARWYNewCategoryTitleModel mar_getAllDBModelArray];
+            self.categoryArray = (NSArray<MARWYNewCategoryTitleModel *> *)[MARWYNewCategoryTitleModel mar_getAllDBModelArray];
             if (_categoryArray.count <= 0) {
                 [self loadData];
             }
@@ -111,8 +111,18 @@
 
 - (void)setCategoryArray:(NSArray<MARWYNewCategoryTitleModel *> *)categoryArray
 {
-    _categoryArray = categoryArray;
-    [self setCategoryTitleDataSource];
+//    _categoryArray = categoryArray;
+    NSMutableArray<MARWYNewCategoryTitleModel *> *array = [NSMutableArray arrayWithArray:categoryArray];
+    NSArray *ignoreTitleArray = @[@"话题",@"问吧",@"薄荷",@"图片",@"本地",@"段子"];
+    for (MARWYNewCategoryTitleModel *model in categoryArray) {
+        if ([ignoreTitleArray containsObject:model.tname]) {
+            [array removeObject:model];
+        }
+    }
+    _categoryArray = array;
+    if ([NSThread isMainThread]) {
+        [self setCategoryTitleDataSource];
+    }
 }
 
 - (void)setCategoryTitleDataSource

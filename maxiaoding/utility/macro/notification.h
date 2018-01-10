@@ -17,7 +17,8 @@
 
 
 typedef NS_ENUM(NSInteger, kMARNotificationType) {
-    kMARNotificationType_PhoneCodeCount = 1,
+    kMARNotificationType_PhoneCodeCount = 1,        // 手机获取验证码倒计时通知
+    kMARNotificationType_MARWYVideoStatusChanged,   // 视频状态改变通知
 };
 
 

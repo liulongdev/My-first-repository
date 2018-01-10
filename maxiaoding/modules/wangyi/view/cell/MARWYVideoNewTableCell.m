@@ -36,7 +36,7 @@
     if ([data isKindOfClass:[MARWYVideoNewModel class]]) {
         MARWYVideoNewModel *model = data;
         self.titleLabel.text = model.title;
-        [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.cover ?: @""] placeholderImage:nil];
+        [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.cover ?: @""] placeholderImage:[UIImage imageNamed:@"img_media_default"]];
         self.sourceNameLabel.text = model.topicName;
         [self.sourceImageView sd_setImageWithURL:[NSURL URLWithString:model.cover ?: @""] placeholderImage:[UIImage imageNamed:@"icon_default_head"]];
 //        [self.sourceImageView mar_setImageDefaultCornerRadiusWithURL:[NSURL URLWithString:model.topicImg ?: @""] placeholderImage:nil];
@@ -45,17 +45,18 @@
 
 - (void)addPlayerView:(MARWYVideoPlayView *)playView
 {
-    if (!playView) return; 
+    if (!playView) return;
     [_playView removeFromSuperview];
     _playView = nil;
     self.playView = playView;
     [self addSubview:playView];
-//    [self insertSubview:self.playView belowSubview:self.titleLabel];
-    [self.playView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self.videoImageView);
-        make.width.mas_equalTo(self.videoImageView);
-        make.height.mas_equalTo(self.videoImageView);
+    [self.playView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.videoImageView);
+        make.leading.mas_equalTo(self.videoImageView);
+        make.bottom.mas_equalTo(self.videoImageView);
+        make.trailing.mas_equalTo(self.videoImageView);
     }];
+    
 }
 
 @end

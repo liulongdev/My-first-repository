@@ -29,6 +29,7 @@
 
 /* 定时器 */
 @property (nonatomic, strong) NSTimer *progressTimer;
+@property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 
 @end
 
@@ -58,6 +59,15 @@
     [self addProgressTimer];
     
     self.playOrPauseBtn.selected = YES;
+    
+    [self.progressSlider addTarget:self action:@selector(slider) forControlEvents:UIControlEventTouchUpInside];
+    [self.progressSlider addTarget:self action:@selector(slider) forControlEvents:UIControlEventTouchUpOutside];
+    self.tapGesture.cancelsTouchesInView = NO;
+    
+    @weakify(self)
+    [self mar_whenDoubleTapped:^{
+        [weak_self playOrPause:weak_self.playOrPauseBtn];
+    }];
 }
 
 - (void)layoutSubviews
@@ -79,6 +89,7 @@
     AVPlayerItem *item = (AVPlayerItem *)object;
     if (item.status == AVPlayerItemStatusReadyToPlay) {
         [self.progressView stopAnimating];
+        self.status = MARVideoStatusPlaying;
     }
 }
 
@@ -101,6 +112,7 @@
 {
     [self.player play];
     [self addProgressTimer];
+    self.status = MARVideoStatusPlaying;
 }
 
 - (void)pause
@@ -108,6 +120,7 @@
     [self.progressView stopAnimating];
     [self.player pause];
     [self removeProgressTimer];
+    self.status = MARVideoStatusPause;
 }
 //
 -(void)dealloc {
@@ -156,6 +169,12 @@
     
     // 2.设置进度条的value
     self.progressSlider.value = CMTimeGetSeconds(self.player.currentTime) / CMTimeGetSeconds(self.player.currentItem.duration);
+    
+    if (CMTimeGetSeconds(self.player.currentTime) == CMTimeGetSeconds(self.playerItem.duration)) {
+        [self removeProgressTimer];
+        self.status = MARVideoStatusFinish;
+//        [self resetPlayView];
+    }
 }
 
 - (NSString *)timeString
@@ -169,19 +188,27 @@
 // 切换屏幕的方向
 - (IBAction)switchOrientation:(UIButton *)sender {
     sender.selected = !sender.selected;
-//    if ([self.delegate respondsToSelector:@selector(videoplayViewSwitchOrientation:)]) {
-//        [self.delegate videoplayViewSwitchOrientation:sender.selected];
-//    }
+    if ([self.delegate respondsToSelector:@selector(videoplayViewSwitchOrientation:)]) {
+        [self.delegate videoplayViewSwitchOrientation:sender.selected];
+    }
 }
 
 - (IBAction)slider {
-    [self addProgressTimer];
+    [self removeProgressTimer];
+    [self.player pause];
     NSTimeInterval currentTime = CMTimeGetSeconds(self.player.currentItem.duration) * self.progressSlider.value;
-    
+    [self.progressView startAnimating];
     // 设置当前播放时间
-    [self.player seekToTime:CMTimeMakeWithSeconds(currentTime, NSEC_PER_SEC) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
-    
-    [self.player play];
+    __weak __typeof(self) weakSelf = self;
+    [self.player seekToTime:CMTimeMakeWithSeconds(currentTime, NSEC_PER_SEC) completionHandler:^(BOOL finished) {
+        if (finished) {
+            [weakSelf addProgressTimer];
+            [weakSelf.progressView stopAnimating];
+            weakSelf.status = MARVideoStatusPlaying;
+            [weakSelf.player play];
+        }
+    }];
+
 }
 
 - (IBAction)startSlider {
@@ -224,11 +251,22 @@
     self.player = nil;
     
     [self removeFromSuperview];
+    self.status = MARVideoStatusRemoved;
 }
 
 - (void)setTitle:(NSString *)title
 {
     self.titleLabel.text = title;
+}
+
+- (void)setStatus:(MARVideoStatus)status
+{
+    if (_status != status) {
+        [self willChangeValueForKey:@"status"];
+        _status = status;
+        [MARGLOBALMANAGER postNotif:kMARNotificationType_MARWYVideoStatusChanged data:@(_status) object:self];
+        [self didChangeValueForKey:@"status"];
+    }
 }
 
 @end

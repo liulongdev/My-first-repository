@@ -9,8 +9,9 @@
 #import "MARSettingVC.h"
 #import <UIImageView+WebCache.h>
 #import "MARPhoneOperationVC.h"
-
-NSString * const settingCellTitle_cache = @"清除缓存";
+#import "MARUtility.h"
+NSString * const settingCellTitle_cache = @"清除图片缓存";
+NSString * const settingCellTitle_videoCache = @"清除视频缓存";
 NSString * const settingCellTitle_bindPhone = @"绑定手机";
 NSString * const settingCellTitle_setPassword = @"设置密码";
 NSString * const settingCellTitle_font = @"字体相关";
@@ -27,10 +28,14 @@ NSString * const settingCellTitle_font = @"字体相关";
     BOOL isCaculatingSDImageDiskSize;
     NSInteger sdImageCount;
     NSInteger sdImageDiskSize;
+    BOOL isCaculatingVideoDiskSize;
+    NSInteger videoCount;
+    NSInteger videoDiskSize;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self caculateSDImageDiskSize];
+    [self caculateVideoDiskSize];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,12 +56,14 @@ NSString * const settingCellTitle_font = @"字体相关";
     if ([MARUTILITY isLogin]) {
         if ([MARUTILITY isBindPhone]) {
             _titleArray = @[settingCellTitle_cache,
+                            settingCellTitle_videoCache,
                             settingCellTitle_setPassword,
                             settingCellTitle_font];
         }
         else
         {
             _titleArray = @[settingCellTitle_cache,
+                            settingCellTitle_videoCache,
                             settingCellTitle_bindPhone,
                             settingCellTitle_font];
         }
@@ -64,7 +71,8 @@ NSString * const settingCellTitle_font = @"字体相关";
     else
     {
         _titleArray = @[settingCellTitle_cache,
-          settingCellTitle_font];
+                        settingCellTitle_videoCache,
+                        settingCellTitle_font];
         
     }
     return _titleArray;
@@ -81,6 +89,21 @@ NSString * const settingCellTitle_font = @"字体相关";
         strong_self->isCaculatingSDImageDiskSize = NO;
         strong_self->sdImageCount = fileCount;
         strong_self->sdImageDiskSize = totalSize;
+        [strong_self.tableView reloadData];
+    }];
+}
+
+- (void)caculateVideoDiskSize
+{
+    isCaculatingVideoDiskSize = YES;
+    [self.tableView reloadData];
+    @weakify(self)
+    [MARUTILITY calculateVideoCacheSizeWithCompletionBlock:^(NSUInteger fileCount, NSUInteger totalSize) {
+        @strongify(self);
+        if (!strong_self) return;
+        strong_self->isCaculatingVideoDiskSize = NO;
+        strong_self->videoCount = fileCount;
+        strong_self->videoDiskSize = totalSize;
         [strong_self.tableView reloadData];
     }];
 }
@@ -115,7 +138,8 @@ NSString * const settingCellTitle_font = @"字体相关";
     if (_titleArray.count > indexPath.row) {
         cell.textLabel.text = _titleArray[indexPath.row];
     }
-    if ([cell.textLabel.text isEqualToString:settingCellTitle_cache]) {
+    NSString *title = cell.textLabel.text;
+    if ([title isEqualToString:settingCellTitle_cache]) {
         if (isCaculatingSDImageDiskSize) {
             cell.detailTextLabel.text = nil;
             UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -128,6 +152,20 @@ NSString * const settingCellTitle_font = @"字体相关";
             cell.accessoryView = nil;
         }
     }
+    else if ([title isEqualToString:settingCellTitle_videoCache]) {
+        if (isCaculatingVideoDiskSize) {
+            cell.detailTextLabel.text = nil;
+            UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [activityIndicatorView startAnimating];
+            cell.accessoryView = activityIndicatorView;
+        }
+        else
+        {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.byteFormatter stringFromByteCount:videoDiskSize]];
+            cell.accessoryView = nil;
+        }
+    }
+    
     return cell;
 }
 
@@ -137,6 +175,9 @@ NSString * const settingCellTitle_font = @"字体相关";
     NSString *title = cell.textLabel.text;
     if ([settingCellTitle_cache isEqualToString:title]) {
         [self _clearImageCache];
+    }
+    if ([settingCellTitle_videoCache isEqualToString:title]) {
+        [self _clearVideoCache];
     }
     else if ([settingCellTitle_font isEqualToString:title])
     {
@@ -167,6 +208,16 @@ NSString * const settingCellTitle_font = @"字体相关";
         @strongify(self)
         if (!strong_self) return;
         [strong_self caculateSDImageDiskSize];
+    }];
+}
+
+- (void)_clearVideoCache
+{
+    @weakify(self)
+    [MARUTILITY clearVideoDiskOnCompletion:^{
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self caculateVideoDiskSize];
     }];
 }
 

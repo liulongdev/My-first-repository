@@ -6,14 +6,13 @@
 //  Copyright © 2018年 MAIERSI. All rights reserved.
 //
 
-
-
 #import "MARWYVideoNewVC.h"
 #import "MARWYNewNetworkManager.h"
 #import <VTMagic.h>
 #import <Masonry.h>
 #import "UIScrollView+MXD.h"
 #import "MARWYVideoNewListVC.h"
+#import "MARWYVideoPlayView.h"
 
 @interface MARWYVideoNewVC () <VTMagicViewDelegate, VTMagicViewDataSource>
 @property (nonatomic, strong) NSArray<MARWYVideoCategoryTitleModel *> *categoryArray;
@@ -36,22 +35,17 @@
         make.bottom.mas_equalTo(self.mas_bottomLayoutGuide);
     }];
     
+    [self _setPopGestureEnabled:YES];
+    
+    [self categoryArray];
+}
+
+- (void)_setPopGestureEnabled:(BOOL)enabled
+{
     UIScrollView *scrollView = [_magicController.magicView valueForKey:@"contentView"];
     if ([scrollView isKindOfClass:[UIScrollView class]]) {
-        scrollView.fd_popGestureEnabled = YES;
+        scrollView.fd_popGestureEnabled = enabled;
     }
-    
-    //    [_magicController.magicView reloadData];
-    [self categoryArray];
-    
-    
-//    MARWYGetVideoNewListR *getVideoNewListR = [MARWYGetVideoNewListR new];
-//    getVideoNewListR.offset = 0;
-//    getVideoNewListR.size = 10;
-//    getVideoNewListR.channel = @"T1457068979049";
-//    getVideoNewListR.fn = 1;
-//    getVideoNewListR.subtab = @"Video_Beauty";
-
 }
 
 - (VTMagicController *)magicController {
@@ -185,5 +179,22 @@
 
 - (void)magicView:(VTMagicView *)magicView didSelectItemAtIndex:(NSUInteger)itemIndex {
     NSLog(@"didSelectItemAtIndex:%ld", (long)itemIndex);
+}
+
+- (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj
+{
+    // 视频播放过程中不可右滑退出
+    if (type == kMARNotificationType_MARWYVideoStatusChanged) {
+        if (self.magicController.currentPage == 0)
+        {
+            if ([data integerValue] == MARVideoStatusPlaying) {
+                [self _setPopGestureEnabled:NO];
+            }
+            else
+            {
+                [self _setPopGestureEnabled:YES];
+            }
+        }
+    }
 }
 @end

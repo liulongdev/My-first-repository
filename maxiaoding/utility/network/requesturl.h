@@ -42,8 +42,7 @@
 //#define LIULONGHOST @"http://localhost:3000"
 #define LIULONGHOST @"http://liulong.site"
 #define WYGetAllNewCategoryTitleList                @"nc/topicset/ios/subscribe/manage/listspecial.html"    // 获取网易新闻标题列表
-#define WYGetNewListOfTouTiao                       @"recommend/getSubDocPic"   // 获取头条 from=toutiao
-#define WYGetNewListOfWangyiHao                     WYGetNewListOfTouTiao       // 获取网易号    from=netease_h
+#define WYGetRecommendNewList                       @"recommend/getSubDocPic"   // 获取头条 from=toutiao
 #define WYGetNewArticleList1                        @"dlist/article/dynamic"    // 根据分类查询新闻列表
 #define WYGetNewArticleList2                        @"nc/article/list"
 #define WYGetNewArticleList3                        @"recommend/getChanListNews"                    // 特殊的需要
@@ -58,7 +57,7 @@
 
 
 #define WYSERVER_GetAllNewCategoryTitleList         URLAppend(WANGYIHOST, WYGetAllNewCategoryTitleList)     // 获取网易新闻标题列表
-#define WYSERVER_GetNewListOfTouTiao                URLAppend(WANGYIHOST, WYGetNewListOfTouTiao)            // 获取网易头条
+#define WYSERVER_GetRecommendNewList                URLAppend(WANGYIHOST, WYGetRecommendNewList)            // 获取网易头条
 #define WYSERVER_GetNewArticleList                  URLAppend(WANGYIHOST, WYGetNewArticleList1)         // 根据分类查询新闻列表
 #define WYSERVER_GetNewArticleList2                  URLAppend(WANGYIHOST, WYGetNewArticleList2)             // 获取新闻列表
 #define WYSERVER_GetNewArticleList3                  URLAppend(WANGYIHOST, WYGetNewArticleList3)             // 获取新闻列表 <需要自己的服务器>

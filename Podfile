@@ -25,7 +25,7 @@ def shared_dependencies
   pod 'UMengUShare/Social/QQ', '~> 6.4.7'
   pod 'UMengUShare/Social/Sina', '~> 6.4.7'
   pod 'UMengUShare/UI', '~> 6.4.7'
-
+  pod 'KTVHTTPCache', '~> 1.0.0'
 #  pod 'UMengUShare/Social/ReducedWeChat', '~> 6.4.7'
 #  pod 'UMengUShare/Social/ReducedQQ', '~> 6.4.7'
 #  pod 'UMengUShare/Social/ReducedSina', '~> 6.4.7'

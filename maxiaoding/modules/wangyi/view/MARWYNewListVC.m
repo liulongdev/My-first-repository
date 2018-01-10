@@ -82,14 +82,15 @@
     requestModel.fn = self.model.refreshLoadFn;
     requestModel.from = requestModel.channel = self.model.categoryModel.tid;
     @weakify(self)
-    NSArray *loadTitleArray2 = @[@"新闻学院",@"音乐",@"活力冬奥学院",@"汽车",@"房产",@"商城live",@"二次元",@"佛学",@"阳光法院",@"京东",@"天猫",@"跟贴",@"直播"];
+    NSArray *loadRedianArray = @[@"热点"];
+    NSArray *loadTitleArray2 = @[@"新闻学院",@"音乐",@"活力冬奥学院",@"云课堂",@"汽车",@"房产",@"商城live",@"二次元",@"佛学",@"阳光法院",@"京东",@"天猫",@"跟贴",@"直播"];
     NSArray *loadTitleArray3 = @[@"萌宠", @"视频", @"美女"];//@[@"萌宠"];
-    NSArray *loadTitleArray4 = @[];//@[@"段子"];
+    NSArray *loadTitleArray4 = @[@""];//@[@"段子"];
     if ([@"头条" isEqualToString:self.model.categoryModel.tname]) {
         requestModel.from = @"toutiao";
         requestModel.prog = @"Rpic2";
         @weakify(self)
-        [MARWYNewNetworkManager getTouTiaoNewList:requestModel success:^(NSArray<MARWYNewModel *> *array) {
+        [MARWYNewNetworkManager getRecommendNewList:requestModel success:^(NSArray<MARWYNewModel *> *array) {
             @strongify(self)
             if (!strong_self) return;
             strong_self.isLoading = NO;
@@ -98,6 +99,20 @@
         } failure:^(NSURLSessionTask *task, NSError *error) {
             weak_self.isLoading = NO;
             NSLog(@">>>>> get toutiao list error : %@", error);
+            [weak_self.tableView.mj_header endRefreshing];
+            [weak_self.tableView.mj_footer endRefreshing];
+        }];
+    }
+    else if ([loadRedianArray containsObject:self.model.categoryModel.tname]) {
+        [MARWYNewNetworkManager getRecommendNewList:requestModel success:^(NSArray<MARWYNewModel *> *array) {
+            @strongify(self)
+            if (!strong_self) return;
+            strong_self.isLoading = NO;
+            [strong_self _loadNewArray:array];
+            [strong_self.tableView reloadData];
+        } failure:^(NSURLSessionTask *task, NSError *error) {
+            weak_self.isLoading = NO;
+            NSLog(@">>>>> get new list error : %@", error);
             [weak_self.tableView.mj_header endRefreshing];
             [weak_self.tableView.mj_footer endRefreshing];
         }];

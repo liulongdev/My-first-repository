@@ -7,6 +7,7 @@
 //
 
 #import "MARUtility.h"
+#import <KTVHCPathTools.h>
 
 @implementation MARUtility
 
@@ -85,6 +86,84 @@
         [timer invalidate];
         timer = nil;
     }
+}
+
+- (void)calculateVideoCacheSizeWithCompletionBlock:(MARCalculateSizeBlock)completionBlock {
+    [self calculateSizeWithFolderPath:[self videoDiskPath] completionBlock:completionBlock];
+}
+
+- (void)calculateImgCacheSizeWithCompletionBlock:(MARCalculateSizeBlock)completionBlock
+{
+    [[SDImageCache sharedImageCache] calculateSizeWithCompletionBlock:completionBlock];
+}
+
+- (void)calculateSizeWithFolderPath:(NSString *)filePath
+                    completionBlock:(MARCalculateSizeBlock)completionBlock
+{
+    NSString *videoDiskCachePath = filePath;
+    NSURL *diskCacheURL = [NSURL fileURLWithPath:videoDiskCachePath isDirectory:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSUInteger fileCount = 0;
+        NSUInteger totalSize = 0;
+        
+        NSDirectoryEnumerator *fileEnumerator = [[NSFileManager defaultManager] enumeratorAtURL:diskCacheURL
+                                                                     includingPropertiesForKeys:@[NSFileSize]
+                                                                                        options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                                                   errorHandler:NULL];
+        
+        for (NSURL *fileURL in fileEnumerator) {
+            NSNumber *fileSize;
+            [fileURL getResourceValue:&fileSize forKey:NSURLFileSizeKey error:NULL];
+            totalSize += [fileSize unsignedIntegerValue];
+            fileCount += 1;
+        }
+        
+        if (completionBlock) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionBlock(fileCount, totalSize);
+            });
+        }
+    });
+}
+
+- (void)clearImgDiskOnCompletion:(void (^)(void))completion
+{
+    [[SDImageCache sharedImageCache] clearMemory];
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:completion];
+}
+
+- (NSString *)videoDiskPath
+{
+    return [KTVHCPathTools absolutePathWithRelativePath:@"KTVHTTPCache"];
+}
+
+- (void)clearVideoDiskOnCompletion:(void (^)(void))completion
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *folderPath = [self videoDiskPath];
+        if (folderPath.length <= 0) {
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion();
+                });
+            }
+            return;
+        }
+        NSError * error = nil;
+        BOOL isDirectory = NO;
+        BOOL result = [[NSFileManager defaultManager] fileExistsAtPath:folderPath isDirectory:&isDirectory];
+        if (result && isDirectory) {
+            result = [[NSFileManager defaultManager] removeItemAtPath:folderPath error:&error];
+        }
+        if (isDirectory) {
+            [[NSFileManager defaultManager] removeItemAtPath:folderPath error:&error];
+        }
+        if (completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion();
+            });
+        }
+    });
 }
 
 @end

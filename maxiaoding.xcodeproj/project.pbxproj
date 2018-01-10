@@ -85,6 +85,7 @@
 		5B4805371FF27BAE000C9FD3 /* MARBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4805361FF27BAE000C9FD3 /* MARBaseRequest.m */; };
 		5B48053A1FF29474000C9FD3 /* MARCookCategoryCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4805391FF29474000C9FD3 /* MARCookCategoryCollectionVC.m */; };
 		5B48053D1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B48053C1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.m */; };
+		5B510D3820050AEB00F8F1CD /* MARVideoFullVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B510D3720050AEB00F8F1CD /* MARVideoFullVC.m */; };
 		5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FF41FF82E9A000BA56A /* MARUserRequest.m */; };
 		5B765FFB1FF8323A000BA56A /* MARUserNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FFA1FF8323A000BA56A /* MARUserNetworkManager.m */; };
 		5B765FFE1FF8E647000BA56A /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B765FFD1FF8E647000BA56A /* login.storyboard */; };
@@ -109,6 +110,7 @@
 		5B9498D21FF617D500FF9731 /* MARFontConfigVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9498D11FF617D500FF9731 /* MARFontConfigVC.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
+		5BF823172005B7BC005DBCDE /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF823162005B7BC005DBCDE /* MediaPlayer.framework */; };
 		5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */; };
 		5BFCE71A1FE53F6900E86CCC /* MARCookStepTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7191FE53F6900E86CCC /* MARCookStepTableCell.m */; };
 		83F79CD1B5F4E42CC3A4A9E0 /* libPods-maxiaoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */; };
@@ -283,6 +285,8 @@
 		5B4805391FF29474000C9FD3 /* MARCookCategoryCollectionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookCategoryCollectionVC.m; sourceTree = "<group>"; };
 		5B48053B1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookCategoryCollecitonCell.h; sourceTree = "<group>"; };
 		5B48053C1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookCategoryCollecitonCell.m; sourceTree = "<group>"; };
+		5B510D3620050AEB00F8F1CD /* MARVideoFullVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARVideoFullVC.h; sourceTree = "<group>"; };
+		5B510D3720050AEB00F8F1CD /* MARVideoFullVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARVideoFullVC.m; sourceTree = "<group>"; };
 		5B765FF31FF82E9A000BA56A /* MARUserRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARUserRequest.h; sourceTree = "<group>"; };
 		5B765FF41FF82E9A000BA56A /* MARUserRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARUserRequest.m; sourceTree = "<group>"; };
 		5B765FF61FF8302E000BA56A /* requesturl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = requesturl.h; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 		5BC0F5741FE2218E004C62D4 /* MARMonthDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMonthDayView.h; sourceTree = "<group>"; };
 		5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMonthDayView.m; sourceTree = "<group>"; };
 		5BD1D2CC1FF4E9D600610DDE /* request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = request.h; sourceTree = "<group>"; };
+		5BF823162005B7BC005DBCDE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		5BFCE7151FE5257000E86CCC /* MARCookDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookDetailVC.h; sourceTree = "<group>"; };
 		5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookDetailVC.m; sourceTree = "<group>"; };
 		5BFCE7181FE53F6900E86CCC /* MARCookStepTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookStepTableCell.h; sourceTree = "<group>"; };
@@ -345,6 +350,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BF823172005B7BC005DBCDE /* MediaPlayer.framework in Frameworks */,
 				83F79CD1B5F4E42CC3A4A9E0 /* libPods-maxiaoding.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +375,7 @@
 		31AC40C9E48F76669A089217 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BF823162005B7BC005DBCDE /* MediaPlayer.framework */,
 				6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */,
 			);
 			name = Frameworks;
@@ -775,6 +782,8 @@
 				5B375C9620028014001E02F2 /* MARWYVideoNewVC.m */,
 				5B375C9820037D2D001E02F2 /* MARWYVideoNewListVC.h */,
 				5B375C9920037D2D001E02F2 /* MARWYVideoNewListVC.m */,
+				5B510D3620050AEB00F8F1CD /* MARVideoFullVC.h */,
+				5B510D3720050AEB00F8F1CD /* MARVideoFullVC.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1308,6 +1317,7 @@
 				5B25F8E31FE1090B00E85884 /* MARWXArticleTabelCell.m in Sources */,
 				5B029F0F1FE3C3D3008ED5CA /* MARSBConstant.m in Sources */,
 				5B933B461FE8F054004C2038 /* MARHand.m in Sources */,
+				5B510D3820050AEB00F8F1CD /* MARVideoFullVC.m in Sources */,
 				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */,
 				5B25F8DA1FE0FBCC00E85884 /* MARWXArticleCategoryVC.m in Sources */,
 				5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */,

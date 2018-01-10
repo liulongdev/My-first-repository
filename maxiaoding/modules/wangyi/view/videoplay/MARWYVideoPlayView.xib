@@ -53,10 +53,9 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eSf-cb-Gfd">
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eSf-cb-Gfd">
                             <rect key="frame" x="58" y="10" width="121" height="31"/>
                             <connections>
-                                <action selector="slider" destination="89Q-aX-WoL" eventType="touchUpInside" id="MzV-EK-adI"/>
                                 <action selector="sliderValueChange" destination="89Q-aX-WoL" eventType="valueChanged" id="vJ8-De-mcO"/>
                                 <action selector="startSlider" destination="89Q-aX-WoL" eventType="touchDown" id="MKp-Ts-m3B"/>
                             </connections>
@@ -112,6 +111,7 @@
                 <outlet property="playOrPauseBtn" destination="PVC-oX-his" id="q2L-JO-Vkq"/>
                 <outlet property="progressSlider" destination="eSf-cb-Gfd" id="iHB-bN-QZB"/>
                 <outlet property="progressView" destination="VM5-LG-OHf" id="ddm-hH-fKF"/>
+                <outlet property="tapGesture" destination="ZDo-P4-PU0" id="Oqd-7F-8Ek"/>
                 <outlet property="timeLabel" destination="dCb-w2-fzw" id="EXk-fH-azM"/>
                 <outlet property="titleLabel" destination="lKv-Wm-mcm" id="qD1-rW-ShT"/>
                 <outlet property="toolView" destination="uMa-IW-kVL" id="QZM-5d-Xd9"/>

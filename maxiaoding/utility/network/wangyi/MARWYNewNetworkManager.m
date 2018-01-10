@@ -71,7 +71,6 @@
             key = [wyResponseDic allKeys][0] ?: @"";
         }
         NSArray *array = [NSArray mar_modelArrayWithClass:[MARWYVideoNewModel class] json:wyResponseDic[key]];
-        NSLog(@">>>>>>> get videoNewList : %@", responseObject);
         if (success) {
             success(array);
         }
@@ -100,11 +99,11 @@
     } failure:failure];
 }
 
-+ (void)getTouTiaoNewList:(MARWYGetNewArticleListR *)param
++ (void)getRecommendNewList:(MARWYGetNewArticleListR *)param
                   success:(void (^)(NSArray<MARWYNewModel *> *))success
                   failure:(MARNetworkFailure)failure
 {
-    [MARNetworkManager mar_get:WYSERVER_GetNewListOfTouTiao parameters:param success:^(NSURLSessionTask *task, id responseObject) {
+    [MARNetworkManager mar_get:WYSERVER_GetRecommendNewList parameters:param success:^(NSURLSessionTask *task, id responseObject) {
         NSString *key = @"";
         if ([responseObject allKeys].count > 0) {
             key = [responseObject allKeys][0];
@@ -187,7 +186,6 @@
             key = [wyResponseDic allKeys][0] ?: @"";
         }
         NSArray *array = [NSArray mar_modelArrayWithClass:[MARWYVideoNewModel class] json:wyResponseDic[key]];
-        NSLog(@">>>>>>> get videoNewList : %@", responseObject);
         if (success) {
             success(array);
         }

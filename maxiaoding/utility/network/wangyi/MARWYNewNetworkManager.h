@@ -37,7 +37,8 @@
 //                success:(MARNetworkSuccess)success
 //                failure:(MARNetworkFailure)failure;
 
-+ (void)getTouTiaoNewList:(MARWYGetNewArticleListR *)param
+// 获取头条（from=toutiao） 、网易号(from=netease_h)  和  热点
++ (void)getRecommendNewList:(MARWYGetNewArticleListR *)param
                   success:(void (^)(NSArray<MARWYNewModel *> * array))success
                   failure:(MARNetworkFailure)failure;
 

@@ -9,7 +9,8 @@
 #import "AppDelegate.h"
 #import "MARHomeCustomVC.h"
 #import <UMSocialCore/UMSocialCore.h>
-
+#import <KTVHTTPCache.h>
+#import <AVFoundation/AVFoundation.h>
 @interface AppDelegate ()
 
 @end
@@ -27,8 +28,29 @@
     self.window.rootViewController = navi;
     [self.window makeKeyAndVisible];
 
+    NSError * error;
+    [KTVHTTPCache proxyStart:&error];
+    
+    AVAudioSession *avSession = [AVAudioSession sharedInstance];
+    [avSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [avSession setActive:YES error:nil];
+    
+    
+//    [[AVAudioSession sharedInstance] addObserver:self forKeyPath:NSStringFromSelector(@selector(outputVolume)) options:NSKeyValueObservingOptionNew context:nil];
+    
     return YES;
 }
+
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+//{
+//    if ([keyPath isEqualToString:NSStringFromSelector(@selector(outputVolume))]) {
+//        if ([object isKindOfClass:[AVAudioSession class]]) {
+//            AVAudioSession *audioSession = (AVAudioSession *)object;
+//            float volume = audioSession.outputVolume;
+//
+//        }
+//    }
+//}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

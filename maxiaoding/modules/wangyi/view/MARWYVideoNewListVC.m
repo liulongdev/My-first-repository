@@ -10,21 +10,26 @@
 #import "MARWYNewNetworkManager.h"
 #import <MJRefresh/MJRefresh.h>
 #import "MARWYVideoNewTableCell.h"
-@interface MARWYVideoNewListVC () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+#import <KTVHTTPCache.h>
+#import "MARVideoFullVC.h"
+#import <Masonry.h>
+@interface MARWYVideoNewListVC () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MARWYVideoPlayViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) BOOL isLoading;
 
-
+@property (nonatomic, strong) MARVideoFullVC *fullVC;
 @property (nonatomic, strong) MARWYVideoPlayView *playView;
-@property (nonatomic, weak) MARWYVideoNewTableCell *currentSelectedCell;
-@property (nonatomic, weak) NSIndexPath *currentSelectedIndexPath;
+@property (nonatomic, strong) MARWYVideoNewTableCell *currentSelectedCell;
+@property (nonatomic, strong) NSIndexPath *currentSelectedIndexPath;
 @end
 
 @implementation MARWYVideoNewListVC
-
+{
+    BOOL isFullScreen;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+//    [self hiddenSystemVolume:YES];
 }
 
 - (void)UIGlobal
@@ -69,10 +74,12 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
-    [self closePlayer];
+    [super viewDidDisappear:animated];
+    if (!isFullScreen) {
+        [self closePlayer];
+    }
 }
 
 - (void)closePlayer
@@ -120,6 +127,7 @@
 
 - (void)refreshLoadData
 {
+    [self closePlayer];
     self.model.refreshLoadFn ++;
     [self.model.wyNewArray removeAllObjects];
     [self loadData];
@@ -157,10 +165,10 @@
     NSInteger row = indexPath.row;
     if (self.model.wyNewArray.count > row) {
         MARWYVideoNewModel *model = self.model.wyNewArray[row];
-        if ([self.currentSelectedIndexPath isEqual:indexPath]) {
-            if (!cell.playView) {
+        if ([self.currentSelectedIndexPath isEqual:indexPath] && !isFullScreen) {
+//            if (!cell.playView) {
                 [cell addPlayerView:self.playView];
-            }
+//            }
         }
         else
         {
@@ -173,11 +181,13 @@
         [cell.playBtn mar_addActionBlock:^(id sender) {
             [weak_self.playView resetPlayView];
             MARWYVideoPlayView *playView = [MARWYVideoPlayView videoPlayView];
+            playView.delegate = weak_self;
             playView.title = model.title;
             [weakCell addPlayerView:playView];
             weak_self.playView = playView;
-            AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:model.mp4_url]];
-            self.playView.playerItem = item;
+            NSString *urlString = [KTVHTTPCache proxyURLStringWithOriginalURLString:model.mp4_url];
+            AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:urlString?:@""]];
+            weak_self.playView.playerItem = item;
             weak_self.currentSelectedCell = weakCell;
             weak_self.currentSelectedIndexPath = indexPath;
         } forState:UIControlEventTouchUpInside];
@@ -196,6 +206,42 @@
 //            [self closePlayer];
         }
     }
+}
+
+#pragma mark - MARWYVideoPlayViewDelegate
+- (void)videoplayViewSwitchOrientation:(BOOL)isFull
+{
+    if (isFull) {
+        if ([self.fullVC presentingViewController]) {
+            return;
+        }
+        isFullScreen = YES;
+        [self.playView removeFromSuperview];
+        self.fullVC.playView = self.playView;
+        [self presentViewController:self.fullVC animated:YES completion:nil];
+    } else {
+        @weakify(self)
+        [self.fullVC dismissViewControllerAnimated:YES completion:^{
+            @strongify(self)
+            strong_self->isFullScreen = NO;
+            strong_self.playView = strong_self.fullVC.playView;
+            [strong_self.playView removeFromSuperview];
+            strong_self.fullVC.playView = nil;
+            [strong_self.tableView reloadData];
+            
+        }];
+    }
+    
+    
+}
+
+- (MARVideoFullVC *)fullVC
+{
+    if (_fullVC == nil) {
+        self.fullVC = [[MARVideoFullVC alloc] init];
+    }
+    
+    return _fullVC;
 }
 
 @end
