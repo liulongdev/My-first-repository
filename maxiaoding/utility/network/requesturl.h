@@ -40,7 +40,7 @@
 
 #define WANGYIHOST @"https://c.m.163.com"
 //#define LIULONGHOST @"http://localhost:3000"
-#define LIULONGHOST @"http://liulong.site"
+#define LIULONGHOST @"https://wx.liulong.site"
 #define WYGetAllNewCategoryTitleList                @"nc/topicset/ios/subscribe/manage/listspecial.html"    // 获取网易新闻标题列表
 #define WYGetRecommendNewList                       @"recommend/getSubDocPic"   // 获取头条 from=toutiao
 #define WYGetNewArticleList1                        @"dlist/article/dynamic"    // 根据分类查询新闻列表

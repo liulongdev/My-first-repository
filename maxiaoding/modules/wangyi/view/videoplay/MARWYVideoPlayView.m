@@ -31,6 +31,8 @@
 @property (nonatomic, strong) NSTimer *progressTimer;
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 
+@property (nonatomic, assign) BOOL isReadyToPlay;
+
 @end
 
 @implementation MARWYVideoPlayView
@@ -43,9 +45,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.player = [[AVPlayer alloc] init];
-    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    [self.imageView.layer addSublayer:self.playerLayer];
     
     self.toolView.alpha = 0;
     self.titleLabel.alpha = 0;
@@ -56,7 +55,6 @@
     [self.progressSlider setMinimumTrackImage:[UIImage imageNamed:@"icon_video_slider_MinimumTrackImage"] forState:UIControlStateNormal];
     
     [self removeProgressTimer];
-    [self addProgressTimer];
     
     self.playOrPauseBtn.selected = YES;
     
@@ -79,17 +77,27 @@
 #pragma mark - 设置播放的视频
 - (void)setPlayerItem:(AVPlayerItem *)playerItem
 {
+    if (!self.player) {
+        self.player = [[AVPlayer alloc] init];
+        self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+        [self.imageView.layer addSublayer:self.playerLayer];
+    }
+    self.isReadyToPlay = NO;
     _playerItem = playerItem;
     [self.player replaceCurrentItemWithPlayerItem:playerItem];
     [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     [self.player play];
+    [self.progressView startAnimating];
+    [self updateProgressInfo];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     AVPlayerItem *item = (AVPlayerItem *)object;
     if (item.status == AVPlayerItemStatusReadyToPlay) {
         [self.progressView stopAnimating];
+        [self addProgressTimer];
         self.status = MARVideoStatusPlaying;
+        self.isReadyToPlay = YES;
     }
 }
 
@@ -170,7 +178,7 @@
     // 2.设置进度条的value
     self.progressSlider.value = CMTimeGetSeconds(self.player.currentTime) / CMTimeGetSeconds(self.player.currentItem.duration);
     
-    if (CMTimeGetSeconds(self.player.currentTime) == CMTimeGetSeconds(self.playerItem.duration)) {
+    if (_isReadyToPlay && CMTimeGetSeconds(self.player.currentTime) == CMTimeGetSeconds(self.playerItem.duration)) {
         [self removeProgressTimer];
         self.status = MARVideoStatusFinish;
 //        [self resetPlayView];
@@ -194,6 +202,7 @@
 }
 
 - (IBAction)slider {
+    if (!self.isReadyToPlay) return;
     [self removeProgressTimer];
     [self.player pause];
     NSTimeInterval currentTime = CMTimeGetSeconds(self.player.currentItem.duration) * self.progressSlider.value;

@@ -17,13 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self hiddenSystemVolume:YES];
-    [self.view addSubview:self.playView];
+//    [self.view addSubview:self.playView];
 }
 
-- (void)setPlayView:(MARWYVideoPlayView *)playView
+- (void)viewWillAppear:(BOOL)animated
 {
-    _playView = playView;
-    [self.playView removeFromSuperview];
+    [super viewWillAppear:animated];
     [self.view addSubview:self.playView];
     [self.playView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.mas_topLayoutGuide);

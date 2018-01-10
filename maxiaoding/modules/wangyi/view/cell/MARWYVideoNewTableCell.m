@@ -45,7 +45,6 @@
 
 - (void)addPlayerView:(MARWYVideoPlayView *)playView
 {
-    if (!playView) return;
     [_playView removeFromSuperview];
     _playView = nil;
     self.playView = playView;

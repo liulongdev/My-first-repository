@@ -19,7 +19,7 @@
 
 @property (nonatomic, strong) MARVideoFullVC *fullVC;
 @property (nonatomic, strong) MARWYVideoPlayView *playView;
-@property (nonatomic, strong) MARWYVideoNewTableCell *currentSelectedCell;
+//@property (nonatomic, strong) MARWYVideoNewTableCell *currentSelectedCell;
 @property (nonatomic, strong) NSIndexPath *currentSelectedIndexPath;
 @end
 
@@ -77,16 +77,16 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if (!isFullScreen) {
-        [self closePlayer];
-    }
+    [self closePlayer];
 }
 
 - (void)closePlayer
 {
-    [self.playView resetPlayView];
-    self.playView = nil;
-    self.currentSelectedIndexPath = nil;
+    if (!isFullScreen) {
+        [self.playView resetPlayView];
+        self.playView = nil;
+        self.currentSelectedIndexPath = nil;
+    }
 }
 
 - (void)loadData
@@ -166,30 +166,23 @@
     if (self.model.wyNewArray.count > row) {
         MARWYVideoNewModel *model = self.model.wyNewArray[row];
         if ([self.currentSelectedIndexPath isEqual:indexPath] && !isFullScreen) {
-//            if (!cell.playView) {
+            if (!cell.playView) {
                 [cell addPlayerView:self.playView];
-//            }
+            }
+            cell.playView.hidden = NO;
         }
         else
         {
-            [cell.playView removeFromSuperview];
-            cell.playView = nil;
+            if (cell.playView.superview == cell) {
+//                cell.playView = nil;
+//                [self resetPlayView];
+                cell.playView.hidden = YES;
+            }
         }
         [cell.playBtn mar_removeAllActionBlocks];
-        __weak __typeof(cell) weakCell = cell;
         @weakify(self)
         [cell.playBtn mar_addActionBlock:^(id sender) {
-            [weak_self.playView resetPlayView];
-            MARWYVideoPlayView *playView = [MARWYVideoPlayView videoPlayView];
-            playView.delegate = weak_self;
-            playView.title = model.title;
-            [weakCell addPlayerView:playView];
-            weak_self.playView = playView;
-            NSString *urlString = [KTVHTTPCache proxyURLStringWithOriginalURLString:model.mp4_url];
-            AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:urlString?:@""]];
-            weak_self.playView.playerItem = item;
-            weak_self.currentSelectedCell = weakCell;
-            weak_self.currentSelectedIndexPath = indexPath;
+            [weak_self playVideoWithIndexPath:indexPath isToCenter:YES];
         } forState:UIControlEventTouchUpInside];
         
         [cell setCellData:model];
@@ -197,11 +190,51 @@
     return cell;
 }
 
+- (void)resetPlayView
+{
+    if (!isFullScreen) {
+        [_playView resetPlayView];
+        self.playView = nil;
+    }
+}
+
+- (void)playVideoWithIndexPath:(NSIndexPath *)indexPath isToCenter:(BOOL)flag
+{
+    if (self.model.wyNewArray.count > indexPath.row) {
+        MARWYVideoNewModel *model = self.model.wyNewArray[indexPath.row];
+        
+        [self resetPlayView];
+        
+        if (!self.playView) {
+            self.playView = [MARWYVideoPlayView videoPlayView];
+            _playView.delegate = self;
+            NSLog(@">>>>>>> test");
+        }
+        _playView.title = model.title;
+        self.currentSelectedIndexPath = indexPath;
+        NSString *urlString = [KTVHTTPCache proxyURLStringWithOriginalURLString:model.mp4_url];
+        urlString = model.mp4_url;
+        AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:urlString?:@""]];
+        self.playView.playerItem = item;
+        
+        if (!isFullScreen) {
+            if (flag) {
+                if (![[self.tableView indexPathsForVisibleRows] containsObject:indexPath]) {
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+                }
+                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            }
+            [self.tableView reloadData];
+        }
+        
+    }
+}
+
 #pragma mark - UIScollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (self.tableView == scrollView) {
-        if (![[self.tableView visibleCells] containsObject:self.currentSelectedCell])
+        if (![[self.tableView indexPathsForVisibleRows] containsObject:self.currentSelectedIndexPath])
         {
 //            [self closePlayer];
         }
@@ -216,8 +249,9 @@
             return;
         }
         isFullScreen = YES;
-        [self.playView removeFromSuperview];
         self.fullVC.playView = self.playView;
+//        self.playView = nil;
+        self.fullVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:self.fullVC animated:YES completion:nil];
     } else {
         @weakify(self)
@@ -225,8 +259,6 @@
             @strongify(self)
             strong_self->isFullScreen = NO;
             strong_self.playView = strong_self.fullVC.playView;
-            [strong_self.playView removeFromSuperview];
-            strong_self.fullVC.playView = nil;
             [strong_self.tableView reloadData];
             
         }];
@@ -242,6 +274,20 @@
     }
     
     return _fullVC;
+}
+
+- (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj
+{
+    // 视频播放过程中不可右滑退出
+    if (type == kMARNotificationType_MARWYVideoStatusChanged) {
+        if ([data integerValue] == MARVideoStatusFinish && !isFullScreen) {
+            if (self.model.wyNewArray.count > self.currentSelectedIndexPath.row + 1)
+            {
+                NSIndexPath *willPlayIndexPath = [NSIndexPath indexPathForRow:self.currentSelectedIndexPath.row + 1 inSection:self.currentSelectedIndexPath.section];
+                [self playVideoWithIndexPath:willPlayIndexPath isToCenter:YES];
+            }
+        }
+    }
 }
 
 @end
