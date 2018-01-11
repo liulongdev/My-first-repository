@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "MARWYDataProxy.h"
 static NSString * const WYNEWSkipType_PhotoSet = @"photoset";
 static NSString * const WYNEWSkipType_Video = @"video";
 
@@ -16,5 +16,7 @@ static NSString * const WYNEWSkipType_Video = @"video";
 @interface MARWYUtility : NSObject
 
 + (instancetype)sharedInstance;
+
+@property (nonatomic, strong) MARWYDataProxy* dataProxy;
 
 @end

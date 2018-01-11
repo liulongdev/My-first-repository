@@ -13,6 +13,8 @@
 #import <KTVHTTPCache.h>
 #import "MARVideoFullVC.h"
 #import <Masonry.h>
+#import <VTMagic.h>
+
 @interface MARWYVideoNewListVC () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MARWYVideoPlayViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) BOOL isLoading;
@@ -213,7 +215,6 @@
         _playView.title = model.title;
         self.currentSelectedIndexPath = indexPath;
         NSString *urlString = [KTVHTTPCache proxyURLStringWithOriginalURLString:model.mp4_url];
-        urlString = model.mp4_url;
         AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:urlString?:@""]];
         self.playView.playerItem = item;
         
@@ -280,12 +281,14 @@
 {
     // 视频播放过程中不可右滑退出
     if (type == kMARNotificationType_MARWYVideoStatusChanged) {
-        if ([data integerValue] == MARVideoStatusFinish && !isFullScreen) {
-            if (self.model.wyNewArray.count > self.currentSelectedIndexPath.row + 1)
-            {
-                NSIndexPath *willPlayIndexPath = [NSIndexPath indexPathForRow:self.currentSelectedIndexPath.row + 1 inSection:self.currentSelectedIndexPath.section];
-                [self playVideoWithIndexPath:willPlayIndexPath isToCenter:YES];
-            }
+        if (self.magicController.currentViewController == self) {
+            if ([data integerValue] == MARVideoStatusFinish && !isFullScreen) {
+                if (self.model.wyNewArray.count > self.currentSelectedIndexPath.row + 1)
+                {
+                    NSIndexPath *willPlayIndexPath = [NSIndexPath indexPathForRow:self.currentSelectedIndexPath.row + 1 inSection:self.currentSelectedIndexPath.section];
+                    [self playVideoWithIndexPath:willPlayIndexPath isToCenter:YES];
+                }
+            }            
         }
     }
 }

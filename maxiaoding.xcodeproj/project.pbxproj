@@ -111,6 +111,7 @@
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
 		5BF823172005B7BC005DBCDE /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF823162005B7BC005DBCDE /* MediaPlayer.framework */; };
+		5BF8232B2007386C005DBCDE /* MARWYDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8232A2007386C005DBCDE /* MARWYDataProxy.m */; };
 		5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */; };
 		5BFCE71A1FE53F6900E86CCC /* MARCookStepTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7191FE53F6900E86CCC /* MARCookStepTableCell.m */; };
 		83F79CD1B5F4E42CC3A4A9E0 /* libPods-maxiaoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */; };
@@ -336,6 +337,8 @@
 		5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMonthDayView.m; sourceTree = "<group>"; };
 		5BD1D2CC1FF4E9D600610DDE /* request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = request.h; sourceTree = "<group>"; };
 		5BF823162005B7BC005DBCDE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		5BF823292007386C005DBCDE /* MARWYDataProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYDataProxy.h; sourceTree = "<group>"; };
+		5BF8232A2007386C005DBCDE /* MARWYDataProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYDataProxy.m; sourceTree = "<group>"; };
 		5BFCE7151FE5257000E86CCC /* MARCookDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookDetailVC.h; sourceTree = "<group>"; };
 		5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookDetailVC.m; sourceTree = "<group>"; };
 		5BFCE7181FE53F6900E86CCC /* MARCookStepTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookStepTableCell.h; sourceTree = "<group>"; };
@@ -765,6 +768,8 @@
 				5B42EDB82000DC3400B98D68 /* MARWYNewDetailModel.m */,
 				5B375C8C20026A57001E02F2 /* MARWYVideoNewDetailModel.h */,
 				5B375C8D20026A57001E02F2 /* MARWYVideoNewDetailModel.m */,
+				5BF823292007386C005DBCDE /* MARWYDataProxy.h */,
+				5BF8232A2007386C005DBCDE /* MARWYDataProxy.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1325,6 +1330,7 @@
 				5B933B421FE8EFEA004C2038 /* MARAnalogClockView.m in Sources */,
 				5B029F381FE42EBA008ED5CA /* MARMobCalendarModel.m in Sources */,
 				5B029F071FE2EB61008ED5CA /* MARCarDetailVC.m in Sources */,
+				5BF8232B2007386C005DBCDE /* MARWYDataProxy.m in Sources */,
 				5B42ED921FFE43DE00B98D68 /* MARWYNewNetworkManager.m in Sources */,
 				5B25F8FF1FE1808F00E85884 /* MARHistoryDayTableCell.m in Sources */,
 			);

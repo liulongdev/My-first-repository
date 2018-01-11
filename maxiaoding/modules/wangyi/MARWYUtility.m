@@ -20,4 +20,12 @@
     return instance;
 }
 
+- (MARWYDataProxy *)dataProxy
+{
+    if (!_dataProxy) {
+        _dataProxy = [MARWYDataProxy new];
+    }
+    return _dataProxy;
+}
+
 @end
