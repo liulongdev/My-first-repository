@@ -11,6 +11,6 @@
 
 @interface MARWYDataProxy : NSObject
 
-@property (nonatomic, strong) MARWYVideoPlayView *nVedioPlayView;
+@property (nonatomic, strong) MARWYVideoPlayView *nVideoPlayView;
 
 @end

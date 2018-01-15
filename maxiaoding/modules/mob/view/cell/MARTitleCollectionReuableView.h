@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MARTitleCollectionReuableView : UICollectionReusableView
+@property (weak, nonatomic) IBOutlet UIButton *showOrHiddenBtn;
 
 - (void)setCellData:(id)data;
 

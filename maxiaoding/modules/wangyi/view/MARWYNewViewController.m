@@ -16,6 +16,8 @@
 #import "MARWYNewListVC.h"
 #import <Masonry.h>
 #import "UIScrollView+MXD.h"
+#import "MARWYChooseNewCategoryVC.h"
+
 @interface MARWYNewViewController ()<VTMagicViewDelegate, VTMagicViewDataSource>
 @property (nonatomic, strong) NSArray<MARWYNewCategoryTitleModel *> *categoryArray;
 @property (nonatomic, strong) NSArray *categoryTitleArray;
@@ -43,6 +45,17 @@
     
 //    [_magicController.magicView reloadData];
     [self categoryArray];
+}
+
+- (void)updateRightNaviItem
+{
+    if (self.categoryTitleArray.count > 0) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStyleDone target:self action:@selector(handleCategories:)];
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 - (VTMagicController *)magicController {
@@ -92,7 +105,7 @@
 {
     if (!_categoryArray) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            self.categoryArray = (NSArray<MARWYNewCategoryTitleModel *> *)[MARWYNewCategoryTitleModel mar_getAllDBModelArray];
+            self.categoryArray = (NSArray<MARWYNewCategoryTitleModel *> *)[MARWYNewCategoryTitleModel getArrayFavorite:YES];
             if (_categoryArray.count <= 0) {
                 [self loadData];
             }
@@ -116,6 +129,7 @@
     NSArray *ignoreTitleArray = @[@"话题",@"问吧",@"薄荷",@"图片",@"本地",@"段子"];
     for (MARWYNewCategoryTitleModel *model in categoryArray) {
         if ([ignoreTitleArray containsObject:model.tname]) {
+            [model deleteToDB];
             [array removeObject:model];
         }
     }
@@ -133,8 +147,13 @@
             [tmpTitles addObject:model.tname];
         }
         self.categoryTitleArray = tmpTitles;
-        [self.magicController.magicView reloadData];
     }
+    else
+    {
+        self.categoryTitleArray = nil;
+    }
+    [self updateRightNaviItem];
+    [self.magicController.magicView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -179,6 +198,10 @@
 }
 
 - (void)magicView:(VTMagicView *)magicView viewDidAppear:(UIViewController *)viewController atPage:(NSUInteger)pageIndex {
+    if ([viewController isKindOfClass:[MARWYNewListVC class]]) {
+        MARWYNewListVC *wyNewListVC = (MARWYNewListVC *)viewController;
+        [wyNewListVC needReloadData];
+    }
     NSLog(@"pageIndex:%ld viewDidAppear:%@", (long)pageIndex, viewController.view);
 }
 
@@ -188,6 +211,41 @@
 
 - (void)magicView:(VTMagicView *)magicView didSelectItemAtIndex:(NSUInteger)itemIndex {
     NSLog(@"didSelectItemAtIndex:%ld", (long)itemIndex);
+}
+
+
+- (void)handleCategories:(id)sender
+{
+    [self performSegueWithIdentifier:@"goWYChooseNewCategoryVC" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqual:@"goWYChooseNewCategoryVC"]) {
+        MARWYChooseNewCategoryVC *vc = segue.destinationViewController;
+        if ([vc isKindOfClass:[MARWYChooseNewCategoryVC class]]) {
+            @weakify(self)
+            [vc setFinishOrChooseBlock:^(NSArray<MARWYNewCategoryTitleModel *> *tmpCategoryArray, MARWYNewCategoryTitleModel* model) {
+                @strongify(self)
+                MARWYNewListVC * currentVC = strong_self.magicController.currentViewController;
+                strong_self.categoryArray = tmpCategoryArray;
+                
+                NSInteger currentPageIndex = 0;//[strong_self.categoryArray indexOfObject:currentVC.model.categoryModel];
+                if (model) {
+                    currentPageIndex = [strong_self.categoryArray indexOfObject:model];;
+                }
+                else
+                {
+                    currentPageIndex = [strong_self.categoryArray indexOfObject:currentVC.model.categoryModel];;
+                }
+                [strong_self setCategoryTitleDataSource];
+                [strong_self.magicController.magicView reloadData];
+                if (currentPageIndex == NSNotFound) currentPageIndex = 0;
+           
+                [strong_self.magicController switchToPage:currentPageIndex animated:YES];
+            }];
+        }
+    }
 }
 
 @end

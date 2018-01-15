@@ -112,6 +112,8 @@
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
 		5BF823172005B7BC005DBCDE /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF823162005B7BC005DBCDE /* MediaPlayer.framework */; };
 		5BF8232B2007386C005DBCDE /* MARWYDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8232A2007386C005DBCDE /* MARWYDataProxy.m */; };
+		5BF8232F20076A81005DBCDE /* MARWYChooseNewCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8232E20076A81005DBCDE /* MARWYChooseNewCategoryVC.m */; };
+		5BF82332200888E6005DBCDE /* MARWYNewCategoryTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF82331200888E6005DBCDE /* MARWYNewCategoryTitleCell.m */; };
 		5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */; };
 		5BFCE71A1FE53F6900E86CCC /* MARCookStepTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE7191FE53F6900E86CCC /* MARCookStepTableCell.m */; };
 		83F79CD1B5F4E42CC3A4A9E0 /* libPods-maxiaoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F38A26DCE334EB207EEDB8D /* libPods-maxiaoding.a */; };
@@ -339,6 +341,10 @@
 		5BF823162005B7BC005DBCDE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		5BF823292007386C005DBCDE /* MARWYDataProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYDataProxy.h; sourceTree = "<group>"; };
 		5BF8232A2007386C005DBCDE /* MARWYDataProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYDataProxy.m; sourceTree = "<group>"; };
+		5BF8232D20076A81005DBCDE /* MARWYChooseNewCategoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYChooseNewCategoryVC.h; sourceTree = "<group>"; };
+		5BF8232E20076A81005DBCDE /* MARWYChooseNewCategoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYChooseNewCategoryVC.m; sourceTree = "<group>"; };
+		5BF82330200888E6005DBCDE /* MARWYNewCategoryTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYNewCategoryTitleCell.h; sourceTree = "<group>"; };
+		5BF82331200888E6005DBCDE /* MARWYNewCategoryTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYNewCategoryTitleCell.m; sourceTree = "<group>"; };
 		5BFCE7151FE5257000E86CCC /* MARCookDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookDetailVC.h; sourceTree = "<group>"; };
 		5BFCE7161FE5257000E86CCC /* MARCookDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookDetailVC.m; sourceTree = "<group>"; };
 		5BFCE7181FE53F6900E86CCC /* MARCookStepTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCookStepTableCell.h; sourceTree = "<group>"; };
@@ -781,6 +787,8 @@
 				5B42ED9F1FFE4C9400B98D68 /* cell */,
 				5B42EDA61FFE4E7900B98D68 /* MARWYNewViewController.h */,
 				5B42EDA71FFE4E7900B98D68 /* MARWYNewViewController.m */,
+				5BF8232D20076A81005DBCDE /* MARWYChooseNewCategoryVC.h */,
+				5BF8232E20076A81005DBCDE /* MARWYChooseNewCategoryVC.m */,
 				5B42EDB22000799D00B98D68 /* MARWYNewListVC.h */,
 				5B42EDB32000799D00B98D68 /* MARWYNewListVC.m */,
 				5B375C9520028014001E02F2 /* MARWYVideoNewVC.h */,
@@ -802,6 +810,8 @@
 				5B42EDAD1FFE702E00B98D68 /* MARWYNewTableCell.m */,
 				5B375C9B20037F2A001E02F2 /* MARWYVideoNewTableCell.h */,
 				5B375C9C20037F2A001E02F2 /* MARWYVideoNewTableCell.m */,
+				5BF82330200888E6005DBCDE /* MARWYNewCategoryTitleCell.h */,
+				5BF82331200888E6005DBCDE /* MARWYNewCategoryTitleCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -1266,6 +1276,7 @@
 				5B029F4A1FE500C1008ED5CA /* UIImageView+SDWEBEXT.m in Sources */,
 				5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */,
 				5B25F8F61FE17CD300E85884 /* MARLoadPageModel.m in Sources */,
+				5BF82332200888E6005DBCDE /* MARWYNewCategoryTitleCell.m in Sources */,
 				5B01CD541FF32922003D2875 /* MARTitleCollectionReuableView.m in Sources */,
 				5B375C9A20037D2D001E02F2 /* MARWYVideoNewListVC.m in Sources */,
 				5B029F471FE4FE99008ED5CA /* MARCookInfoTableCell.m in Sources */,
@@ -1305,6 +1316,7 @@
 				5B7660221FFCABDE000BA56A /* MARSetPasswrodVC.m in Sources */,
 				5B029F011FE2C317008ED5CA /* MARCarSeriesVC.m in Sources */,
 				5B25F8621FE0D2CA00E85884 /* main.m in Sources */,
+				5BF8232F20076A81005DBCDE /* MARWYChooseNewCategoryVC.m in Sources */,
 				5B029F2A1FE4043D008ED5CA /* MARHomeCustomVC.m in Sources */,
 				5B25F8F91FE17D2900E85884 /* MARHistoryDayModel.m in Sources */,
 				5B25F8EC1FE12B9000E85884 /* MARMobMenuVC.m in Sources */,

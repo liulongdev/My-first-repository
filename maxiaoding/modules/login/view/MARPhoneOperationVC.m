@@ -50,6 +50,8 @@
             self.title = @"绑定手机";
             break;
         case MARPhoneOperationTypeSetPassword:
+            self.phoneTF.enabled = NO;
+            self.phoneTF.text = MARGLOBALMODEL.userInfo.phone;
             timer = MARUTILITY.setPasswordPhoneCodeTimer;
             self.title = @"设置密码";
             break;

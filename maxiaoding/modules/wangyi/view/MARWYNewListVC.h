@@ -24,6 +24,8 @@
 
 @interface MARWYNewListVC : MARBaseViewController <VTMagicReuseProtocol>
 @property (nonatomic, strong) MARNewListPropertyModel *model;
+
+- (void)needReloadData;
 //@property (nonatomic, strong) MARWYNewCategoryTitleModel *categoryModel;
 
 @end

@@ -21,8 +21,8 @@
 
 @property (nonatomic, strong) MARVideoFullVC *fullVC;
 @property (nonatomic, strong) MARWYVideoPlayView *playView;
-//@property (nonatomic, strong) MARWYVideoNewTableCell *currentSelectedCell;
 @property (nonatomic, strong) NSIndexPath *currentSelectedIndexPath;
+
 @end
 
 @implementation MARWYVideoNewListVC
@@ -31,7 +31,6 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self hiddenSystemVolume:YES];
 }
 
 - (void)UIGlobal
@@ -149,6 +148,25 @@
     }
 }
 
+- (MARVideoFullVC *)fullVC
+{
+    if (_fullVC == nil) {
+        self.fullVC = [[MARVideoFullVC alloc] init];
+    }
+    
+    return _fullVC;
+}
+
+
+/**
+ 定位到在播放的视频cell
+ */
+- (void)locationMediaCell
+{
+    if (self.currentSelectedIndexPath) {
+        [self.tableView scrollToRowAtIndexPath:self.currentSelectedIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -168,9 +186,10 @@
     if (self.model.wyNewArray.count > row) {
         MARWYVideoNewModel *model = self.model.wyNewArray[row];
         if ([self.currentSelectedIndexPath isEqual:indexPath] && !isFullScreen) {
-            if (!cell.playView) {
-                [cell addPlayerView:self.playView];
+            if (cell.playView != self.playView) {
+                [cell.playView removeFromSuperview];
             }
+            [cell addPlayerView:self.playView];
             cell.playView.hidden = NO;
         }
         else
@@ -178,6 +197,7 @@
             if (cell.playView.superview == cell) {
 //                cell.playView = nil;
 //                [self resetPlayView];
+//                self.playView = nil;
                 cell.playView.hidden = YES;
             }
         }
@@ -206,12 +226,9 @@
         MARWYVideoNewModel *model = self.model.wyNewArray[indexPath.row];
         
         [self resetPlayView];
+        self.playView = [MARWYVideoPlayView videoPlayView];
+        _playView.delegate = self;
         
-        if (!self.playView) {
-            self.playView = [MARWYVideoPlayView videoPlayView];
-            _playView.delegate = self;
-            NSLog(@">>>>>>> test");
-        }
         _playView.title = model.title;
         self.currentSelectedIndexPath = indexPath;
         NSString *urlString = [KTVHTTPCache proxyURLStringWithOriginalURLString:model.mp4_url];
@@ -235,10 +252,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (self.tableView == scrollView) {
-        if (![[self.tableView indexPathsForVisibleRows] containsObject:self.currentSelectedIndexPath])
-        {
+//        if (![[self.tableView indexPathsForVisibleRows] containsObject:self.currentSelectedIndexPath])
+//        {
 //            [self closePlayer];
-        }
+//        }
     }
 }
 
@@ -268,15 +285,6 @@
     
 }
 
-- (MARVideoFullVC *)fullVC
-{
-    if (_fullVC == nil) {
-        self.fullVC = [[MARVideoFullVC alloc] init];
-    }
-    
-    return _fullVC;
-}
-
 - (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj
 {
     // 视频播放过程中不可右滑退出
@@ -288,8 +296,15 @@
                     NSIndexPath *willPlayIndexPath = [NSIndexPath indexPathForRow:self.currentSelectedIndexPath.row + 1 inSection:self.currentSelectedIndexPath.section];
                     [self playVideoWithIndexPath:willPlayIndexPath isToCenter:YES];
                 }
-            }            
+            }
         }
+    }
+}
+
+- (void)clickAppStatusBar
+{
+    if (self.magicController.currentViewController == self) {
+        [self.tableView mar_scrollToTopAnimated:YES];
     }
 }
 

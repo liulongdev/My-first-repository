@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray *categoryTitleArray;
 @property (nonatomic, strong) VTMagicController *magicController;
 @property (nonatomic, strong) NSMutableDictionary *wyNewCategoryDictionary;
+@property (nonatomic, strong) UIBarButtonItem *locationVideoItem;
 @end
 
 @implementation MARWYVideoNewVC
@@ -38,6 +39,7 @@
     [self _setPopGestureEnabled:YES];
     
     [self categoryArray];
+    
 }
 
 - (void)_setPopGestureEnabled:(BOOL)enabled
@@ -45,6 +47,7 @@
     UIScrollView *scrollView = [_magicController.magicView valueForKey:@"contentView"];
     if ([scrollView isKindOfClass:[UIScrollView class]]) {
         scrollView.fd_popGestureEnabled = enabled;
+        MARAdjustsScrollViewInsets_NO(scrollView, self);
     }
 }
 
@@ -72,6 +75,18 @@
         _wyNewCategoryDictionary = [NSMutableDictionary dictionaryWithCapacity:1 << 4];
     }
     return _wyNewCategoryDictionary;
+}
+
+- (UIBarButtonItem *)locationVideoItem
+{
+    if (!_locationVideoItem) {
+        UIButton *locationVideoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [locationVideoBtn setImage:[UIImage imageNamed:@"img_media_play"] forState:UIControlStateNormal];
+        locationVideoBtn.frame = CGRectMake(0, 0, 44, 44);
+        [locationVideoBtn addTarget:self action:@selector(locationVideoItemAction:) forControlEvents:UIControlEventTouchUpInside];
+        _locationVideoItem = [[UIBarButtonItem alloc] initWithCustomView:locationVideoBtn];
+    }
+    return _locationVideoItem;
 }
 
 - (void)loadData
@@ -181,10 +196,20 @@
     NSLog(@"didSelectItemAtIndex:%ld", (long)itemIndex);
 }
 
+- (void)locationVideoItemAction:(id)sender
+{
+    MARWYVideoNewListVC *videoNewListVC = self.magicController.currentViewController;
+    if ([videoNewListVC isKindOfClass:[MARWYVideoNewListVC class]]) {
+        [videoNewListVC locationMediaCell];
+    }
+    
+}
+
 - (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj
 {
     // 视频播放过程中不可右滑退出
     if (type == kMARNotificationType_MARWYVideoStatusChanged) {
+        // 首页播放视频时候不可右滑返回
         if (self.magicController.currentPage == 0)
         {
             if ([data integerValue] == MARVideoStatusPlaying) {
@@ -195,6 +220,46 @@
                 [self _setPopGestureEnabled:YES];
             }
         }
+        // 是否显示右上角定位视频按钮
+        if ([data integerValue] == MARVideoStatusPlaying) {
+            self.navigationItem.rightBarButtonItem = self.locationVideoItem;
+        }
+        else
+        {
+            self.navigationItem.rightBarButtonItem = nil;
+        }
     }
 }
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+        [[UIApplication sharedApplication
+          ] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+        [self hiddenSystemVolume:NO];
+    }
+    else
+    {
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+        [[UIApplication sharedApplication
+          ] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+        [self hiddenSystemVolume:YES];
+    }
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
 @end

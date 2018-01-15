@@ -16,19 +16,30 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hoi-WG-twM">
-                    <rect key="frame" x="15" y="15" width="290" height="20"/>
+                    <rect key="frame" x="15" y="15" width="35.5" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zf-qZ-Cjh">
+                    <rect key="frame" x="261" y="0.0" width="44" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="jtM-zF-O8n"/>
+                    </constraints>
+                    <state key="normal" title="⬆️"/>
+                    <state key="selected" title="⬇️"/>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="Hoi-WG-twM" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="15" id="8UU-Jn-ajZ"/>
                 <constraint firstItem="Hoi-WG-twM" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="15" id="Sgk-74-lxM"/>
-                <constraint firstAttribute="trailing" secondItem="Hoi-WG-twM" secondAttribute="trailing" constant="15" id="mmI-Ag-gZX"/>
+                <constraint firstAttribute="bottom" secondItem="8Zf-qZ-Cjh" secondAttribute="bottom" id="Vfw-Cn-mht"/>
+                <constraint firstAttribute="trailing" secondItem="8Zf-qZ-Cjh" secondAttribute="trailing" constant="15" id="oG4-9P-cGY"/>
+                <constraint firstItem="8Zf-qZ-Cjh" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="sDV-Zs-syZ"/>
                 <constraint firstAttribute="bottom" secondItem="Hoi-WG-twM" secondAttribute="bottom" constant="15" id="y0U-cd-Csl"/>
             </constraints>
             <connections>
+                <outlet property="showOrHiddenBtn" destination="8Zf-qZ-Cjh" id="WdQ-7E-1y2"/>
                 <outlet property="titleLabel" destination="Hoi-WG-twM" id="rn6-ZZ-csi"/>
             </connections>
         </collectionReusableView>

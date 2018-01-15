@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MARWYNewModel : NSObject
+@interface MARWYNewModel : MARBaseDBModel
+@property (nonatomic, strong) NSString *tid;
 @property (nonatomic, strong) NSString *tname;
 /**
  *  新闻发布时间
@@ -45,7 +46,7 @@
 @property (nonatomic, assign) BOOL hasCover;
 @property (nonatomic, assign) NSInteger *hasAD;
 @property (nonatomic, assign) NSInteger *priority;
-@property (nonatomic, strong) NSString *cid;
+@property (nonatomic, strong) NSString *cid;        // 分类id
 @property (nonatomic, strong) NSArray *videoID;
 /**
  *  图片连接
@@ -139,6 +140,12 @@
 @property (nonatomic, strong) NSString *tagDate;
 @property (nonatomic, strong) NSString *template;
 @property (nonatomic, strong) NSString *topicid;
+// 自定义
+@property (nonatomic, assign) BOOL notAttention;
+@property (nonatomic, assign) NSInteger orderNumber;
+
++ (NSArray *)getArrayFavorite:(BOOL)isFavorite;
+
 @end
 
 @interface MARWYVideoCategoryTitleModel : MARBaseDBModel <NSCopying>
@@ -149,7 +156,7 @@
 
 @end
 
-@interface MARWYPhotoNewModel : NSObject
+@interface MARWYPhotoNewModel : MARBaseDBModel
 
 @property (nonatomic, strong) NSString *autoid;
 @property (nonatomic, strong) NSString *boardid;
@@ -176,7 +183,15 @@
 
 @end
 
-@interface MARWYVideoNewModel : NSObject <MARModelDelegate>
+@interface MARWYVideoTopicModel : MARBaseDBModel <NSCopying, NSCoding>
+@property (nonatomic, strong) NSString *alias;
+@property (nonatomic, strong) NSString *ename;
+@property (nonatomic, strong) NSString *tid;
+@property (nonatomic, strong) NSString *tname;
+@property (nonatomic, strong) NSString *topic_icons;
+@end
+
+@interface MARWYVideoNewModel : MARBaseDBModel <MARModelDelegate>
 //@property (nonatomic, strong) NSString * ;
 //@property (nonatomic, assign) NSInteger ;
 //@property (nonatomic, assign) BOOL ;
@@ -205,12 +220,11 @@
 @property (nonatomic, strong) NSString *topicName;
 @property (nonatomic, strong) NSString *topicSid;
 @property (nonatomic, strong) NSString *vid;
-@property (nonatomic, strong) id videoTopic;
+@property (nonatomic, strong) MARWYVideoTopicModel *videoTopic;
 @property (nonatomic, strong) NSString *videosource;
-
 @end
 
-@interface MARWYTouTiaoNewModel : NSObject
+@interface MARWYTouTiaoNewModel : MARBaseDBModel
 /*
  "adtype":0,
  "boardid":"dy_wemedia_bbs",

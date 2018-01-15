@@ -31,7 +31,6 @@ typedef NS_ENUM(NSInteger, MARVideoStatus) {
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) AVPlayerItem *playerItem;
 @property (nonatomic, assign) MARVideoStatus status;
--(void)suspendPlayVideo;
 
 -(void)pause;
 

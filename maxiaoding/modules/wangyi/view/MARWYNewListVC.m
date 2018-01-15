@@ -25,6 +25,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self needReloadData];
+}
+
+- (void)needReloadData
+{
     if (self.model.wyNewArray.count > 0) {
         [self.tableView reloadData];
     }
@@ -302,6 +307,12 @@
     MARLog(@">>>>>  vtm_prepareForReuse");
 }
 
+- (void)clickAppStatusBar
+{
+    if (self.magicController.currentViewController == self) {
+        [self.tableView mar_scrollToTopAnimated:YES];
+    }
+}
 
 @end
 

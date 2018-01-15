@@ -22,4 +22,8 @@
 @end
 @interface MARWYVideoNewListVC : MARBaseViewController
 @property (nonatomic, strong) MARWYVideoNewListPropertyModel *model;
+/**
+ 定位到在播放的视频cell
+ */
+- (void)locationMediaCell;
 @end

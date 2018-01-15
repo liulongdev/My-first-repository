@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray<MARCookCategoryMenuModel *> *cookCategoryMenuArray;
 
+@property (nonatomic, strong) NSMutableDictionary *hiddenMenuDic;
+
 @end
 
 @implementation MARCookCategoryCollectionVC
@@ -55,6 +57,14 @@
         });
     }
     return _cookCategoryMenuArray;
+}
+
+- (NSMutableDictionary *)hiddenMenuDic
+{
+    if (!_hiddenMenuDic) {
+        _hiddenMenuDic = [NSMutableDictionary dictionaryWithCapacity:1 << 4];
+    }
+    return _hiddenMenuDic;
 }
 
 - (void)scrollViewToSelectCell
@@ -117,8 +127,19 @@
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"MARTitleCollectionReuableView" forIndexPath:indexPath];
         if (_cookCategoryMenuArray.count > indexPath.section) {
-            MARCookCategoryMenuModel *model = _cookCategoryMenuArray[indexPath.section];
-            [(MARTitleCollectionReuableView *)reusableView setCellData:model.name];
+            if ([reusableView isKindOfClass:[MARTitleCollectionReuableView class]]) {
+                MARTitleCollectionReuableView *titleView = (MARTitleCollectionReuableView *)reusableView;
+                MARCookCategoryMenuModel *model = _cookCategoryMenuArray[indexPath.section];
+                [titleView setCellData:model.name];
+                titleView.showOrHiddenBtn.selected = [self.hiddenMenuDic[MARSTRWITHINT(indexPath.section)] boolValue];
+                [titleView.showOrHiddenBtn mar_removeAllActionBlocks];
+                @weakify(self)
+                [titleView.showOrHiddenBtn mar_addActionBlock:^(id sender) {
+                    titleView.showOrHiddenBtn.selected = !titleView.showOrHiddenBtn.selected;
+                    [weak_self.hiddenMenuDic setObject:@(titleView.showOrHiddenBtn.selected) forKey:MARSTRWITHINT(indexPath.section)];
+                    [weak_self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
+                } forState:UIControlEventTouchUpInside];
+            }
         }
     }
     return reusableView;
@@ -127,7 +148,9 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     if (_cookCategoryMenuArray.count > section) {
-        return _cookCategoryMenuArray[section].childs.count;
+        if (![self.hiddenMenuDic[MARSTRWITHINT(section)] boolValue]) {
+            return _cookCategoryMenuArray[section].childs.count;
+        }
     }
     return 0;
 }

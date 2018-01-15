@@ -112,5 +112,13 @@
     return result;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    CGPoint point = [[touches anyObject] locationInView:self.window];
+    CGRect statusFrame = [[UIApplication sharedApplication] statusBarFrame];
+    if (CGRectContainsPoint(statusFrame, point)) {
+        [MARGLOBALMANAGER postNotif:kMARNotificationType_ClickAppStatusBar data:nil object:nil];
+    }
+}
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <LKDBHelper.h>
-@interface MARBaseDBModel : NSObject
+@interface MARBaseDBModel : NSObject <NSCoding, NSCopying>
 
 + (NSArray<MARBaseDBModel *> *)mar_getAllDBModelArray;
 

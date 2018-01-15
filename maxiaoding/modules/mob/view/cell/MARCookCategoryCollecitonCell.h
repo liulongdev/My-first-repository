@@ -10,6 +10,8 @@
 
 @interface MARCookCategoryCollecitonCell : UICollectionViewCell
 
+@property (nonatomic, strong) UILongPressGestureRecognizer *longGesture;
+
 - (void)setCellData:(id)data;
 
 - (void)mar_setSelected:(BOOL)selected;

@@ -47,6 +47,7 @@ NSString * const kSBID_Tianxing_TXNewsVC                = @"MARTXNewsVC";
 NSString * const kSBID_Wangyi_WYNewViewController       = @"MARWYNewViewController";
 NSString * const kSBID_Wangyi_WYNewListVC               = @"MARWYNewListVC";
 NSString * const kSBID_Wangyi_WYVideoNewListVC          = @"MARWYVideoNewListVC";
+NSString * const kSBID_Wangyi_WYChooseNewCategoryVC     = @"MARWYChooseNewCategoryVC";
 
 /**
  StoryBoard Segue Identifier

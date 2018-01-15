@@ -10,12 +10,12 @@
 
 @implementation MARWYDataProxy
 
-- (MARWYVideoPlayView *)playView
+- (MARWYVideoPlayView *)nVideoPlayView
 {
-    if (!_playView) {
-        _playView = [MARWYVideoPlayView videoPlayView];
+    if (!_nVideoPlayView) {
+        _nVideoPlayView = [MARWYVideoPlayView videoPlayView];
     }
-    return _playView;
+    return _nVideoPlayView;
 }
 
 @end

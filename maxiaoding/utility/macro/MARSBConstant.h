@@ -48,6 +48,7 @@ extern NSString * const kSBID_Tianxing_TXNewsVC;
 extern NSString * const kSBID_Wangyi_WYNewViewController;
 extern NSString * const kSBID_Wangyi_WYNewListVC;
 extern NSString * const kSBID_Wangyi_WYVideoNewListVC;
+extern NSString * const kSBID_Wangyi_WYChooseNewCategoryVC;
 
 @interface MARSBConstant : NSObject
 

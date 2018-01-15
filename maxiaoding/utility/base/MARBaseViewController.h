@@ -53,5 +53,8 @@
 // 隐藏音量
 - (void)hiddenSystemVolume:(BOOL)hidden;
 
+// 自定义点击App的状态栏事件
+- (void)clickAppStatusBar;
+
 @end
 

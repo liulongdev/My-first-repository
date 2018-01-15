@@ -14,6 +14,7 @@
                    success:(MARNetworkSuccess)success
                    failure:(MARNetworkFailure)failure
 {
+    param.currentUserId = @"";
     [MARNetworkManager mar_post:SERVERAPI_ThirdPlatformLogin parameters:param success:success failure:failure];
 }
 
@@ -21,6 +22,7 @@
                     success:(MARNetworkSuccess)success
                     failure:(MARNetworkFailure)failure
 {
+    param.currentUserId = @"";
     [MARUserNetworkManager mar_post:SERVERAPI_QuickLoginWithPhone parameters:param success:success failure:failure];
 }
 
@@ -42,6 +44,7 @@
                success:(MARNetworkSuccess)success
                failure:(MARNetworkFailure)failure
 {
+    param.currentUserId = @"";
     [MARUserNetworkManager mar_get:SERVERAPI_LoginWithPhone parameters:param success:success failure:failure];
 }
 

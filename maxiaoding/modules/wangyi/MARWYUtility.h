@@ -11,7 +11,7 @@
 static NSString * const WYNEWSkipType_PhotoSet = @"photoset";
 static NSString * const WYNEWSkipType_Video = @"video";
 
-#define MARWYUTILITY [MARWYUtility sharedInstance];
+#define MARWYUTILITY [MARWYUtility sharedInstance]
 
 @interface MARWYUtility : NSObject
 

@@ -129,6 +129,9 @@
     [self.player pause];
     [self removeProgressTimer];
     self.status = MARVideoStatusPause;
+    self.toolView.alpha = 1;
+    self.titleLabel.alpha = 1;
+    self.isShowToolView = YES;
 }
 //
 -(void)dealloc {
@@ -143,18 +146,6 @@
     } else {
         [self pause];
     }
-}
-- (void)suspendPlayVideo {
-    [self.progressView stopAnimating];
-    
-    self.playOrPauseBtn.selected = NO;
-    self.toolView.alpha = 1;
-    self.titleLabel.alpha = 1;
-    self.isShowToolView = YES;
-    
-    [self.player pause];
-    
-    [self removeProgressTimer];
 }
 
 #pragma mark - 定时器操作
@@ -251,7 +242,7 @@
 }
 
 -(void)resetPlayView {
-    [self suspendPlayVideo];
+    [self pause];
     
     [self.playerLayer removeFromSuperlayer];
     // 替换PlayerItem为nil

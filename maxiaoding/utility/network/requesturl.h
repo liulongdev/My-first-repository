@@ -11,7 +11,8 @@
 
 #define URLAppend(_host_, _serviceurl_)     [[NSURL URLWithString:_serviceurl_ relativeToURL:[NSURL URLWithString:_host_]] absoluteString]
 
-#define SERVERHOST @"http://192.168.2.3:3000"
+#define SERVERHOST @"http://192.168.31.166:3000"
+//#define SERVERHOST @"https://wx.liulong.site"
 
 
 #define SHORTAPI_ThirdPlatformLogin         @"api/core/v1/user/thirdPlatformLogin"  // 第三方平台登陆
@@ -39,8 +40,7 @@
 // /recommend/getSubDocPic?from=toutiao&prog=Rpic2&open=&openpath=&passport=&devId=4q9wyqO%2BqQBTBHM8f1fMsbVhBeT2jN%2BpF2piB1fvCVBW8vGHludHKO1HgHn4Q%2BQf&version=31.0&spever=false&net=wifi&lat=YADB9fnO3fsBKsQUflb4ig%3D%3D&lon=4n8BYUV/zut3uONFBqLejQ%3D%3D&ts=1515070801&sign=VwZsYGHrDhYipV24Zn6YVeh5bDNqCxH4N9v/k9juIEt48ErR02zJ6/KXOnxX046I&encryption=1&canal=appstore&offset=0&size=10&fn=2 HTTP/1.1   // 获取今日头条的推荐新闻
 
 #define WANGYIHOST @"https://c.m.163.com"
-//#define LIULONGHOST @"http://localhost:3000"
-#define LIULONGHOST @"https://wx.liulong.site"
+#define LIULONGHOST SERVERHOST
 #define WYGetAllNewCategoryTitleList                @"nc/topicset/ios/subscribe/manage/listspecial.html"    // 获取网易新闻标题列表
 #define WYGetRecommendNewList                       @"recommend/getSubDocPic"   // 获取头条 from=toutiao
 #define WYGetNewArticleList1                        @"dlist/article/dynamic"    // 根据分类查询新闻列表

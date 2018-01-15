@@ -111,7 +111,13 @@
     obj=[dd objectForKey:@"object"];
     
     [self getNotifType:ty data:data target:obj];
+    
+    if (ty == kMARNotificationType_ClickAppStatusBar) {
+        [self clickAppStatusBar];
+    }
 }
+
+- (void)clickAppStatusBar{};
 
 - (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj{}
 

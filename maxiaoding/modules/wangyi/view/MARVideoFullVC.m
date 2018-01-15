@@ -24,6 +24,7 @@
 {
     [super viewWillAppear:animated];
     [self.view addSubview:self.playView];
+    self.playView.hidden = NO;
     [self.playView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.mas_topLayoutGuide);
         make.leading.mas_equalTo(self.view);
