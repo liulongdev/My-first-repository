@@ -77,3 +77,8 @@
 @implementation MARWYGetVideoNewListR
 
 @end
+
+//@implementation MARAddVideoCollecionR
+//
+//@end
+

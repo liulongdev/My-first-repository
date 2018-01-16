@@ -9,6 +9,7 @@
 #import "MARNetworkManager.h"
 #import <NSObject+MARModel.h>
 #import <AlicloudMobileAnalitics/ALBBMAN.h>
+#import "MARBaseRequest.h"
 @interface MARNetworkManager ()
 
 @end
@@ -60,6 +61,9 @@
 //    [self.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     
     self.requestSerializer.HTTPMethodsEncodingParametersInURI = [NSSet setWithObjects:@"GET", @"HEAD", nil];
+    
+    MARBaseRequest *baseR = [MARBaseRequest new];
+    [self.requestSerializer setValue:[baseR mar_modelToJSONString] forHTTPHeaderField:@"mar-signature"];
     
     // post 对paramter进行加密，加工放入request的httpbody前的string格式
     [self.requestSerializer setQueryStringSerializationWithBlock:^NSString * _Nonnull(NSURLRequest * _Nonnull request, id  _Nonnull parameters, NSError * _Nullable __autoreleasing * _Nullable error) {
@@ -202,6 +206,23 @@
     return [[self shareManager] _mar_requestType:type urlString:urlString parameters:parameters progress:progress success:success failure:failure loadingType:loadingType inView:inView];
 }
 
+- (NSURLSessionDataTask *)_mar_requestType:(MARNetworkRequestType)type
+                                 urlString:(NSString *)urlString
+                                parameters:(id)parameters
+                                  progress:(MARNetworkProgress)progress
+                                   success:(MARNetworkSuccess)success
+                                   failure:(MARNetworkFailure)failure
+{
+    return [self _mar_requestType:type
+                        urlString:urlString
+                       parameters:parameters
+                         progress:progress
+                          success:success
+                          failure:failure
+                      loadingType:MARNetworkLoadingTypeNone
+                           inView:nil];
+}
+
 + (NSURLSessionDataTask *)_mar_requestType:(MARNetworkRequestType)type
                                  urlString:(NSString *)urlString
                                 parameters:(id)parameters
@@ -219,6 +240,21 @@
                            inView:nil];
 }
 
+- (NSURLSessionDataTask *)mar_requestType:(MARNetworkRequestType)type
+                                urlString:(NSString *)urlString
+                               parameters:(id)parameters
+                                 progress:(MARNetworkProgress)progress
+                                  success:(MARNetworkSuccess)success
+                                  failure:(MARNetworkFailure)failure
+{
+    return [self _mar_requestType:type
+                        urlString:urlString
+                       parameters:parameters
+                         progress:progress
+                          success:success
+                          failure:failure];
+}
+
 + (NSURLSessionDataTask *)mar_requestType:(MARNetworkRequestType)type
                                 urlString:(NSString *)urlString
                                parameters:(id)parameters
@@ -230,6 +266,32 @@
                         urlString:urlString
                        parameters:parameters
                          progress:progress
+                          success:success
+                          failure:failure];
+}
+
+- (NSURLSessionDataTask *)mar_get:(NSString *)urlString
+                       parameters:(id)parameters
+                         progress:(MARNetworkProgress)progress
+                          success:(MARNetworkSuccess)success
+                          failure:(MARNetworkFailure)failure
+{
+    return [self _mar_requestType:MARNetworkRequestTypeGet
+                        urlString:urlString parameters:parameters
+                         progress:progress
+                          success:success
+                          failure:failure];
+}
+
+- (NSURLSessionDataTask *)mar_get:(NSString *)urlString
+                       parameters:(id)parameters
+                          success:(MARNetworkSuccess)success
+                          failure:(MARNetworkFailure)failure
+{
+    return [self _mar_requestType:MARNetworkRequestTypeGet
+                        urlString:urlString
+                       parameters:parameters
+                         progress:nil
                           success:success
                           failure:failure];
 }
@@ -260,7 +322,7 @@
                           failure:failure];
 }
 
-+ (NSURLSessionDataTask *)mar_post:(NSString *)urlString
+- (NSURLSessionDataTask *)mar_post:(NSString *)urlString
                         parameters:(id)parameters
                           progress:(MARNetworkProgress)progress
                            success:(MARNetworkSuccess)success
@@ -276,10 +338,50 @@
 
 + (NSURLSessionDataTask *)mar_post:(NSString *)urlString
                         parameters:(id)parameters
+                          progress:(MARNetworkProgress)progress
                            success:(MARNetworkSuccess)success
                            failure:(MARNetworkFailure)failure
 {
     return [self _mar_requestType:MARNetworkRequestTypePost
+                        urlString:urlString
+                       parameters:parameters
+                         progress:progress
+                          success:success
+                          failure:failure];
+}
+
+- (NSURLSessionDataTask *)mar_post:(NSString *)urlString
+                        parameters:(id)parameters
+                           success:(MARNetworkSuccess)success
+                           failure:(MARNetworkFailure)failure
+{
+    return [self _mar_requestType:MARNetworkRequestTypePost
+                        urlString:urlString
+                       parameters:parameters
+                         progress:nil
+                          success:success
+                          failure:failure];
+}
+
++ (NSURLSessionDataTask *)mar_post:(NSString *)urlString
+                        parameters:(id)parameters
+                           success:(MARNetworkSuccess)success
+                           failure:(MARNetworkFailure)failure
+{
+    return [self _mar_requestType:MARNetworkRequestTypePost
+                        urlString:urlString
+                       parameters:parameters
+                         progress:nil
+                          success:success
+                          failure:failure];
+}
+
+- (NSURLSessionDataTask *)mar_delete:(NSString *)urlString
+                          parameters:(id)parameters
+                             success:(MARNetworkSuccess)success
+                             failure:(MARNetworkFailure)failure
+{
+    return [self _mar_requestType:MARNetworkRequestTypeDelete
                         urlString:urlString
                        parameters:parameters
                          progress:nil

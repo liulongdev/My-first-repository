@@ -9,6 +9,7 @@
 #import "MARWYNewTableCell.h"
 #import "UIImageView+SDWEBEXT.h"
 #import "MARWYUtility.h"
+#import <NSObject+MARModel.h>
 @interface MARWYNewTableCell ()
 @property (strong, nonatomic) IBOutlet UIImageView *wyImageView;
 @property (strong, nonatomic) IBOutlet UILabel *wyTitleLabel;
@@ -39,7 +40,7 @@
         [self.wyImageView mar_setImageDefaultCornerRadiusWithURL:[NSURL URLWithString:model.imgsrc ?: @""] placeholderImage:nil];
         self.wyTitleLabel.text = model.title;
         self.wySourceLabel.text = model.source;
-        self.wyCommentCountLabel.text = [NSString stringWithFormat:@"%@   %@", model.ptime, MARSTRWITHINT(model.replyCount)];
+        self.wyCommentCountLabel.text = [NSString stringWithFormat:@"%@  %@回帖", model.ptime.length > 0 ? [MARUTILITY briefTimeStrWithDateStr:model.ptime] : @"", MARSTRWITHINT(model.replyCount)];
         if ([model.skipType isEqualToString:WYNEWSkipType_Video]) {
             self.videoFlagImageView.hidden = NO;
         }

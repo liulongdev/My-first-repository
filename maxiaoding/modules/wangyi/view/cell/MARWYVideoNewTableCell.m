@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *videoImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *sourceImageView;
 @property (strong, nonatomic) IBOutlet UILabel *sourceNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *videoTimeLengthLabel;
 
 @end
 
@@ -22,12 +23,15 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.collecionBtn.layer.masksToBounds = YES;
+    self.collecionBtn.layer.borderWidth = 1;
+    self.collecionBtn.layer.borderColor = RGBHEX(0x999999).CGColor;
+    self.collecionBtn.layer.cornerRadius = 8;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -39,6 +43,11 @@
         [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.cover ?: @""] placeholderImage:[UIImage imageNamed:@"img_media_default"]];
         self.sourceNameLabel.text = model.topicName;
         [self.sourceImageView sd_setImageWithURL:[NSURL URLWithString:model.cover ?: @""] placeholderImage:[UIImage imageNamed:@"icon_default_head"]];
+        
+        NSInteger dMin = model.length / 60;
+        NSInteger dSec = model.length % 60;
+        self.videoTimeLengthLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", dMin, dSec];
+        
 //        [self.sourceImageView mar_setImageDefaultCornerRadiusWithURL:[NSURL URLWithString:model.topicImg ?: @""] placeholderImage:nil];
     }
 }

@@ -11,6 +11,10 @@ body {
 
 }
 
+.wy-time-comment-container {
+    display:block,
+}
+
 .wy-time {
     text-align:left;
     font-size:15px;
@@ -18,11 +22,21 @@ body {
     margin-top:7px;
     margin-bottom:7px;
     margin-left:10px;
-    
+    display: inline-block;
+}
+
+.wy-newcomment {
+    font-size:15px;
+    text-decoration:none;
+    color:#f33;
+    float:right;
+    display: inline-block;
+    margin-right:10px;
 }
 
 .wy-img-parent {
     text-align:center;
     margin-bottom:10px;
-
+    
 }
+

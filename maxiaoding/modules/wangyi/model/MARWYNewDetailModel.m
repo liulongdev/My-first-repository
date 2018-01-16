@@ -44,11 +44,21 @@
 - (NSString *)getBodyString
 {
     NSMutableString *body = [NSMutableString string];
+
+    NSString *commentUrl = [NSString stringWithFormat:@"https://3g.163.com/touch/comment.html?docid=%@", self.docid];
+    NSString *tagAStr = @"";
+    if (self.replyCount > 0) {
+        tagAStr = [NSString stringWithFormat:@"<a class=\"wy-newcomment\" href=\"%@\">%ld回帖</a><p>",commentUrl, (long)self.replyCount];
+    }
+    
     [body appendFormat:@"<div class=\"wy-title\">%@</div>",self.title];
+    [body appendString:@"<div class=\"wy-time-comment-container\">"];
     [body appendFormat:@"<div class=\"wy-time\">%@</div>",self.ptime];
+    [body appendString:tagAStr];
     if ([self.body mar_stringByTrim].length > 0) {
         [body appendFormat:@"<div class=\"wy_content>%@<div>", self.body];
     }
+    [body appendString:@"</div>"];
     for (MARWYNewDetailImageModel *imageModel in self.img) {
         NSMutableString *imgHtml = [NSMutableString string];
         // 设置img的div

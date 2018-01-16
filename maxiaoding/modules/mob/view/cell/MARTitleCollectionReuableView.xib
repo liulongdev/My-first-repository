@@ -22,20 +22,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zf-qZ-Cjh">
-                    <rect key="frame" x="261" y="0.0" width="44" height="50"/>
+                    <rect key="frame" x="275" y="10.5" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="44" id="jtM-zF-O8n"/>
+                        <constraint firstAttribute="width" constant="30" id="jtM-zF-O8n"/>
+                        <constraint firstAttribute="height" constant="30" id="o1Z-pH-YZ6"/>
                     </constraints>
-                    <state key="normal" title="⬆️"/>
-                    <state key="selected" title="⬇️"/>
+                    <state key="normal" image="icon_arrow_up"/>
                 </button>
             </subviews>
             <constraints>
                 <constraint firstItem="Hoi-WG-twM" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="15" id="8UU-Jn-ajZ"/>
+                <constraint firstItem="8Zf-qZ-Cjh" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="SYr-uq-cP6"/>
                 <constraint firstItem="Hoi-WG-twM" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="15" id="Sgk-74-lxM"/>
-                <constraint firstAttribute="bottom" secondItem="8Zf-qZ-Cjh" secondAttribute="bottom" id="Vfw-Cn-mht"/>
                 <constraint firstAttribute="trailing" secondItem="8Zf-qZ-Cjh" secondAttribute="trailing" constant="15" id="oG4-9P-cGY"/>
-                <constraint firstItem="8Zf-qZ-Cjh" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="sDV-Zs-syZ"/>
                 <constraint firstAttribute="bottom" secondItem="Hoi-WG-twM" secondAttribute="bottom" constant="15" id="y0U-cd-Csl"/>
             </constraints>
             <connections>
@@ -44,4 +43,7 @@
             </connections>
         </collectionReusableView>
     </objects>
+    <resources>
+        <image name="icon_arrow_up" width="17" height="17"/>
+    </resources>
 </document>

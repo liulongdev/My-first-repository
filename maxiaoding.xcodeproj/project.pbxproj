@@ -86,6 +86,7 @@
 		5B48053A1FF29474000C9FD3 /* MARCookCategoryCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4805391FF29474000C9FD3 /* MARCookCategoryCollectionVC.m */; };
 		5B48053D1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B48053C1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.m */; };
 		5B510D3820050AEB00F8F1CD /* MARVideoFullVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B510D3720050AEB00F8F1CD /* MARVideoFullVC.m */; };
+		5B54A3A2200DD3CA003A73FD /* MARWYNewWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54A3A1200DD3CA003A73FD /* MARWYNewWebVC.m */; };
 		5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FF41FF82E9A000BA56A /* MARUserRequest.m */; };
 		5B765FFB1FF8323A000BA56A /* MARUserNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FFA1FF8323A000BA56A /* MARUserNetworkManager.m */; };
 		5B765FFE1FF8E647000BA56A /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B765FFD1FF8E647000BA56A /* login.storyboard */; };
@@ -290,6 +291,8 @@
 		5B48053C1FF294E1000C9FD3 /* MARCookCategoryCollecitonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookCategoryCollecitonCell.m; sourceTree = "<group>"; };
 		5B510D3620050AEB00F8F1CD /* MARVideoFullVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARVideoFullVC.h; sourceTree = "<group>"; };
 		5B510D3720050AEB00F8F1CD /* MARVideoFullVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARVideoFullVC.m; sourceTree = "<group>"; };
+		5B54A3A0200DD3CA003A73FD /* MARWYNewWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYNewWebVC.h; sourceTree = "<group>"; };
+		5B54A3A1200DD3CA003A73FD /* MARWYNewWebVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYNewWebVC.m; sourceTree = "<group>"; };
 		5B765FF31FF82E9A000BA56A /* MARUserRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARUserRequest.h; sourceTree = "<group>"; };
 		5B765FF41FF82E9A000BA56A /* MARUserRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARUserRequest.m; sourceTree = "<group>"; };
 		5B765FF61FF8302E000BA56A /* requesturl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = requesturl.h; sourceTree = "<group>"; };
@@ -797,6 +800,8 @@
 				5B375C9920037D2D001E02F2 /* MARWYVideoNewListVC.m */,
 				5B510D3620050AEB00F8F1CD /* MARVideoFullVC.h */,
 				5B510D3720050AEB00F8F1CD /* MARVideoFullVC.m */,
+				5B54A3A0200DD3CA003A73FD /* MARWYNewWebVC.h */,
+				5B54A3A1200DD3CA003A73FD /* MARWYNewWebVC.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1293,6 +1298,7 @@
 				5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */,
 				5B42EDB92000DC3400B98D68 /* MARWYNewDetailModel.m in Sources */,
 				5B42EDAB1FFE501700B98D68 /* MARWYCategoryTitleCell.m in Sources */,
+				5B54A3A2200DD3CA003A73FD /* MARWYNewWebVC.m in Sources */,
 				5B029F2E1FE40E73008ED5CA /* MARGlobalModel.m in Sources */,
 				5B029F3B1FE4B5C2008ED5CA /* MARLaohuangliModel.m in Sources */,
 				5B029F311FE41C1F008ED5CA /* MARHomeDateView.m in Sources */,

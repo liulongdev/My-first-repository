@@ -70,7 +70,7 @@
         if ([wyResponseDic isKindOfClass:[NSDictionary class]] && [wyResponseDic allKeys].count == 1) {
             key = [wyResponseDic allKeys][0] ?: @"";
         }
-        NSArray *array = [NSArray mar_modelArrayWithClass:[MARWYVideoNewModel class] json:wyResponseDic[key]];
+        NSArray *array = [NSArray mar_modelArrayWithClass:[MARWYNewModel class] json:wyResponseDic[key]];
         if (success) {
             success(array);
         }
@@ -190,6 +190,16 @@
             success(array);
         }
     } failure:failure];
+}
+
++ (void)addVideoCollecion:(MARWYVideoNewModel *)param
+                  success:(MARNetworkSuccess)success
+                  failure:(MARNetworkFailure)failure
+{
+    MARBaseRequest *baseR = [MARBaseRequest new];
+    NSMutableDictionary *paramDic = [NSMutableDictionary dictionaryWithDictionary:[baseR mar_modelToJSONObject]];
+    [paramDic addEntriesFromDictionary:[param mar_modelToJSONObject]];
+    [MARNetworkManager mar_post:SERVERAPI_AddWYVideoNewCollection parameters:paramDic success:success failure:failure];
 }
 
 @end

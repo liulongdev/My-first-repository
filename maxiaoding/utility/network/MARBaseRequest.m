@@ -21,13 +21,13 @@
     _machineModelName = [UIDevice currentDevice].mar_machineModelName ?: @"";
     _osVersion = [[UIDevice currentDevice] systemVersion] ?: @"";
     _timeStamp = MARSTRWITHINT((long)([[NSDate new] timeIntervalSince1970]));
-    _currentUserId = MARGLOBALMODEL.userInfo._id ?: @"";
+    _userId = MARGLOBALMODEL.userInfo._id ?: @"";
     return self;
 }
 
 - (NSString *)signature
 {
-    NSString *originalSig = [NSString stringWithFormat:@"appVersion%@deviceType%@deviceUUID%@machineModel%@machineModelName%@osVersion%@timeStamp%@currentUserId%@", _appVersion?:@"",_deviceType?:@"",_deviceUUID?:@"",_machineModel?:@"",_machineModelName?:@"",_osVersion?:@"",_timeStamp?:@"",_currentUserId?:@""];
+    NSString *originalSig = [NSString stringWithFormat:@"appVersion%@deviceType%@deviceUUID%@machineModel%@machineModelName%@osVersion%@timeStamp%@userId%@", _appVersion?:@"",_deviceType?:@"",_deviceUUID?:@"",_machineModel?:@"",_machineModelName?:@"",_osVersion?:@"",_timeStamp?:@"",_userId?:@""];
     return [originalSig mar_hmacSHA256StringWithKey:MARCRYPTOHMACSHA256KEY];
 }
 

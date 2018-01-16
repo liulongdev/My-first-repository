@@ -195,9 +195,6 @@
         else
         {
             if (cell.playView.superview == cell) {
-//                cell.playView = nil;
-//                [self resetPlayView];
-//                self.playView = nil;
                 cell.playView.hidden = YES;
             }
         }
@@ -207,9 +204,33 @@
             [weak_self playVideoWithIndexPath:indexPath isToCenter:YES];
         } forState:UIControlEventTouchUpInside];
         
+        [cell.collecionBtn mar_removeAllActionBlocks];
+        [cell.collecionBtn mar_addActionBlock:^(id sender) {
+            [weak_self clickCollecionBtnAtIndexPath:indexPath];
+        } forState:UIControlEventTouchUpInside];
         [cell setCellData:model];
     }
     return cell;
+}
+
+- (void)clickCollecionBtnAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = indexPath.row;
+    if (self.model.wyNewArray.count > row) {
+        MARWYVideoNewModel *model = self.model.wyNewArray[row];
+        [MARWYNewNetworkManager addVideoCollecion:model success:^(NSURLSessionTask *task, id responseObject) {
+            MARNetworkResponse *response = [MARNetworkResponse mar_modelWithJSON:responseObject];
+            if (response.isSuccess) {
+                ShowSuccessMessage(@"收藏成功", 1.f);
+            }
+            else
+            {
+                ShowErrorMessage(@"收藏失败", 1.f);
+            }
+        } failure:^(NSURLSessionTask *task, NSError *error) {
+            ShowErrorMessage(@"收藏失败!", 1.f);
+        }];
+    }
 }
 
 - (void)resetPlayView

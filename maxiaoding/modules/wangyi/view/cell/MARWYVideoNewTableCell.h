@@ -11,6 +11,9 @@
 @interface MARWYVideoNewTableCell : UITableViewCell
 @property (nonatomic, weak) MARWYVideoPlayView *playView;
 @property (strong, nonatomic) IBOutlet UIButton *playBtn;
+@property (weak, nonatomic) IBOutlet UIButton *collecionBtn;
+
+
 - (void)addPlayerView:(MARWYVideoPlayView *)playView;
 - (void)setCellData:(id)data;
 

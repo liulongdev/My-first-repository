@@ -45,4 +45,8 @@ typedef void(^MARCalculateSizeBlock)(NSUInteger fileCount, NSUInteger totalSize)
 - (void)calculateSizeWithFolderPath:(NSString *)filePath
                     completionBlock:(MARCalculateSizeBlock)completionBlock;
 
+- (NSString *)briefTimeStrWithDate:(NSDate *)date;
+
+- (NSString *)briefTimeStrWithDateStr:(NSString *)dateStr;
+
 @end

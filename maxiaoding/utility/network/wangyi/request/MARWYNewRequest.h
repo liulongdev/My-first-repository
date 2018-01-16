@@ -84,3 +84,8 @@
 @property (nonatomic, assign) NSInteger size;
 @property (nonatomic, assign) NSInteger fn;
 @end
+
+//@interface MARAddVideoCollecionR : MARBaseRequest
+//
+//@end
+

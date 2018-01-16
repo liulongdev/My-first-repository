@@ -104,6 +104,7 @@
         } failure:^(NSURLSessionTask *task, NSError *error) {
             weak_self.isLoading = NO;
             NSLog(@">>>>> get toutiao list error : %@", error);
+            [weak_self.tableView reloadData];
             [weak_self.tableView.mj_header endRefreshing];
             [weak_self.tableView.mj_footer endRefreshing];
         }];
@@ -118,6 +119,7 @@
         } failure:^(NSURLSessionTask *task, NSError *error) {
             weak_self.isLoading = NO;
             NSLog(@">>>>> get new list error : %@", error);
+            [weak_self.tableView reloadData];
             [weak_self.tableView.mj_header endRefreshing];
             [weak_self.tableView.mj_footer endRefreshing];
         }];
@@ -132,6 +134,7 @@
         } failure:^(NSURLSessionTask *task, NSError *error) {
             weak_self.isLoading = NO;
             NSLog(@">>>>> get new list error : %@", error);
+            [weak_self.tableView reloadData];
             [weak_self.tableView.mj_header endRefreshing];
             [weak_self.tableView.mj_footer endRefreshing];
         }];
@@ -147,6 +150,7 @@
         } failure:^(NSURLSessionTask *task, NSError *error) {
             weak_self.isLoading = NO;
             NSLog(@">>>>> get new list error : %@", error);
+            [weak_self.tableView reloadData];
             [weak_self.tableView.mj_header endRefreshing];
             [weak_self.tableView.mj_footer endRefreshing];
         }];
@@ -161,6 +165,7 @@
         } failure:^(NSURLSessionTask *task, NSError *error) {
             weak_self.isLoading = NO;
             NSLog(@">>>>> get new list error : %@", error);
+            [weak_self.tableView reloadData];
             [weak_self.tableView.mj_header endRefreshing];
             [weak_self.tableView.mj_footer endRefreshing];
         }];
@@ -176,6 +181,7 @@
         } failure:^(NSURLSessionTask *task, NSError *error) {
             weak_self.isLoading = NO;
             NSLog(@">>>>> get new list error : %@", error);
+            [weak_self.tableView reloadData];
             [weak_self.tableView.mj_header endRefreshing];
             [weak_self.tableView.mj_footer endRefreshing];
         }];

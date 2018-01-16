@@ -78,6 +78,19 @@ typedef void (^MARNetworkProgress)(CGFloat progress);
  *  @param success      请求成功的回调 responseObj未经过处理
  *  @param failure      请求失败的回调
  */
+- (NSURLSessionDataTask *)mar_get:(NSString *)urlString
+                       parameters:(id)parameters
+                          success:(MARNetworkSuccess)success
+                          failure:(MARNetworkFailure)failure;
+
+/**
+ *  网络请求的类方法 get请求
+ *
+ *  @param urlString    请求的地址
+ *  @param parameters    请求的参数
+ *  @param success      请求成功的回调 responseObj未经过处理
+ *  @param failure      请求失败的回调
+ */
 + (NSURLSessionDataTask *)mar_get:(NSString *)urlString
                        parameters:(id)parameters
                           success:(MARNetworkSuccess)success
@@ -98,6 +111,19 @@ typedef void (^MARNetworkProgress)(CGFloat progress);
                            success:(MARNetworkSuccess)success
                            failure:(MARNetworkFailure)failure;
 
+/**
+ *  网络请求的类方法 post请求
+ *
+ *  @param urlString    请求的地址
+ *  @param parameters    请求的参数
+ *  @param success      请求成功的回调 responseObj未经过处理
+ *  @param failure      请求失败的回调
+ 
+ */
+- (NSURLSessionDataTask *)mar_post:(NSString *)urlString
+                        parameters:(id)parameters
+                           success:(MARNetworkSuccess)success
+                           failure:(MARNetworkFailure)failure;
 /**
  *  网络请求的类方法 post请求
  *

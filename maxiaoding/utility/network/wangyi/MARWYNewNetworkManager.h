@@ -61,5 +61,8 @@
                 success:(void (^)(NSArray <MARWYVideoNewModel *> *array))success
                 failure:(MARNetworkFailure)failure;
 
++ (void)addVideoCollecion:(MARWYVideoNewModel *)param
+                  success:(MARNetworkSuccess)success
+                  failure:(MARNetworkFailure)failure;
 
 @end

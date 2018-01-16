@@ -11,9 +11,8 @@
 
 #define URLAppend(_host_, _serviceurl_)     [[NSURL URLWithString:_serviceurl_ relativeToURL:[NSURL URLWithString:_host_]] absoluteString]
 
-#define SERVERHOST @"http://192.168.31.166:3000"
-//#define SERVERHOST @"https://wx.liulong.site"
-
+//#define SERVERHOST @"http://192.168.31.166:3000"
+#define SERVERHOST @"https://wx.liulong.site"
 
 #define SHORTAPI_ThirdPlatformLogin         @"api/core/v1/user/thirdPlatformLogin"  // 第三方平台登陆
 #define SHORTAPI_RegisterUser               @"api/core/v1/user/register"            // 注册用户
@@ -21,9 +20,9 @@
 #define SHORTAPI_QuickLoginWithPhone        @"api/core/v1/user/quickLoginWithPhone" // 手机快速登录
 #define SHORTAPI_ChangePassword             @"api/core/v1/user/changePassword"      // 更改密码
 #define SHORTAPI_SetPassword                @"api/core/v1/user/setPassword"         // 设置密码
-#define SHORTAPI_UserExistWithPhone         @"/api/core/v1/user/userExistWithPhone" // 是否存在该手机号的用户
-#define SHORTAPI_BindPhone                  @"/api/core/v1/user/bindPhone"          // 绑定手机号
-
+#define SHORTAPI_UserExistWithPhone         @"api/core/v1/user/userExistWithPhone" // 是否存在该手机号的用户
+#define SHORTAPI_BindPhone                  @"api/core/v1/user/bindPhone"          // 绑定手机号
+#define SHORTAPI_AddWYVideoNewCollection    @"api/core/v1/wy/new/addVideoNewCollection"    // 增加视频新闻收藏
 
 #define SERVERAPI_ThirdPlatformLogin        URLAppend(SERVERHOST, SHORTAPI_ThirdPlatformLogin)
 #define SERVERAPI_RegisterUser              URLAppend(SERVERHOST, SHORTAPI_RegisterUser)
@@ -34,7 +33,7 @@
 #define SERVERAPI_UserExistWithPhone        URLAppend(SERVERHOST, SHORTAPI_UserExistWithPhone)
 #define SERVERAPI_SetPassword               URLAppend(SERVERHOST, SHORTAPI_SetPassword)
 #define SERVERAPI_BindPhone                 URLAppend(SERVERHOST, SHORTAPI_BindPhone)
-
+#define SERVERAPI_AddWYVideoNewCollection   URLAppend(SERVERHOST, SHORTAPI_AddWYVideoNewCollection)
 
 //https://c.m.163.com/nc/topicset/ios/subscribe/manage/listspecial.html         // 获取所有类别
 // /recommend/getSubDocPic?from=toutiao&prog=Rpic2&open=&openpath=&passport=&devId=4q9wyqO%2BqQBTBHM8f1fMsbVhBeT2jN%2BpF2piB1fvCVBW8vGHludHKO1HgHn4Q%2BQf&version=31.0&spever=false&net=wifi&lat=YADB9fnO3fsBKsQUflb4ig%3D%3D&lon=4n8BYUV/zut3uONFBqLejQ%3D%3D&ts=1515070801&sign=VwZsYGHrDhYipV24Zn6YVeh5bDNqCxH4N9v/k9juIEt48ErR02zJ6/KXOnxX046I&encryption=1&canal=appstore&offset=0&size=10&fn=2 HTTP/1.1   // 获取今日头条的推荐新闻
