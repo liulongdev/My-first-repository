@@ -52,5 +52,14 @@
     return [self mar_modelCopy];
 }
 
++ (BOOL)isContainParent
+{
+    return YES;
+}
+
++ (BOOL)isContainSelf
+{
+    return YES;
+}
 
 @end

@@ -92,6 +92,7 @@
 
 - (void)loadData
 {
+    [MARDataAnalysis setEventPage:@"WYVideoNewListVC" EventLabel:@"wangyivideonew_loaddata"];
     if (self.isLoading) return;
     self.isLoading = YES;
     self.model.lastLoadTimeStamp = [[NSDate new] timeIntervalSince1970];
@@ -215,6 +216,7 @@
 
 - (void)clickCollecionBtnAtIndexPath:(NSIndexPath *)indexPath
 {
+    [MARDataAnalysis setEventPage:@"WYVideoNewListVC" EventLabel:@"wangyivideonew_clickcollecion"];
     NSInteger row = indexPath.row;
     if (self.model.wyNewArray.count > row) {
         MARWYVideoNewModel *model = self.model.wyNewArray[row];
@@ -243,6 +245,7 @@
 
 - (void)playVideoWithIndexPath:(NSIndexPath *)indexPath isToCenter:(BOOL)flag
 {
+    [MARDataAnalysis setEventPage:@"WYVideoNewListVC" EventLabel:@"wangyivideonew_playvideo"];
     if (self.model.wyNewArray.count > indexPath.row) {
         MARWYVideoNewModel *model = self.model.wyNewArray[indexPath.row];
         
@@ -263,7 +266,9 @@
                 }
                 [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
             }
-            [self.tableView reloadData];
+            [self mar_gcdPerformAfterDelay:0.25 usingBlock:^(id  _Nonnull objSelf) {
+                [self.tableView reloadData];
+            }];
         }
         
     }

@@ -78,6 +78,7 @@
 
 - (void)loadData
 {
+    [MARDataAnalysis setEventPage:@"WYNewListVC" EventLabel:@"wangyinew_loaddata"];
     if (self.isLoading) return;
     self.isLoading = YES;
     self.model.lastLoadTimeStamp = [[NSDate new] timeIntervalSince1970];
@@ -86,9 +87,10 @@
     requestModel.size = 20;
     requestModel.fn = self.model.refreshLoadFn;
     requestModel.from = requestModel.channel = self.model.categoryModel.tid;
+    [requestModel setSignature];
     @weakify(self)
     NSArray *loadRedianArray = @[@"热点"];
-    NSArray *loadTitleArray2 = @[@"新闻学院",@"音乐",@"活力冬奥学院",@"云课堂",@"汽车",@"房产",@"商城live",@"二次元",@"佛学",@"阳光法院",@"京东",@"天猫",@"跟贴",@"直播"];
+    NSArray *loadTitleArray2 = @[@"新闻学院",@"音乐",@"活力冬奥学院",@"云课堂",@"汽车",@"房产",@"商城live",@"二次元",@"佛学",@"阳光法院",@"京东",@"天猫",@"跟贴",@"直播",@"NBA"];
     NSArray *loadTitleArray3 = @[@"萌宠", @"视频", @"美女"];//@[@"萌宠"];
     NSArray *loadTitleArray4 = @[@""];//@[@"段子"];
     if ([@"头条" isEqualToString:self.model.categoryModel.tname]) {
@@ -247,6 +249,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [MARDataAnalysis setEventPage:@"WYNewListVC" EventLabel:@"wangyinew_clickcell"];
     NSInteger row = indexPath.row;
     if (self.model.wyNewArray.count > row) {
         MARWYNewModel *model = self.model.wyNewArray[row];

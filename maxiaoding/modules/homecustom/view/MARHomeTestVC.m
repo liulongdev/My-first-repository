@@ -7,18 +7,28 @@
 //
 
 #import "MARHomeTestVC.h"
-#import "MARHomeCustomTableCell.h"
-@interface MARHomeTestVC ()<UITableViewDelegate, UITableViewDataSource>
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-
+#import "MARHomeDateView.h"
+#import <iCarousel.h>
+@interface MARHomeTestVC () <iCarouselDataSource, iCarouselDelegate>
+@property (nonatomic, strong) iCarousel *carousel;
 @end
 
 @implementation MARHomeTestVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.fd_prefersNavigationBarHidden = YES;
+    self.view.backgroundColor = [UIColor yellowColor];
+    //create carousel
+    _carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
+    _carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _carousel.type = iCarouselTypeLinear;
+    _carousel.delegate = self;
+    _carousel.dataSource = self;
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"MARHomeCustomTableCell" bundle:nil] forCellReuseIdentifier:@"MARHomeCustomTableCell"];
+    //add carousel to view
+    [self.view addSubview:_carousel];
+
 }
 
 - (void)UIGlobal
@@ -31,35 +41,66 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark -
+#pragma mark iCarousel methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    return 100;
+    return 3;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    MARHomeCustomTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MARHomeCustomTableCell" forIndexPath:indexPath];
-    @weakify(self)
-    [cell setBottomAppearBlock:^{
-        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
-        [weak_self.tableView scrollToRowAtIndexPath:nextIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }];
-    return cell;
+    //create new view if no view is available for recycling
+    if ([view isKindOfClass:[MARHomeDateView class]])
+    {
+        
+    }
+    else
+    {
+        view = [MARHomeDateView nibView];
+        view.backgroundColor = [UIColor redColor];
+        view.frame = CGRectMake(0, 0, kScreenWIDTH * 2/3, kScreenHEIGHT*2/3);
+    }
+    return view;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CATransform3D)carousel:(iCarousel *)carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform
 {
-    return self.tableView.mar_height;
+    //implement 'flip3D' style carousel
+    transform = CATransform3DRotate(transform, M_PI / 8.0f, 0.0f, 1.0f, 0.0f);
+    return CATransform3DTranslate(transform, 0.0f, 0.0f, offset * carousel.itemWidth);
+}
+
+- (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    //customize carousel display
+    switch (option)
+    {
+        case iCarouselOptionWrap:
+        {
+            //normally you would hard-code this to YES or NO
+            return YES;
+        }
+        case iCarouselOptionSpacing:
+        {
+            //add a bit of spacing between the item views
+            return value * 1.05f;
+        }
+        case iCarouselOptionFadeMax:
+        {
+            if (carousel.type == iCarouselTypeCustom)
+            {
+                //set opacity based on distance from camera
+                return 0.0f;
+            }
+            return value;
+        }
+        default:
+        {
+            return value;
+        }
+    }
 }
 
 @end

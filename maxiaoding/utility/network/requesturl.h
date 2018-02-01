@@ -11,11 +11,11 @@
 
 #define URLAppend(_host_, _serviceurl_)     [[NSURL URLWithString:_serviceurl_ relativeToURL:[NSURL URLWithString:_host_]] absoluteString]
 
-//#define SERVERHOST @"http://192.168.31.166:3000"
+//#define SERVERHOST @"http://192.168.2.3:3000"
 #define SERVERHOST @"https://wx.liulong.site"
 
 #define SHORTAPI_ThirdPlatformLogin         @"api/core/v1/user/thirdPlatformLogin"  // 第三方平台登陆
-#define SHORTAPI_RegisterUser               @"api/core/v1/user/register"            // 注册用户
+#define SHORTAPI_RegisterUser               @"api/core/v1/user/register"            // 注册用户、
 #define SHORTAPI_LoginWithPhone             @"api/core/v1/user/loginWithPhone"      // 手机登录
 #define SHORTAPI_QuickLoginWithPhone        @"api/core/v1/user/quickLoginWithPhone" // 手机快速登录
 #define SHORTAPI_ChangePassword             @"api/core/v1/user/changePassword"      // 更改密码

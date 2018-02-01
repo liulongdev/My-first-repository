@@ -115,6 +115,11 @@ static NSString * const mobTitle_wangyiVideo        = @"网易视频";
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -150,6 +155,9 @@ static NSString * const mobTitle_wangyiVideo        = @"网易视频";
     }
     else if ([mobTitle_testFunction isEqualToString:label.text])
     {
+        [MARMobUtil test];
+        [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_test"];
+        return;
         [MARWYNewNetworkManager getNewTitleListSuccess:^(NSArray<MARWYNewCategoryTitleModel *> *categoryTitleArray) {
             NSLog(@">>>>>> titleArray : %@", categoryTitleArray);
         } failure:^(NSURLSessionTask *task, NSError *error) {
@@ -193,10 +201,6 @@ static NSString * const mobTitle_wangyiVideo        = @"网易视频";
             }
         }];
         return;
-        
-        
-        [MARMobUtil test];
-        [MARDataAnalysis setEventPage:@"MobMenuList" EventLabel:@"clickCell_test"];
     }
     else if ([aliFeedback_feedback isEqualToString:label.text])
     {

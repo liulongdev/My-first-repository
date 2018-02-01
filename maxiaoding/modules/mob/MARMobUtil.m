@@ -7,6 +7,7 @@
 //
 
 #import "MARMobUtil.h"
+#import "MARALIAPINetworkManager.h"
 
 @implementation MARMobUtil
 
@@ -53,7 +54,33 @@
 
 + (void)test
 {
-    
+//    [MARALIAPINetworkManager weather_getCitiesSuccess:^(NSURLSessionTask *task, id responseObject) {
+//        NSLog(@">>>>>>>> responseObject: %@", responseObject);
+//    } failure:^(NSURLSessionTask *task, NSError *error) {
+//        NSLog(@">>>>>>>> RESPONSE ERROR : %@", error);
+//    }];
+//    MAAGetWeatherR *getWeatherR = [MAAGetWeatherR new];
+//    getWeatherR.city = @"苏州";
+//    [MARALIAPINetworkManager weather_getWeather:getWeatherR success:^(MAAWeatherModel *weatherM) {
+//        NSLog(@">>>>>>>> responseObject: %@", weatherM);
+//    } failure:^(NSURLSessionTask *task, NSError *error) {
+//        NSLog(@">>>>>>>> RESPONSE ERROR : %@", error);
+//    }];
+//    [MARALIAPINetworkManager car_getAllBrandSuccess:^(NSArray<MAACarBrandM *> *carBrandArray) {
+//        NSLog(@">>>>>>>> responseObject: %@", carBrandArray);
+//    } failure:^(NSURLSessionTask *task, NSError *error) {
+//        NSLog(@">>>>>>>> RESPONSE ERROR : %@", error);
+//    }];
+//    [MARALIAPINetworkManager car_getCarFactoriesByBrandID:@"1" success:^(NSArray<MAACarFactoryM *> *carFactoryArray) {
+//        NSLog(@">>>>>>>> responseObject: %@", carFactoryArray);
+//    } failure:^(NSURLSessionTask *task, NSError *error) {
+//        NSLog(@">>>>>>>> RESPONSE ERROR : %@", error);
+//    }];
+    [MARALIAPINetworkManager car_getCarDetailWithCarID:@"2571" success:^(MAACarModel *carModel) {
+        NSLog(@">>>>>>>> responseObject: %@", carModel);
+    } failure:^(NSURLSessionTask *task, NSError *error) {
+        NSLog(@">>>>>>>> RESPONSE ERROR : %@", error);
+    }];
 }
 
 + (void)loadCalendarWithDateStr:(NSString *)dateStr

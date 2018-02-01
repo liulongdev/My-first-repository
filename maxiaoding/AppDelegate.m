@@ -11,6 +11,7 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import <KTVHTTPCache.h>
 #import <AVFoundation/AVFoundation.h>
+#import "MARHomeTestVC.h"
 @interface AppDelegate ()
 
 @end
@@ -31,6 +32,7 @@
     NSError * error;
     [KTVHTTPCache proxyStart:&error];
     
+    // 可以有效防止静音键开启无声音
     AVAudioSession *avSession = [AVAudioSession sharedInstance];
     [avSession setCategory:AVAudioSessionCategoryPlayback error:nil];
     [avSession setActive:YES error:nil];

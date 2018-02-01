@@ -82,6 +82,7 @@
     if (!_locationVideoItem) {
         UIButton *locationVideoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [locationVideoBtn setImage:[UIImage imageNamed:@"img_media_play"] forState:UIControlStateNormal];
+        locationVideoBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
         locationVideoBtn.frame = CGRectMake(0, 0, 44, 44);
         [locationVideoBtn addTarget:self action:@selector(locationVideoItemAction:) forControlEvents:UIControlEventTouchUpInside];
         _locationVideoItem = [[UIBarButtonItem alloc] initWithCustomView:locationVideoBtn];
