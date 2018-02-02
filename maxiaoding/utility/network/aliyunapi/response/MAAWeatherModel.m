@@ -10,6 +10,11 @@
 
 @implementation MAAWeatherModel
 
++ (NSArray *)getPrimaryKeyUnionArray
+{
+    return @[@"cityid", @"date"];
+}
+
 + (NSDictionary<NSString *,id> *)mar_modelContainerPropertyGenericClass
 {
     return @{@"index": [MAAWeatherLifeIndexM class],

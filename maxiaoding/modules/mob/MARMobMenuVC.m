@@ -32,6 +32,9 @@ static NSString * const mobTitle_tianxingData       = @"天行数据";
 static NSString * const mobTitle_wangyi             = @"网易";
 static NSString * const mobTitle_wangyiVideo        = @"网易视频";
 
+static NSString * const cellTitle_weather           = @"天气";
+
+
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *titleArray;
@@ -79,6 +82,7 @@ static NSString * const mobTitle_wangyiVideo        = @"网易视频";
                         mineCellTitle_login,
                         mobTitle_wangyi,
                         mobTitle_wangyiVideo,
+                        cellTitle_weather,
 //                        aliFeedback_feedback,
                         ];
     }
@@ -239,6 +243,11 @@ static NSString * const mobTitle_wangyiVideo        = @"网易视频";
         UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Login storyboardId:kSBID_Login_LoginViewController];
         [self mar_pushViewController:vc animated:YES];
     }
+    else if ([cellTitle_weather isEqualToString:label.text])
+    {
+        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Weather storyboardId:kSBID_Weather_WeatherVC];
+        [self mar_pushViewController:vc animated:YES];
+    }
     
 }
 
@@ -266,6 +275,7 @@ static NSString * const mobTitle_wangyiVideo        = @"网易视频";
                             mineCellTitle_login,
                             mobTitle_wangyi,
                             mobTitle_wangyiVideo,
+                            cellTitle_weather,
                             aliFeedback_feedback,
                             ];
             [weakSelf.tableView reloadData];

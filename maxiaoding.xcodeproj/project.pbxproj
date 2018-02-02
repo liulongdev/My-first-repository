@@ -37,6 +37,13 @@
 		5B029F471FE4FE99008ED5CA /* MARCookInfoTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F461FE4FE99008ED5CA /* MARCookInfoTableCell.m */; };
 		5B029F4A1FE500C1008ED5CA /* UIImageView+SDWEBEXT.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F491FE500C1008ED5CA /* UIImageView+SDWEBEXT.m */; };
 		5B225D3E202233D800EB1F2A /* MAACardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D3D202233D800EB1F2A /* MAACardModel.m */; };
+		5B225D5320240C5500EB1F2A /* weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B225D5220240C5500EB1F2A /* weather.storyboard */; };
+		5B225D5620240C9200EB1F2A /* MARWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D5520240C9200EB1F2A /* MARWeatherVC.m */; };
+		5B225D5A20244C6000EB1F2A /* MARWeatherDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D5920244C6000EB1F2A /* MARWeatherDayCell.m */; };
+		5B225D5D20245C6600EB1F2A /* MARWeatherHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D5C20245C6600EB1F2A /* MARWeatherHeaderView.m */; };
+		5B225D5F20245C7000EB1F2A /* MARWeatherHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B225D5E20245C7000EB1F2A /* MARWeatherHeaderView.xib */; };
+		5B225D632024600900EB1F2A /* MARWeatherHourCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D612024600900EB1F2A /* MARWeatherHourCollectionCell.m */; };
+		5B225D642024600900EB1F2A /* MARWeatherHourCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B225D622024600900EB1F2A /* MARWeatherHourCollectionCell.xib */; };
 		5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8531FE0D2CA00E85884 /* AppDelegate.m */; };
 		5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8561FE0D2CA00E85884 /* ViewController.m */; };
 		5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B25F8581FE0D2CA00E85884 /* Main.storyboard */; };
@@ -195,6 +202,17 @@
 		5B029F491FE500C1008ED5CA /* UIImageView+SDWEBEXT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDWEBEXT.m"; sourceTree = "<group>"; };
 		5B225D3C202233D800EB1F2A /* MAACarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAACarModel.h; sourceTree = "<group>"; };
 		5B225D3D202233D800EB1F2A /* MAACardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACardModel.m; sourceTree = "<group>"; };
+		5B225D5220240C5500EB1F2A /* weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = weather.storyboard; sourceTree = "<group>"; };
+		5B225D5420240C9200EB1F2A /* MARWeatherVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWeatherVC.h; sourceTree = "<group>"; };
+		5B225D5520240C9200EB1F2A /* MARWeatherVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWeatherVC.m; sourceTree = "<group>"; };
+		5B225D5820244C6000EB1F2A /* MARWeatherDayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWeatherDayCell.h; sourceTree = "<group>"; };
+		5B225D5920244C6000EB1F2A /* MARWeatherDayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWeatherDayCell.m; sourceTree = "<group>"; };
+		5B225D5B20245C6500EB1F2A /* MARWeatherHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWeatherHeaderView.h; sourceTree = "<group>"; };
+		5B225D5C20245C6600EB1F2A /* MARWeatherHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWeatherHeaderView.m; sourceTree = "<group>"; };
+		5B225D5E20245C7000EB1F2A /* MARWeatherHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARWeatherHeaderView.xib; sourceTree = "<group>"; };
+		5B225D602024600900EB1F2A /* MARWeatherHourCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWeatherHourCollectionCell.h; sourceTree = "<group>"; };
+		5B225D612024600900EB1F2A /* MARWeatherHourCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWeatherHourCollectionCell.m; sourceTree = "<group>"; };
+		5B225D622024600900EB1F2A /* MARWeatherHourCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARWeatherHourCollectionCell.xib; sourceTree = "<group>"; };
 		5B25F84F1FE0D2CA00E85884 /* maxiaoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxiaoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B25F8521FE0D2CA00E85884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B25F8531FE0D2CA00E85884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -482,6 +500,40 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
+		5B225D5020240C2600EB1F2A /* weather */ = {
+			isa = PBXGroup;
+			children = (
+				5B225D5120240C4500EB1F2A /* view */,
+				5B225D5220240C5500EB1F2A /* weather.storyboard */,
+			);
+			path = weather;
+			sourceTree = "<group>";
+		};
+		5B225D5120240C4500EB1F2A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B225D572024119500EB1F2A /* cell */,
+				5B225D5420240C9200EB1F2A /* MARWeatherVC.h */,
+				5B225D5520240C9200EB1F2A /* MARWeatherVC.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5B225D572024119500EB1F2A /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				5B225D5820244C6000EB1F2A /* MARWeatherDayCell.h */,
+				5B225D5920244C6000EB1F2A /* MARWeatherDayCell.m */,
+				5B225D5B20245C6500EB1F2A /* MARWeatherHeaderView.h */,
+				5B225D5C20245C6600EB1F2A /* MARWeatherHeaderView.m */,
+				5B225D5E20245C7000EB1F2A /* MARWeatherHeaderView.xib */,
+				5B225D602024600900EB1F2A /* MARWeatherHourCollectionCell.h */,
+				5B225D612024600900EB1F2A /* MARWeatherHourCollectionCell.m */,
+				5B225D622024600900EB1F2A /* MARWeatherHourCollectionCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		5B25F8461FE0D2CA00E85884 = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +605,7 @@
 		5B25F8B11FE0F80500E85884 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				5B225D5020240C2600EB1F2A /* weather */,
 				5B42ED991FFE4BBF00B98D68 /* wangyi */,
 				5B765FFC1FF8E637000BA56A /* login */,
 				5B933B471FE9129D004C2038 /* tianxing */,
@@ -1217,6 +1270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B765FFE1FF8E647000BA56A /* login.storyboard in Resources */,
+				5B225D5320240C5500EB1F2A /* weather.storyboard in Resources */,
 				5B029F1E1FE3CCA7008ED5CA /* MARHomeCustomTableCell.xib in Resources */,
 				5B25F85F1FE0D2CA00E85884 /* LaunchScreen.storyboard in Resources */,
 				5B933B5F1FE9706E004C2038 /* images.xcassets in Resources */,
@@ -1225,12 +1279,14 @@
 				5B029F2B1FE4043D008ED5CA /* MARHomeCustomVC.xib in Resources */,
 				5B42EDA51FFE4E1C00B98D68 /* wangyi.storyboard in Resources */,
 				5B375CA32003C295001E02F2 /* MARWYVideoPlayView.xib in Resources */,
+				5B225D642024600900EB1F2A /* MARWeatherHourCollectionCell.xib in Resources */,
 				5B029F351FE421AB008ED5CA /* MARHomeDateView.xib in Resources */,
 				5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */,
 				5B029EF51FE2654B008ED5CA /* mob_error.plist in Resources */,
 				5B933B4D1FE912A9004C2038 /* tianxing.storyboard in Resources */,
 				5B029F161FE3C849008ED5CA /* test.storyboard in Resources */,
 				5B01CD551FF32922003D2875 /* MARTitleCollectionReuableView.xib in Resources */,
+				5B225D5F20245C7000EB1F2A /* MARWeatherHeaderView.xib in Resources */,
 				5B375C9420027576001E02F2 /* MARWYNewDetail.css in Resources */,
 				5B029F261FE40330008ED5CA /* homecustome.storyboard in Resources */,
 				5B42EDBD20024A3600B98D68 /* HYXiXingKaiW.ttf in Resources */,
@@ -1326,6 +1382,7 @@
 				5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */,
 				5B25F8F61FE17CD300E85884 /* MARLoadPageModel.m in Sources */,
 				5BF82332200888E6005DBCDE /* MARWYNewCategoryTitleCell.m in Sources */,
+				5B225D632024600900EB1F2A /* MARWeatherHourCollectionCell.m in Sources */,
 				5B01CD541FF32922003D2875 /* MARTitleCollectionReuableView.m in Sources */,
 				5B375C9A20037D2D001E02F2 /* MARWYVideoNewListVC.m in Sources */,
 				5B029F471FE4FE99008ED5CA /* MARCookInfoTableCell.m in Sources */,
@@ -1367,6 +1424,8 @@
 				5B42EDB11FFF254500B98D68 /* MARWYUtility.m in Sources */,
 				5B7660221FFCABDE000BA56A /* MARSetPasswrodVC.m in Sources */,
 				5B029F011FE2C317008ED5CA /* MARCarSeriesVC.m in Sources */,
+				5B225D5A20244C6000EB1F2A /* MARWeatherDayCell.m in Sources */,
+				5B225D5620240C9200EB1F2A /* MARWeatherVC.m in Sources */,
 				5B25F8621FE0D2CA00E85884 /* main.m in Sources */,
 				5BF8232F20076A81005DBCDE /* MARWYChooseNewCategoryVC.m in Sources */,
 				5B029F2A1FE4043D008ED5CA /* MARHomeCustomVC.m in Sources */,
@@ -1392,6 +1451,7 @@
 				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */,
 				5B25F8DA1FE0FBCC00E85884 /* MARWXArticleCategoryVC.m in Sources */,
 				5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */,
+				5B225D5D20245C6600EB1F2A /* MARWeatherHeaderView.m in Sources */,
 				5B48053A1FF29474000C9FD3 /* MARCookCategoryCollectionVC.m in Sources */,
 				5B933B421FE8EFEA004C2038 /* MARAnalogClockView.m in Sources */,
 				5B029F381FE42EBA008ED5CA /* MARMobCalendarModel.m in Sources */,

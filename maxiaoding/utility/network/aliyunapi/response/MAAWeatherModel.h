@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 /**
- @ref https://market.aliyun.com/products/57126001/cmapi014302.html?spm=5176.2020520132.101.10.LopetC#sku=yuncode830200000
+ @link https://market.aliyun.com/products/57126001/cmapi014302.html?spm=5176.2020520132.101.10.LopetC#sku=yuncode830200000
  */
 @class MAAWeatherLifeIndexM;
 @class MAAWeatherAQIM;

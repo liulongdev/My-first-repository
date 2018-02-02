@@ -21,7 +21,11 @@
     if (storyboard) {
         MARAssert(!storyboard, @"Storyboard<name :'%@'> is not exist", name);
     }
-    return [storyboard instantiateViewControllerWithIdentifier:storyboardId];
+    UIViewController *VC = [storyboard instantiateViewControllerWithIdentifier:storyboardId];
+    if (!VC) {
+        MARErrorLog(@">>>> error  VC is not found whose name is %@ from %@ storyboard", name, storyboard);
+    }
+    return VC;
 }
 
 

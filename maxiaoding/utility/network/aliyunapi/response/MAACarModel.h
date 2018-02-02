@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
+/**
+ @link https://market.aliyun.com/products/57002002/cmapi011811.html?spm=5176.2020520132.101.28.mIy1pr#sku=yuncode581100000
+ */
 @interface MAACarSimpleInfoM : MARBaseDBModel
 
 @property (nonatomic, strong) NSString *id;                 //!< ID

@@ -17,6 +17,7 @@ extern NSString * const kSBNAME_Mine;
 extern NSString * const kSBNAME_Wangyi;
 extern NSString * const kSBNAME_Test;
 extern NSString * const kSBNAME_Tianxing;
+extern NSString * const kSBNAME_Weather;
 
 /**
  StoreBoard ID of  UIViewcontroller in StoreBoard
@@ -49,6 +50,8 @@ extern NSString * const kSBID_Wangyi_WYNewViewController;
 extern NSString * const kSBID_Wangyi_WYNewListVC;
 extern NSString * const kSBID_Wangyi_WYVideoNewListVC;
 extern NSString * const kSBID_Wangyi_WYChooseNewCategoryVC;
+
+extern NSString * const kSBID_Weather_WeatherVC;
 
 @interface MARSBConstant : NSObject
 

@@ -17,6 +17,7 @@ NSString * const kSBNAME_Mine                           = @"mine";
 NSString * const kSBNAME_Wangyi                         = @"wangyi";
 NSString * const kSBNAME_Test                           = @"test";
 NSString * const kSBNAME_Tianxing                       = @"tianxing";
+NSString * const kSBNAME_Weather                        = @"weather";
 /**
  StoryBoard ID of  UIViewcontroller in StoreBoard
  */
@@ -48,6 +49,9 @@ NSString * const kSBID_Wangyi_WYNewViewController       = @"MARWYNewViewControll
 NSString * const kSBID_Wangyi_WYNewListVC               = @"MARWYNewListVC";
 NSString * const kSBID_Wangyi_WYVideoNewListVC          = @"MARWYVideoNewListVC";
 NSString * const kSBID_Wangyi_WYChooseNewCategoryVC     = @"MARWYChooseNewCategoryVC";
+
+NSString * const kSBID_Weather_WeatherVC                = @"MARWeatherVC";
+
 
 /**
  StoryBoard Segue Identifier
