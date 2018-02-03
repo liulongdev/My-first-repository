@@ -11,6 +11,8 @@
 @interface MARWeatherDayCell ()
 @property (weak, nonatomic) IBOutlet UILabel *weekDayLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *weatherImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *nightWeatherImageView;
+
 @property (weak, nonatomic) IBOutlet UILabel *lowTempLabel;
 @property (weak, nonatomic) IBOutlet UILabel *highTempLabel;
 
@@ -34,7 +36,8 @@
     if ([data isKindOfClass:[MAAWeatherDayInfoM class]]) {
         MAAWeatherDayInfoM *model = data;
         self.weekDayLabel.text = model.week;
-        self.weatherImageView.image = nil;
+        self.weatherImageView.image = [UIImage imageNamed:[@"weather_" stringByAppendingString:model.day.img]];
+        self.nightWeatherImageView.image = [UIImage imageNamed:[@"weather_" stringByAppendingString:model.night.img]];
         self.lowTempLabel.text = model.night.templow;
         self.highTempLabel.text = model.day.temphigh;
     }

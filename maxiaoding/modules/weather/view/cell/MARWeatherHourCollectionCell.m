@@ -27,7 +27,7 @@
     if ([data isKindOfClass:[MAAWeatherHourInfoM class]]) {
         MAAWeatherHourInfoM *model = data;
         self.timeLabel.text = model.time;
-        self.weatherImageView.image = nil;
+        self.weatherImageView.image = [UIImage imageNamed:[@"weather_" stringByAppendingString:model.img]];
         self.tempLabel.text = model.temp;
     }
 }

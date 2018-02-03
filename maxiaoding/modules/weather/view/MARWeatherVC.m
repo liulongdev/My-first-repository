@@ -10,6 +10,7 @@
 #import "MARALIAPINetworkManager.h"
 #import "MARWeatherHeaderView.h"
 #import "MARWeatherDayCell.h"
+#import <MARCategory.h>
 @interface MARWeatherVC () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -21,9 +22,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"苏州天气";
-    self.tableView.backgroundColor = [UIColor purpleColor];
     [self loadData];
 //    [self weatherM];
+}
+
+- (void)UIGlobal
+{
+    self.tableView.backgroundColor = [UIColor purpleColor];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 15;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,8 +43,10 @@
     getWeatherR.city = @"苏州";
     @weakify(self);
     [MARALIAPINetworkManager weather_getWeather:getWeatherR success:^(MAAWeatherModel *weatherM) {
+//        if (weatherM.daily.count > 2) {
+//            weatherM.daily = [[NSMutableArray arrayWithArray:weatherM.daily] subarrayWithRange:NSMakeRange(1, weatherM.daily.count - 1)];
+//        }
         weak_self.weatherM = weatherM;
-//        [weatherM updateToDB];
     } failure:^(NSURLSessionTask *task, NSError *error) {
         NSLog(@">>>> error : %@", error);
     }];
@@ -85,21 +94,46 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 355;
+    return 335;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _weatherM.daily.count;
+    if (_weatherM) {
+        return _weatherM.daily.count + 1;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MARWeatherDayCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MARWeatherDayCell" forIndexPath:indexPath];
     if (_weatherM.daily.count > indexPath.row) {
+        MARWeatherDayCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MARWeatherDayCell" forIndexPath:indexPath];
         [cell setCellData:_weatherM.daily[indexPath.row]];
+        return cell;
     }
-    return cell;;
+    else if (indexPath.row == _weatherM.daily.count) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customInfoTableCell" forIndexPath:indexPath];
+        UILabel *label = (UILabel *)[cell viewWithTag:1];
+        if (label && _weatherM.daily.count > 0) {
+            BOOL isDay = [NSDate new].mar_hour < 18;
+            NSString *toNightDesc = @"";
+            if (isDay) {
+                MAAWeatherDayInfoM *todayWeatherInfoM = _weatherM.daily[0];
+                toNightDesc = [NSString stringWithFormat:@"今晚%@, 最低气温%@º。", todayWeatherInfoM.night.weather, todayWeatherInfoM.night.templow];
+                NSString *weatherDesc = [NSString stringWithFormat:@"今天 : 现在%@。 最高气温%@º。 %@",todayWeatherInfoM.day.weather, todayWeatherInfoM.day.temphigh, toNightDesc];
+                label.text = weatherDesc;
+            }
+            else
+            {
+                MAAWeatherDayInfoM *todayWeatherInfoM = _weatherM.daily[0];
+                toNightDesc = [NSString stringWithFormat:@"现在%@, 最低气温%@º。", todayWeatherInfoM.night.weather, todayWeatherInfoM.night.templow];
+                label.text = toNightDesc;
+            }
+        }
+        return cell;
+    }
+    return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"error"];
 }
 
 @end

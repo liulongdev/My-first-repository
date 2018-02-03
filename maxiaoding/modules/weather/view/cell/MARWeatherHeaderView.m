@@ -8,7 +8,7 @@
 
 #import "MARWeatherHeaderView.h"
 #import "MARWeatherHourCollectionCell.h"
-
+#import "UIScrollView+MXD.h"
 @interface MARWeatherHeaderView () <UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *cityNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weatherDescLabel;
@@ -33,9 +33,11 @@
     
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.dataSource = self;
-    self.collectionFlowlayout.itemSize = CGSizeMake(40, 90);
+    self.collectionFlowlayout.itemSize = CGSizeMake(40, 80);
     self.collectionFlowlayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.collectionFlowlayout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
     self.collectionView.showsHorizontalScrollIndicator = NO;
+    self.collectionView.fd_popGestureEnabled = YES;
 }
 
 - (void)setWeatherModel:(MAAWeatherModel *)weatherModel
