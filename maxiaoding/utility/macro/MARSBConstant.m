@@ -18,6 +18,7 @@ NSString * const kSBNAME_Wangyi                         = @"wangyi";
 NSString * const kSBNAME_Test                           = @"test";
 NSString * const kSBNAME_Tianxing                       = @"tianxing";
 NSString * const kSBNAME_Weather                        = @"weather";
+NSString * const kSBNAME_Car                            = @"car";
 /**
  StoryBoard ID of  UIViewcontroller in StoreBoard
  */
@@ -51,6 +52,11 @@ NSString * const kSBID_Wangyi_WYVideoNewListVC          = @"MARWYVideoNewListVC"
 NSString * const kSBID_Wangyi_WYChooseNewCategoryVC     = @"MARWYChooseNewCategoryVC";
 
 NSString * const kSBID_Weather_WeatherVC                = @"MARWeatherVC";
+
+NSString * const kSBID_Car_CarBrandListVC               = @"MAACarBrandListVC";
+NSString * const kSBID_Car_CarFactoryVC                 = @"MAACarFactoryVC";
+NSString * const kSBID_Car_CarTypeVC                    = @"MAACarTypeVC";
+NSString * const kSBID_Car_CarDetailVC                  = @"MAACarDetailVC";
 
 
 /**

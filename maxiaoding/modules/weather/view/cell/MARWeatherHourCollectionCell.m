@@ -8,6 +8,7 @@
 
 #import "MARWeatherHourCollectionCell.h"
 #import "MAAWeatherModel.h"
+#import <UIImage+MAREX.h>
 @interface MARWeatherHourCollectionCell ()
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *weatherImageView;
@@ -27,7 +28,7 @@
     if ([data isKindOfClass:[MAAWeatherHourInfoM class]]) {
         MAAWeatherHourInfoM *model = data;
         self.timeLabel.text = model.time;
-        self.weatherImageView.image = [UIImage imageNamed:[@"weather_" stringByAppendingString:model.img]];
+        self.weatherImageView.image = [[UIImage imageNamed:[@"weather_" stringByAppendingString:model.img]] mar_imageByTintColor:MAAWeatherMainColor];
         self.tempLabel.text = model.temp;
     }
 }

@@ -106,16 +106,15 @@
     if (!_categoryArray) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             self.categoryArray = (NSArray<MARWYNewCategoryTitleModel *> *)[MARWYNewCategoryTitleModel getArrayFavorite:YES];
-            if (_categoryArray.count <= 0) {
-                [self loadData];
-            }
-            else
-            {
-                mar_dispatch_async_on_main_queue(^{
+            mar_dispatch_async_on_main_queue(^{
+                if (_categoryArray.count <= 0) {
+                    [self loadData];
+                }
+                else
+                {
                     [self setCategoryTitleDataSource];
-                });
- 
-            }
+                }
+            });
         });
         
     }

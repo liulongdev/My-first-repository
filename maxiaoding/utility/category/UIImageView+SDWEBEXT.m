@@ -10,12 +10,17 @@
 
 @implementation UIImageView (SDWEBEXT)
 
-- (void)mar_setImageDefaultCornerRadiusWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)image
+- (void)mar_setImageDefaultCornerRadiusWithURL:(NSURL *)imageURL
 {
-    [self mar_setImageDefaultCornerRadiusWithURL:imageURL placeholderImage:nil options:0];
+    [self mar_setImageDefaultCornerRadiusWithURL:imageURL errorImage:nil options:0];
 }
 
-- (void)mar_setImageDefaultCornerRadiusWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)image options:(SDWebImageOptions)options
+- (void)mar_setImageDefaultCornerRadiusWithURL:(NSURL *)imageURL errorImage:(UIImage *)errorImage
+{
+    [self mar_setImageDefaultCornerRadiusWithURL:imageURL errorImage:errorImage options:0];
+}
+
+- (void)mar_setImageDefaultCornerRadiusWithURL:(NSURL *)imageURL errorImage:(UIImage *)errorImage options:(SDWebImageOptions)options
 {
     NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:imageURL];
     __weak __typeof(self) weakSelf = self;
@@ -41,7 +46,12 @@
                 }
                 else if (error)
                 {
-                    weakSelf.image = [[UIImage imageNamed:@"img_loadimg_failure"] mar_imageByResizeToSize:weakSelf.mar_size contentMode:UIViewContentModeScaleAspectFit];
+                    if (errorImage) {
+                        weakSelf.image = [errorImage mar_imageByResizeToSize:weakSelf.mar_size contentMode:UIViewContentModeScaleAspectFit];
+                    } else {
+                        weakSelf.image = [[UIImage imageNamed:@"img_loadimg_failure"] mar_imageByResizeToSize:weakSelf.mar_size contentMode:UIViewContentModeScaleAspectFit];
+                    }
+                    
                 }
             }];
         }

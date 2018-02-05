@@ -130,20 +130,22 @@
 
 - (void)showActivityView:(BOOL)show
 {
-    if (show) {
-        [self.view addSubview:self.activityIndicatorView];
-        [self.activityIndicatorView startAnimating];
-        [self.activityIndicatorView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(self.view);
-            make.top.mas_equalTo(self.mas_topLayoutGuide).mas_offset(kScreenHeight * 1/4);
-        }];
-    }
-    else
-    {
-        [_activityIndicatorView stopAnimating];
-//        [_activityIndicatorView removeFromSuperview];
-//        _activityIndicatorView = nil;
-    }
+    mar_dispatch_async_on_main_queue(^{
+        if (show) {
+            [self.view addSubview:self.activityIndicatorView];
+            [self.activityIndicatorView startAnimating];
+            [self.activityIndicatorView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.centerX.mas_equalTo(self.view);
+                make.top.mas_equalTo(self.mas_topLayoutGuide).mas_offset(kScreenHeight * 1/4);
+            }];
+        }
+        else
+        {
+            [_activityIndicatorView stopAnimating];
+            //        [_activityIndicatorView removeFromSuperview];
+            //        _activityIndicatorView = nil;
+        }
+    });
 }
 
 - (BOOL)isAnimating

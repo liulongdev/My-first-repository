@@ -24,6 +24,15 @@
              };
 }
 
++ (MAAWeatherModel *)weatherModelWithCityId:(NSString *)cityId
+{
+    NSArray *weatherArray = [[self getUsingLKDBHelper] search:[self class] where:@{@"cityid": cityId} orderBy:nil offset:0 count:0];
+    if (weatherArray.count > 0) {
+        return weatherArray[0];
+    }
+    return nil;
+}
+
 @end
 
 // 生活指数
@@ -176,6 +185,18 @@
 + (NSString *)getPrimaryKey
 {
     return @"cityid";
+}
+
++ (NSArray<MAAWeatherCityModel *> *)cityArrayWithParentId:(NSString *)parentId
+{
+    NSArray *cityArray = [[self getUsingLKDBHelper] search:[self class] where:@{@"parentId": parentId} orderBy:nil offset:0 count:0];
+    return cityArray;
+}
+
++ (NSArray<MAAWeatherCityModel *> *)cityArrayWhere:(id)where
+{
+    NSArray *cityArray = [[self getUsingLKDBHelper] search:[self class] where:where orderBy:nil offset:0 count:0];
+    return cityArray;
 }
 
 @end

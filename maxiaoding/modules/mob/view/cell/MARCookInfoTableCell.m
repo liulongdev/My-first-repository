@@ -34,7 +34,7 @@
         MARCookDetailModel *model = data;
         
         NSURL *imageURL = [NSURL URLWithString:model.thumbnail ?: @""];
-        [self.cookImageView mar_setImageDefaultCornerRadiusWithURL:imageURL placeholderImage:nil];
+        [self.cookImageView mar_setImageDefaultCornerRadiusWithURL:imageURL];
         
         self.cookNameLabel.text = model.name;
         self.cookCategoriesLabel.text = model.ctgTitles;

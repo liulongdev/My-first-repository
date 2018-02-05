@@ -41,15 +41,16 @@
     if (!_cookCategoryMenuArray) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             _cookCategoryMenuArray = (NSArray<MARCookCategoryMenuModel *> *)[MARCookCategoryMenuModel mar_getAllDBModelArray];
-            if (_cookCategoryMenuArray.count > 0) {
-                mar_dispatch_async_on_main_queue(^{
+            
+            mar_dispatch_async_on_main_queue(^{
+                if (_cookCategoryMenuArray.count > 0) {
                     [self.tableView reloadData];
-                });
-            }
-            else
-            {
-                [self loadData];
-            }
+                }
+                else
+                {
+                    [self loadData];
+                }
+            });
         });
     }
     return _cookCategoryMenuArray;

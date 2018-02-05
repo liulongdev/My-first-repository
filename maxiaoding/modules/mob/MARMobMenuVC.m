@@ -15,6 +15,7 @@
 #import "MARWYNewNetworkManager.h"
 #import "MARWYNewViewController.h"
 #import "MARWYVideoNewVC.h"
+#import "MAACarBrandListVC.h"
 
 static NSString * const mobTitle_wxArticle          = @"微信热门";
 static NSString * const mobTitle_historyToday       = @"历史上的今天";
@@ -33,6 +34,7 @@ static NSString * const mobTitle_wangyi             = @"网易";
 static NSString * const mobTitle_wangyiVideo        = @"网易视频";
 
 static NSString * const cellTitle_weather           = @"天气";
+static NSString * const cellTitle_car               = @"汽车（新）";
 
 
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>
@@ -83,6 +85,7 @@ static NSString * const cellTitle_weather           = @"天气";
                         mobTitle_wangyi,
                         mobTitle_wangyiVideo,
                         cellTitle_weather,
+                        cellTitle_car,
 //                        aliFeedback_feedback,
                         ];
     }
@@ -248,6 +251,12 @@ static NSString * const cellTitle_weather           = @"天气";
         UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Weather storyboardId:kSBID_Weather_WeatherVC];
         [self mar_pushViewController:vc animated:YES];
     }
+    else if ([cellTitle_car isEqualToString:label.text])
+    {
+        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Car storyboardId:kSBID_Car_CarBrandListVC];
+        [self mar_pushViewController:vc animated:YES];
+    }
+    
     
 }
 
@@ -276,6 +285,7 @@ static NSString * const cellTitle_weather           = @"天气";
                             mobTitle_wangyi,
                             mobTitle_wangyiVideo,
                             cellTitle_weather,
+                            cellTitle_car,
                             aliFeedback_feedback,
                             ];
             [weakSelf.tableView reloadData];

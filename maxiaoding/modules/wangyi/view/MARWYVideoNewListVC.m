@@ -262,11 +262,15 @@
         if (!isFullScreen) {
             if (flag) {
                 if (![[self.tableView indexPathsForVisibleRows] containsObject:indexPath]) {
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                 }
-                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                if (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+                    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                }
+                else
+                    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
             }
-            [self mar_gcdPerformAfterDelay:0.25 usingBlock:^(id  _Nonnull objSelf) {
+            [self mar_gcdPerformAfterDelay:0.5 usingBlock:^(id  _Nonnull objSelf) {
                 [self.tableView reloadData];
             }];
         }

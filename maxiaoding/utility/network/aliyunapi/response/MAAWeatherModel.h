@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define MAAWeatherMainColor [UIColor whiteColor]
+
 /**
  @link https://market.aliyun.com/products/57126001/cmapi014302.html?spm=5176.2020520132.101.10.LopetC#sku=yuncode830200000
  */
@@ -36,6 +38,10 @@
 @property (nonatomic, strong) MAAWeatherAQIM *aqi;                      //!< AQI
 @property (nonatomic, strong) NSArray<MAAWeatherDayInfoM *> *daily;                //!< 按天时间
 @property (nonatomic, strong) NSArray<MAAWeatherHourInfoM *> *hourly;
+
+@property (nonatomic, strong) NSDate *requestDate;      // 上一次请求的时间
+
++ (MAAWeatherModel *)weatherModelWithCityId:(NSString *)cityId;
 
 @end
 
@@ -122,4 +128,9 @@
 @property (nonatomic, strong) NSString *parentid;           //!< 上一级城市ID
 @property (nonatomic, strong) NSString *citycode;           //!< 城市天气代号
 @property (nonatomic, strong) NSString *city;               //!< 城市
+
++ (NSArray<MAAWeatherCityModel *> *)cityArrayWithParentId:(NSString *)parentId;
+
++ (NSArray<MAAWeatherCityModel *> *)cityArrayWhere:(id)where;
+
 @end

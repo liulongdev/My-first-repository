@@ -38,17 +38,17 @@
             if (!simpleAsync) {
                 simpleAsync = YES;
                 _cardSerieArray = [MARCarSerieModel getCardSerieArrayWithBrandName:(self.cardTypeInfoModel.type ?: @"")];
-                if (_cardSerieArray.count <= 0) {
-                    [self loadData];
-                }
-                else
-                {
-                    mar_dispatch_async_on_main_queue(^{
+                mar_dispatch_async_on_main_queue(^{
+                    if (_cardSerieArray.count <= 0) {
+                        [self loadData];
+                    }
+                    else
+                    {
                         [self showActivityView:NO];
                         [self.tableView reloadData];
-                    });
-                }
-                simpleAsync = NO;
+                    }
+                    simpleAsync = NO;
+                });
             }
         });
     }

@@ -42,12 +42,19 @@
     MAAGetWeatherR *getWeatherR = [MAAGetWeatherR new];
     getWeatherR.city = @"苏州";
     @weakify(self);
+    [self showActivityView:YES];
     [MARALIAPINetworkManager weather_getWeather:getWeatherR success:^(MAAWeatherModel *weatherM) {
 //        if (weatherM.daily.count > 2) {
 //            weatherM.daily = [[NSMutableArray arrayWithArray:weatherM.daily] subarrayWithRange:NSMakeRange(1, weatherM.daily.count - 1)];
 //        }
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
         weak_self.weatherM = weatherM;
+        weatherM.requestDate = [NSDate new];
+        [weatherM updateToDB];
     } failure:^(NSURLSessionTask *task, NSError *error) {
+        [weak_self showActivityView:NO];
         NSLog(@">>>> error : %@", error);
     }];
 }
@@ -58,16 +65,21 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            _weatherM = ;
 //            if (_cookCategoryMenuArray.count > 0) {
+            MAAWeatherModel *weatherModel = [MAAWeatherModel weatherModelWithCityId:@""];
             BOOL flag = false;
-            if (flag){
-                mar_dispatch_async_on_main_queue(^{
-                    [self.tableView reloadData];
-                });
+            if (weatherModel && fabs([weatherModel.requestDate timeIntervalSince1970] - [[NSDate new] timeIntervalSince1970]) < 60 * 30) {
+                flag = true;
             }
-            else
-            {
-                [self loadData];
-            }
+            mar_dispatch_async_on_main_queue(^{
+                if (flag){
+                    _weatherM = weatherModel;
+                        [self.tableView reloadData];
+                }
+                else
+                {
+                    [self loadData];
+                }
+            });
         });
     }
     return _weatherM;
@@ -94,7 +106,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 335;
+    if (_weatherM) {
+        return 335;
+    }
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -121,7 +136,7 @@
             if (isDay) {
                 MAAWeatherDayInfoM *todayWeatherInfoM = _weatherM.daily[0];
                 toNightDesc = [NSString stringWithFormat:@"今晚%@, 最低气温%@º。", todayWeatherInfoM.night.weather, todayWeatherInfoM.night.templow];
-                NSString *weatherDesc = [NSString stringWithFormat:@"今天 : 现在%@。 最高气温%@º。 %@",todayWeatherInfoM.day.weather, todayWeatherInfoM.day.temphigh, toNightDesc];
+                NSString *weatherDesc = [NSString stringWithFormat:@"今天 : 现在%@, 气温%@º。 最高气温%@º。  %@",todayWeatherInfoM.day.weather, _weatherM.temp,  _weatherM.temphigh, toNightDesc];
                 label.text = weatherDesc;
             }
             else

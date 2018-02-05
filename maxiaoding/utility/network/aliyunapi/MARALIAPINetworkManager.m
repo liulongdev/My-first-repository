@@ -7,7 +7,7 @@
 //
 
 #import "MARALIAPINetworkManager.h"
-
+#define  MAAAPPCODE @"31635eeb39ac4cbbbad59604da93a968"
 @interface MARALIAPIModel : NSObject
 @property (nonatomic, strong) NSString *appCode;
 @property (nonatomic, strong) NSString *host;
@@ -55,7 +55,7 @@
                          failure:(MARNetworkFailure)failure
 {
     MARALIAPIModel *model = [MARALIAPIModel new];
-    model.appCode = @"31635eeb39ac4cbbbad59604da93a968";
+    model.appCode = MAAAPPCODE;
     model.host = @"http://jisutqybmf.market.alicloudapi.com";
     model.path = @"/weather/city";
     model.method = @"GET";
@@ -81,7 +81,7 @@
                    failure:(MARNetworkFailure)failure
 {
     MARALIAPIModel *model = [MARALIAPIModel new];
-    model.appCode = @"31635eeb39ac4cbbbad59604da93a968";
+    model.appCode = MAAAPPCODE;
     model.host = @"http://jisutqybmf.market.alicloudapi.com";
     model.path = @"/weather/query";
     model.method = @"GET";
@@ -106,7 +106,7 @@
                        failure:(MARNetworkFailure)failure
 {
     MARALIAPIModel *model = [MARALIAPIModel new];
-    model.appCode = @"31635eeb39ac4cbbbad59604da93a968";
+    model.appCode = MAAAPPCODE;
     model.host = @"http://jisucxdq.market.alicloudapi.com";
     model.path = @"/car/brand";
     model.method = @"GET";
@@ -132,7 +132,7 @@
                             failure:(MARNetworkFailure)failure
 {
     MARALIAPIModel *model = [MARALIAPIModel new];
-    model.appCode = @"31635eeb39ac4cbbbad59604da93a968";
+    model.appCode = MAAAPPCODE;
     model.host = @"http://jisucxdq.market.alicloudapi.com";
     model.path = @"/car/carlist";
     model.method = @"GET";
@@ -158,7 +158,7 @@
                           failure:(MARNetworkFailure)failure
 {
     MARALIAPIModel *model = [MARALIAPIModel new];
-    model.appCode = @"31635eeb39ac4cbbbad59604da93a968";
+    model.appCode = MAAAPPCODE;
     model.host = @"http://jisucxdq.market.alicloudapi.com";
     model.path = @"/car/detail";
     model.method = @"GET";

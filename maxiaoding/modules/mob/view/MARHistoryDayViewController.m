@@ -126,24 +126,21 @@
     if (!_historyDayArray) {
         static BOOL simpleAsync = NO;
         [self showActivityView:YES];
-        @weakify(self)
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            @strongify(self)
-            if (!strong_self) return;
             if (!simpleAsync) {
                 simpleAsync = YES;
-                strong_self->_historyDayArray = [MARHistoryDayModel getHistoryDayArrayWithDateStr:strong_self.dateStr];
-                if (strong_self->_historyDayArray.count <= 0) {
-                    [strong_self loadData];
-                }
-                else
-                {
-                    mar_dispatch_async_on_main_queue(^{
-                        [strong_self showActivityView:NO];
-                        [strong_self.tableView reloadData];
-                    });
-                }
-                simpleAsync = NO;
+                self->_historyDayArray = [MARHistoryDayModel getHistoryDayArrayWithDateStr:self.dateStr];
+                mar_dispatch_async_on_main_queue(^{
+                    if (self->_historyDayArray.count <= 0) {
+                        [self loadData];
+                    }
+                    else
+                    {
+                        [self showActivityView:NO];
+                        [self.tableView reloadData];
+                    }
+                    simpleAsync = NO;
+                });
             }
         });
     }

@@ -54,18 +54,19 @@
             if (!simpleAsync) {
                 simpleAsync = YES;
                 NSArray *cardDetailArray = [MARCarDetailModel searchWithWhere:@{@"carId":self.cardSerieModel.carId ?: @""}];
-                if (cardDetailArray.count <= 0) {
-                    [self loadData];
-                }
-                else
-                {
-                    mar_dispatch_async_on_main_queue(^{
+                
+                mar_dispatch_async_on_main_queue(^{
+                    if (cardDetailArray.count <= 0) {
+                        [self loadData];
+                    }
+                    else
+                    {
                         self.cardDetailModel = cardDetailArray[0];
                         [self showActivityView:NO];
                         [self.tableView reloadData];
-                    });
-                }
-                simpleAsync = NO;
+                    }
+                    simpleAsync = NO;
+                });                
             }
         });
     }
@@ -99,7 +100,7 @@
     _cardDetailModel = cardDetailModel;
 
     NSURL *imageURL = [NSURL URLWithString:cardDetailModel.carImage ?: @""];
-    [self.cardImageView mar_setImageDefaultCornerRadiusWithURL:imageURL placeholderImage:nil];
+    [self.cardImageView mar_setImageDefaultCornerRadiusWithURL:imageURL];
     
     NSString *infoStr = [NSString stringWithFormat:@"品牌名称 : %@\n车系名称 : %@\n车型名称 : %@\n子品牌或合资品牌:%@", cardDetailModel.brand, cardDetailModel.brandName, cardDetailModel.seriesName, cardDetailModel.sonBrand];
     NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:infoStr attributes:self.attrDic];

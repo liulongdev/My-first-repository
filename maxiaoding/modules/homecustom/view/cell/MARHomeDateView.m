@@ -108,14 +108,14 @@
         MARGLOBALMANAGER.dataFormatter.dateFormat = @"yyyy-MM-dd";
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             MARMobCalendarModel *calendar = [MARMobCalendarModel searchSingleWithWhere:@{@"date":[MARGLOBALMANAGER.dataFormatter stringFromDate:[NSDate new]] ?: @""} orderBy:nil];
-            if (calendar) {
-                _calendarModel = calendar;
-                mar_dispatch_async_on_main_queue(^{
+            mar_dispatch_async_on_main_queue(^{
+                if (calendar) {
+                    _calendarModel = calendar;
                     [self setCalendarLabelDescription];
-                });
-            }
-            else
-                [self loadCalendarData];
+                }
+                else
+                    [self loadCalendarData];
+            });
         });
     }
     return _calendarModel;

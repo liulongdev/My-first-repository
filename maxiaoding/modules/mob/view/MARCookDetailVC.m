@@ -97,7 +97,7 @@
         }
     }];
     
-    [self.cookImageView mar_setImageDefaultCornerRadiusWithURL:cookImageURL placeholderImage:nil];
+    [self.cookImageView mar_setImageDefaultCornerRadiusWithURL:cookImageURL];
     self.cookNameLabel.attributedText = [[NSAttributedString alloc] initWithString:self.cookDetail.name ?: @"" attributes:MARSTYLEFORMAT.biaoTiAttrDic];
     NSString *cookInfoStr = @"";
     if (self.cookDetail.ctgTitles && self.cookDetail.ctgTitles.length > 0) {

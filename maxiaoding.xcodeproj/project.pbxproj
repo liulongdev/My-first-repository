@@ -36,6 +36,9 @@
 		5B029F441FE4F125008ED5CA /* MARSearchCookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F431FE4F125008ED5CA /* MARSearchCookVC.m */; };
 		5B029F471FE4FE99008ED5CA /* MARCookInfoTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F461FE4FE99008ED5CA /* MARCookInfoTableCell.m */; };
 		5B029F4A1FE500C1008ED5CA /* UIImageView+SDWEBEXT.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B029F491FE500C1008ED5CA /* UIImageView+SDWEBEXT.m */; };
+		5B158C7220264963006B6EC9 /* car.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B158C7120264963006B6EC9 /* car.storyboard */; };
+		5B158C782026CA0B006B6EC9 /* MAACarFactoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B158C772026CA0B006B6EC9 /* MAACarFactoryVC.m */; };
+		5B158C7B20275B74006B6EC9 /* MAACarTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B158C7A20275B74006B6EC9 /* MAACarTypeVC.m */; };
 		5B225D3E202233D800EB1F2A /* MAACardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D3D202233D800EB1F2A /* MAACardModel.m */; };
 		5B225D5320240C5500EB1F2A /* weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B225D5220240C5500EB1F2A /* weather.storyboard */; };
 		5B225D5620240C9200EB1F2A /* MARWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D5520240C9200EB1F2A /* MARWeatherVC.m */; };
@@ -87,6 +90,7 @@
 		5B225DB9202564DB00EB1F2A /* weather_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B225D8E202564DB00EB1F2A /* weather_8.png */; };
 		5B225DBA202564DB00EB1F2A /* weather_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B225D8F202564DB00EB1F2A /* weather_9.png */; };
 		5B225DBB202564DB00EB1F2A /* weather_99.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B225D90202564DB00EB1F2A /* weather_99.png */; };
+		5B225DC220263CAD00EB1F2A /* MAACarBrandListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225DC120263CAD00EB1F2A /* MAACarBrandListVC.m */; };
 		5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8531FE0D2CA00E85884 /* AppDelegate.m */; };
 		5B25F8571FE0D2CA00E85884 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8561FE0D2CA00E85884 /* ViewController.m */; };
 		5B25F85A1FE0D2CA00E85884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B25F8581FE0D2CA00E85884 /* Main.storyboard */; };
@@ -121,6 +125,7 @@
 		5B375C9D20037F2A001E02F2 /* MARWYVideoNewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B375C9C20037F2A001E02F2 /* MARWYVideoNewTableCell.m */; };
 		5B375CA12003C287001E02F2 /* MARWYVideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B375CA02003C287001E02F2 /* MARWYVideoPlayView.m */; };
 		5B375CA32003C295001E02F2 /* MARWYVideoPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B375CA22003C295001E02F2 /* MARWYVideoPlayView.xib */; };
+		5B390BCA2028894A000EFE62 /* MAACarDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B390BC92028894A000EFE62 /* MAACarDetailVC.m */; };
 		5B42ED921FFE43DE00B98D68 /* MARWYNewNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ED911FFE43DE00B98D68 /* MARWYNewNetworkManager.m */; };
 		5B42ED951FFE43FE00B98D68 /* MARWYNewRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ED941FFE43FE00B98D68 /* MARWYNewRequest.m */; };
 		5B42ED981FFE44A400B98D68 /* MARWYNewResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ED971FFE44A400B98D68 /* MARWYNewResponse.m */; };
@@ -243,6 +248,11 @@
 		5B029F461FE4FE99008ED5CA /* MARCookInfoTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCookInfoTableCell.m; sourceTree = "<group>"; };
 		5B029F481FE500C1008ED5CA /* UIImageView+SDWEBEXT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SDWEBEXT.h"; sourceTree = "<group>"; };
 		5B029F491FE500C1008ED5CA /* UIImageView+SDWEBEXT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDWEBEXT.m"; sourceTree = "<group>"; };
+		5B158C7120264963006B6EC9 /* car.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = car.storyboard; sourceTree = "<group>"; };
+		5B158C762026CA0B006B6EC9 /* MAACarFactoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAACarFactoryVC.h; sourceTree = "<group>"; };
+		5B158C772026CA0B006B6EC9 /* MAACarFactoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACarFactoryVC.m; sourceTree = "<group>"; };
+		5B158C7920275B74006B6EC9 /* MAACarTypeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAACarTypeVC.h; sourceTree = "<group>"; };
+		5B158C7A20275B74006B6EC9 /* MAACarTypeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACarTypeVC.m; sourceTree = "<group>"; };
 		5B225D3C202233D800EB1F2A /* MAACarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAACarModel.h; sourceTree = "<group>"; };
 		5B225D3D202233D800EB1F2A /* MAACardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACardModel.m; sourceTree = "<group>"; };
 		5B225D5220240C5500EB1F2A /* weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = weather.storyboard; sourceTree = "<group>"; };
@@ -299,6 +309,8 @@
 		5B225D8E202564DB00EB1F2A /* weather_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather_8.png; sourceTree = "<group>"; };
 		5B225D8F202564DB00EB1F2A /* weather_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather_9.png; sourceTree = "<group>"; };
 		5B225D90202564DB00EB1F2A /* weather_99.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather_99.png; sourceTree = "<group>"; };
+		5B225DC020263CAD00EB1F2A /* MAACarBrandListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAACarBrandListVC.h; sourceTree = "<group>"; };
+		5B225DC120263CAD00EB1F2A /* MAACarBrandListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACarBrandListVC.m; sourceTree = "<group>"; };
 		5B25F84F1FE0D2CA00E85884 /* maxiaoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxiaoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B25F8521FE0D2CA00E85884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B25F8531FE0D2CA00E85884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -371,6 +383,8 @@
 		5B375C9F2003C287001E02F2 /* MARWYVideoPlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYVideoPlayView.h; sourceTree = "<group>"; };
 		5B375CA02003C287001E02F2 /* MARWYVideoPlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYVideoPlayView.m; sourceTree = "<group>"; };
 		5B375CA22003C295001E02F2 /* MARWYVideoPlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARWYVideoPlayView.xib; sourceTree = "<group>"; };
+		5B390BC82028894A000EFE62 /* MAACarDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAACarDetailVC.h; sourceTree = "<group>"; };
+		5B390BC92028894A000EFE62 /* MAACarDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACarDetailVC.m; sourceTree = "<group>"; };
 		5B42ED901FFE43DE00B98D68 /* MARWYNewNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYNewNetworkManager.h; sourceTree = "<group>"; };
 		5B42ED911FFE43DE00B98D68 /* MARWYNewNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYNewNetworkManager.m; sourceTree = "<group>"; };
 		5B42ED931FFE43FE00B98D68 /* MARWYNewRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYNewRequest.h; sourceTree = "<group>"; };
@@ -670,6 +684,38 @@
 			path = weather;
 			sourceTree = "<group>";
 		};
+		5B225DBC20263A4200EB1F2A /* car */ = {
+			isa = PBXGroup;
+			children = (
+				5B225DBD20263A4D00EB1F2A /* view */,
+				5B158C7120264963006B6EC9 /* car.storyboard */,
+			);
+			path = car;
+			sourceTree = "<group>";
+		};
+		5B225DBD20263A4D00EB1F2A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B225DC320263DD700EB1F2A /* cell */,
+				5B225DC020263CAD00EB1F2A /* MAACarBrandListVC.h */,
+				5B225DC120263CAD00EB1F2A /* MAACarBrandListVC.m */,
+				5B158C762026CA0B006B6EC9 /* MAACarFactoryVC.h */,
+				5B158C772026CA0B006B6EC9 /* MAACarFactoryVC.m */,
+				5B158C7920275B74006B6EC9 /* MAACarTypeVC.h */,
+				5B158C7A20275B74006B6EC9 /* MAACarTypeVC.m */,
+				5B390BC82028894A000EFE62 /* MAACarDetailVC.h */,
+				5B390BC92028894A000EFE62 /* MAACarDetailVC.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5B225DC320263DD700EB1F2A /* cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		5B25F8461FE0D2CA00E85884 = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +787,7 @@
 		5B25F8B11FE0F80500E85884 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				5B225DBC20263A4200EB1F2A /* car */,
 				5B225D5020240C2600EB1F2A /* weather */,
 				5B42ED991FFE4BBF00B98D68 /* wangyi */,
 				5B765FFC1FF8E637000BA56A /* login */,
@@ -1447,6 +1494,7 @@
 				5B225DB3202564DB00EB1F2A /* weather_55.png in Resources */,
 				5B225DA8202564DB00EB1F2A /* weather_3.png in Resources */,
 				5B933B4D1FE912A9004C2038 /* tianxing.storyboard in Resources */,
+				5B158C7220264963006B6EC9 /* car.storyboard in Resources */,
 				5B029F161FE3C849008ED5CA /* test.storyboard in Resources */,
 				5B225D9F202564DB00EB1F2A /* weather_21.png in Resources */,
 				5B225D9E202564DB00EB1F2A /* weather_20.png in Resources */,
@@ -1567,6 +1615,7 @@
 				5B375C9A20037D2D001E02F2 /* MARWYVideoNewListVC.m in Sources */,
 				5B029F471FE4FE99008ED5CA /* MARCookInfoTableCell.m in Sources */,
 				5B42EDA81FFE4E7900B98D68 /* MARWYNewViewController.m in Sources */,
+				5B390BCA2028894A000EFE62 /* MAACarDetailVC.m in Sources */,
 				5B4805371FF27BAE000C9FD3 /* MARBaseRequest.m in Sources */,
 				5B029F1D1FE3CCA7008ED5CA /* MARHomeCustomTableCell.m in Sources */,
 				5B375C9D20037F2A001E02F2 /* MARWYVideoNewTableCell.m in Sources */,
@@ -1577,9 +1626,12 @@
 				5B25F8CF1FE0F80500E85884 /* MARNetworkManager.m in Sources */,
 				5B25F8DD1FE1035A00E85884 /* MARWebViewController.m in Sources */,
 				5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */,
+				5B158C782026CA0B006B6EC9 /* MAACarFactoryVC.m in Sources */,
 				5B42EDB92000DC3400B98D68 /* MARWYNewDetailModel.m in Sources */,
+				5B225DC220263CAD00EB1F2A /* MAACarBrandListVC.m in Sources */,
 				5B42EDAB1FFE501700B98D68 /* MARWYCategoryTitleCell.m in Sources */,
 				5B54A3A2200DD3CA003A73FD /* MARWYNewWebVC.m in Sources */,
+				5B158C7B20275B74006B6EC9 /* MAACarTypeVC.m in Sources */,
 				5B029F2E1FE40E73008ED5CA /* MARGlobalModel.m in Sources */,
 				5B029F3B1FE4B5C2008ED5CA /* MARLaohuangliModel.m in Sources */,
 				5B029F311FE41C1F008ED5CA /* MARHomeDateView.m in Sources */,

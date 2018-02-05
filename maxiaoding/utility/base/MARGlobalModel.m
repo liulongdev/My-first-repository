@@ -180,14 +180,26 @@ NSString * const MARGLobalModelId = @"10000";
 
 - (NSDictionary *)shuoMingCenterAttrDic
 {
-    if (!_zhengWenAttrDic) {
+    if (!_shuoMingCenterAttrDic) {
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
         style.lineSpacing = 10;
         style.alignment = NSTextAlignmentCenter;
         style.lineBreakMode = NSLineBreakByWordWrapping;
-        _zhengWenAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : MAREXTFont(14.f), NSForegroundColorAttributeName : RGBHEX(0x666666)};
+        _shuoMingCenterAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : MAREXTFont(14.f), NSForegroundColorAttributeName : RGBHEX(0x666666)};
     }
-    return _zhengWenAttrDic;
+    return _shuoMingCenterAttrDic;
+}
+
+- (NSDictionary *)carSimpleInfoAttrDic
+{
+    if (!_carSimpleInfoAttrDic) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 3;
+        style.alignment = NSTextAlignmentLeft;
+        style.lineBreakMode = NSLineBreakByWordWrapping;
+        _carSimpleInfoAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : MAREXTFont(12.f), NSForegroundColorAttributeName : RGBHEX(0x666666)};
+    }
+    return _carSimpleInfoAttrDic;
 }
 
 @end

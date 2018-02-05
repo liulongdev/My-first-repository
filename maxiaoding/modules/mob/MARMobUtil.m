@@ -54,8 +54,15 @@
 
 + (void)test
 {
-//    [MARALIAPINetworkManager weather_getCitiesSuccess:^(NSURLSessionTask *task, id responseObject) {
-//        NSLog(@">>>>>>>> responseObject: %@", responseObject);
+    NSArray *cityArray = [MAAWeatherCityModel cityArrayWithParentId:@"0"];
+    NSLog(@">>> count : %ld", cityArray.count);
+    
+//    [MARALIAPINetworkManager weather_getCitiesSuccess:^(NSArray<MAAWeatherCityModel *> *cityArray) {
+//        NSLog(@">>>>> start time %f", [[NSDate date] timeIntervalSince1970]);
+//        for (MAAWeatherCityModel *model in cityArray) {
+//            [model updateToDB];
+//        }
+//        NSLog(@">>>>> end   time %f", [[NSDate date] timeIntervalSince1970]);
 //    } failure:^(NSURLSessionTask *task, NSError *error) {
 //        NSLog(@">>>>>>>> RESPONSE ERROR : %@", error);
 //    }];
@@ -76,11 +83,11 @@
 //    } failure:^(NSURLSessionTask *task, NSError *error) {
 //        NSLog(@">>>>>>>> RESPONSE ERROR : %@", error);
 //    }];
-    [MARALIAPINetworkManager car_getCarDetailWithCarID:@"2571" success:^(MAACarModel *carModel) {
-        NSLog(@">>>>>>>> responseObject: %@", carModel);
-    } failure:^(NSURLSessionTask *task, NSError *error) {
-        NSLog(@">>>>>>>> RESPONSE ERROR : %@", error);
-    }];
+//    [MARALIAPINetworkManager car_getCarDetailWithCarID:@"2571" success:^(MAACarModel *carModel) {
+//        NSLog(@">>>>>>>> responseObject: %@", carModel);
+//    } failure:^(NSURLSessionTask *task, NSError *error) {
+//        NSLog(@">>>>>>>> RESPONSE ERROR : %@", error);
+//    }];
 }
 
 + (void)loadCalendarWithDateStr:(NSString *)dateStr

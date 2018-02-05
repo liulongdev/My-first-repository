@@ -37,7 +37,7 @@
 {
     if ([data isKindOfClass:[MARWYNewModel class]]) {
         MARWYNewModel *model = data;
-        [self.wyImageView mar_setImageDefaultCornerRadiusWithURL:[NSURL URLWithString:model.imgsrc ?: @""] placeholderImage:nil];
+        [self.wyImageView mar_setImageDefaultCornerRadiusWithURL:[NSURL URLWithString:model.imgsrc ?: @""]];
         self.wyTitleLabel.text = model.title;
         self.wySourceLabel.text = model.source;
         self.wyCommentCountLabel.text = [NSString stringWithFormat:@"%@  %@回帖", model.ptime.length > 0 ? [MARUTILITY briefTimeStrWithDateStr:model.ptime] : @"", MARSTRWITHINT(model.replyCount)];

@@ -72,17 +72,17 @@
             if (!simpleAsync) {
                 simpleAsync = YES;
                 self.carBrandArray = (NSArray<MARCarBrandModel *> *)[MARCarBrandModel mar_getAllDBModelArray];
-                if (_carBrandArray.count <= 0) {
-                    [self loadData];
-                }
-                else
-                {
-                    mar_dispatch_async_on_main_queue(^{
+                mar_dispatch_async_on_main_queue(^{
+                    if (_carBrandArray.count <= 0) {
+                        [self loadData];
+                    }
+                    else
+                    {
                         [self showActivityView:NO];
                         [self.tableView reloadData];
-                    });
-                }
-                simpleAsync = NO;
+                    }
+                    simpleAsync = NO;
+                });
             }
         });
     }

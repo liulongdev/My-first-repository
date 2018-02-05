@@ -64,17 +64,17 @@
             if (!simpleAsync) {
                 simpleAsync = YES;
                 self.wxArticleArray = (NSArray<MARWXArticleCategoryModel *> *)[MARWXArticleCategoryModel mar_getAllDBModelArray];
-                if (_wxArticleArray.count <= 0) {
-                    [self loadData];
-                }
-                else
-                {
-                    mar_dispatch_async_on_main_queue(^{
+                mar_dispatch_async_on_main_queue(^{
+                    if (_wxArticleArray.count <= 0) {
+                        [self loadData];
+                    }
+                    else
+                    {
                         [self showActivityView:NO];
                         [self.collectionView reloadData];
-                    });
-                }
-                simpleAsync = NO;
+                    }
+                    simpleAsync = NO;
+                });
             }
         });
     }

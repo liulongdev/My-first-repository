@@ -14,6 +14,8 @@
 #define APPNaviBarTint 0xf9f9f9 // 0xff0062
 #define MARColor_VCBackgound 0xf5f5f5
 
+#define MARColor_Main 0x29AAFE
+
 // 字体
 #ifndef kSCALE
 #define kSCALE(value)           (value * ([UIScreen mainScreen].bounds.size.width/320.0f))

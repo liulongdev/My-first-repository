@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@interface NSString (MAACarDefaultValue)
+- (NSString *)maa_value;
+@end
 
 /**
  @link https://market.aliyun.com/products/57002002/cmapi011811.html?spm=5176.2020520132.101.28.mIy1pr#sku=yuncode581100000
@@ -16,6 +19,7 @@
 
 @property (nonatomic, strong) NSString *id;                 //!< ID
 @property (nonatomic, strong) NSString *name;               //!< 名称
+@property (nonatomic, strong) NSString *fullname;           //!< 全名
 @property (nonatomic, strong) NSString *initial;            //!< 首字母
 @property (nonatomic, strong) NSString *parentid;           //!< 上级ID
 @property (nonatomic, strong) NSString *logo;               //!< LOGO
@@ -62,6 +66,8 @@
 @property (nonatomic, strong) MAACarAirCondrefrigerator *aircondrefrigerator;   //!< 空调/冰箱
 @property (nonatomic, strong) MAACarActualtest *actualtest;                     //!< 实际测试
 
++ (MAACarModel *)carModelWithCarId:(NSString *)carId;
+
 @end
 
 //!< 基本信息
@@ -79,6 +85,8 @@
 @property (nonatomic, strong) NSString *userfuelconsumption;                    //!< 网友油耗(L/100km)
 @property (nonatomic, strong) NSString *vechiletax;                             //!< 车船税减免
 @property (nonatomic, strong) NSString *warrantypolicy;                         //!< 保修政策
+
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
@@ -99,13 +107,15 @@
 @property (nonatomic, strong) NSString *luggageopenmode;            //!< 行李箱打开方式
 @property (nonatomic, strong) NSString *luggagevolume;              //!< 行李箱容积(L)
 @property (nonatomic, strong) NSString *mingroundclearance;         //!< 最小离地间隙(mm)
-@property (nonatomic, strong) NSString *reartrack;                  //!<
+@property (nonatomic, strong) NSString *reartrack;                  //!< 后轮距(mm)
 @property (nonatomic, strong) NSString *roofluggagerack;            //!< 车顶行李箱架
 @property (nonatomic, strong) NSString *sportpackage;               //!< 运动外观套件
 @property (nonatomic, strong) NSString *tooftype;                   //!< 车顶型式
 @property (nonatomic, strong) NSString *weight;                     //!< 整备质量(kg)
 @property (nonatomic, strong) NSString *wheelbase;                  //!< 轴距(mm)
 @property (nonatomic, strong) NSString *width;                      //!< 车宽(mm)
+
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
@@ -120,7 +130,7 @@
 @property (nonatomic, strong) NSString *displacement;               //!< 排量(L)
 @property (nonatomic, strong) NSString *displacementml;             //!< 排量(mL)
 @property (nonatomic, strong) NSString *environmentalstandards;     //!< 环保标准
-@property (nonatomic, strong) NSString *fuelgrade;                  //!<
+@property (nonatomic, strong) NSString *fuelgrade;                  //!< 燃油等级
 @property (nonatomic, strong) NSString *fuelmethod;                 //!< 供油方式
 @property (nonatomic, strong) NSString *fueltankcapacity;           //!< 燃油箱容积(L)
 @property (nonatomic, strong) NSString *fueltype;                   //!< 燃油标号
@@ -128,14 +138,16 @@
 @property (nonatomic, strong) NSString *maxhorsepower;              //!< 最大马力(Ps)
 @property (nonatomic, strong) NSString *maxpower;                   //!< 最大功率(kW)
 @property (nonatomic, strong) NSString *maxpowerspeed;              //!< 最大功率转速(rpm)
-@property (nonatomic, strong) NSString *maxtorque;                  //!<
-@property (nonatomic, strong) NSString *maxtorquespeed;             //!<
-@property (nonatomic, strong) NSString *model;                      //!< 发动机xing ha
+@property (nonatomic, strong) NSString *maxtorque;                  //!< 最大扭矩
+@property (nonatomic, strong) NSString *maxtorquespeed;             //!< 最大扭速
+@property (nonatomic, strong) NSString *model;                      //!< 发动机型号
 @property (nonatomic, strong) NSString *position;                   //!< 发动机位置
 @property (nonatomic, strong) NSString *startstopsystem;            //!< 启停系统
 @property (nonatomic, strong) NSString *stroke;                     //!< 行程(mm)
 @property (nonatomic, strong) NSString *valvestructure;             //!< 气门结构
 @property (nonatomic, strong) NSString *valvetrain;                 //!< 每缸气门数(个)
+
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
@@ -144,6 +156,8 @@
 
 @property (nonatomic, strong) NSString *gearbox;                    //!< 变速箱
 @property (nonatomic, strong) NSString *shiftpaddles;               //!< 换挡拨片
+
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
@@ -161,6 +175,8 @@
 @property (nonatomic, strong) NSString *powersteering;              //!< 转向助力
 @property (nonatomic, strong) NSString *rearbraketype;              //!< 后制动类型
 @property (nonatomic, strong) NSString *rearsuspensiontype;         //!< 后悬挂类型
+
+//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
@@ -188,6 +204,8 @@
 @property (nonatomic, strong) NSString *tirepressuremonitoring;     //!< 胎压监测装置
 @property (nonatomic, strong) NSString *zeropressurecontinued;      //!< 零压续航(零胎压继续行驶)
 
+//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+
 @end
 
 //!< 车轮信息
@@ -197,6 +215,8 @@
 @property (nonatomic, strong) NSString *hubmaterial;                //!< 轮毂材料
 @property (nonatomic, strong) NSString *reartiresize;               //!< 后轮胎规格
 @property (nonatomic, strong) NSString *sparetiretype;              //!< 备胎类型
+
+//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
@@ -226,6 +246,8 @@
 @property (nonatomic, strong) NSString *reversingradar;             //!< 倒车雷达(车后)
 @property (nonatomic, strong) NSString *tractioncontrol;            //!< 牵引力控制(ASR/TCS/TRC/ATC等)
 
+//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+
 @end
 
 //!< 门窗/后视镜信息
@@ -251,6 +273,8 @@
 @property (nonatomic, strong) NSString *sunvisormirror;             //!< 遮阳板化妆镜
 @property (nonatomic, strong) NSString *uvinterceptingglass;        //!< 防紫外线/隔热玻璃
 
+//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+
 @end
 
 //!< 灯光信息
@@ -271,6 +295,8 @@
 @property (nonatomic, strong) NSString *optionalheadlighttype;      //!< 选配前大灯类型
 @property (nonatomic, strong) NSString *readinglight;               //!< 阅读灯
 
+//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+
 @end
 
 //!< 内部配置
@@ -288,6 +314,8 @@
 @property (nonatomic, strong) NSString *steeringwheelmultifunction;     //!< 多功能方向盘
 @property (nonatomic, strong) NSString *steeringwheelupadjustment;      //!< 方向盘上下调节
 @property (nonatomic, strong) NSString *supplyvoltage;                  //!< 车内电源电压
+
+//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
@@ -314,6 +342,8 @@
 @property (nonatomic, strong) NSString *sportseat;                          //!< 运动座椅
 @property (nonatomic, strong) NSString *thirdrowseat;                       //!< 第三排座椅
 
+//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+
 @end
 
 //!< 娱乐通讯信息
@@ -331,6 +361,8 @@
 @property (nonatomic, strong) NSString *rearlcdscreen;          //!< 后排液晶屏
 @property (nonatomic, strong) NSString *speakernum;             //!< 扬声器数量
 
+//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+
 @end
 
 
@@ -344,6 +376,8 @@
 @property (nonatomic, strong) NSString *rearairconditioning;        //!< 后排独立空调
 @property (nonatomic, strong) NSString *reardischargeoutlet;        //!< 后排出风口
 @property (nonatomic, strong) NSString *tempzonecontrol;            //!< 温度分区控制
+
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
@@ -368,9 +402,12 @@
 @property (nonatomic, strong) NSString *depth;                  //!< 深度 1品牌 2子公司 3车型 4具体车型
 @end
 
-@class MARCarTypeM;
+@class MAACarTypeM;
 @interface MAACarFactoryM : MAACarBrandM <MARModelDelegate>
-@property (nonatomic, strong) NSArray<MARCarTypeM *> *carlist;  //!< 车型集合
+@property (nonatomic, strong) NSArray<MAACarTypeM *> *carlist;  //!< 车型集合
+
++ (NSArray<MAACarFactoryM *> *)carFactoryArrayWithBrandId:(NSString *)brandId;
+
 @end
 
 // 车型
