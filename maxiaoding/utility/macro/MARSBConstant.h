@@ -53,6 +53,7 @@ extern NSString * const kSBID_Wangyi_WYVideoNewListVC;
 extern NSString * const kSBID_Wangyi_WYChooseNewCategoryVC;
 
 extern NSString * const kSBID_Weather_WeatherVC;
+extern NSString * const kSBID_Weather_WeatherChooseCityVC;
 
 extern NSString * const kSBID_Car_CarBrandListVC;
 extern NSString * const kSBID_Car_CarFactoryVC;

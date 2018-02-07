@@ -11,19 +11,29 @@
 #import "MARWeatherHeaderView.h"
 #import "MARWeatherDayCell.h"
 #import <MARCategory.h>
+#import "MARWeatherChooseCityVC.h"
 @interface MARWeatherVC () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (nonatomic, strong) MAAWeatherModel *weatherM;
+@property (nonatomic, strong) MAAWeatherLocalCityModel *localCityModel;
 @end
 
 @implementation MARWeatherVC
+{
+    BOOL weatherLoading;
+}
+
 @synthesize weatherM = _weatherM;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"苏州天气";
-    [self loadData];
-//    [self weatherM];
+//    [self loadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self weatherM];
 }
 
 - (void)UIGlobal
@@ -31,6 +41,20 @@
     self.tableView.backgroundColor = [UIColor purpleColor];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 15;
+    
+    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStyleDone target:nil action:nil];
+    @weakify(self)
+    [rightBarBtn setMar_actionBlock:^(id sender) {
+        @strongify(self)
+        if (!strong_self) return;
+        MARWeatherChooseCityVC *chooseCityVC = (MARWeatherChooseCityVC *)[UIViewController vcWithStoryboardName:kSBNAME_Weather storyboardId:kSBID_Weather_WeatherChooseCityVC];
+        chooseCityVC.selectLoalCityMBlock = ^(MAAWeatherLocalCityModel *localCityM) {
+            strong_self.localCityModel = localCityM;
+            [strong_self weatherM];
+        };
+        [strong_self mar_pushViewController:chooseCityVC animated:YES];
+    }];
+    self.navigationItem.rightBarButtonItem = rightBarBtn;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,8 +63,15 @@
 
 - (void)loadData
 {
+    if (!self.localCityModel) {
+        return;
+    }
+    if (weatherLoading) {
+        return;
+    }
+    weatherLoading = YES;
     MAAGetWeatherR *getWeatherR = [MAAGetWeatherR new];
-    getWeatherR.city = @"苏州";
+    getWeatherR.cityid = self.localCityModel.cityid;
     @weakify(self);
     [self showActivityView:YES];
     [MARALIAPINetworkManager weather_getWeather:getWeatherR success:^(MAAWeatherModel *weatherM) {
@@ -49,23 +80,47 @@
 //        }
         @strongify(self)
         if (!strong_self) return;
+        strong_self->weatherLoading = NO;
         [strong_self showActivityView:NO];
         weak_self.weatherM = weatherM;
         weatherM.requestDate = [NSDate new];
-        [weatherM updateToDB];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [weatherM updateToDB];
+        });
     } failure:^(NSURLSessionTask *task, NSError *error) {
         [weak_self showActivityView:NO];
+        @strongify(self)
+        if (!strong_self) return;
+        strong_self->weatherLoading = NO;
         NSLog(@">>>> error : %@", error);
     }];
 }
 
+- (MAAWeatherLocalCityModel *)localCityModel
+{
+    if (!_localCityModel) {
+        NSArray *cityArray = [MAAWeatherLocalCityModel searchWithWhere:nil orderBy:@"orderIndex asc" offset:self.pageIndex count:1];
+        if (cityArray.count > 0) {
+            _localCityModel = cityArray[0];
+        }
+    }
+    return _localCityModel;
+}
+
+// 需要重新获取城市
+- (void)setPageIndex:(NSInteger)pageIndex
+{
+    _pageIndex = pageIndex;
+    _localCityModel = nil;
+}
+
 - (MAAWeatherModel *)weatherM
 {
-    if (!_weatherM) {
+    if (self.localCityModel && (!_weatherM || ![_weatherM.cityid isEqual: self.localCityModel.cityid])) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            _weatherM = ;
 //            if (_cookCategoryMenuArray.count > 0) {
-            MAAWeatherModel *weatherModel = [MAAWeatherModel weatherModelWithCityId:@""];
+            MAAWeatherModel *weatherModel = [MAAWeatherModel weatherModelWithCityId:self.localCityModel.cityid];
             BOOL flag = false;
             if (weatherModel && fabs([weatherModel.requestDate timeIntervalSince1970] - [[NSDate new] timeIntervalSince1970]) < 60 * 30) {
                 flag = true;

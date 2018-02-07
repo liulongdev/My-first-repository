@@ -167,201 +167,201 @@
 @property (nonatomic, strong) NSString *adjustablesuspension;       //!< 可调悬挂
 @property (nonatomic, strong) NSString *airsuspension;              //!< 空气悬挂
 @property (nonatomic, strong) NSString *bodystructure;              //!< 车体结构
-@property (nonatomic, strong) NSString *centerdifferentiallock;     //!< 中央差速器锁
 @property (nonatomic, strong) NSString *drivemode;                  //!< 驱动方式
+@property (nonatomic, strong) NSString *powersteering;              //!< 转向助力
 @property (nonatomic, strong) NSString *frontbraketype;             //!< 前制动类型
 @property (nonatomic, strong) NSString *frontsuspensiontype;        //!< 前悬挂类型
-@property (nonatomic, strong) NSString *parkingbraketype;           //!< 驻车制动类型
-@property (nonatomic, strong) NSString *powersteering;              //!< 转向助力
 @property (nonatomic, strong) NSString *rearbraketype;              //!< 后制动类型
 @property (nonatomic, strong) NSString *rearsuspensiontype;         //!< 后悬挂类型
+@property (nonatomic, strong) NSString *centerdifferentiallock;     //!< 中央差速器锁
+@property (nonatomic, strong) NSString *parkingbraketype;           //!< 驻车制动类型
 
-//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
 //!< 安全配置信息
 @interface MAACarSafeM : MARBaseDBModel
 
+@property (nonatomic, strong) NSString *childlock;                  //!< 儿童锁
+@property (nonatomic, strong) NSString *airbagknee;                 //!< 膝部气囊
+@property (nonatomic, strong) NSString *centrallocking;             //!< 中控门锁
+@property (nonatomic, strong) NSString *remotekey;                  //!< 遥控钥匙
+@property (nonatomic, strong) NSString *rearsafetybelt;             //!< 后排安全带
+@property (nonatomic, strong) NSString *frontsafetybeltadjustment;  //!< 前安全带调节
+@property (nonatomic, strong) NSString *tirepressuremonitoring;     //!< 胎压监测装置
+@property (nonatomic, strong) NSString *safetybeltprompt;           //!< 安全带未系提示
 @property (nonatomic, strong) NSString *airbagdrivingposition;      //!< 驾驶位安全气囊
-@property (nonatomic, strong) NSString *airbagfronthead;            //!< 前排头部气囊(气帘)
 @property (nonatomic, strong) NSString *airbagfrontpassenger;       //!< 副驾驶安全气囊
 @property (nonatomic, strong) NSString *airbagfrontside;            //!< 前排侧安全气囊
-@property (nonatomic, strong) NSString *airbagknee;                 //!< 膝部气囊
-@property (nonatomic, strong) NSString *airbagrearhead;             //!< 后排头部气囊(气帘)
 @property (nonatomic, strong) NSString *airbagrearside;             //!< 后排侧安全气囊
-@property (nonatomic, strong) NSString *centrallocking;             //!< 中控门锁
-@property (nonatomic, strong) NSString *childlock;                  //!< 儿童锁
 @property (nonatomic, strong) NSString *engineantitheft;            //!< 发动机电子防盗
-@property (nonatomic, strong) NSString *frontsafetybeltadjustment;  //!< 前安全带调节
 @property (nonatomic, strong) NSString *keylessentry;               //!< 无钥匙进入系统
 @property (nonatomic, strong) NSString *keylessstart;               //!< 无钥匙启动系统
-@property (nonatomic, strong) NSString *rearsafetybelt;             //!< 后排安全带
-@property (nonatomic, strong) NSString *remotekey;                  //!< 遥控钥匙
 @property (nonatomic, strong) NSString *safetybeltlimiting;         //!< 安全带限力功能
 @property (nonatomic, strong) NSString *safetybeltpretightening;    //!< 安全带预收紧功能
-@property (nonatomic, strong) NSString *safetybeltprompt;           //!< 安全带未系提示
-@property (nonatomic, strong) NSString *tirepressuremonitoring;     //!< 胎压监测装置
+@property (nonatomic, strong) NSString *airbagfronthead;            //!< 前排头部气囊(气帘)
+@property (nonatomic, strong) NSString *airbagrearhead;             //!< 后排头部气囊(气帘)
 @property (nonatomic, strong) NSString *zeropressurecontinued;      //!< 零压续航(零胎压继续行驶)
 
-//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
 //!< 车轮信息
 @interface MAACarWheelM : MARBaseDBModel
 
-@property (nonatomic, strong) NSString *fronttiresize;              //!< 前轮胎规格
 @property (nonatomic, strong) NSString *hubmaterial;                //!< 轮毂材料
-@property (nonatomic, strong) NSString *reartiresize;               //!< 后轮胎规格
 @property (nonatomic, strong) NSString *sparetiretype;              //!< 备胎类型
+@property (nonatomic, strong) NSString *fronttiresize;              //!< 前轮胎规格
+@property (nonatomic, strong) NSString *reartiresize;               //!< 后轮胎规格
 
-//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
 //!< 行车辅助信息
 @interface MAACarDrivingAuxiliaryM : MARBaseDBModel
 
-@property (nonatomic, strong) NSString *abs;                        //!< 刹车防抱死(ABS)
-@property (nonatomic, strong) NSString *activebraking;              //!< 自动刹车/主动安全系统
-@property (nonatomic, strong) NSString *adaptivecruise;             //!< 自适应巡航
 @property (nonatomic, strong) NSString *automaticparking;           //!< 自动驻车
-@property (nonatomic, strong) NSString *automaticparkingintoplace;  //!< 自动泊车入位
 @property (nonatomic, strong) NSString *blindspotdetection;         //!< 盲点检测
-@property (nonatomic, strong) NSString *brakeassist;                //!< 刹车辅助(EBA/BAS/BA/EVA等)
 @property (nonatomic, strong) NSString *cruisecontrol;              //!< 定速巡航
-@property (nonatomic, strong) NSString *ebd;                        //!< 电子制动力分配系统(EBD)
-@property (nonatomic, strong) NSString *eps;                        //!< 随速助力转向调节(EPS)
-@property (nonatomic, strong) NSString *esp;                        //!< 动力稳定控制系统(EPS)
-@property (nonatomic, strong) NSString *frontparkingradar;          //!< 泊车雷达(车前)
-@property (nonatomic, strong) NSString *gps;                        //!< GPS导航系统
 @property (nonatomic, strong) NSString *hilldescent;                //!< 陡坡缓降
 @property (nonatomic, strong) NSString *hillstartassist;            //!< 上坡辅助
+@property (nonatomic, strong) NSString *nightvisionsystem;          //!< 夜视系统
+@property (nonatomic, strong) NSString *reverseimage;               //!< 倒车影像
+@property (nonatomic, strong) NSString *adaptivecruise;             //!< 自适应巡航
+@property (nonatomic, strong) NSString *panoramiccamera;            //!< 全景摄像头
+@property (nonatomic, strong) NSString *gps;                        //!< GPS导航系统
+@property (nonatomic, strong) NSString *automaticparkingintoplace;  //!< 自动泊车入位
+@property (nonatomic, strong) NSString *frontparkingradar;          //!< 泊车雷达(车前)
+@property (nonatomic, strong) NSString *reversingradar;             //!< 倒车雷达(车后)
 @property (nonatomic, strong) NSString *integralactivesteering;     //!< 整体主动转向系统
 @property (nonatomic, strong) NSString *ldws;                       //!< 车道偏离预警系统
-@property (nonatomic, strong) NSString *nightvisionsystem;          //!< 夜视系统
-@property (nonatomic, strong) NSString *panoramiccamera;            //!< 全景摄像头
-@property (nonatomic, strong) NSString *reverseimage;               //!< 倒车影像
-@property (nonatomic, strong) NSString *reversingradar;             //!< 倒车雷达(车后)
+@property (nonatomic, strong) NSString *abs;                        //!< 刹车防抱死(ABS)
+@property (nonatomic, strong) NSString *activebraking;              //!< 自动刹车/主动安全系统
+@property (nonatomic, strong) NSString *eps;                        //!< 随速助力转向调节(EPS)
+@property (nonatomic, strong) NSString *esp;                        //!< 动力稳定控制系统(EPS)
+@property (nonatomic, strong) NSString *ebd;                        //!< 电子制动力分配系统(EBD)
+@property (nonatomic, strong) NSString *brakeassist;                //!< 刹车辅助(EBA/BAS/BA/EVA等)
 @property (nonatomic, strong) NSString *tractioncontrol;            //!< 牵引力控制(ASR/TCS/TRC/ATC等)
 
-//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
 //!< 门窗/后视镜信息
 @interface MAACarDoorMirrorM : MARBaseDBModel
 
-@property (nonatomic, strong) NSString *antipinchwindow;            //!< 电动窗防夹功能
-@property (nonatomic, strong) NSString *electricpulldoor;           //!< 电动吸合门
 @property (nonatomic, strong) NSString *electricwindow;             //!< 电动门窗
-@property (nonatomic, strong) NSString *externalmirroradjustment;   //!< 外后视镜电动调节
-@property (nonatomic, strong) NSString *externalmirrorfolding;      //!< 外后视镜电动折叠功能
-@property (nonatomic, strong) NSString *externalmirrorheating;      //!< 外后视镜加热功能
-@property (nonatomic, strong) NSString *externalmirrormemory;       //!< 外后视镜记忆功能
 @property (nonatomic, strong) NSString *openstyle;                  //!< 开门方式
 @property (nonatomic, strong) NSString *privacyglass;               //!< 隐私玻璃
-@property (nonatomic, strong) NSString *rearmirrorwithturnlamp;     //!< 后视镜带侧转向灯
-@property (nonatomic, strong) NSString *rearsidesunshade;           //!<
-@property (nonatomic, strong) NSString *rearviewmirrorantiglare;    //!< 内后视镜防眩目功能
-@property (nonatomic, strong) NSString *rearwindowsunshade;         //!< 后窗遮阳帘
 @property (nonatomic, strong) NSString *rearwiper;                  //!< 后雨刷器
 @property (nonatomic, strong) NSString *sensingwiper;               //!< 感应雨刷
-@property (nonatomic, strong) NSString *skylightopeningmode;        //!< 天窗开喝模式
 @property (nonatomic, strong) NSString *skylightstype;              //!< 天窗型式
+@property (nonatomic, strong) NSString *electricpulldoor;           //!< 电动吸合门
+@property (nonatomic, strong) NSString *rearsidesunshade;           //!< 侧窗遮阳帘
+@property (nonatomic, strong) NSString *rearwindowsunshade;         //!< 后窗遮阳帘
+@property (nonatomic, strong) NSString *skylightopeningmode;        //!< 天窗开喝模式
 @property (nonatomic, strong) NSString *sunvisormirror;             //!< 遮阳板化妆镜
+@property (nonatomic, strong) NSString *antipinchwindow;            //!< 电动窗防夹功能
+@property (nonatomic, strong) NSString *externalmirroradjustment;   //!< 外后视镜电动调节
+@property (nonatomic, strong) NSString *externalmirrorheating;      //!< 外后视镜加热功能
+@property (nonatomic, strong) NSString *externalmirrormemory;       //!< 外后视镜记忆功能
+@property (nonatomic, strong) NSString *rearmirrorwithturnlamp;     //!< 后视镜带侧转向灯
 @property (nonatomic, strong) NSString *uvinterceptingglass;        //!< 防紫外线/隔热玻璃
+@property (nonatomic, strong) NSString *rearviewmirrorantiglare;    //!< 内后视镜防眩目功能
+@property (nonatomic, strong) NSString *externalmirrorfolding;      //!< 外后视镜电动折叠功能
 
-//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
 //!< 灯光信息
 @interface MAACarLightM : MARBaseDBModel
 
-@property (nonatomic, strong) NSString *daytimerunninglight;        //!< 日间行车灯
-@property (nonatomic, strong) NSString *frontfoglight;              //!< 前雾灯
-@property (nonatomic, strong) NSString *headlightautomaticclean;    //!< 前大灯自动清洗功能
-@property (nonatomic, strong) NSString *headlightautomaticopen;     //!< 前大灯自动开闭
-@property (nonatomic, strong) NSString *headlightdelayoff;          //!< 前大灯延时关闭
-@property (nonatomic, strong) NSString *headlightdimming;           //!< 会车前灯防眩目功能
-@property (nonatomic, strong) NSString *headlightdynamicsteering;   //!< 前大灯随动装向
-@property (nonatomic, strong) NSString *headlightilluminationadjustment;    //!< 前大灯照射范围调整
-@property (nonatomic, strong) NSString *headlighttype;              //!< 前大灯类型
-@property (nonatomic, strong) NSString *interiorairlight;           //!< 车内氛围灯
-@property (nonatomic, strong) NSString *ledtaillight;               //!< LED尾灯
-@property (nonatomic, strong) NSString *lightsteeringassist;        //!< 转向辅助灯
-@property (nonatomic, strong) NSString *optionalheadlighttype;      //!< 选配前大灯类型
-@property (nonatomic, strong) NSString *readinglight;               //!< 阅读灯
+@property (nonatomic, strong) NSString *frontfoglight;                  //!< 前雾灯
+@property (nonatomic, strong) NSString *readinglight;                   //!< 阅读灯
+@property (nonatomic, strong) NSString *ledtaillight;                   //!< LED尾灯
+@property (nonatomic, strong) NSString *daytimerunninglight;            //!< 日间行车灯
+@property (nonatomic, strong) NSString *interiorairlight;               //!< 车内氛围灯
+@property (nonatomic, strong) NSString *lightsteeringassist;            //!< 转向辅助灯
+@property (nonatomic, strong) NSString *headlighttype;                  //!< 前大灯类型
+@property (nonatomic, strong) NSString *headlightautomaticopen;         //!< 前大灯自动开闭
+@property (nonatomic, strong) NSString *headlightdelayoff;              //!< 前大灯延时关闭
+@property (nonatomic, strong) NSString *headlightdynamicsteering;       //!< 前大灯随动装向
+@property (nonatomic, strong) NSString *optionalheadlighttype;          //!< 选配前大灯类型
+@property (nonatomic, strong) NSString *headlightautomaticclean;        //!< 前大灯自动清洗功能
+@property (nonatomic, strong) NSString *headlightdimming;               //!< 会车前灯防眩目功能
+@property (nonatomic, strong) NSString *headlightilluminationadjustment;//!< 前大灯照射范围调整
 
-//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
 //!< 内部配置
 @interface MAACarInternalConfigM : MARBaseDBModel
 
-@property (nonatomic, strong) NSString *computerscreen;             //!< 行车电脑显示屏
-@property (nonatomic, strong) NSString *huddisplay;                 //!< HUD抬头数字显示
-@property (nonatomic, strong) NSString *interiorcolor;              //!< 内饰颜色
-@property (nonatomic, strong) NSString *rearcupholder;              //!< 后排环架
-@property (nonatomic, strong) NSString *steeringwheeladjustmentmode;//!< 方向盘调节方式
-@property (nonatomic, strong) NSString *steeringwheelbeforeadjustment;  //!< 方向盘前后调节
+@property (nonatomic, strong) NSString *interiorcolor;                  //!< 内饰颜色
+@property (nonatomic, strong) NSString *rearcupholder;                  //!< 后排环架
 @property (nonatomic, strong) NSString *steeringwheelheating;           //!< 方向盘加热
+@property (nonatomic, strong) NSString *steeringwheelmultifunction;     //!< 多功能方向盘
+@property (nonatomic, strong) NSString *supplyvoltage;                  //!< 车内电源电压
+@property (nonatomic, strong) NSString *computerscreen;                 //!< 行车电脑显示屏
+@property (nonatomic, strong) NSString *steeringwheeladjustmentmode;    //!< 方向盘调节方式
+@property (nonatomic, strong) NSString *steeringwheelbeforeadjustment;  //!< 方向盘前后调节
 @property (nonatomic, strong) NSString *steeringwheelmaterial;          //!< 方向盘表面材料
 @property (nonatomic, strong) NSString *steeringwheelmemory;            //!< 方向盘记忆设置
-@property (nonatomic, strong) NSString *steeringwheelmultifunction;     //!< 多功能方向盘
 @property (nonatomic, strong) NSString *steeringwheelupadjustment;      //!< 方向盘上下调节
-@property (nonatomic, strong) NSString *supplyvoltage;                  //!< 车内电源电压
+@property (nonatomic, strong) NSString *huddisplay;                     //!< HUD抬头数字显示
 
-//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
 //!< 后排座椅信息
 @interface MAACarSeatM : MARBaseDBModel
 
-@property (nonatomic, strong) NSString *auxiliaryseatadjustmentmode;    //!< 副驾驶座椅调节方式
-@property (nonatomic, strong) NSString *childseatfixdevice;             //!< 儿童安全座椅固定装置
-@property (nonatomic, strong) NSString *driverseatadjustmentmode;       //!< 驾驶座座椅调节方式
-@property (nonatomic, strong) NSString *driverseatlumbarsupportadjustment;  //!< 驾驶座腰部支撑调节
-@property (nonatomic, strong) NSString *driverseatshouldersupportadjustment;//!< 驾驶座肩部支撑调节
-@property (nonatomic, strong) NSString *electricseatmemory;                 //!< 电动座椅记忆
-@property (nonatomic, strong) NSString *frontseatcenterarmrest;             //!< 前座中央扶手
-@property (nonatomic, strong) NSString *frontseatheadrestadjustment;        //!< 前座椅头枕调节
-@property (nonatomic, strong) NSString *rearseatadjustmentmode;             //!< 后排座椅调节方式
-@property (nonatomic, strong) NSString *rearseatangleadjustment;            //!< 后排座椅角度调节
-@property (nonatomic, strong) NSString *rearseatcenterarmrest;              //!< 后座中央扶手
-@property (nonatomic, strong) NSString *rearseatreclineproportion;          //!< 后排座位放倒比例
 @property (nonatomic, strong) NSString *seatheating;                        //!< 座椅加热
-@property (nonatomic, strong) NSString *seatheightadjustment;               //!< 座椅高低调节
-@property (nonatomic, strong) NSString *seatmassage;                        //!< 座椅按摩功能
 @property (nonatomic, strong) NSString *seatmaterial;                       //!< 座椅材料
 @property (nonatomic, strong) NSString *seatventilation;                    //!< 座椅通风
 @property (nonatomic, strong) NSString *sportseat;                          //!< 运动座椅
 @property (nonatomic, strong) NSString *thirdrowseat;                       //!< 第三排座椅
+@property (nonatomic, strong) NSString *electricseatmemory;                 //!< 电动座椅记忆
+@property (nonatomic, strong) NSString *frontseatcenterarmrest;             //!< 前座中央扶手
+@property (nonatomic, strong) NSString *rearseatcenterarmrest;              //!< 后座中央扶手
+@property (nonatomic, strong) NSString *seatheightadjustment;               //!< 座椅高低调节
+@property (nonatomic, strong) NSString *seatmassage;                        //!< 座椅按摩功能
+@property (nonatomic, strong) NSString *frontseatheadrestadjustment;        //!< 前座椅头枕调节
+@property (nonatomic, strong) NSString *rearseatadjustmentmode;             //!< 后排座椅调节方式
+@property (nonatomic, strong) NSString *rearseatangleadjustment;            //!< 后排座椅角度调节
+@property (nonatomic, strong) NSString *rearseatreclineproportion;          //!< 后排座位放倒比例
+@property (nonatomic, strong) NSString *auxiliaryseatadjustmentmode;        //!< 副驾驶座椅调节方式
+@property (nonatomic, strong) NSString *driverseatadjustmentmode;           //!< 驾驶座座椅调节方式
+@property (nonatomic, strong) NSString *driverseatlumbarsupportadjustment;  //!< 驾驶座腰部支撑调节
+@property (nonatomic, strong) NSString *driverseatshouldersupportadjustment;//!< 驾驶座肩部支撑调节
+@property (nonatomic, strong) NSString *childseatfixdevice;                 //!< 儿童安全座椅固定装置
 
-//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
 //!< 娱乐通讯信息
 @interface MAACarEntcom : MARBaseDBModel
 
+@property (nonatomic, strong) NSString *cd;                     //!< CD
+@property (nonatomic, strong) NSString *dvd;                    //!< DVD
 @property (nonatomic, strong) NSString *audiobrand;             //!< 音响品牌
 @property (nonatomic, strong) NSString *bluetooth;              //!< 蓝牙系统
 @property (nonatomic, strong) NSString *builtinharddisk;        //!< 内置硬盘
 @property (nonatomic, strong) NSString *cartv;                  //!< 车载电视
-@property (nonatomic, strong) NSString *cd;                     //!< CD
-@property (nonatomic, strong) NSString *consolelcdscreen;       //!< 中控台液晶屏
-@property (nonatomic, strong) NSString *dvd;                    //!< DVD
-@property (nonatomic, strong) NSString *externalaudiointerface; //!< 外接音源接口
-@property (nonatomic, strong) NSString *locationservice;        //!< 定位互动服务
 @property (nonatomic, strong) NSString *rearlcdscreen;          //!< 后排液晶屏
 @property (nonatomic, strong) NSString *speakernum;             //!< 扬声器数量
+@property (nonatomic, strong) NSString *consolelcdscreen;       //!< 中控台液晶屏
+@property (nonatomic, strong) NSString *externalaudiointerface; //!< 外接音源接口
+@property (nonatomic, strong) NSString *locationservice;        //!< 定位互动服务
 
-//- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
+- (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 
 @end
 
@@ -369,13 +369,13 @@
 //!< //!< 空调/冰箱信息
 @interface MAACarAirCondrefrigerator : MARBaseDBModel
 
-@property (nonatomic, strong) NSString *airconditioning;            //!< 空气调节/花粉过滤
-@property (nonatomic, strong) NSString *airconditioningcontrolmode; //!< 空调控制方式
-@property (nonatomic, strong) NSString *airpurifyingdevice;         //!< 车内空气净化装置
 @property (nonatomic, strong) NSString *carrefrigerator;            //!< 车载冰箱
-@property (nonatomic, strong) NSString *rearairconditioning;        //!< 后排独立空调
 @property (nonatomic, strong) NSString *reardischargeoutlet;        //!< 后排出风口
+@property (nonatomic, strong) NSString *airconditioningcontrolmode; //!< 空调控制方式
+@property (nonatomic, strong) NSString *rearairconditioning;        //!< 后排独立空调
 @property (nonatomic, strong) NSString *tempzonecontrol;            //!< 温度分区控制
+@property (nonatomic, strong) NSString *airpurifyingdevice;         //!< 车内空气净化装置
+@property (nonatomic, strong) NSString *airconditioning;            //!< 空气调节/花粉过滤
 
 - (NSString *)carInfoDescDispalyAll:(BOOL)isDisplayAll;
 

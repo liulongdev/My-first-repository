@@ -9,28 +9,42 @@
 #import "MAACarBrandListVC.h"
 #import "MARALIAPINetworkManager.h"
 #import "MAACarFactoryVC.h"
-@interface MAACarBrandListVC () <UITableViewDelegate, UITableViewDataSource>
+@interface MAACarBrandListVC () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *collectionFlowLayout;
 
 @property (nonatomic, strong) NSMutableDictionary *carBrandDic;
 @property (nonatomic, strong) NSArray<MAACarBrandM *> *carBrandArray;
 @property (nonatomic, strong) NSArray* initialArray;
+@property (nonatomic, strong) UIBarButtonItem *rightBarBtn;
+@property (nonatomic, assign) BOOL isTableListStyle;
 @end
+
+NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTableStyleKey";
 
 @implementation MAACarBrandListVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self carBrandArray];
-    // Do any additional setup after loading the view.
 }
 
 - (void)UIGlobal
 {
     MARAdjustsScrollViewInsets_NO(self.tableView, self);
+    MARAdjustsScrollViewInsets_NO(self.collectionView, self);
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
     self.tableView.tableFooterView = [UIView new];
+    
+    self.collectionFlowLayout.sectionInset = UIEdgeInsetsMake(20, 15, 20, 15);
+    NSInteger numberOfline = 4;
+    CGFloat itemSpace = 20;
+    CGFloat width = ((kScreenWIDTH - self.collectionFlowLayout.sectionInset.left - self.collectionFlowLayout.sectionInset.right) - itemSpace * (numberOfline - 1)) / numberOfline  - numberOfline;
+    self.collectionFlowLayout.itemSize = CGSizeMake(width, width);
+    self.collectionFlowLayout.minimumLineSpacing = itemSpace;
+    self.collectionFlowLayout.minimumInteritemSpacing = itemSpace;
 }
 
 - (NSMutableDictionary *)carBrandDic
@@ -53,14 +67,16 @@
 
 - (void)wrapperCarBrandData
 {
-    if (_carBrandArray.count > 0) {
-        for (MAACarBrandM *model in _carBrandArray) {
-            NSMutableArray *brandArray = self.carBrandDic[model.initial ?: @""];
-            if (!brandArray) {
-                brandArray = [NSMutableArray arrayWithCapacity:1<<5];
-                self.carBrandDic[model.initial ?: @""] = brandArray;
+    if (!_carBrandDic || self.carBrandDic.count == 0) {
+        if (_carBrandArray.count > 0) {
+            for (MAACarBrandM *model in _carBrandArray) {
+                NSMutableArray *brandArray = self.carBrandDic[model.initial ?: @""];
+                if (!brandArray) {
+                    brandArray = [NSMutableArray arrayWithCapacity:1<<5];
+                    self.carBrandDic[model.initial ?: @""] = brandArray;
+                }
+                [brandArray addObject:model];
             }
-            [brandArray addObject:model];
         }
     }
 }
@@ -72,8 +88,7 @@
             _carBrandArray = (NSArray<MAACarBrandM *> *)[MAACarBrandM mar_getAllDBModelArray];
             mar_dispatch_async_on_main_queue(^{
                 if (_carBrandArray.count > 0) {
-                    [self wrapperCarBrandData];
-                    [self.tableView reloadData];
+                    [self p_reloadCollectionData];
                 }
                 else
                 {
@@ -85,6 +100,29 @@
     return _carBrandArray;
 }
 
+- (UIBarButtonItem *)rightBarBtn
+{
+    if (!_rightBarBtn) {
+        _rightBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+        @weakify(self)
+        [_rightBarBtn setMar_actionBlock:^(id sender) {
+            weak_self.isTableListStyle = !weak_self.isTableListStyle;
+            [weak_self p_reloadCollectionData];
+        }];
+    }
+    return _rightBarBtn;
+}
+
+- (BOOL)isTableListStyle
+{
+    return [MARUserDefault getBoolBy:MAACarBrandListVCListTableStyleKey];
+}
+
+- (void)setIsTableListStyle:(BOOL)isTableListStyle
+{
+    [MARUserDefault setBool:isTableListStyle key:MAACarBrandListVCListTableStyleKey];
+}
+
 - (void)loadData
 {
     @weakify(self)
@@ -93,8 +131,7 @@
         @strongify(self)
         if (!strong_self) return;
         strong_self.carBrandArray = carBrandArray;
-        [strong_self wrapperCarBrandData];
-        [strong_self.tableView reloadData];
+        [strong_self p_reloadCollectionData];
         for (MAACarBrandM *model in carBrandArray) {
             [model updateToDB];
         }
@@ -201,6 +238,73 @@
             carFactoryVC.carBrandId = model.id;
             carFactoryVC.title = model.name;
         }
+    }
+}
+
+#pragma mark -UIColleciton View Datasource
+- (void)p_reloadCollectionData
+{
+    BOOL isTable = self.isTableListStyle;
+    NSString *btnTitle = isTable ? @"大图" : @"列表";
+    self.rightBarBtn.title = btnTitle;
+    if (!self.navigationItem.rightBarButtonItem) {
+        self.navigationItem.rightBarButtonItem = self.rightBarBtn;
+    }
+    
+    if (isTable) {
+        [self wrapperCarBrandData];
+//        self.collectionView.hidden = YES;
+//        self.tableView.hidden = NO;
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        [self.tableView reloadData];
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            self.collectionView.alpha = 0;
+            self.tableView.alpha = 1;
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+    }
+    else
+    {
+//        self.collectionView.hidden = NO;
+//        self.tableView.hidden = YES;
+        self.collectionView.delegate = self;
+        self.collectionView.dataSource = self;
+        [self.collectionView reloadData];
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            self.collectionView.alpha = 1;
+            self.tableView.alpha = 0;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+    
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return _carBrandArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"carBrandCollectionCell" forIndexPath:indexPath];
+    if (_carBrandArray.count > indexPath.row) {
+        UIImageView *imageView = [cell viewWithTag:1];
+        [imageView mar_setImageDefaultCornerRadiusWithURL:[NSURL URLWithString:_carBrandArray[indexPath.row].logo ?: @""] errorImage:[UIImage imageNamed:@"icon_car_brands"]];
+    }
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_carBrandArray.count > indexPath.row) {
+        MAACarBrandM *carBrandM = _carBrandArray[indexPath.row];
+        [self performSegueWithIdentifier:@"goMAACarFactoryVC" sender:carBrandM];
     }
 }
 

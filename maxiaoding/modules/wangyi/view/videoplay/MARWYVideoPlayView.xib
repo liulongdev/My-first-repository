@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_media_default" translatesAutoresizingMaskIntoConstraints="NO" id="HYi-x1-9jH" customClass="img_media_default">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_media_default" translatesAutoresizingMaskIntoConstraints="NO" id="HYi-x1-9jH">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMa-IW-kVL">

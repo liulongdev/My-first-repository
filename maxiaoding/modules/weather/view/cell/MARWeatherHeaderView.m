@@ -37,7 +37,7 @@
     self.collectionFlowlayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.collectionFlowlayout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
     self.collectionView.showsHorizontalScrollIndicator = NO;
-    self.collectionView.fd_popGestureEnabled = YES;
+//    self.collectionView.fd_popGestureEnabled = YES;
 }
 
 - (void)setWeatherModel:(MAAWeatherModel *)weatherModel

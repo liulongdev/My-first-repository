@@ -16,6 +16,7 @@
 #import "MARWYNewViewController.h"
 #import "MARWYVideoNewVC.h"
 #import "MAACarBrandListVC.h"
+#import "MARCitiesWeatherVC.h"
 
 static NSString * const mobTitle_wxArticle          = @"微信热门";
 static NSString * const mobTitle_historyToday       = @"历史上的今天";
@@ -248,6 +249,9 @@ static NSString * const cellTitle_car               = @"汽车（新）";
     }
     else if ([cellTitle_weather isEqualToString:label.text])
     {
+        MARCitiesWeatherVC *citisWeatherVC = [[MARCitiesWeatherVC alloc] init];
+        [self mar_pushViewController:citisWeatherVC animated:YES];
+        return;
         UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Weather storyboardId:kSBID_Weather_WeatherVC];
         [self mar_pushViewController:vc animated:YES];
     }

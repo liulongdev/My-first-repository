@@ -35,9 +35,7 @@
     // 可以有效防止静音键开启无声音
     AVAudioSession *avSession = [AVAudioSession sharedInstance];
     [avSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-    [avSession setActive:YES error:nil];
-    
-    
+//    [avSession setActive:YES error:nil];
 //    [[AVAudioSession sharedInstance] addObserver:self forKeyPath:NSStringFromSelector(@selector(outputVolume)) options:NSKeyValueObservingOptionNew context:nil];
     
     return YES;

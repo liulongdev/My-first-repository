@@ -28,10 +28,17 @@
     [self needReloadData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.model.contentOffset = self.tableView.contentOffset;
+}
+
 - (void)needReloadData
 {
     if (self.model.wyNewArray.count > 0) {
         [self.tableView reloadData];
+        self.tableView.contentOffset = self.model.contentOffset;
     }
     MARLog(@">>>> viewWillAppear");
     [self hiddenEmptyView];
@@ -39,6 +46,7 @@
         [self showEmptyViewWithImageimage:nil description:@"敬请期待..."];
     }
     if (self.model.wyNewArray.count == 0) {
+        self.tableView.contentOffset = CGPointZero;
         [self loadData];
     }
     else if ([[NSDate new] timeIntervalSince1970] - self.model.lastLoadTimeStamp > 60 * 30)
@@ -73,6 +81,7 @@
 {
     self.model.refreshLoadFn ++;
     [self.model.wyNewArray removeAllObjects];
+    self.tableView.contentOffset = CGPointZero;
     [self loadData];
 }
 
@@ -267,7 +276,7 @@
                     @strongify(self)
                     if (!strong_self) return;
                     [strong_self showActivityView:NO];
-                    NSLog(@"get photos %@", responseObject);
+//                    NSLog(@"get photos %@", responseObject);
                     if ([responseObject[@"url"] mar_isValidUrl]) {
                         MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:responseObject[@"url"]]];
                         [strong_self mar_pushViewController:webVC animated:YES];
@@ -280,6 +289,11 @@
             else if ([model.skipType isEqualToString:WYNEWSkipType_Video])
             {
                 [MARWYNewNetworkManager getVideoNewDetailWithSkipId:model.skipID success:^(NSURLSessionTask *task, id responseObject) {
+                    MARWYVideoNewDetailModel *model = [MARWYVideoNewDetailModel mar_modelWithJSON:responseObject];
+                    if ([model.vurl mar_isValidUrl]) {
+                        MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:model.vurl]];
+                        [self mar_pushViewController:webVC animated:YES];
+                    }
                     NSLog(@">>>>>>> get videoDetail : %@", responseObject);
                 } failure:^(NSURLSessionTask *task, NSError *error) {
                     NSLog(@">>>>>>> get videoDetail error : %@", error);
@@ -293,7 +307,7 @@
             [MARWYNewNetworkManager getNewDetailWithDocId:model.docid success:^(NSURLSessionTask *task, id responseObject) {
                 @strongify(self)
                 if (!strong_self) return;
-                NSLog(@"get wynew detail : %@", responseObject);
+//                NSLog(@"get wynew detail : %@", responseObject);
                 MARWYNewDetailModel *detailModel = [MARWYNewDetailModel mar_modelWithJSON:responseObject[model.docid]];
                 NSLog(@">>>>> %@", detailModel);
                 MARWebViewController *webVC = [[MARWebViewController alloc] init];

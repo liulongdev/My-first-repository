@@ -59,6 +59,7 @@
     [super viewWillAppear:animated];
     if (self.model.wyNewArray.count > 0) {
         [self.tableView reloadData];
+        self.tableView.contentOffset = self.model.contentOffset;
     }
     MARLog(@">>>> viewWillAppear");
     [self hiddenEmptyView];
@@ -66,6 +67,7 @@
         [self showEmptyViewWithImageimage:nil description:@"敬请期待..."];
     }
     if (self.model.wyNewArray.count == 0) {
+        self.tableView.contentOffset = CGPointZero;
         [self loadData];
     }
     else if ([[NSDate new] timeIntervalSince1970] - self.model.lastLoadTimeStamp > 60 * 30)
@@ -73,6 +75,12 @@
         // 上次加载到页面出现大于半小时自动重新刷新
         [self refreshLoadData];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.model.contentOffset = self.tableView.contentOffset;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -132,6 +140,7 @@
     [self closePlayer];
     self.model.refreshLoadFn ++;
     [self.model.wyNewArray removeAllObjects];
+    self.tableView.contentOffset = CGPointZero;
     [self loadData];
 }
 

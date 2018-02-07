@@ -10,4 +10,6 @@
 
 @interface MARWeatherVC : MARBaseViewController 
 
+@property (nonatomic, assign) NSInteger pageIndex;
+
 @end

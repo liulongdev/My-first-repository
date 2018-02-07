@@ -10,9 +10,19 @@
 
 @implementation MAAWeatherModel
 
+//+(void)initialize
+//{
+//    [self setTableColumnName:@"myindex" bindingPropertyName:@"index"];
+//}
+
++ (NSDictionary<NSString *,id> *)mar_modelCustomPropertyMapper
+{
+    return @{@"myindex": @"index"};
+}
+
 + (NSArray *)getPrimaryKeyUnionArray
 {
-    return @[@"cityid", @"date"];
+    return @[@"cityid"];
 }
 
 + (NSDictionary<NSString *,id> *)mar_modelContainerPropertyGenericClass
@@ -27,7 +37,7 @@
 + (MAAWeatherModel *)weatherModelWithCityId:(NSString *)cityId
 {
     NSArray *weatherArray = [[self getUsingLKDBHelper] search:[self class] where:@{@"cityid": cityId} orderBy:nil offset:0 count:0];
-    if (weatherArray.count > 0) {
+    if (weatherArray && weatherArray.count > 0) {
         return weatherArray[0];
     }
     return nil;
@@ -187,6 +197,23 @@
     return @"cityid";
 }
 
+- (BOOL)isEqual:(id)object
+{
+    if (self == object) {
+        return YES;
+    }
+    if ([object isKindOfClass:[self class]]) {
+        __typeof(self) other = object;
+        return [self.cityid isEqual:other.cityid];
+    }
+    return NO;
+}
+
+- (NSUInteger)hash
+{
+    return [self.cityid hash];
+}
+
 + (NSArray<MAAWeatherCityModel *> *)cityArrayWithParentId:(NSString *)parentId
 {
     NSArray *cityArray = [[self getUsingLKDBHelper] search:[self class] where:@{@"parentId": parentId} orderBy:nil offset:0 count:0];
@@ -197,6 +224,32 @@
 {
     NSArray *cityArray = [[self getUsingLKDBHelper] search:[self class] where:where orderBy:nil offset:0 count:0];
     return cityArray;
+}
+
++ (NSArray<MAAWeatherCityModel *> *)cityArrayWithLikeKey:(NSString *)key
+{
+    
+    NSString *sqlStr = @"";
+//    if ([key mar_matchWithRegex:@"\\d+"].count > 0) {
+//        sqlStr = [NSString stringWithFormat:@"citycode like '%%%@%%'",  key];
+//    }
+//    else
+//    {
+//        sqlStr = [NSString stringWithFormat:@"city like '%%%@%%'", key];
+//    }
+    sqlStr = [NSString stringWithFormat:@"city like '%%%@%%' and parentid != '0'", key];
+    NSArray<MAAWeatherCityModel *> *cityArray = [[self.class getUsingLKDBHelper] search:[self class] where:sqlStr orderBy:nil offset:0 count:0];
+    return cityArray;
+}
+
+@end
+
+@implementation MAAWeatherLocalCityModel
+
++ (instancetype)localCityMWithWeatherCityM:(MAAWeatherCityModel *)model
+{
+    MAAWeatherLocalCityModel *localCityM = [MAAWeatherLocalCityModel mar_modelWithJSON:[model mar_modelToJSONObject]];
+    return localCityM;
 }
 
 @end

@@ -185,15 +185,15 @@
 }
 
 - (void)magicView:(VTMagicView *)magicView viewDidAppear:(UIViewController *)viewController atPage:(NSUInteger)pageIndex {
-    NSLog(@"pageIndex:%ld viewDidAppear:%@", (long)pageIndex, viewController.view);
+
 }
 
 - (void)magicView:(VTMagicView *)magicView viewDidDisappear:(UIViewController *)viewController atPage:(NSUInteger)pageIndex {
-    NSLog(@"pageIndex:%ld viewDidDisappear:%@", (long)pageIndex, viewController.view);
+
 }
 
 - (void)magicView:(VTMagicView *)magicView didSelectItemAtIndex:(NSUInteger)itemIndex {
-    NSLog(@"didSelectItemAtIndex:%ld", (long)itemIndex);
+    
 }
 
 - (void)locationVideoItemAction:(id)sender

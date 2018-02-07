@@ -86,6 +86,7 @@
 
 - (void)loadData
 {
+    NSArray *ignoreTitleArray = @[@"视频",@"直播", @"负一屏", @"微资讯", @"态度营销", @"漫画", @"酒香", @"读书", @"易城live", @"房产", @"态度公开课", @"冰雪运动"];
     @weakify(self)
     [MARWYNewNetworkManager getNewTitleListSuccess:^(NSArray<MARWYNewCategoryTitleModel *> *categoryTitleArray) {
         @strongify(self)
@@ -93,7 +94,9 @@
         strong_self.categoryArray = categoryTitleArray;
         
             for (MARWYNewCategoryTitleModel *model in categoryTitleArray) {
-                [model updateToDB];
+                if (![ignoreTitleArray containsObject:model.tname]) {
+                    [model updateToDB];
+                }
             }
         
     } failure:^(NSURLSessionTask *task, NSError *error) {
@@ -201,15 +204,12 @@
         MARWYNewListVC *wyNewListVC = (MARWYNewListVC *)viewController;
         [wyNewListVC needReloadData];
     }
-    NSLog(@"pageIndex:%ld viewDidAppear:%@", (long)pageIndex, viewController.view);
 }
 
 - (void)magicView:(VTMagicView *)magicView viewDidDisappear:(UIViewController *)viewController atPage:(NSUInteger)pageIndex {
-    NSLog(@"pageIndex:%ld viewDidDisappear:%@", (long)pageIndex, viewController.view);
 }
 
 - (void)magicView:(VTMagicView *)magicView didSelectItemAtIndex:(NSUInteger)itemIndex {
-    NSLog(@"didSelectItemAtIndex:%ld", (long)itemIndex);
 }
 
 

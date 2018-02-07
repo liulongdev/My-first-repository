@@ -168,6 +168,8 @@
 		5B9498D21FF617D500FF9731 /* MARFontConfigVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9498D11FF617D500FF9731 /* MARFontConfigVC.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
+		5BD56B20202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56B1F202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.m */; };
+		5BD56B27202AE08700BB0BD1 /* MARCitiesWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56B26202AE08700BB0BD1 /* MARCitiesWeatherVC.m */; };
 		5BDE92B62020D464005969C6 /* MAAWeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE92B52020D464005969C6 /* MAAWeatherModel.m */; };
 		5BDE92B92020D767005969C6 /* MAARequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE92B82020D767005969C6 /* MAARequestModel.m */; };
 		5BF823172005B7BC005DBCDE /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF823162005B7BC005DBCDE /* MediaPlayer.framework */; };
@@ -467,6 +469,10 @@
 		5BC0F5741FE2218E004C62D4 /* MARMonthDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMonthDayView.h; sourceTree = "<group>"; };
 		5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMonthDayView.m; sourceTree = "<group>"; };
 		5BD1D2CC1FF4E9D600610DDE /* request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = request.h; sourceTree = "<group>"; };
+		5BD56B1E202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWeatherChooseCityVC.h; sourceTree = "<group>"; };
+		5BD56B1F202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWeatherChooseCityVC.m; sourceTree = "<group>"; };
+		5BD56B25202AE08700BB0BD1 /* MARCitiesWeatherVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARCitiesWeatherVC.h; sourceTree = "<group>"; };
+		5BD56B26202AE08700BB0BD1 /* MARCitiesWeatherVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARCitiesWeatherVC.m; sourceTree = "<group>"; };
 		5BDE92B42020D464005969C6 /* MAAWeatherModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAAWeatherModel.h; sourceTree = "<group>"; };
 		5BDE92B52020D464005969C6 /* MAAWeatherModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAAWeatherModel.m; sourceTree = "<group>"; };
 		5BDE92B72020D767005969C6 /* MAARequestModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAARequestModel.h; sourceTree = "<group>"; };
@@ -613,8 +619,12 @@
 			isa = PBXGroup;
 			children = (
 				5B225D572024119500EB1F2A /* cell */,
+				5BD56B25202AE08700BB0BD1 /* MARCitiesWeatherVC.h */,
+				5BD56B26202AE08700BB0BD1 /* MARCitiesWeatherVC.m */,
 				5B225D5420240C9200EB1F2A /* MARWeatherVC.h */,
 				5B225D5520240C9200EB1F2A /* MARWeatherVC.m */,
+				5BD56B1E202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.h */,
+				5BD56B1F202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1612,6 +1622,7 @@
 				5BF82332200888E6005DBCDE /* MARWYNewCategoryTitleCell.m in Sources */,
 				5B225D632024600900EB1F2A /* MARWeatherHourCollectionCell.m in Sources */,
 				5B01CD541FF32922003D2875 /* MARTitleCollectionReuableView.m in Sources */,
+				5BD56B27202AE08700BB0BD1 /* MARCitiesWeatherVC.m in Sources */,
 				5B375C9A20037D2D001E02F2 /* MARWYVideoNewListVC.m in Sources */,
 				5B029F471FE4FE99008ED5CA /* MARCookInfoTableCell.m in Sources */,
 				5B42EDA81FFE4E7900B98D68 /* MARWYNewViewController.m in Sources */,
@@ -1683,6 +1694,7 @@
 				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */,
 				5B25F8DA1FE0FBCC00E85884 /* MARWXArticleCategoryVC.m in Sources */,
 				5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */,
+				5BD56B20202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.m in Sources */,
 				5B225D5D20245C6600EB1F2A /* MARWeatherHeaderView.m in Sources */,
 				5B48053A1FF29474000C9FD3 /* MARCookCategoryCollectionVC.m in Sources */,
 				5B933B421FE8EFEA004C2038 /* MARAnalogClockView.m in Sources */,

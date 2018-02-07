@@ -34,7 +34,7 @@
 @property (nonatomic, strong) NSString *winddirect;     //!< 风向
 @property (nonatomic, strong) NSString *windpower;      //!< 风级
 @property (nonatomic, strong) NSString *updatetime;     //!< 更新时间
-@property (nonatomic, strong) NSArray<MAAWeatherLifeIndexM *> *index;   //!< 生活指数
+@property (nonatomic, strong) NSArray<MAAWeatherLifeIndexM *> *myindex;   //!< 生活指数
 @property (nonatomic, strong) MAAWeatherAQIM *aqi;                      //!< AQI
 @property (nonatomic, strong) NSArray<MAAWeatherDayInfoM *> *daily;                //!< 按天时间
 @property (nonatomic, strong) NSArray<MAAWeatherHourInfoM *> *hourly;
@@ -132,5 +132,16 @@
 + (NSArray<MAAWeatherCityModel *> *)cityArrayWithParentId:(NSString *)parentId;
 
 + (NSArray<MAAWeatherCityModel *> *)cityArrayWhere:(id)where;
+
+// 模糊搜索
++ (NSArray<MAAWeatherCityModel *> *)cityArrayWithLikeKey:(NSString *)key;
+
+@end
+
+@interface MAAWeatherLocalCityModel : MAAWeatherCityModel
+
+@property (nonatomic, assign) NSInteger orderIndex;               //!< 排序
+
++ (instancetype)localCityMWithWeatherCityM:(MAAWeatherCityModel *)model;
 
 @end

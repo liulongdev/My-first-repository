@@ -51,6 +51,10 @@
 
 - (void)UIGlobal
 {
+    self.carNameLabel.text = nil;
+    self.carSubNameLabel.text = nil;
+    self.carInfoLabel.attributedText = nil;
+    
     MARAdjustsScrollViewInsets_NO(self.tableView, self);
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 120;
@@ -148,9 +152,76 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (_carModel) {
-        return 2;
+        return 13;
     }
     return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 44;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    CGFloat height = [self tableView:tableView heightForHeaderInSection:section];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.mar_width, height)];
+    headerView.backgroundColor = [UIColor whiteColor];
+    UILabel *titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, kScreenWIDTH - 20 * 2, height)];
+    titlelabel.textColor = RGBHEX(0x333333);
+    titlelabel.font = MARFont(14.f);
+    NSString *title = nil;
+    switch (section) {
+        case 0:
+            title = @"车体";
+            break;
+        case 1:
+            title = @"引擎";
+            break;
+        case 2:
+            title = @"变速箱";
+            break;
+        case 3:
+            title = @"底盘制动";
+            break;
+        case 4:
+            title = @"安全配置";
+            break;
+        case 5:
+            title = @"车轮";
+            break;
+        case 6:
+            title = @"行车辅助";
+            break;
+        case 7:
+            title = @"门窗/后视镜";
+            break;
+        case 8:
+            title = @"灯光";
+            break;
+        case 9:
+            title = @"内部配置";
+            break;
+        case 10:
+            title = @"后排座椅";
+            break;
+        case 11:
+            title = @"娱乐通讯";
+            break;
+        case 12:
+            title = @"空调/冰箱";
+            break;
+    }
+    titlelabel.text = title;
+    [headerView addSubview:titlelabel];
+    
+    UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, kScreenWIDTH - 20, 0.5)];
+    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(20, height - 1, kScreenWIDTH - 20, 0.5)];
+    topLineView.backgroundColor = bottomLineView.backgroundColor = RGBHEX(0xe0e0e0);
+    [headerView addSubview:topLineView];
+    [headerView addSubview:bottomLineView];
+    
+    return headerView;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -172,14 +243,59 @@
 - (NSAttributedString *)carInfoAttrStrWithIndex:(NSInteger)index
 {
     NSAttributedString *attrStr = nil;
-    if (index == 0) {
-        // 车体
-        attrStr = [[NSAttributedString alloc] initWithString:[_carModel.body carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
-    }
-
-    if (index == 1) {
-        // 引擎
-        attrStr = [[NSAttributedString alloc] initWithString:[_carModel.engine carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+    switch (index) {
+        case 0:
+            // 车体
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.body carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 1:
+            // 引擎
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.engine carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 2:
+            // 变速箱
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.gearbox carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 3:
+            // 底盘制动
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.chassisbrake carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 4:
+            // 安全配置
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.safe carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 5:
+            // 车轮
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.wheel carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 6:
+            // 行车辅助
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.drivingauxiliary carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 7:
+            // 门窗/后视镜
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.doormirror carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 8:
+            // 灯光
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.light carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 9:
+            // 内部配置
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.internalconfig carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 10:
+            // 后排座椅
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.seat carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 11:
+            // 娱乐通讯
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.entcom carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
+        case 12:
+            // 空调/冰箱
+            attrStr = [[NSAttributedString alloc] initWithString:[_carModel.aircondrefrigerator carInfoDescDispalyAll:NO] attributes:MARSTYLEFORMAT.shuoMingAttrDic];
+            break;
     }
     return attrStr;
 }
@@ -187,9 +303,8 @@
 #pragma mark - UIScollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat offsetY = scrollView.contentOffset.y + MARCONTENTINSETTOP(self);
+    CGFloat offsetY = scrollView.contentOffset.y; // + MARCONTENTINSETTOP(self);
     CGFloat maxPicWidth = kScreenWIDTH - 25 * 2;
-    
     
     if (loadImageSuccess && offsetY < 0) {
         self.constraint_carImageBackGroundViewWidth.constant = MAX(150, MIN(maxPicWidth, 150 * (1 - offsetY / 150)));

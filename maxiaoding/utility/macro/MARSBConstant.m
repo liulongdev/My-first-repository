@@ -52,12 +52,12 @@ NSString * const kSBID_Wangyi_WYVideoNewListVC          = @"MARWYVideoNewListVC"
 NSString * const kSBID_Wangyi_WYChooseNewCategoryVC     = @"MARWYChooseNewCategoryVC";
 
 NSString * const kSBID_Weather_WeatherVC                = @"MARWeatherVC";
+NSString * const kSBID_Weather_WeatherChooseCityVC      =  @"MARWeatherChooseCityVC";
 
 NSString * const kSBID_Car_CarBrandListVC               = @"MAACarBrandListVC";
 NSString * const kSBID_Car_CarFactoryVC                 = @"MAACarFactoryVC";
 NSString * const kSBID_Car_CarTypeVC                    = @"MAACarTypeVC";
 NSString * const kSBID_Car_CarDetailVC                  = @"MAACarDetailVC";
-
 
 /**
  StoryBoard Segue Identifier
