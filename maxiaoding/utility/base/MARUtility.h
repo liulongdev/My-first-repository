@@ -49,4 +49,13 @@ typedef void(^MARCalculateSizeBlock)(NSUInteger fileCount, NSUInteger totalSize)
 
 - (NSString *)briefTimeStrWithDateStr:(NSString *)dateStr;
 
+// 第一次开启app调用的方法
+- (void)firstStartApp;
+
+// 升级后第一次开启app调用的方法
+- (void)firstStartAppAfterUpdate;
+
+// 启动app调用的方法
+- (void)startApp;
+
 @end

@@ -8,7 +8,8 @@
 
 #import "MARMobUtil.h"
 #import "MARALIAPINetworkManager.h"
-
+#import <CoreLocation/CoreLocation.h>
+#import "UIApplication+MXD.h"
 @implementation MARMobUtil
 
 + (instancetype)sharedInstance
@@ -54,8 +55,15 @@
 
 + (void)test
 {
-    NSArray *cityArray = [MAAWeatherCityModel cityArrayWithParentId:@"0"];
-    NSLog(@">>> count : %ld", cityArray.count);
+//    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    [[UIApplication sharedApplication] mxd_requestAccessToLocationWithSuccess:^{
+        NSLog(@">>>> success ");
+    } andFailure:^{
+        NSLog(@">>>> failure");
+    }];
+    
+//    NSArray *cityArray = [MAAWeatherCityModel cityArrayWithParentId:@"0"];
+//    NSLog(@">>> count : %ld", cityArray.count);
     
 //    [MARALIAPINetworkManager weather_getCitiesSuccess:^(NSArray<MAAWeatherCityModel *> *cityArray) {
 //        NSLog(@">>>>> start time %f", [[NSDate date] timeIntervalSince1970]);

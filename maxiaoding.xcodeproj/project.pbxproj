@@ -172,6 +172,7 @@
 		5BD56B27202AE08700BB0BD1 /* MARCitiesWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56B26202AE08700BB0BD1 /* MARCitiesWeatherVC.m */; };
 		5BDE92B62020D464005969C6 /* MAAWeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE92B52020D464005969C6 /* MAAWeatherModel.m */; };
 		5BDE92B92020D767005969C6 /* MAARequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE92B82020D767005969C6 /* MAARequestModel.m */; };
+		5BF0ED3F202D7193003C0A90 /* UIApplication+MXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0ED3E202D7193003C0A90 /* UIApplication+MXD.m */; };
 		5BF823172005B7BC005DBCDE /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF823162005B7BC005DBCDE /* MediaPlayer.framework */; };
 		5BF8232B2007386C005DBCDE /* MARWYDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8232A2007386C005DBCDE /* MARWYDataProxy.m */; };
 		5BF8232F20076A81005DBCDE /* MARWYChooseNewCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8232E20076A81005DBCDE /* MARWYChooseNewCategoryVC.m */; };
@@ -477,6 +478,8 @@
 		5BDE92B52020D464005969C6 /* MAAWeatherModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAAWeatherModel.m; sourceTree = "<group>"; };
 		5BDE92B72020D767005969C6 /* MAARequestModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAARequestModel.h; sourceTree = "<group>"; };
 		5BDE92B82020D767005969C6 /* MAARequestModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAARequestModel.m; sourceTree = "<group>"; };
+		5BF0ED3D202D7193003C0A90 /* UIApplication+MXD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+MXD.h"; sourceTree = "<group>"; };
+		5BF0ED3E202D7193003C0A90 /* UIApplication+MXD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+MXD.m"; sourceTree = "<group>"; };
 		5BF823162005B7BC005DBCDE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		5BF823292007386C005DBCDE /* MARWYDataProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYDataProxy.h; sourceTree = "<group>"; };
 		5BF8232A2007386C005DBCDE /* MARWYDataProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYDataProxy.m; sourceTree = "<group>"; };
@@ -549,6 +552,8 @@
 				5B933B311FE79998004C2038 /* UIViewController+MAREX.m */,
 				5B375C8F2002727C001E02F2 /* UIScrollView+MXD.h */,
 				5B375C902002727C001E02F2 /* UIScrollView+MXD.m */,
+				5BF0ED3D202D7193003C0A90 /* UIApplication+MXD.h */,
+				5BF0ED3E202D7193003C0A90 /* UIApplication+MXD.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -1682,6 +1687,7 @@
 				5B933B621FE971EF004C2038 /* MAREmptyView.m in Sources */,
 				5B029F0C1FE3C311008ED5CA /* UIViewController+MXD.m in Sources */,
 				5B42ED951FFE43FE00B98D68 /* MARWYNewRequest.m in Sources */,
+				5BF0ED3F202D7193003C0A90 /* UIApplication+MXD.m in Sources */,
 				5B029F441FE4F125008ED5CA /* MARSearchCookVC.m in Sources */,
 				5B42EDB42000799D00B98D68 /* MARWYNewListVC.m in Sources */,
 				5BDE92B62020D464005969C6 /* MAAWeatherModel.m in Sources */,

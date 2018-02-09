@@ -136,7 +136,7 @@
         else
         {
             localCityM = [MAAWeatherLocalCityModel localCityMWithWeatherCityM:cityM];
-            localCityM.orderIndex = localCityMArray.count;
+            localCityM.orderIndex = [MAAWeatherLocalCityModel rowCountWithWhere:nil];;
             [localCityM updateToDB];
         }
         if (localCityM && self.selectLoalCityMBlock) {

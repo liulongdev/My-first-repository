@@ -237,7 +237,7 @@
 //    {
 //        sqlStr = [NSString stringWithFormat:@"city like '%%%@%%'", key];
 //    }
-    sqlStr = [NSString stringWithFormat:@"city like '%%%@%%' and parentid != '0'", key];
+    sqlStr = [NSString stringWithFormat:@"city like '%%%@%%' and parentid != '0' or city in ('北京','上海','重庆','天津','北京市','上海市','重庆市','天津市')", key];
     NSArray<MAAWeatherCityModel *> *cityArray = [[self.class getUsingLKDBHelper] search:[self class] where:sqlStr orderBy:nil offset:0 count:0];
     return cityArray;
 }

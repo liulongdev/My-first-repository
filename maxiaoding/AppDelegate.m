@@ -23,6 +23,21 @@
     [self initAppearance];
     [MARDataAnalysis initDataAnalysis];
     
+    if ([MARGLOBALMANAGER isFirstStartForCurrentVersion]) {
+        if ([MARGLOBALMANAGER isFirstStart]) {
+            [MARGLOBALMANAGER onFirstStart:^(BOOL isFirstStart) {
+                [MARUTILITY firstStartApp];
+            }];
+        }
+        else
+        {
+            [MARGLOBALMANAGER onFirstStartForCurrentVersion:^(BOOL isFirstStartForCurrentVersion) {
+                [MARUTILITY firstStartAppAfterUpdate];
+            }];
+        }
+    }
+    [MARUTILITY startApp];
+    
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeCustomVC alloc] init]];
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

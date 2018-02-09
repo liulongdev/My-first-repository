@@ -9,8 +9,12 @@
 #import "MARHomeTestVC.h"
 #import "MARHomeDateView.h"
 #import <iCarousel.h>
+#import "MARWeatherVC.h"
+#import "MARCarBrandListVC.h"
 @interface MARHomeTestVC () <iCarouselDataSource, iCarouselDelegate>
 @property (nonatomic, strong) iCarousel *carousel;
+@property (nonatomic, strong) UIView *weatherView;
+@property (nonatomic, strong) UIView *carView;
 @end
 
 @implementation MARHomeTestVC
@@ -18,11 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.fd_prefersNavigationBarHidden = YES;
-    self.view.backgroundColor = [UIColor yellowColor];
+//    self.view.backgroundColor = [UIColor yellowColor];
     //create carousel
     _carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
     _carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _carousel.type = iCarouselTypeLinear;
+    _carousel.type = iCarouselTypeCoverFlow2;
     _carousel.delegate = self;
     _carousel.dataSource = self;
     
@@ -51,18 +55,45 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    //create new view if no view is available for recycling
-    if ([view isKindOfClass:[MARHomeDateView class]])
-    {
-        
+    if (index == 0) {
+        if ([view isKindOfClass:[MARHomeDateView class]])
+        {
+            
+        }
+        else
+        {
+            view = [MARHomeDateView nibView];
+            view.backgroundColor = RGBHEX(0x99ccff);
+        }
     }
-    else
-    {
-        view = [MARHomeDateView nibView];
-        view.backgroundColor = [UIColor redColor];
-        view.frame = CGRectMake(0, 0, kScreenWIDTH * 2/3, kScreenHEIGHT*2/3);
+    if (index == 1) {
+        view = self.weatherView;
     }
+    if (index == 2) {
+        view = self.carView;
+    }
+    view.frame = CGRectMake(0, 0, kScreenWIDTH, kScreenHEIGHT);
     return view;
+}
+
+- (UIView *)weatherView
+{
+    if (!_weatherView) {
+        MARWeatherVC *weatherVC = (MARWeatherVC *)[UIViewController vcWithStoryboardName:kSBNAME_Weather storyboardId:kSBID_Weather_WeatherVC];
+        [self addChildViewController:weatherVC];
+        _weatherView = weatherVC.view;
+    }
+    return _weatherView;
+}
+
+- (UIView *)carView
+{
+    if (!_carView) {
+        MARCarBrandListVC *carVC = (MARCarBrandListVC *)[UIViewController vcWithStoryboardName:kSBNAME_Car storyboardId:kSBID_Car_CarBrandListVC];
+        [self addChildViewController:carVC];
+        _carView = carVC.view;
+    }
+    return _carView;
 }
 
 - (CATransform3D)carousel:(iCarousel *)carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform

@@ -8,6 +8,7 @@
 
 #import "MARUtility.h"
 #import <KTVHCPathTools.h>
+#import "MAAWeatherModel.h"
 
 #define force_inline __inline__ __attribute__((always_inline))
 static force_inline NSDate *MARNSDateParseFromString(__unsafe_unretained NSString *string);
@@ -288,6 +289,31 @@ static force_inline NSDate *MARNSDateParseFromString(__unsafe_unretained NSStrin
 {
     NSDate *date = MARNSDateParseFromString(dateStr);
     return [date mar_timeInWords];
+}
+
+// 第一次开启app调用的方法
+- (void)firstStartApp
+{
+    NSLog(@"第一次启动app");
+    // 第一次启动,城市天气自动显示北京
+    MAAWeatherLocalCityModel *beijingCity = [MAAWeatherLocalCityModel new];
+    beijingCity.cityid = @"1";
+    beijingCity.citycode = @"101010100";
+    beijingCity.city = @"北京";
+    beijingCity.parentid = @"0";
+    [beijingCity updateToDB];
+}
+
+// 升级后第一次开启app调用的方法
+- (void)firstStartAppAfterUpdate
+{
+    NSLog(@"第一次调用app 升级后第一次开启app调用的方法");
+}
+
+// 启动app调用的方法
+- (void)startApp
+{
+    NSLog(@"启动app调用的方法");
 }
 
 @end

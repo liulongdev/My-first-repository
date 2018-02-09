@@ -26,7 +26,6 @@
 @synthesize weatherM = _weatherM;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"苏州天气";
 //    [self loadData];
 }
 
