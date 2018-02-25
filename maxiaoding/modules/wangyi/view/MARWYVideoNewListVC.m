@@ -28,6 +28,7 @@
 @implementation MARWYVideoNewListVC
 {
     BOOL isFullScreen;
+    BOOL ignoreAutoPlayNextVideo;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -75,12 +76,14 @@
         // 上次加载到页面出现大于半小时自动重新刷新
         [self refreshLoadData];
     }
+    ignoreAutoPlayNextVideo = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.model.contentOffset = self.tableView.contentOffset;
+    ignoreAutoPlayNextVideo = YES;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -329,7 +332,8 @@
     // 视频播放过程中不可右滑退出
     if (type == kMARNotificationType_MARWYVideoStatusChanged) {
         if (self.magicController.currentViewController == self) {
-            if ([data integerValue] == MARVideoStatusFinish && !isFullScreen) {
+            // 视频结束，自动播放下一个
+            if ([data integerValue] == MARVideoStatusFinish && !isFullScreen && !ignoreAutoPlayNextVideo) {
                 if (self.model.wyNewArray.count > self.currentSelectedIndexPath.row + 1)
                 {
                     NSIndexPath *willPlayIndexPath = [NSIndexPath indexPathForRow:self.currentSelectedIndexPath.row + 1 inSection:self.currentSelectedIndexPath.section];
@@ -338,6 +342,11 @@
             }
         }
     }
+    else if (type == kMARNotificationType_CloseWYVideoPlay)
+    {
+        [self closePlayer];
+    }
+    
 }
 
 - (void)clickAppStatusBar

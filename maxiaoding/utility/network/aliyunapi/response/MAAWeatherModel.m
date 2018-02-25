@@ -27,7 +27,7 @@
 
 + (NSDictionary<NSString *,id> *)mar_modelContainerPropertyGenericClass
 {
-    return @{@"index": [MAAWeatherLifeIndexM class],
+    return @{@"myindex": [MAAWeatherLifeIndexM class],
              @"aqi": [MAAWeatherAQIM class],
              @"daily": [MAAWeatherDayInfoM class],
              @"hourly": [MAAWeatherHourInfoM class],

@@ -80,8 +80,8 @@
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VM5-LG-OHf">
                     <rect key="frame" x="142" y="71" width="37" height="37"/>
                 </activityIndicatorView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKv-Wm-mcm">
-                    <rect key="frame" x="16" y="10" width="288" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKv-Wm-mcm" customClass="MARLabel">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="260" constant="17" id="rbO-Cn-LGa"/>
                     </constraints>
@@ -94,13 +94,13 @@
             <constraints>
                 <constraint firstItem="HYi-x1-9jH" firstAttribute="top" secondItem="89Q-aX-WoL" secondAttribute="top" id="FPZ-QZ-6R6"/>
                 <constraint firstItem="HYi-x1-9jH" firstAttribute="leading" secondItem="89Q-aX-WoL" secondAttribute="leading" id="JyF-VY-Ghb"/>
-                <constraint firstItem="lKv-Wm-mcm" firstAttribute="top" secondItem="89Q-aX-WoL" secondAttribute="top" constant="10" id="KRu-9W-b6h"/>
+                <constraint firstItem="lKv-Wm-mcm" firstAttribute="top" secondItem="89Q-aX-WoL" secondAttribute="top" id="KRu-9W-b6h"/>
                 <constraint firstAttribute="trailing" secondItem="HYi-x1-9jH" secondAttribute="trailing" id="ONU-2J-e3V"/>
                 <constraint firstAttribute="bottom" secondItem="HYi-x1-9jH" secondAttribute="bottom" id="XDT-qQ-fNW"/>
-                <constraint firstItem="lKv-Wm-mcm" firstAttribute="leading" secondItem="89Q-aX-WoL" secondAttribute="leading" constant="16" id="ZLA-us-Hxe"/>
+                <constraint firstItem="lKv-Wm-mcm" firstAttribute="leading" secondItem="89Q-aX-WoL" secondAttribute="leading" id="ZLA-us-Hxe"/>
                 <constraint firstItem="VM5-LG-OHf" firstAttribute="centerY" secondItem="89Q-aX-WoL" secondAttribute="centerY" id="dkW-av-f2c"/>
                 <constraint firstAttribute="trailing" secondItem="uMa-IW-kVL" secondAttribute="trailing" id="jS9-0F-3iv"/>
-                <constraint firstAttribute="trailing" secondItem="lKv-Wm-mcm" secondAttribute="trailing" constant="16" id="lUm-O8-slL"/>
+                <constraint firstAttribute="trailing" secondItem="lKv-Wm-mcm" secondAttribute="trailing" id="lUm-O8-slL"/>
                 <constraint firstItem="uMa-IW-kVL" firstAttribute="leading" secondItem="89Q-aX-WoL" secondAttribute="leading" id="lYB-5P-Hgz"/>
                 <constraint firstAttribute="bottom" secondItem="uMa-IW-kVL" secondAttribute="bottom" id="mGc-gO-7cE"/>
                 <constraint firstItem="VM5-LG-OHf" firstAttribute="centerX" secondItem="89Q-aX-WoL" secondAttribute="centerX" id="t8K-6a-XUe"/>

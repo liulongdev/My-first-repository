@@ -10,4 +10,6 @@
 
 @interface MARCitiesWeatherVC : MARBaseViewController
 
+@property (nonatomic, assign) BOOL isHomeStyle;
+
 @end

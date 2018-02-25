@@ -10,12 +10,15 @@
 #import "MARWYNewModel.h"
 #import "UIImageView+SDWEBEXT.h"
 #import <Masonry.h>
+#import <MARLabel.h>
 @interface MARWYVideoNewTableCell()
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
+@property (strong, nonatomic) IBOutlet MARLabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *videoImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *sourceImageView;
 @property (strong, nonatomic) IBOutlet UILabel *sourceNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *videoTimeLengthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *publishTimeLabel;
 
 @end
 
@@ -27,6 +30,10 @@
     self.collecionBtn.layer.borderWidth = 1;
     self.collecionBtn.layer.borderColor = RGBHEX(0x999999).CGColor;
     self.collecionBtn.layer.cornerRadius = 8;
+    
+    self.titleLabel.edgeInsets = UIEdgeInsetsMake(15, 15, 15, 15);
+    self.titleLabel.backgroundColor = UIColorFromRGB(0x000000, 0.3);
+    self.titleLabel.preferredMaxLayoutWidth = kScreenWIDTH;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -42,12 +49,16 @@
         self.titleLabel.text = model.title;
         [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.cover ?: @""] placeholderImage:[UIImage imageNamed:@"img_media_default"]];
         self.sourceNameLabel.text = model.topicName;
-        [self.sourceImageView sd_setImageWithURL:[NSURL URLWithString:model.cover ?: @""] placeholderImage:[UIImage imageNamed:@"icon_default_head"]];
-        
+        [self.sourceImageView mar_setImageDefaultCornerRadiusWithURL:[NSURL URLWithString:model.topicImg ?: @""] errorImage:[UIImage imageNamed:@"img_loaddata_failure"]];
         NSInteger dMin = model.length / 60;
         NSInteger dSec = model.length % 60;
         self.videoTimeLengthLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", dMin, dSec];
-        
+        if ([model.ptime mar_stringByTrim].length > 0 && [model.ptime rangeOfString:@" "].location == NSNotFound) {
+            MARGLOBALMANAGER.dataFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+            self.publishTimeLabel.text = [MARGLOBALMANAGER.dataFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[model.ptime integerValue]/1000]];
+        }
+        else
+            self.publishTimeLabel.text = model.ptime;
 //        [self.sourceImageView mar_setImageDefaultCornerRadiusWithURL:[NSURL URLWithString:model.topicImg ?: @""]];
     }
 }

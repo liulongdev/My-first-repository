@@ -38,7 +38,7 @@
     }
     [MARUTILITY startApp];
     
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeCustomVC alloc] init]];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeTestVC alloc] init]];
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = navi;

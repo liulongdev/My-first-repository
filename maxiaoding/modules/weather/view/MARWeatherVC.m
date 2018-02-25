@@ -169,7 +169,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (_weatherM) {
-        return _weatherM.daily.count + 1;
+        return _weatherM.daily.count + 1 + 1 + 1;
+        // 每天天气 + 今天简要 + 日出日落等 + 指数建议
     }
     return 0;
 }
@@ -202,7 +203,70 @@
         }
         return cell;
     }
+    else if (indexPath.row == _weatherM.daily.count + 1)
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"dataInfoTableCell" forIndexPath:indexPath];
+        UILabel *leftLabel = [cell viewWithTag:1];
+        UILabel *rightLabel = [cell viewWithTag:2];
+        
+        NSMutableString* leftStr = [NSMutableString string];
+        NSMutableString* rightStr = [NSMutableString string];
+        
+        [leftStr appendString:@"日出:\n"];
+        [rightStr appendFormat:@"%@\n", [self todayWeatherDayInfo].sunrise ?: @""];
+        
+        [leftStr appendString:@"日落:\n\n"];
+        [rightStr appendFormat:@"%@\n\n", [self todayWeatherDayInfo].sunset ?: @""];
+        
+        [leftStr appendString:@"风级:\n"];
+        [rightStr appendFormat:@"%@\n", self.weatherM.windpower ?: @""];
+        [leftStr appendString:@"风速:\n\n"];
+        [rightStr appendFormat:@"%@%@ M/S\n\n", self.weatherM.winddirect ?: @"", self.weatherM.windspeed ?: @""];
+        
+        [leftStr appendString:@"湿度:\n"];
+        [rightStr appendFormat:@"%@%%\n", self.weatherM.humidity ?: @"未知"];
+        
+        [leftStr appendString:@"气压:"];
+        [rightStr appendFormat:@"%@百帕", self.weatherM.pressure ?: @"未知"];
+        
+        leftLabel.text = leftStr;
+        rightLabel.text = rightStr;
+        return cell;
+    }
+    else if (indexPath.row == _weatherM.daily.count + 2)
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"customInfoTableCell" forIndexPath:indexPath];
+        UILabel *label = (UILabel *)[cell viewWithTag:1];
+        
+        NSMutableString *lifeIndexStr = [NSMutableString string];
+        for (int i = 0; i < self.weatherM.myindex.count; i++) {
+            MAAWeatherLifeIndexM *weatherLifeIndexM = self.weatherM.myindex[i];
+            [lifeIndexStr appendFormat:@"%@ : %@ 。 %@", weatherLifeIndexM.iname, weatherLifeIndexM.ivalue, weatherLifeIndexM.detail];
+            if (i != self.weatherM.myindex.count - 1) {
+                [lifeIndexStr appendString:@"\n\n"];
+            }
+        }
+        label.text = lifeIndexStr;
+        return cell;
+    }
     return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"error"];
+}
+
+- (MAAWeatherDayInfoM *)todayWeatherDayInfo
+{
+    if (self.weatherM.daily.count > 0) {
+        return self.weatherM.daily[0];
+    }
+    return nil;
+}
+
+- (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj
+{
+    if (type == kMARNotificationType_NetworkChangedEnabel) {
+        if (!_weatherM) {
+            [self loadData];
+        }
+    }
 }
 
 @end

@@ -19,6 +19,9 @@
 @property (nonatomic, strong) NSArray<MAAWeatherLocalCityModel *> *cityArray;
 @property (nonatomic, strong) NSMutableArray *cityTitleArray;
 
+@property (nonatomic, strong) UIButton *additionCityButton;
+@property (nonatomic, strong) UIButton *removeCityButton;
+
 @end
 
 @implementation MARCitiesWeatherVC
@@ -52,33 +55,43 @@
     [rightAddBarBtn setMar_actionBlock:^(id sender) {
         @strongify(self)
         if (!strong_self) return;
-        MARWeatherChooseCityVC *chooseCityVC = (MARWeatherChooseCityVC *)[UIViewController vcWithStoryboardName:kSBNAME_Weather storyboardId:kSBID_Weather_WeatherChooseCityVC];
-        chooseCityVC.selectLoalCityMBlock = ^(MAAWeatherLocalCityModel *localCityM) {
-            strong_self.cityArray = nil;
-            NSArray* cityArray = [strong_self cityArray];
-            NSInteger pageIndex = [cityArray indexOfObject:localCityM];
-            [strong_self.magicController switchToPage:pageIndex animated:NO];
-        };
-        [strong_self mar_pushViewController:chooseCityVC animated:YES];
+        [strong_self gotoChooseCityVC];
     }];
     
     UIBarButtonItem *rightRemoveBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"-" style:UIBarButtonItemStyleDone target:nil action:nil];
     [rightRemoveBarBtn setMar_actionBlock:^(id sender) {
         @strongify(self)
         if (!strong_self) return;
-        if (strong_self.cityArray.count > strong_self.magicController.currentPage) {
-            BOOL deleteFlag = [strong_self.cityArray[strong_self.magicController.currentPage] deleteToDB];
-            if (deleteFlag) {
-                strong_self.cityArray = nil;
-                [strong_self cityArray];
-            }
-        }
+        [strong_self removeCurrentCityWeather];
     }];
     
     UIBarButtonItem *fixBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixBarButton.width = 30;
     
     self.navigationItem.rightBarButtonItems = @[rightAddBarBtn, fixBarButton, rightRemoveBarBtn];
+}
+
+- (void)gotoChooseCityVC
+{
+    MARWeatherChooseCityVC *chooseCityVC = (MARWeatherChooseCityVC *)[UIViewController vcWithStoryboardName:kSBNAME_Weather storyboardId:kSBID_Weather_WeatherChooseCityVC];
+    chooseCityVC.selectLoalCityMBlock = ^(MAAWeatherLocalCityModel *localCityM) {
+        self.cityArray = nil;
+        NSArray* cityArray = [self cityArray];
+        NSInteger pageIndex = [cityArray indexOfObject:localCityM];
+        [self.magicController switchToPage:pageIndex animated:NO];
+    };
+    [self mar_pushViewController:chooseCityVC animated:YES];
+}
+
+- (void)removeCurrentCityWeather
+{
+    if (self.cityArray.count > 1 && self.cityArray.count > self.magicController.currentPage) {
+        BOOL deleteFlag = [self.cityArray[self.magicController.currentPage] deleteToDB];
+        if (deleteFlag) {
+            self.cityArray = nil;
+            [self cityArray];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,10 +103,30 @@
     if (!_magicController) {
         _magicController = [[VTMagicController alloc] init];
         _magicController.magicView.navigationColor = [UIColor whiteColor];
-        _magicController.magicView.sliderColor = [UIColor redColor];
         _magicController.magicView.layoutStyle = VTLayoutStyleDivide;
         _magicController.magicView.switchStyle = VTSwitchStyleDefault;
-        _magicController.magicView.navigationHeight = 0.f;
+        if (self.isHomeStyle) {
+            _magicController.magicView.scrollEnabled = NO;
+            UIView *naviRightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+            naviRightView.backgroundColor = [UIColor clearColor];
+            _magicController.magicView.rightNavigatoinItem = naviRightView;
+            [naviRightView addSubview:self.additionCityButton];
+            [naviRightView addSubview:self.removeCityButton];
+            [self.removeCityButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(naviRightView);
+                make.leading.mas_equalTo(naviRightView);
+                make.size.mas_equalTo(CGSizeMake(50, 44));
+            }];
+            [self.additionCityButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(naviRightView);
+                make.leading.mas_equalTo(self.removeCityButton.mas_trailing);
+                make.size.mas_equalTo(self.removeCityButton);
+            }];
+        }
+        else
+        {
+            _magicController.magicView.navigationHeight = 0.f;
+        }
         _magicController.magicView.dataSource = self;
         _magicController.magicView.delegate = self;
         _magicController.magicView.itemScale = 1.2;
@@ -122,6 +155,43 @@
         _cityTitleArray = [NSMutableArray array];
     }
     return _cityTitleArray;
+}
+
+- (UIButton *)additionCityButton
+{
+    if (!_additionCityButton) {
+        _additionCityButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_additionCityButton setTitle:@"+" forState:UIControlStateNormal];
+        [_additionCityButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        @weakify(self)
+        [_additionCityButton mar_addActionBlock:^(id sender) {
+            @strongify(self)
+            if (!strong_self) return;
+            [strong_self gotoChooseCityVC];
+        } forState:UIControlEventTouchUpInside];
+    }
+    return _additionCityButton;
+}
+
+- (UIButton *)removeCityButton
+{
+    if (!_removeCityButton) {
+        _removeCityButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_removeCityButton setTitle:@"-" forState:UIControlStateNormal];
+        [_removeCityButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        @weakify(self)
+        [_removeCityButton mar_addActionBlock:^(id sender) {
+            @strongify(self)
+            if (!strong_self) return;
+            [strong_self removeCurrentCityWeather];
+        } forState:UIControlEventTouchUpInside];
+    }
+    return _removeCityButton;
+}
+
+- (void)dealloc
+{
+    [_additionCityButton mar_removeAllActionBlocks];
 }
 
 #pragma mark - VCMagicController Datasource

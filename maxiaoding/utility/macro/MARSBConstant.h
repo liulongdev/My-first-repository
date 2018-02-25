@@ -19,7 +19,7 @@ extern NSString * const kSBNAME_Test;
 extern NSString * const kSBNAME_Tianxing;
 extern NSString * const kSBNAME_Weather;
 extern NSString * const kSBNAME_Car;
-
+extern NSString * const kSBNAME_Setting;
 /**
  StoreBoard ID of  UIViewcontroller in StoreBoard
  */
@@ -59,6 +59,8 @@ extern NSString * const kSBID_Car_CarBrandListVC;
 extern NSString * const kSBID_Car_CarFactoryVC;
 extern NSString * const kSBID_Car_CarTypeVC;
 extern NSString * const kSBID_Car_CarDetailVC;
+
+extern NSString * const kSBID_Setting_HomeSettingVC;
 
 @interface MARSBConstant : NSObject
 

@@ -55,15 +55,14 @@
     if (!_magicController) {
         _magicController = [[VTMagicController alloc] init];
         _magicController.magicView.navigationColor = [UIColor whiteColor];
-        _magicController.magicView.sliderColor = [UIColor redColor];
         _magicController.magicView.layoutStyle = VTLayoutStyleDivide;
         _magicController.magicView.switchStyle = VTSwitchStyleDefault;
-        _magicController.magicView.navigationHeight = 40.f;
         _magicController.magicView.dataSource = self;
         _magicController.magicView.delegate = self;
-        
+        if (self.isHomeStyle) {
+            _magicController.magicView.scrollEnabled = NO;
+        }
         _magicController.magicView.itemScale = 1.2;
-        //        _magicController.magicView.navigationColor = [UIColor whiteColor];
         _magicController.magicView.layoutStyle = VTLayoutStyleDefault;
     }
     return _magicController;
@@ -228,6 +227,10 @@
         {
             self.navigationItem.rightBarButtonItem = nil;
         }
+    }
+    else if (type == kMARNotificationType_NetworkChangedEnabel)
+    {
+        [self categoryArray];
     }
 }
 

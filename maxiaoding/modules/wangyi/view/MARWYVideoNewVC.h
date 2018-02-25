@@ -10,4 +10,6 @@
 
 @interface MARWYVideoNewVC : MARBaseViewController
 
+@property (nonatomic, assign) BOOL isHomeStyle;
+
 @end

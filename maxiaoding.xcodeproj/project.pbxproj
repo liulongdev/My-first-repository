@@ -39,6 +39,8 @@
 		5B158C7220264963006B6EC9 /* car.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B158C7120264963006B6EC9 /* car.storyboard */; };
 		5B158C782026CA0B006B6EC9 /* MAACarFactoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B158C772026CA0B006B6EC9 /* MAACarFactoryVC.m */; };
 		5B158C7B20275B74006B6EC9 /* MAACarTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B158C7A20275B74006B6EC9 /* MAACarTypeVC.m */; };
+		5B1892492041585E00173FEF /* setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1892482041585E00173FEF /* setting.storyboard */; };
+		5B18924C20415E9400173FEF /* MARHomeSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B18924B20415E9400173FEF /* MARHomeSettingVC.m */; };
 		5B225D3E202233D800EB1F2A /* MAACardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D3D202233D800EB1F2A /* MAACardModel.m */; };
 		5B225D5320240C5500EB1F2A /* weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B225D5220240C5500EB1F2A /* weather.storyboard */; };
 		5B225D5620240C9200EB1F2A /* MARWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D5520240C9200EB1F2A /* MARWeatherVC.m */; };
@@ -151,6 +153,7 @@
 		5B7660221FFCABDE000BA56A /* MARSetPasswrodVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7660211FFCABDE000BA56A /* MARSetPasswrodVC.m */; };
 		5B7660251FFCABFA000BA56A /* MARPhoneOperationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7660241FFCABFA000BA56A /* MARPhoneOperationVC.m */; };
 		5B76602A1FFCE066000BA56A /* MARUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7660291FFCE066000BA56A /* MARUtility.m */; };
+		5B92CEC520400E760031BDC5 /* MAANewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B92CEC420400E760031BDC5 /* MAANewModel.m */; };
 		5B933B2C1FE767AD004C2038 /* MARDataAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B2B1FE767AD004C2038 /* MARDataAnalysis.m */; };
 		5B933B321FE79999004C2038 /* UIViewController+MAREX.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B311FE79998004C2038 /* UIViewController+MAREX.m */; };
 		5B933B351FE823B4004C2038 /* mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B933B341FE823B4004C2038 /* mine.storyboard */; };
@@ -256,6 +259,9 @@
 		5B158C772026CA0B006B6EC9 /* MAACarFactoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACarFactoryVC.m; sourceTree = "<group>"; };
 		5B158C7920275B74006B6EC9 /* MAACarTypeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAACarTypeVC.h; sourceTree = "<group>"; };
 		5B158C7A20275B74006B6EC9 /* MAACarTypeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACarTypeVC.m; sourceTree = "<group>"; };
+		5B1892482041585E00173FEF /* setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = setting.storyboard; sourceTree = "<group>"; };
+		5B18924A20415E9400173FEF /* MARHomeSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHomeSettingVC.h; sourceTree = "<group>"; };
+		5B18924B20415E9400173FEF /* MARHomeSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHomeSettingVC.m; sourceTree = "<group>"; };
 		5B225D3C202233D800EB1F2A /* MAACarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAACarModel.h; sourceTree = "<group>"; };
 		5B225D3D202233D800EB1F2A /* MAACardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACardModel.m; sourceTree = "<group>"; };
 		5B225D5220240C5500EB1F2A /* weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = weather.storyboard; sourceTree = "<group>"; };
@@ -436,6 +442,8 @@
 		5B7660241FFCABFA000BA56A /* MARPhoneOperationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARPhoneOperationVC.m; sourceTree = "<group>"; };
 		5B7660281FFCE066000BA56A /* MARUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARUtility.h; sourceTree = "<group>"; };
 		5B7660291FFCE066000BA56A /* MARUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARUtility.m; sourceTree = "<group>"; };
+		5B92CEC320400E760031BDC5 /* MAANewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAANewModel.h; sourceTree = "<group>"; };
+		5B92CEC420400E760031BDC5 /* MAANewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAANewModel.m; sourceTree = "<group>"; };
 		5B933B2A1FE767AD004C2038 /* MARDataAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARDataAnalysis.h; sourceTree = "<group>"; };
 		5B933B2B1FE767AD004C2038 /* MARDataAnalysis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARDataAnalysis.m; sourceTree = "<group>"; };
 		5B933B301FE79998004C2038 /* UIViewController+MAREX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MAREX.h"; sourceTree = "<group>"; };
@@ -609,6 +617,23 @@
 				5B029F341FE421AB008ED5CA /* MARHomeDateView.xib */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		5B1892462041583700173FEF /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				5B1892472041584700173FEF /* view */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		5B1892472041584700173FEF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B18924A20415E9400173FEF /* MARHomeSettingVC.h */,
+				5B18924B20415E9400173FEF /* MARHomeSettingVC.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		5B225D5020240C2600EB1F2A /* weather */ = {
@@ -802,6 +827,8 @@
 		5B25F8B11FE0F80500E85884 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				5B1892462041583700173FEF /* setting */,
+				5B1892482041585E00173FEF /* setting.storyboard */,
 				5B225DBC20263A4200EB1F2A /* car */,
 				5B225D5020240C2600EB1F2A /* weather */,
 				5B42ED991FFE4BBF00B98D68 /* wangyi */,
@@ -1148,6 +1175,8 @@
 				5BDE92B52020D464005969C6 /* MAAWeatherModel.m */,
 				5B225D3C202233D800EB1F2A /* MAACarModel.h */,
 				5B225D3D202233D800EB1F2A /* MAACardModel.m */,
+				5B92CEC320400E760031BDC5 /* MAANewModel.h */,
+				5B92CEC420400E760031BDC5 /* MAANewModel.m */,
 			);
 			path = response;
 			sourceTree = "<group>";
@@ -1520,6 +1549,7 @@
 				5B225D5F20245C7000EB1F2A /* MARWeatherHeaderView.xib in Resources */,
 				5B375C9420027576001E02F2 /* MARWYNewDetail.css in Resources */,
 				5B225D9A202564DB00EB1F2A /* weather_17.png in Resources */,
+				5B1892492041585E00173FEF /* setting.storyboard in Resources */,
 				5B225DAA202564DB00EB1F2A /* weather_301.png in Resources */,
 				5B225D9B202564DB00EB1F2A /* weather_18.png in Resources */,
 				5B225D93202564DB00EB1F2A /* weather_10.png in Resources */,
@@ -1637,6 +1667,7 @@
 				5B375C9D20037F2A001E02F2 /* MARWYVideoNewTableCell.m in Sources */,
 				5B933B561FE94035004C2038 /* MARTXNewModel.m in Sources */,
 				5BFCE7171FE5257000E86CCC /* MARCookDetailVC.m in Sources */,
+				5B18924C20415E9400173FEF /* MARHomeSettingVC.m in Sources */,
 				5B375CA12003C287001E02F2 /* MARWYVideoPlayView.m in Sources */,
 				5B029F3E1FE4BA1A008ED5CA /* MARCookCategoryModel.m in Sources */,
 				5B25F8CF1FE0F80500E85884 /* MARNetworkManager.m in Sources */,
@@ -1680,6 +1711,7 @@
 				5B25F8F91FE17D2900E85884 /* MARHistoryDayModel.m in Sources */,
 				5B25F8EC1FE12B9000E85884 /* MARMobMenuVC.m in Sources */,
 				5B25F8541FE0D2CA00E85884 /* AppDelegate.m in Sources */,
+				5B92CEC520400E760031BDC5 /* MAANewModel.m in Sources */,
 				5B933B5B1FE9485C004C2038 /* MARTianxingUtil.m in Sources */,
 				5B7660251FFCABFA000BA56A /* MARPhoneOperationVC.m in Sources */,
 				5B25F8CE1FE0F80500E85884 /* MARBaseViewController.m in Sources */,

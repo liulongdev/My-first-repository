@@ -179,4 +179,34 @@
     } failure:failure];
 }
 
++ (void)new_getNewListWithType:(NSString *)type
+                       success:(void (^)(NSArray<MAANewModel *> *))success
+                       failure:(MARNetworkFailure)failure
+{
+    MARALIAPIModel *model = [MARALIAPIModel new];
+    model.appCode = MAAAPPCODE;
+    model.host = @"http://toutiao-ali.juheapi.com";
+    model.path = @"/toutiao/index";
+    model.method = @"GET";
+    model.queryDic = @{@"type": type ?: @""};
+    model.bodys = nil;
+    
+    [self p_reqeustWithModel:model success:^(NSURLSessionTask *task, id responseObject) {
+        if ([responseObject[@"error_code"] integerValue] == 0) {
+            id data = nil;
+            if ([responseObject[@"result"] isKindOfClass:[NSDictionary class]]) {
+                data = responseObject[@"result"][@"data"];
+            }
+            NSArray *newArray = [NSArray mar_modelArrayWithClass:[MAANewModel class] json:data];
+            if (success) {
+                success(newArray);
+            }
+        }
+        else
+        {
+            failure(nil, [NSError errorWithDomain:@"NSALIAPICarErrorDomain" code:300001 userInfo:@{NSLocalizedDescriptionKey:responseObject[@"msg"] ?: @"网络不稳定，请重试～"}]);
+        }
+    } failure:failure];
+}
+
 @end

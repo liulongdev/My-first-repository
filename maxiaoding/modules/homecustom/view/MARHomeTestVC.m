@@ -9,12 +9,19 @@
 #import "MARHomeTestVC.h"
 #import "MARHomeDateView.h"
 #import <iCarousel.h>
-#import "MARWeatherVC.h"
-#import "MARCarBrandListVC.h"
+#import "MARCitiesWeatherVC.h"
+#import "MAACarBrandListVC.h"
+#import "MARWYVideoNewVC.h"
+#import "MARCookCategoryCollectionVC.h"
+#import "MARHomeSettingVC.h"
 @interface MARHomeTestVC () <iCarouselDataSource, iCarouselDelegate>
 @property (nonatomic, strong) iCarousel *carousel;
+@property (nonatomic, strong) UIView *timeInfoView;
 @property (nonatomic, strong) UIView *weatherView;
 @property (nonatomic, strong) UIView *carView;
+@property (nonatomic, strong) UIView *wyVideoView;
+@property (nonatomic, strong) UIView *cookView;
+@property (nonatomic, strong) UIView *settingView;
 @end
 
 @implementation MARHomeTestVC
@@ -26,7 +33,12 @@
     //create carousel
     _carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
     _carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _carousel.type = iCarouselTypeCoverFlow2;
+    NSNumber *typeNum = [MARUserDefault getNumberBy:USERDEFAULTKEY_HomeStyle];
+    if (typeNum) {
+        _carousel.type = [typeNum integerValue];
+    }
+    else
+        _carousel.type = iCarouselTypeCoverFlow;
     _carousel.delegate = self;
     _carousel.dataSource = self;
     
@@ -50,21 +62,22 @@
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    return 3;
+    return 6;
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
     if (index == 0) {
-        if ([view isKindOfClass:[MARHomeDateView class]])
-        {
-            
-        }
-        else
-        {
-            view = [MARHomeDateView nibView];
-            view.backgroundColor = RGBHEX(0x99ccff);
-        }
+        view = self.timeInfoView;
+//        if ([view isKindOfClass:[MARHomeDateView class]])
+//        {
+//
+//        }
+//        else
+//        {
+//            view = [MARHomeDateView nibView];
+//            view.backgroundColor = RGBHEX(0x99ccff);
+//        }
     }
     if (index == 1) {
         view = self.weatherView;
@@ -72,14 +85,37 @@
     if (index == 2) {
         view = self.carView;
     }
-    view.frame = CGRectMake(0, 0, kScreenWIDTH, kScreenHEIGHT);
+    if (index == 3) {
+        view = self.wyVideoView;
+    }
+    if (index == 4) {
+        view = self.cookView;
+    }
+    if (index == 5) {
+        view = self.settingView;
+    }
+    double pageScale = [MARUserDefault getDoubleBy:USERDEFAULTKEY_HomePageScale];
+    if (pageScale <0.5 || pageScale > 1) {
+        pageScale = 1;
+    }
+    view.frame = CGRectMake(0, 0, kScreenWIDTH * pageScale, kScreenHEIGHT * pageScale);
     return view;
+}
+
+- (UIView *)timeInfoView
+{
+    if (!_timeInfoView) {
+        _timeInfoView = [MARHomeDateView nibView];
+        _timeInfoView.backgroundColor = RGBHEX(0x99ccff);
+    }
+    return _timeInfoView;
 }
 
 - (UIView *)weatherView
 {
     if (!_weatherView) {
-        MARWeatherVC *weatherVC = (MARWeatherVC *)[UIViewController vcWithStoryboardName:kSBNAME_Weather storyboardId:kSBID_Weather_WeatherVC];
+        MARCitiesWeatherVC *weatherVC = [[MARCitiesWeatherVC alloc] init];
+        weatherVC.isHomeStyle = YES;
         [self addChildViewController:weatherVC];
         _weatherView = weatherVC.view;
     }
@@ -89,11 +125,43 @@
 - (UIView *)carView
 {
     if (!_carView) {
-        MARCarBrandListVC *carVC = (MARCarBrandListVC *)[UIViewController vcWithStoryboardName:kSBNAME_Car storyboardId:kSBID_Car_CarBrandListVC];
+        MAACarBrandListVC *carVC = (MAACarBrandListVC *)[UIViewController vcWithStoryboardName:kSBNAME_Car storyboardId:kSBID_Car_CarBrandListVC];
+        carVC.isHomeStyle = YES;
         [self addChildViewController:carVC];
         _carView = carVC.view;
     }
     return _carView;
+}
+
+- (UIView *)wyVideoView
+{
+    if (!_wyVideoView) {
+        MARWYVideoNewVC *wyVideoVC = [[MARWYVideoNewVC alloc] init];
+        wyVideoVC.isHomeStyle = YES;
+        [self addChildViewController:wyVideoVC];
+        _wyVideoView = wyVideoVC.view;
+    }
+    return _wyVideoView;
+}
+
+- (UIView *)cookView
+{
+    if (!_cookView) {
+        MARCookCategoryCollectionVC *cookListVC = (MARCookCategoryCollectionVC *)[UIViewController vcWithStoryboardName:kSBNAME_Mob storyboardId:kSBID_Mob_CookCategoryCollectionVC];
+        [self addChildViewController:cookListVC];
+        _cookView = cookListVC.view;
+    }
+    return _cookView;
+}
+
+- (UIView *)settingView
+{
+    if (!_settingView) {
+        MARHomeSettingVC *settingVC = (MARHomeSettingVC *)[UIViewController vcWithStoryboardName:kSBNAME_Setting storyboardId:kSBID_Setting_HomeSettingVC];
+        [self addChildViewController:settingVC];
+        _settingView = settingVC.view;
+    }
+    return _settingView;
 }
 
 - (CATransform3D)carousel:(iCarousel *)carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform
@@ -131,6 +199,33 @@
         {
             return value;
         }
+    }
+}
+
+- (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel
+{
+    if (carousel.currentItemIndex != 3) {
+        [MARGLOBALMANAGER postNotif:kMARNotificationType_CloseWYVideoPlay data:nil object:nil];
+    }
+}
+
+- (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj
+{
+    if (type == kMARNotificationType_ChooseHomeStyle) {
+        NSNumber *typeNum = [MARUserDefault getNumberBy:USERDEFAULTKEY_HomeStyle];
+        if (typeNum && [typeNum isEqual:data]) {
+            return;
+        }
+        [MARUserDefault setNumber:data key:USERDEFAULTKEY_HomeStyle];
+        [UIView beginAnimations:nil context:nil];
+        self.carousel.type = [data integerValue];
+        [UIView commitAnimations];
+        
+        [self.carousel reloadData];
+    }
+    else if (type == kMARNotificationType_NeedReloadHomeMagicView)
+    {
+        [self.carousel reloadData];
     }
 }
 

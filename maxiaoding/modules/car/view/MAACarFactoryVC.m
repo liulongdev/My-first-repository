@@ -123,7 +123,7 @@
         UIImageView *imageView = [cell viewWithTag:3];
         
         NSString *factoryName = (![carTypeM isKindOfClass:[NSString class]] || [carTypeM.fullname mar_stringByTrim].length == 0) ? carTypeM.name : carTypeM.fullname;
-        carFactoryNameLabel.text = [NSString stringWithFormat:@"%@ (%ld)", factoryName, (long)carTypeM.list.count];
+        carFactoryNameLabel.text = [NSString stringWithFormat:@"%@", factoryName];
         if (carTypeM.list.count > 0) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             carFactorySaleStutasLabel.text = [NSString stringWithFormat:@"%@ (%ld)", carTypeM.salestate, (long)carTypeM.list.count];

@@ -9,6 +9,7 @@
 #import "MAACarBrandListVC.h"
 #import "MARALIAPINetworkManager.h"
 #import "MAACarFactoryVC.h"
+#import <Masonry.h>
 @interface MAACarBrandListVC () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -19,6 +20,9 @@
 @property (nonatomic, strong) NSArray* initialArray;
 @property (nonatomic, strong) UIBarButtonItem *rightBarBtn;
 @property (nonatomic, assign) BOOL isTableListStyle;
+
+@property (nonatomic, strong) UIButton *displayStyleBtn;
+
 @end
 
 NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTableStyleKey";
@@ -45,6 +49,17 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
     self.collectionFlowLayout.itemSize = CGSizeMake(width, width);
     self.collectionFlowLayout.minimumLineSpacing = itemSpace;
     self.collectionFlowLayout.minimumInteritemSpacing = itemSpace;
+    
+    if (self.isHomeStyle) {
+        self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);
+        self.collectionView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);
+        [self.view addSubview:self.displayStyleBtn];
+        [self.displayStyleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.mas_topLayoutGuide);
+            make.trailing.mas_equalTo(self.view);
+            make.size.mas_equalTo(CGSizeMake(100, 44));
+        }];
+    }
 }
 
 - (NSMutableDictionary *)carBrandDic
@@ -123,6 +138,23 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
     [MARUserDefault setBool:isTableListStyle key:MAACarBrandListVCListTableStyleKey];
 }
 
+- (UIButton *)displayStyleBtn
+{
+    if (!_displayStyleBtn) {
+        _displayStyleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_displayStyleBtn setTitle:@"" forState:UIControlStateNormal];
+        [_displayStyleBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        @weakify(self)
+        [_displayStyleBtn mar_addActionBlock:^(id sender) {
+            @strongify(self)
+            if (!strong_self) return;
+            strong_self.isTableListStyle = !strong_self.isTableListStyle;
+            [strong_self p_reloadCollectionData];
+        } forState:UIControlEventTouchUpInside];
+    }
+    return _displayStyleBtn;
+}
+
 - (void)loadData
 {
     @weakify(self)
@@ -132,9 +164,11 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
         if (!strong_self) return;
         strong_self.carBrandArray = carBrandArray;
         [strong_self p_reloadCollectionData];
-        for (MAACarBrandM *model in carBrandArray) {
-            [model updateToDB];
-        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            for (MAACarBrandM *model in carBrandArray) {
+                [model updateToDB];
+            }
+        });
         [strong_self showActivityView:NO];
     } failure:^(NSURLSessionTask *task, NSError *error) {
         NSLog(@">>>> error ; %@", error);
@@ -247,6 +281,9 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
     BOOL isTable = self.isTableListStyle;
     NSString *btnTitle = isTable ? @"大图" : @"列表";
     self.rightBarBtn.title = btnTitle;
+    if (_isHomeStyle) {
+        [self.displayStyleBtn setTitle:btnTitle forState:UIControlStateNormal];
+    }
     if (!self.navigationItem.rightBarButtonItem) {
         self.navigationItem.rightBarButtonItem = self.rightBarBtn;
     }
@@ -305,6 +342,13 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
     if (_carBrandArray.count > indexPath.row) {
         MAACarBrandM *carBrandM = _carBrandArray[indexPath.row];
         [self performSegueWithIdentifier:@"goMAACarFactoryVC" sender:carBrandM];
+    }
+}
+
+- (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj
+{
+    if (type == kMARNotificationType_NetworkChangedEnabel) {
+        [self carBrandArray];
     }
 }
 

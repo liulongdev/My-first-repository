@@ -56,11 +56,12 @@
 + (void)test
 {
 //    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-    [[UIApplication sharedApplication] mxd_requestAccessToLocationWithSuccess:^{
-        NSLog(@">>>> success ");
-    } andFailure:^{
-        NSLog(@">>>> failure");
-    }];
+//    [[UIApplication sharedApplication] mxd_requestAccessToLocationWithSuccess:^{
+//        NSLog(@">>>> success ");
+//    } andFailure:^{
+//        NSLog(@">>>> failure");
+//    }];
+
     
 //    NSArray *cityArray = [MAAWeatherCityModel cityArrayWithParentId:@"0"];
 //    NSLog(@">>> count : %ld", cityArray.count);

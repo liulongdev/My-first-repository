@@ -87,8 +87,8 @@
                                                             </constraints>
                                                             <state key="normal" image="video_flag"/>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6X-LQ-fJw">
-                                                            <rect key="frame" x="15" y="10" width="345" height="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6X-LQ-fJw" customClass="MARLabel">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -104,15 +104,15 @@
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="kHw-fx-tUc" secondAttribute="bottom" constant="10" id="425-XA-ulh"/>
                                                         <constraint firstItem="BPt-OA-Si0" firstAttribute="centerY" secondItem="dYX-op-aBZ" secondAttribute="centerY" id="GW2-fj-Obr"/>
-                                                        <constraint firstAttribute="trailing" secondItem="l6X-LQ-fJw" secondAttribute="trailing" constant="15" id="J7H-vK-9f9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="l6X-LQ-fJw" secondAttribute="trailing" id="J7H-vK-9f9"/>
                                                         <constraint firstAttribute="trailing" secondItem="0kP-jI-byQ" secondAttribute="trailing" id="OFh-0q-frK"/>
                                                         <constraint firstAttribute="width" secondItem="dYX-op-aBZ" secondAttribute="height" multiplier="2:1" priority="888" id="PBA-DB-83l"/>
                                                         <constraint firstItem="BPt-OA-Si0" firstAttribute="centerX" secondItem="dYX-op-aBZ" secondAttribute="centerX" id="gDf-RA-uqe"/>
-                                                        <constraint firstItem="l6X-LQ-fJw" firstAttribute="leading" secondItem="dYX-op-aBZ" secondAttribute="leading" constant="15" id="jJG-mT-CG4"/>
+                                                        <constraint firstItem="l6X-LQ-fJw" firstAttribute="leading" secondItem="dYX-op-aBZ" secondAttribute="leading" id="jJG-mT-CG4"/>
                                                         <constraint firstItem="0kP-jI-byQ" firstAttribute="top" secondItem="dYX-op-aBZ" secondAttribute="top" id="qND-Oz-B9K"/>
                                                         <constraint firstItem="0kP-jI-byQ" firstAttribute="leading" secondItem="dYX-op-aBZ" secondAttribute="leading" id="qyX-nU-R8D"/>
                                                         <constraint firstAttribute="bottom" secondItem="0kP-jI-byQ" secondAttribute="bottom" id="smW-Yc-bon"/>
-                                                        <constraint firstItem="l6X-LQ-fJw" firstAttribute="top" secondItem="dYX-op-aBZ" secondAttribute="top" constant="10" id="xeS-Ka-Vmt"/>
+                                                        <constraint firstItem="l6X-LQ-fJw" firstAttribute="top" secondItem="dYX-op-aBZ" secondAttribute="top" id="xeS-Ka-Vmt"/>
                                                         <constraint firstAttribute="trailing" secondItem="kHw-fx-tUc" secondAttribute="trailing" constant="15" id="xek-qD-5Yv"/>
                                                     </constraints>
                                                 </view>
@@ -143,14 +143,22 @@
                                                                 <color key="titleColor" red="0.016737196180555556" green="0.31556532118055558" blue="0.50222439236111116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofW-Mk-TFP">
+                                                            <rect key="frame" x="268.5" y="12" width="35.5" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="ofW-Mk-TFP" firstAttribute="centerY" secondItem="NL0-CU-aLt" secondAttribute="centerY" id="0de-Zv-gCD"/>
                                                         <constraint firstAttribute="trailing" secondItem="tuj-YV-HLq" secondAttribute="trailing" constant="8" id="2Dk-Ws-x00"/>
                                                         <constraint firstItem="vys-kk-5uE" firstAttribute="leading" secondItem="NL0-CU-aLt" secondAttribute="leading" constant="15" id="2Nz-vP-q5m"/>
                                                         <constraint firstItem="4tA-bI-ykJ" firstAttribute="centerY" secondItem="NL0-CU-aLt" secondAttribute="centerY" id="4Ur-uP-f2L"/>
                                                         <constraint firstItem="vys-kk-5uE" firstAttribute="centerY" secondItem="NL0-CU-aLt" secondAttribute="centerY" id="Gt0-dr-yaR"/>
                                                         <constraint firstItem="vys-kk-5uE" firstAttribute="top" secondItem="NL0-CU-aLt" secondAttribute="top" constant="6" id="Qnu-SU-P8s"/>
+                                                        <constraint firstItem="tuj-YV-HLq" firstAttribute="leading" secondItem="ofW-Mk-TFP" secondAttribute="trailing" constant="3" id="YtZ-Ff-at8"/>
                                                         <constraint firstItem="4tA-bI-ykJ" firstAttribute="leading" secondItem="vys-kk-5uE" secondAttribute="trailing" constant="10" id="lZ3-yf-VtS"/>
                                                         <constraint firstItem="tuj-YV-HLq" firstAttribute="centerY" secondItem="NL0-CU-aLt" secondAttribute="centerY" id="nUY-4i-5HW"/>
                                                     </constraints>
@@ -169,6 +177,7 @@
                                         <connections>
                                             <outlet property="collecionBtn" destination="tuj-YV-HLq" id="nGZ-0i-MiN"/>
                                             <outlet property="playBtn" destination="BPt-OA-Si0" id="mui-nm-kol"/>
+                                            <outlet property="publishTimeLabel" destination="ofW-Mk-TFP" id="2TV-AI-clP"/>
                                             <outlet property="sourceImageView" destination="vys-kk-5uE" id="HK9-4u-mZq"/>
                                             <outlet property="sourceNameLabel" destination="4tA-bI-ykJ" id="awI-e8-hFq"/>
                                             <outlet property="titleLabel" destination="l6X-LQ-fJw" id="u1r-Fu-bpE"/>

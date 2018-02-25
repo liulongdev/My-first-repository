@@ -47,17 +47,20 @@
             case RealStatusNotReachable:
             {
                 //  case NotReachable handler
+                [MARGLOBALMANAGER postNotif:kMARNotificationType_NetworkChangedDisEnabel data:nil object:nil];
                 break;
             }
                 
             case RealStatusViaWiFi:
             {
+                [MARGLOBALMANAGER postNotif:kMARNotificationType_NetworkChangedEnabel data:nil object:nil];
                 //  case ReachableViaWiFi handler
                 break;
             }
                 
             case RealStatusViaWWAN:
             {
+                [MARGLOBALMANAGER postNotif:kMARNotificationType_NetworkChangedEnabel data:nil object:nil];
                 //  case ReachableViaWWAN handler
                 break;
             }

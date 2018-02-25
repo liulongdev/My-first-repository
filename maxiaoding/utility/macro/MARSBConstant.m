@@ -19,6 +19,7 @@ NSString * const kSBNAME_Test                           = @"test";
 NSString * const kSBNAME_Tianxing                       = @"tianxing";
 NSString * const kSBNAME_Weather                        = @"weather";
 NSString * const kSBNAME_Car                            = @"car";
+NSString * const kSBNAME_Setting                        = @"setting";
 /**
  StoryBoard ID of  UIViewcontroller in StoreBoard
  */
@@ -59,6 +60,7 @@ NSString * const kSBID_Car_CarFactoryVC                 = @"MAACarFactoryVC";
 NSString * const kSBID_Car_CarTypeVC                    = @"MAACarTypeVC";
 NSString * const kSBID_Car_CarDetailVC                  = @"MAACarDetailVC";
 
+NSString * const kSBID_Setting_HomeSettingVC            = @"MARHomeSettingVC";
 /**
  StoryBoard Segue Identifier
  */

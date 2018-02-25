@@ -10,6 +10,7 @@
 #import "MAARequestModel.h"
 #import "MAAWeatherModel.h"
 #import "MAACarModel.h"
+#import "MAANewModel.h"
 
 /** @brief     阿里云API接口集合
     @file      MARALIAPINetworkManager.h
@@ -72,4 +73,7 @@
                           success:(void (^)(MAACarModel *carModel))success
                           failure:(MARNetworkFailure)failure;
 
++ (void)new_getNewListWithType:(NSString *)type
+                       success:(void (^)(NSArray<MAANewModel *> *newArray))success
+                       failure:(MARNetworkFailure)failure;
 @end

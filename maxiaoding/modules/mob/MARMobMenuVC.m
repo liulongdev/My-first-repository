@@ -42,7 +42,6 @@ static NSString * const cellTitle_car               = @"汽车（新）";
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *titleArray;
 
-
 @property (nonatomic, strong) YWFeedbackKit *feedbackKit;
 @property (nonatomic, strong) YWFeedbackViewController *feedbackVC;
 @end
@@ -55,8 +54,8 @@ static NSString * const cellTitle_car               = @"汽车（新）";
     self.title = @"马小丁";
     [super viewDidLoad];
     
-    [self getAliFeedbackVC];
-    [self getAliFeedbackUnreadCount];
+//    [self getAliFeedbackVC];
+//    [self getAliFeedbackUnreadCount];
     
     // Do any additional setup after loading the view.
 }

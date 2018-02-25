@@ -180,4 +180,11 @@
     }
 }
 
+- (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj
+{
+    if (type == kMARNotificationType_NetworkChangedEnabel) {
+        [self cookCategoryMenuArray];
+    }
+}
+
 @end

@@ -10,4 +10,6 @@
 
 @interface MAACarBrandListVC : MARBaseViewController
 
+@property (nonatomic, assign) BOOL isHomeStyle;
+
 @end

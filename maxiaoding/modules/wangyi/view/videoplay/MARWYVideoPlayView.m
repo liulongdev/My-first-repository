@@ -7,13 +7,13 @@
 //
 
 #import "MARWYVideoPlayView.h"
-
+#import <MARLabel.h>
 @interface MARWYVideoPlayView ()
 @property (nonatomic, strong) AVPlayer *player;
 
 // 播放器的Layer
 @property (weak, nonatomic) AVPlayerLayer *playerLayer;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet MARLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
 @property (weak, nonatomic) IBOutlet UIButton *playOrPauseBtn;
@@ -48,6 +48,8 @@
     
     self.toolView.alpha = 0;
     self.titleLabel.alpha = 0;
+    self.titleLabel.edgeInsets = UIEdgeInsetsMake(15, 15, 15, 15);
+    self.titleLabel.backgroundColor = UIColorFromRGB(0x000000, 0.3);
     self.isShowToolView = NO;
     
     [self.progressSlider setThumbImage:[UIImage imageNamed:@"icon_video_slider_thumbImage"] forState:UIControlStateNormal];
