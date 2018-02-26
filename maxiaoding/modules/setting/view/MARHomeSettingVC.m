@@ -13,6 +13,8 @@
 
 NSString * const kCellTitle_SelectStyle             = @"选择样式";
 NSString * const kCellTitle_PageScale               = @"页面比利";
+NSString * const kCellTitle_cache                   = @"清除图片缓存";
+NSString * const kCellTitle_videoCache              = @"清除视频缓存";
 NSString * const kCellTitle_More                    = @"更多";
 NSString * const kCellTitle_Feedback                = @"意见反馈";
 
@@ -24,13 +26,24 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
 
 @property (nonatomic, strong) YWFeedbackKit *feedbackKit;
 @property (nonatomic, strong) YWFeedbackViewController *feedbackVC;
+
+@property (nonatomic, strong) NSByteCountFormatter *byteFormatter;
 @end
 
 @implementation MARHomeSettingVC
-
+{
+    BOOL isCaculatingSDImageDiskSize;
+    NSInteger sdImageCount;
+    NSInteger sdImageDiskSize;
+    BOOL isCaculatingVideoDiskSize;
+    NSInteger videoCount;
+    NSInteger videoDiskSize;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getAliFeedbackVC];
+    [self caculateSDImageDiskSize];
+    [self caculateVideoDiskSize];
 }
 
 - (void)UIGlobal
@@ -45,6 +58,8 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
     if (!_titleArray) {
         _titleArray = @[kCellTitle_SelectStyle,
                         kCellTitle_PageScale,
+                        kCellTitle_cache,
+                        kCellTitle_videoCache,
                         kCellTitle_More];
     }
     return _titleArray;
@@ -56,6 +71,14 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
         _homeStyleTitleArray = @[@"横铺", @"外圆柱", @"内圆柱", @"外柱体", @"内柱体", @"圆环", @"内圆环", @"封面浏览", @"封面浏览2", @"时间流逝", @"时间流逝2", @"时间流逝3"];
     }
     return _homeStyleTitleArray;
+}
+
+- (NSByteCountFormatter *)byteFormatter
+{
+    if (!_byteFormatter) {
+        _byteFormatter = [[NSByteCountFormatter alloc] init];
+    }
+    return _byteFormatter;
 }
 
 #pragma mark getter
@@ -113,6 +136,36 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
         {
             cell.detailTextLabel.text = nil;
         }
+        
+        NSString *title = cell.textLabel.text;
+        if ([title isEqualToString:kCellTitle_cache]) {
+            if (isCaculatingSDImageDiskSize) {
+                cell.detailTextLabel.text = nil;
+                UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                [activityIndicatorView startAnimating];
+                cell.accessoryView = activityIndicatorView;
+            }
+            else
+            {
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld张图片-%@", (long)sdImageCount, [self.byteFormatter stringFromByteCount:sdImageDiskSize]];
+                cell.accessoryView = nil;
+            }
+        }
+        else if ([title isEqualToString:kCellTitle_videoCache]) {
+            if (isCaculatingVideoDiskSize) {
+                cell.detailTextLabel.text = nil;
+                UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                [activityIndicatorView startAnimating];
+                cell.accessoryView = activityIndicatorView;
+            }
+            else
+            {
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.byteFormatter stringFromByteCount:videoDiskSize]];
+                cell.accessoryView = nil;
+            }
+        }
+        
+        
     }
     return cell;
 }
@@ -140,6 +193,12 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
             [self mar_pushViewController:self.feedbackVC animated:YES];
         }
     }
+    else if ([kCellTitle_cache isEqualToString:title]) {
+        [self _clearImageCache];
+    }
+    else if ([kCellTitle_videoCache isEqualToString:title]) {
+        [self _clearVideoCache];
+    }
     
 }
 
@@ -165,6 +224,59 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
     [sheet showInView:self.view];
 }
 
+#pragma mark - 计算缓存
+- (void)caculateSDImageDiskSize
+{
+    isCaculatingSDImageDiskSize = YES;
+    [self.tableView reloadData];
+    @weakify(self)
+    [[SDImageCache sharedImageCache] calculateSizeWithCompletionBlock:^(NSUInteger fileCount, NSUInteger totalSize) {
+        @strongify(self);
+        if (!strong_self) return;
+        strong_self->isCaculatingSDImageDiskSize = NO;
+        strong_self->sdImageCount = fileCount;
+        strong_self->sdImageDiskSize = totalSize;
+        [strong_self.tableView reloadData];
+    }];
+}
+
+- (void)caculateVideoDiskSize
+{
+    isCaculatingVideoDiskSize = YES;
+    [self.tableView reloadData];
+    @weakify(self)
+    [MARUTILITY calculateVideoCacheSizeWithCompletionBlock:^(NSUInteger fileCount, NSUInteger totalSize) {
+        @strongify(self);
+        if (!strong_self) return;
+        strong_self->isCaculatingVideoDiskSize = NO;
+        strong_self->videoCount = fileCount;
+        strong_self->videoDiskSize = totalSize;
+        [strong_self.tableView reloadData];
+    }];
+}
+
+- (void)_clearImageCache
+{
+    @weakify(self)
+    [[SDImageCache sharedImageCache] clearMemory];
+    isCaculatingSDImageDiskSize = YES;
+    [self.tableView reloadData];
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self caculateSDImageDiskSize];
+    }];
+}
+
+- (void)_clearVideoCache
+{
+    @weakify(self)
+    [MARUTILITY clearVideoDiskOnCompletion:^{
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self caculateVideoDiskSize];
+    }];
+}
 
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -212,8 +324,11 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
                 [weak_self.navigationController.navigationBar setTitleTextAttributes:navbarTitleTextAttributes];
             };
             strong_self.titleArray = @[kCellTitle_SelectStyle,
-                            kCellTitle_PageScale,
-                            kCellTitle_More,kCellTitle_Feedback];
+                                       kCellTitle_PageScale,
+                                       kCellTitle_More,
+                                       kCellTitle_cache,
+                                       kCellTitle_videoCache,
+                                       kCellTitle_Feedback];
             [strong_self.tableView reloadData];
         } else {
 
