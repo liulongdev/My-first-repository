@@ -51,6 +51,7 @@
     if ([MAAWeatherCityModel rowCountWithWhere:nil] > 0) {
         return;
     }
+    [MARDataAnalysis setEventPage:@"chooseWeatherVC" EventLabel:@"loaddata_weatherCities"];
     [self showActivityView:YES];
     @weakify(self)
     [MARALIAPINetworkManager weather_getCitiesSuccess:^(NSArray<MAAWeatherCityModel *> *cityArray) {
@@ -127,6 +128,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_cityArray.count > indexPath.row) {
+        [MARDataAnalysis setEventPage:@"chooseWeatherVC" EventLabel:@"weather_click_searchcity"];
         MAAWeatherCityModel *cityM = _cityArray[indexPath.row];
         NSArray *localCityMArray = [MAAWeatherLocalCityModel cityArrayWhere:@{@"cityid":cityM.cityid ?: @""}];
         MAAWeatherLocalCityModel *localCityM = nil;

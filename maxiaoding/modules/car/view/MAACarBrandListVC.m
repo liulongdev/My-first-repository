@@ -135,6 +135,7 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
 
 - (void)setIsTableListStyle:(BOOL)isTableListStyle
 {
+    [MARDataAnalysis setEventPage:@"carBrandListVC" EventLabel:@"car_click_display_style"];
     [MARUserDefault setBool:isTableListStyle key:MAACarBrandListVCListTableStyleKey];
 }
 
@@ -157,6 +158,7 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
 
 - (void)loadData
 {
+    [MARDataAnalysis setEventPage:@"carBrandListVC" EventLabel:@"loaddata_carBrandList"];
     @weakify(self)
     [self showActivityView:YES];
     [MARALIAPINetworkManager car_getAllBrandSuccess:^(NSArray<MAACarBrandM *> *carBrandArray) {
@@ -255,6 +257,7 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.initialArray.count > indexPath.section) {
+        [MARDataAnalysis setEventPage:@"carBrandListVC" EventLabel:@"car_clickcell_brand"];
         NSArray *brandArray = self.carBrandDic[self.initialArray[indexPath.section]];
         if ([brandArray isKindOfClass:[NSArray class]] && brandArray.count > indexPath.row) {
             MAACarBrandM *carBrandM = brandArray[indexPath.row];
@@ -340,6 +343,7 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_carBrandArray.count > indexPath.row) {
+        [MARDataAnalysis setEventPage:@"carBrandListVC" EventLabel:@"car_clickcell_brand"];
         MAACarBrandM *carBrandM = _carBrandArray[indexPath.row];
         [self performSegueWithIdentifier:@"goMAACarFactoryVC" sender:carBrandM];
     }

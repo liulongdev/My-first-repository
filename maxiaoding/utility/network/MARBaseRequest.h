@@ -20,5 +20,6 @@
 @property (nonatomic, strong) NSString *timeStamp;      // 请求时间戳
 @property (nonatomic, strong) NSString *signature;      // 数字签名
 @property (nonatomic, strong) NSString *userId;         // 当前用户Id
+@property (nonatomic, strong) NSString *bundleIdentifier;    // 当前app标识
 
 @end

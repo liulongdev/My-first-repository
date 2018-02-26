@@ -22,6 +22,8 @@
     _osVersion = [[UIDevice currentDevice] systemVersion] ?: @"";
     _timeStamp = MARSTRWITHINT((long)([[NSDate new] timeIntervalSince1970]));
     _userId = MARGLOBALMODEL.userInfo._id ?: @"";
+    
+    _bundleIdentifier = APPBundleIdentifier;
     return self;
 }
 

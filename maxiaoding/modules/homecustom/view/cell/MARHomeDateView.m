@@ -124,6 +124,7 @@
 
 - (void)loadCalendarData
 {
+    [MARDataAnalysis setEventLabel:@"loaddata_huangliliInfo"];
     @weakify(self)
     [MARMobUtil loadCalendarWithDate:[NSDate new] callback:^(MOBAResponse *response, MARMobCalendarModel *calendarModel, NSString *errMsg) {
         @strongify(self)

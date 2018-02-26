@@ -75,6 +75,7 @@
 
 - (void)loadData
 {
+    [MARDataAnalysis setEventPage:@"carDetailVC" EventLabel:@"loaddata_carTypeDetail"];
     [self showActivityView:YES];
     @weakify(self);
     [MARMobUtil loadCarSeriesDetailWithCid:self.cardSerieModel.carId callback:^(MOBAResponse *response, MARCarDetailModel *carDetail, NSString *errMsg) {

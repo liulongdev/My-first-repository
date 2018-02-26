@@ -58,6 +58,7 @@
 
 - (void)loadData
 {
+    [MARDataAnalysis setEventPage:@"cookCategoryListVC" EventLabel:@"loaddata_cookTypeList"];
     @weakify(self)
     [MARMobUtil loadCookCategoriesCallback:^(MOBAResponse *response, NSArray<MARCookCategoryMenuModel *> *cookCategoryMenuArray, NSString *errMsg) {
         @strongify(self)
@@ -140,10 +141,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.isSelectStyle) {
-        [MARDataAnalysis setEventPage:@"cookCategoryList" EventLabel:@"select_cookCategory"];
+        [MARDataAnalysis setEventPage:@"cookCategoryListVC" EventLabel:@"cook_select_cookCategory"];
     }
     else
-        [MARDataAnalysis setEventPage:@"cookCategoryList" EventLabel:@"click_cookCategory_to_cookSearchPage"];
+        [MARDataAnalysis setEventPage:@"cookCategoryListVC" EventLabel:@"cook_click_cookCategory_to_cookSearchPage"];
     NSInteger row = indexPath.row;
     if (_cookCategoryMenuArray.count > indexPath.section) {
         if (_cookCategoryMenuArray[indexPath.section].childs.count > row) {

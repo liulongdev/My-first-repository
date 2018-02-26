@@ -123,6 +123,7 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *title = cell.textLabel.text;
     if ([title isEqual:kCellTitle_SelectStyle]) {
+        [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_clickcell_selectStyle"];
         [self chooseHomeStyle];
     }
     else if ([title isEqual:kCellTitle_More])
@@ -132,8 +133,9 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
     }
     else if ([title isEqual:kCellTitle_Feedback])
     {
+        [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_clickcell_feedBack"];
         if (self.feedbackVC) {
-            [MARDataAnalysis setEventPage:@"HomeSettingVC" EventLabel:@"clickCell_aliFeedback"];
+            [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_clickCell_aliFeedback"];
             self.feedbackVC.fd_interactivePopDisabled = YES;
             [self mar_pushViewController:self.feedbackVC animated:YES];
         }
@@ -170,6 +172,7 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
     if (buttonIndex >= 0 && buttonIndex <= 11)
     {
         //map button index to carousel type
+        [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_click_selectStyle"];
         iCarouselType type = buttonIndex;
         [MARGLOBALMANAGER postNotif:kMARNotificationType_ChooseHomeStyle data:@(type) object:nil];
         [self.tableView reloadData];
@@ -188,6 +191,7 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
 #pragma mark
 - (void)postReloadHomeVTMagicViewNotification
 {
+    [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_clickcell_changePageScale"];
     [MARGLOBALMANAGER postNotif:kMARNotificationType_NeedReloadHomeMagicView data:nil object:nil];
 }
 

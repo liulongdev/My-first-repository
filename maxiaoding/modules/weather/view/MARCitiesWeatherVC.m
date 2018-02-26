@@ -167,6 +167,7 @@
         [_additionCityButton mar_addActionBlock:^(id sender) {
             @strongify(self)
             if (!strong_self) return;
+            [MARDataAnalysis setEventPage:@"citiesWeatherVC" EventLabel:@"weather_click_add_city"];
             [strong_self gotoChooseCityVC];
         } forState:UIControlEventTouchUpInside];
     }
@@ -183,6 +184,7 @@
         [_removeCityButton mar_addActionBlock:^(id sender) {
             @strongify(self)
             if (!strong_self) return;
+            [MARDataAnalysis setEventPage:@"citiesWeatherVC" EventLabel:@"weather_click_remove_city"];
             [strong_self removeCurrentCityWeather];
         } forState:UIControlEventTouchUpInside];
     }

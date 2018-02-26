@@ -50,6 +50,7 @@
 
 - (void)loadData
 {
+    [MARDataAnalysis setEventPage:@"carFactoryVC" EventLabel:@"loaddata_carFactoryList"];
     @weakify(self);
     [self showActivityView:YES];
     [MARALIAPINetworkManager car_getCarFactoriesByBrandID:self.carBrandId success:^(NSArray<MAACarFactoryM *> *carFactoryArray) {
@@ -141,6 +142,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.carFactoryArray.count > indexPath.section && self.carFactoryArray[indexPath.section].carlist.count > indexPath.row && self.carFactoryArray[indexPath.section].carlist[indexPath.row].list.count > 0) {
+        [MARDataAnalysis setEventPage:@"carFactoryVC" EventLabel:@"car_clickcell_carfactory"];
         [self performSegueWithIdentifier:@"goMAACarTypeVC" sender:self.carFactoryArray[indexPath.section].carlist[indexPath.row]];
     }
 }

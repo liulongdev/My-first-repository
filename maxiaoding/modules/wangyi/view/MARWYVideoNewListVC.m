@@ -103,7 +103,7 @@
 
 - (void)loadData
 {
-    [MARDataAnalysis setEventPage:@"WYVideoNewListVC" EventLabel:@"wangyivideonew_loaddata"];
+    [MARDataAnalysis setEventPage:@"WYVideoNewListVC" EventLabel:@"loaddata_WYVideoList"];
     if (self.isLoading) return;
     self.isLoading = YES;
     self.model.lastLoadTimeStamp = [[NSDate new] timeIntervalSince1970];
@@ -214,6 +214,7 @@
         [cell.playBtn mar_removeAllActionBlocks];
         @weakify(self)
         [cell.playBtn mar_addActionBlock:^(id sender) {
+            [MARDataAnalysis setEventPage:@"WYVideoNewListVC" EventLabel:@"click_playWYVideo"];
             [weak_self playVideoWithIndexPath:indexPath isToCenter:YES];
         } forState:UIControlEventTouchUpInside];
         

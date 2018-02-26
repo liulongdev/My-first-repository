@@ -68,6 +68,7 @@
     if (weatherLoading) {
         return;
     }
+    [MARDataAnalysis setEventPage:@"cityWeatherVC" EventLabel:@"loaddata_weatherInfo"];
     weatherLoading = YES;
     MAAGetWeatherR *getWeatherR = [MAAGetWeatherR new];
     getWeatherR.cityid = self.localCityModel.cityid;

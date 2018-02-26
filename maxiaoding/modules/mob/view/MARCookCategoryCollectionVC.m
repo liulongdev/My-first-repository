@@ -135,6 +135,7 @@
                 [titleView.showOrHiddenBtn mar_removeAllActionBlocks];
                 @weakify(self)
                 [titleView.showOrHiddenBtn mar_addActionBlock:^(id sender) {
+                    [MARDataAnalysis setEventPage:@"cookCategoryListVC" EventLabel:@"cook_click_cookCategoryListPullOrPush"];
                     titleView.showOrHiddenBtn.selected = !titleView.showOrHiddenBtn.selected;
                     [weak_self.hiddenMenuDic setObject:@(titleView.showOrHiddenBtn.selected) forKey:MARSTRWITHINT(indexPath.section)];
                     [weak_self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
@@ -173,6 +174,7 @@
 {
     NSInteger row = indexPath.row;
     if (_cookCategoryMenuArray.count > indexPath.section) {
+        [MARDataAnalysis setEventPage:@"cookCategoryListVC" EventLabel:@"cook_click_go_searchCookTypeVC"];
         if (_cookCategoryMenuArray[indexPath.section].childs.count > row) {
             MARCookCategoryModel *model = _cookCategoryMenuArray[indexPath.section].childs[row];
             // 选择模式

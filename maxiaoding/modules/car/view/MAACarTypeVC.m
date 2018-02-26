@@ -71,6 +71,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.carTypeM.list.count > indexPath.row) {
+        [MARDataAnalysis setEventPage:@"car_clickcell_cartype" EventLabel:@"carTypeVC"];
         MAACarSimpleInfoM *carSimpleInfoM = self.carTypeM.list[indexPath.row];
         [self performSegueWithIdentifier:@"goMAACarDetailVC" sender:carSimpleInfoM];
     }

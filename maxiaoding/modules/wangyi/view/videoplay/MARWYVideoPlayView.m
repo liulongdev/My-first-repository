@@ -144,8 +144,10 @@
 - (IBAction)playOrPause:(UIButton *)sender {
     sender.selected = !sender.selected;
     if (sender.selected) {
+        [MARDataAnalysis setEventLabel:@"click_palyVdeo"];
         [self play];
     } else {
+        [MARDataAnalysis setEventLabel:@"click_pauseVdeo"];
         [self pause];
     }
 }

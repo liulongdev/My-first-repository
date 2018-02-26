@@ -79,7 +79,7 @@
         return;
     }
 //    isLoadingData = YES;
-    
+    [MARDataAnalysis setEventPage:@"searchCookVC" EventLabel:@"loaddata_cookDetailList"];
     [self showActivityView:YES];
     if (needReloadData) {
         self.pageModel.pageIndex = 0;
@@ -143,6 +143,7 @@
 #pragma mark - UITextField Delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [MARDataAnalysis setEventPage:@"cookDetailListVC" EventLabel:@"cook_click_searchCookList"];
     self.searchParamName = [textField.text mar_stringByTrim];
     [self.view endEditing:YES];
     needReloadData = YES;
@@ -177,6 +178,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger row = indexPath.row;
     if (_cookDetailArray.count > row) {
+        [MARDataAnalysis setEventPage:@"cookDetailListVC" EventLabel:@"cook_clickcell_cookDetail"];
         MARCookDetailModel *model = _cookDetailArray[row];
         if (model.recipe.method.count > 0 || model.recipe.ingredients || model.recipe.sumary) {
             [self performSegueWithIdentifier:@"goCookDetailVC" sender:model];

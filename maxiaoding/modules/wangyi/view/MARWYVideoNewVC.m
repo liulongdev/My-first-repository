@@ -91,6 +91,7 @@
 
 - (void)loadData
 {
+    [MARDataAnalysis setEventPage:@"WYVideoNewVC" EventLabel:@"loaddata_WYVideoTypeList"];
     @weakify(self)
     [MARWYNewNetworkManager getVideoCategoryTitleListSuccess:^(NSArray<MARWYVideoCategoryTitleModel *> *categoryArray) {
         @strongify(self)
@@ -192,7 +193,7 @@
 }
 
 - (void)magicView:(VTMagicView *)magicView didSelectItemAtIndex:(NSUInteger)itemIndex {
-    
+    [MARDataAnalysis setEventPage:@"WYVideoNewVC" EventLabel:@"videonew_clickMenuType"];
 }
 
 - (void)locationVideoItemAction:(id)sender
