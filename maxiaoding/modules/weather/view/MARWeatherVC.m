@@ -68,6 +68,7 @@
     if (weatherLoading) {
         return;
     }
+    [self hiddenEmptyView];
     [MARDataAnalysis setEventPage:@"cityWeatherVC" EventLabel:@"loaddata_weatherInfo"];
     weatherLoading = YES;
     MAAGetWeatherR *getWeatherR = [MAAGetWeatherR new];
@@ -92,6 +93,11 @@
         @strongify(self)
         if (!strong_self) return;
         strong_self->weatherLoading = NO;
+        [strong_self showEmptyViewWithImageimage:[UIImage imageNamed:@"img_loaddata_failure"] description:@"网络不稳定，请点击重试" tapBlock:^{
+            if (!strong_self) return;
+            [strong_self loadData];
+            [strong_self hiddenEmptyView];
+        }];
         NSLog(@">>>> error : %@", error);
     }];
 }

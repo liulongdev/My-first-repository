@@ -158,6 +158,7 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
 
 - (void)loadData
 {
+    [self hiddenEmptyView];
     [MARDataAnalysis setEventPage:@"carBrandListVC" EventLabel:@"loaddata_carBrandList"];
     @weakify(self)
     [self showActivityView:YES];
@@ -174,7 +175,14 @@ NSString * const MAACarBrandListVCListTableStyleKey = @"MAACarBrandListVCListTab
         [strong_self showActivityView:NO];
     } failure:^(NSURLSessionTask *task, NSError *error) {
         NSLog(@">>>> error ; %@", error);
-        [weak_self showActivityView:NO];
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
+        [strong_self showEmptyViewWithImageimage:[UIImage imageNamed:@"img_loaddata_failure"] description:@"网络不稳定，请点击重试" tapBlock:^{
+            if (!strong_self) return;
+            [strong_self loadData];
+            [strong_self hiddenEmptyView];
+        }];
     }];
 }
 

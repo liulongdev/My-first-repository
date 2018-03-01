@@ -38,6 +38,7 @@
     if ([model.method isEqual:@"POST"]) {
         request.HTTPBody = [model.bodys dataUsingEncoding:NSUTF8StringEncoding];
     }
+    request.timeoutInterval = 15;
     [request addValue:[NSString stringWithFormat:@"APPCODE %@", model.appCode] forHTTPHeaderField:@"Authorization"];
     __block NSURLSessionDataTask *task = [MARNetworkManager mar_request:request success:^(NSURLResponse *URLresponse, id responseObject) {
         if (success) {

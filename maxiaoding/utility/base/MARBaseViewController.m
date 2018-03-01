@@ -169,6 +169,11 @@
 
 - (void)showEmptyViewWithDescription:(NSString *)description
 {
+    [self showEmptyViewWithDescription:description tapBlock:nil];
+}
+
+- (void)showEmptyViewWithDescription:(NSString *)description tapBlock:(void (^)(void))tapBlock
+{
     [self.view addSubview:self.tipEmptyView];
     self.tipEmptyView.emptyDescription = description;
     CGFloat width = kScreenWidth * 3 / 5;
@@ -178,9 +183,19 @@
         make.width.mas_equalTo(@(width));
         make.height.mas_lessThanOrEqualTo(@(width * 4/3));
     }];
+    if (tapBlock == nil) {
+        [self.tipEmptyView mar_removeTapGestureWithNumberOfTapsRequired:1];
+    }
+    else
+        [self.tipEmptyView mar_whenTapped:tapBlock];
 }
 
 - (void)showEmptyViewWithImageimage:(UIImage *)image description:(NSString *)description
+{
+    [self showEmptyViewWithImageimage:image description:description tapBlock:nil];
+}
+
+- (void)showEmptyViewWithImageimage:(UIImage *)image description:(NSString *)description tapBlock:(void (^)(void))tapBlock
 {
     [self.view addSubview:self.tipEmptyView];
     self.tipEmptyView.emptyImage = image;
@@ -192,6 +207,11 @@
         make.width.mas_equalTo(@(width));
         make.height.mas_lessThanOrEqualTo(@(width * 4/3));
     }];
+    if (tapBlock == nil) {
+        [self.tipEmptyView mar_removeTapGestureWithNumberOfTapsRequired:1];
+    }
+    else
+        [self.tipEmptyView mar_whenTapped:tapBlock];
 }
 
 

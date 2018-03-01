@@ -48,7 +48,11 @@
 
 - (void)showEmptyViewWithDescription:(NSString *)description;
 
+- (void)showEmptyViewWithDescription:(NSString *)description tapBlock:(void (^)(void))tapBlock;
+
 - (void)showEmptyViewWithImageimage:(UIImage *)image description:(NSString *)description;
+
+- (void)showEmptyViewWithImageimage:(UIImage *)image description:(NSString *)description tapBlock:(void (^)(void))tapBlock;;
 
 // 隐藏音量
 - (void)hiddenSystemVolume:(BOOL)hidden;

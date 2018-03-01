@@ -91,17 +91,28 @@
 
 - (void)loadData
 {
+    [self hiddenEmptyView];
     [MARDataAnalysis setEventPage:@"WYVideoNewVC" EventLabel:@"loaddata_WYVideoTypeList"];
     @weakify(self)
+    [self showActivityView:YES];
     [MARWYNewNetworkManager getVideoCategoryTitleListSuccess:^(NSArray<MARWYVideoCategoryTitleModel *> *categoryArray) {
         @strongify(self)
         if (!strong_self) return;
+        [strong_self showActivityView:NO];
         strong_self.categoryArray = categoryArray;
         for (MARWYVideoCategoryTitleModel *model in categoryArray) {
             [model updateToDB];
         }
     } failure:^(NSURLSessionTask *task, NSError *error) {
         NSLog(@"get wangyi new titles error : %@", error);
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
+        [strong_self showEmptyViewWithImageimage:[UIImage imageNamed:@"img_loaddata_failure"] description:@"网络不稳定，请点击重试" tapBlock:^{
+            if (!strong_self) return;
+            [strong_self loadData];
+            [strong_self hiddenEmptyView];
+        }];
     }];
 }
 
