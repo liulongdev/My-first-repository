@@ -49,7 +49,7 @@
                     if (errorImage) {
                         weakSelf.image = [errorImage mar_imageByResizeToSize:weakSelf.mar_size contentMode:UIViewContentModeScaleAspectFit];
                     } else {
-                        weakSelf.image = [[UIImage imageNamed:@"img_loadimg_failure"] mar_imageByResizeToSize:weakSelf.mar_size contentMode:UIViewContentModeScaleAspectFit];
+                        weakSelf.image = [[UIImage imageNamed:@"img_loaddata_failure"] mar_imageByResizeToSize:weakSelf.mar_size contentMode:UIViewContentModeScaleAspectFit];
                     }
                     
                 }

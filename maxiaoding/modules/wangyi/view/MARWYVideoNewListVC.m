@@ -53,6 +53,7 @@
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 230;
+    [self.tableView registerNib:[UINib nibWithNibName:@"MARWYVideoNewTableCell" bundle:nil] forCellReuseIdentifier:@"MARWYVideoNewTableCell"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -241,18 +242,33 @@
     NSInteger row = indexPath.row;
     if (self.model.wyNewArray.count > row) {
         MARWYVideoNewModel *model = self.model.wyNewArray[row];
-        [MARWYNewNetworkManager addVideoCollecion:model success:^(NSURLSessionTask *task, id responseObject) {
-            MARNetworkResponse *response = [MARNetworkResponse mar_modelWithJSON:responseObject];
-            if (response.isSuccess) {
-                ShowSuccessMessage(@"收藏成功", 1.f);
+        NSArray *searchArray = [MARWYVideoNewModel searchWithWhere:@{@"vid":model.vid}];
+        if (searchArray.count > 0) {
+            ShowInfoMessage(@"已经收藏到本地，无需再收藏", 1.f);
+        }
+        else
+        {
+            BOOL saveFlag = [model updateToDB];
+            if (saveFlag) {
+                ShowInfoMessage(@"本地收藏成功", 1.f);
             }
             else
             {
-                ShowErrorMessage(@"收藏失败", 1.f);
+                ShowErrorMessage(@"本地收藏成功", 1.f);
             }
-        } failure:^(NSURLSessionTask *task, NSError *error) {
-            ShowErrorMessage(@"收藏失败!", 1.f);
-        }];
+        }
+//        [MARWYNewNetworkManager addVideoCollecion:model success:^(NSURLSessionTask *task, id responseObject) {
+//            MARNetworkResponse *response = [MARNetworkResponse mar_modelWithJSON:responseObject];
+//            if (response.isSuccess) {
+//                ShowSuccessMessage(@"收藏成功", 1.f);
+//            }
+//            else
+//            {
+//                ShowErrorMessage(@"收藏失败", 1.f);
+//            }
+//        } failure:^(NSURLSessionTask *task, NSError *error) {
+//            ShowErrorMessage(@"收藏失败!", 1.f);
+//        }];
     }
 }
 
@@ -332,8 +348,6 @@
             
         }];
     }
-    
-    
 }
 
 - (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj

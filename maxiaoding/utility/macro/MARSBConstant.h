@@ -39,6 +39,7 @@ extern NSString * const kSBID_Mob_CookCategoryListVC;
 extern NSString * const kSBID_Mob_CookCategoryCollectionVC;
 extern NSString * const kSBID_Mob_SearchCookVC;
 extern NSString * const kSBID_Mob_CookDetailVC;
+extern NSString * const kSBID_Mob_CookCollectVC;
 
 extern NSString * const kSBID_Mine_MineVC;
 extern NSString * const kSBID_Mine_SettingVC;
@@ -61,6 +62,8 @@ extern NSString * const kSBID_Car_CarTypeVC;
 extern NSString * const kSBID_Car_CarDetailVC;
 
 extern NSString * const kSBID_Setting_HomeSettingVC;
+extern NSString * const kSBID_Setting_CookCollectVC;
+extern NSString * const kSBID_Setting_WYVideoCollectVC;
 
 @interface MARSBConstant : NSObject
 

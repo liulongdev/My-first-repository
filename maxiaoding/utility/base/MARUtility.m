@@ -288,6 +288,7 @@ static force_inline NSDate *MARNSDateParseFromString(__unsafe_unretained NSStrin
 - (NSString *)briefTimeStrWithDateStr:(NSString *)dateStr
 {
     NSDate *date = MARNSDateParseFromString(dateStr);
+    date = [date mar_dateByAddingHours:-8];
     return [date mar_timeInWords];
 }
 

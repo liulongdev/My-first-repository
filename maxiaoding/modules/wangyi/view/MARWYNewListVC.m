@@ -26,6 +26,24 @@
 {
     [super viewWillAppear:animated];
     [self needReloadData];
+    
+    
+//    // 获取所有已知的时区缩写
+//    NSDictionary *zoneAbbreviations = [NSTimeZone abbreviationDictionary];
+//
+//    NSTimeZone *zone = [NSTimeZone localTimeZone];
+//
+//    // 获取指定时区的缩写
+//    NSString *zoneAbbreviation1 = [zone abbreviation];
+//
+//    // 获取指定时间所在时区名称缩写
+//    NSString *zoneAbbreviation2 = [zone abbreviationForDate:[NSDate date]];
+//    NSLog(@">>>>> zoneAbbreviations : %@", zoneAbbreviations);
+//
+//    NSLog(@">>>>> zoneAbbreviation1 : %@", zoneAbbreviation1);
+//
+//    NSLog(@">>>>> zoneAbbreviation2 : %@", zoneAbbreviation2);
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -105,6 +123,24 @@
     if ([@"头条" isEqualToString:self.model.categoryModel.tname]) {
         requestModel.from = @"toutiao";
         requestModel.prog = @"Rpic2";
+        @weakify(self)
+        [MARWYNewNetworkManager getRecommendNewList:requestModel success:^(NSArray<MARWYNewModel *> *array) {
+            @strongify(self)
+            if (!strong_self) return;
+            strong_self.isLoading = NO;
+            [strong_self _loadNewArray:array];
+            [strong_self.tableView reloadData];
+        } failure:^(NSURLSessionTask *task, NSError *error) {
+            weak_self.isLoading = NO;
+            NSLog(@">>>>> get toutiao list error : %@", error);
+            [weak_self.tableView reloadData];
+            [weak_self.tableView.mj_header endRefreshing];
+            [weak_self.tableView.mj_footer endRefreshing];
+        }];
+    }
+    else if ([@"网易号" isEqualToString:self.model.categoryModel.tname]) {
+        requestModel.from = @"toutiao";
+        requestModel.prog = @"netease_h";
         @weakify(self)
         [MARWYNewNetworkManager getRecommendNewList:requestModel success:^(NSArray<MARWYNewModel *> *array) {
             @strongify(self)

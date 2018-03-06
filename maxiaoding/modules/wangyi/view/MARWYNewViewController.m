@@ -85,7 +85,7 @@
 
 - (void)loadData
 {
-    NSArray *ignoreTitleArray = @[@"视频",@"直播", @"负一屏", @"微资讯", @"态度营销", @"漫画", @"酒香", @"读书", @"易城live", @"房产", @"态度公开课", @"冰雪运动"];
+    NSArray *ignoreTitleArray = @[@"话题",@"问吧",@"薄荷",@"图片",@"本地",@"段子",@"视频",@"直播", @"负一屏", @"微资讯", @"态度营销", @"漫画", @"酒香", @"读书", @"易城live", @"房产", @"态度公开课", @"冰雪运动"];
     @weakify(self)
     [MARWYNewNetworkManager getNewTitleListSuccess:^(NSArray<MARWYNewCategoryTitleModel *> *categoryTitleArray) {
         @strongify(self)
@@ -127,7 +127,7 @@
 {
 //    _categoryArray = categoryArray;
     NSMutableArray<MARWYNewCategoryTitleModel *> *array = [NSMutableArray arrayWithArray:categoryArray];
-    NSArray *ignoreTitleArray = @[@"话题",@"问吧",@"薄荷",@"图片",@"本地",@"段子"];
+    NSArray *ignoreTitleArray = @[@"话题",@"问吧",@"薄荷",@"图片",@"本地",@"段子",@"视频",@"直播", @"负一屏", @"微资讯", @"态度营销", @"漫画", @"酒香", @"读书", @"易城live", @"房产", @"态度公开课", @"冰雪运动"];
     for (MARWYNewCategoryTitleModel *model in categoryArray) {
         if ([ignoreTitleArray containsObject:model.tname]) {
             [model deleteToDB];

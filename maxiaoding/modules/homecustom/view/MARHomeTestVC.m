@@ -22,6 +22,8 @@
 @property (nonatomic, strong) UIView *wyVideoView;
 @property (nonatomic, strong) UIView *cookView;
 @property (nonatomic, strong) UIView *settingView;
+
+@property (nonatomic, strong) NSArray *viewArray;
 @end
 
 @implementation MARHomeTestVC
@@ -52,6 +54,20 @@
     
 }
 
+- (NSArray *)viewArray
+{
+    if (!_viewArray) {
+        _viewArray = @[self.timeInfoView,
+                       self.weatherView,
+                       self.carView,
+                       self.wyVideoView,
+                       self.cookView,
+                       self.settingView
+                       ];
+    }
+    return _viewArray;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -62,37 +78,13 @@
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    return 6;
+    return self.viewArray.count;
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    if (index == 0) {
-        view = self.timeInfoView;
-//        if ([view isKindOfClass:[MARHomeDateView class]])
-//        {
-//
-//        }
-//        else
-//        {
-//            view = [MARHomeDateView nibView];
-//            view.backgroundColor = RGBHEX(0x99ccff);
-//        }
-    }
-    if (index == 1) {
-        view = self.weatherView;
-    }
-    if (index == 2) {
-        view = self.carView;
-    }
-    if (index == 3) {
-        view = self.wyVideoView;
-    }
-    if (index == 4) {
-        view = self.cookView;
-    }
-    if (index == 5) {
-        view = self.settingView;
+    if (index < self.viewArray.count) {
+        view = self.viewArray[index];
     }
     double pageScale = [MARUserDefault getDoubleBy:USERDEFAULTKEY_HomePageScale];
     if (pageScale <0.5 || pageScale > 1) {
@@ -204,8 +196,11 @@
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel
 {
-    if (carousel.currentItemIndex != 3) {
+    if (carousel.currentItemIndex != [self.viewArray indexOfObject:self.wyVideoView]) {
         [MARGLOBALMANAGER postNotif:kMARNotificationType_CloseWYVideoPlay data:nil object:nil];
+    }
+    if (carousel.currentItemIndex == self.viewArray.count - 1) {
+        [MARGLOBALMANAGER postNotif:kMARNotificationType_CaculateCache data:nil object:nil];
     }
 }
 

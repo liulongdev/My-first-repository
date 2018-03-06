@@ -11,10 +11,12 @@
 #import "UIImageView+SDWEBEXT.h"
 #import <Masonry.h>
 #import <MARLabel.h>
+#import <RealReachability.h>
 @interface MARWYVideoNewTableCell()
 
 @property (strong, nonatomic) IBOutlet MARLabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *videoImageView;
+@property (weak, nonatomic) IBOutlet MARLabel *sizeLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *sourceImageView;
 @property (strong, nonatomic) IBOutlet UILabel *sourceNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *videoTimeLengthLabel;
@@ -55,10 +57,26 @@
         self.videoTimeLengthLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", dMin, dSec];
         if ([model.ptime mar_stringByTrim].length > 0 && [model.ptime rangeOfString:@" "].location == NSNotFound) {
             MARGLOBALMANAGER.dataFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-            self.publishTimeLabel.text = [MARGLOBALMANAGER.dataFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[model.ptime integerValue]/1000]];
+            NSString *dateStr = [MARGLOBALMANAGER.dataFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[model.ptime integerValue]/1000]];
+            self.publishTimeLabel.text = [MARUTILITY briefTimeStrWithDateStr:dateStr];
         }
         else
-            self.publishTimeLabel.text = model.ptime;
+        {
+            if ([model.ptime length] > 19) {
+                model.ptime = [model.ptime substringToIndex:19];
+            }
+            NSString *briefTimeStr = [MARUTILITY briefTimeStrWithDateStr:model.ptime];
+            self.publishTimeLabel.text = briefTimeStr ?: model.ptime;
+            
+        }
+        
+        if ([GLobalRealReachability currentReachabilityStatus] == RealStatusViaWWAN) {
+            self.sizeLabel.text = [MARGLOBALMANAGER.byteFormatter stringFromByteCount:model.sizeSD * 1024];
+        }
+        else
+        {
+            self.sizeLabel.text = nil;
+        }
 //        [self.sourceImageView mar_setImageDefaultCornerRadiusWithURL:[NSURL URLWithString:model.topicImg ?: @""]];
     }
 }

@@ -61,6 +61,8 @@ NSString * const kSBID_Car_CarTypeVC                    = @"MAACarTypeVC";
 NSString * const kSBID_Car_CarDetailVC                  = @"MAACarDetailVC";
 
 NSString * const kSBID_Setting_HomeSettingVC            = @"MARHomeSettingVC";
+NSString * const kSBID_Setting_CookCollectVC            = @"MARCookCollectVC";
+NSString * const kSBID_Setting_WYVideoCollectVC         = @"MARWYVideoCollectVC";
 /**
  StoryBoard Segue Identifier
  */

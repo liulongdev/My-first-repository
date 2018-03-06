@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MARCookInfoTableCell" rowHeight="100" id="FsM-1D-Vuj" customClass="MARCookInfoTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FsM-1D-Vuj" id="m0k-8d-SHS">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMA-EI-Mep">
+                        <rect key="frame" x="86" y="30" width="274" height="39.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="菜名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thg-Cf-kR8">
+                                <rect key="frame" x="0.0" y="0.0" width="29" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="菜谱分类:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kw2-TZ-NuO">
+                                <rect key="frame" x="0.0" y="25" width="53" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="分类" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zla-jY-oOq">
+                                <rect key="frame" x="61" y="25" width="25" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zla-jY-oOq" firstAttribute="leading" secondItem="Kw2-TZ-NuO" secondAttribute="trailing" constant="8" id="0yF-w3-O4X"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zla-jY-oOq" secondAttribute="trailing" id="9nO-vC-93H"/>
+                            <constraint firstItem="zla-jY-oOq" firstAttribute="centerY" secondItem="Kw2-TZ-NuO" secondAttribute="centerY" id="MYF-yw-yLi"/>
+                            <constraint firstItem="Kw2-TZ-NuO" firstAttribute="top" secondItem="Thg-Cf-kR8" secondAttribute="bottom" constant="8" id="Z77-20-pdM"/>
+                            <constraint firstItem="Kw2-TZ-NuO" firstAttribute="leading" secondItem="hMA-EI-Mep" secondAttribute="leading" id="mOA-CM-cCw"/>
+                            <constraint firstItem="Thg-Cf-kR8" firstAttribute="leading" secondItem="hMA-EI-Mep" secondAttribute="leading" id="mYC-oh-SZF"/>
+                            <constraint firstAttribute="bottom" secondItem="Kw2-TZ-NuO" secondAttribute="bottom" id="mzN-Pb-8VQ"/>
+                            <constraint firstItem="Thg-Cf-kR8" firstAttribute="top" secondItem="hMA-EI-Mep" secondAttribute="top" id="pzC-ef-FrZ"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="245" verticalHuggingPriority="245" translatesAutoresizingMaskIntoConstraints="NO" id="By3-rA-Olx">
+                        <rect key="frame" x="15" y="15" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="ULb-qo-x2k"/>
+                            <constraint firstAttribute="height" priority="900" constant="60" id="b5f-2M-OVk"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hMA-EI-Mep" firstAttribute="leading" secondItem="m0k-8d-SHS" secondAttribute="leadingMargin" constant="70" id="071-B1-Np2"/>
+                    <constraint firstItem="hMA-EI-Mep" firstAttribute="top" relation="greaterThanOrEqual" secondItem="m0k-8d-SHS" secondAttribute="top" constant="15" id="CWP-ef-XYA"/>
+                    <constraint firstItem="hMA-EI-Mep" firstAttribute="centerY" secondItem="m0k-8d-SHS" secondAttribute="centerY" id="QdT-WU-830"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="By3-rA-Olx" secondAttribute="bottom" constant="15" id="Vmu-UY-Aig"/>
+                    <constraint firstItem="By3-rA-Olx" firstAttribute="leading" secondItem="m0k-8d-SHS" secondAttribute="leading" constant="15" id="Yil-6c-wFt"/>
+                    <constraint firstAttribute="trailing" secondItem="hMA-EI-Mep" secondAttribute="trailing" constant="15" id="dhg-6b-QgL"/>
+                    <constraint firstItem="By3-rA-Olx" firstAttribute="top" secondItem="m0k-8d-SHS" secondAttribute="top" constant="15" id="tVa-cI-bS1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cookCategoriesLabel" destination="zla-jY-oOq" id="QF6-40-Apf"/>
+                <outlet property="cookImageView" destination="By3-rA-Olx" id="Gha-DN-28y"/>
+                <outlet property="cookNameLabel" destination="Thg-Cf-kR8" id="vZp-Sy-RNt"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

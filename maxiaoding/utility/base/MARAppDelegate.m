@@ -148,7 +148,9 @@
 - (void)initUMShare
 {
     /* 打开调试日志 */
+#ifdef DEBUG
     [[UMSocialManager defaultManager] openLog:YES];
+#endif
     /* 设置友盟appkey */
     [[UMSocialManager defaultManager] setUmSocialAppkey:UMSHARE_AppKey];
     [self configUSharePlatforms];

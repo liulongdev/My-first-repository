@@ -56,7 +56,7 @@
     [body appendFormat:@"<div class=\"wy-time\">%@</div>",self.ptime];
     [body appendString:tagAStr];
     if ([self.body mar_stringByTrim].length > 0) {
-        [body appendFormat:@"<div class=\"wy_content>%@<div>", self.body];
+        [body appendFormat:@"<div class=\"wy_content\">%@<div>", self.body];
     }
     [body appendString:@"</div>"];
     for (MARWYNewDetailImageModel *imageModel in self.img) {

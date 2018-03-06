@@ -10,6 +10,7 @@
 #import "UIImageView+SDWEBEXT.h"
 #import <UIImageView+WebCache.h>
 #import "MARCookStepTableCell.h"
+#import "MARMobUtil.h"
 
 @interface MARCookDetailVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -30,6 +31,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *cookSumaryLabel;
 
+@property (nonatomic, strong) UIBarButtonItem *collectionBarBtn;
+
 @end
 
 @implementation MARCookDetailVC
@@ -38,15 +41,18 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"收藏的菜谱";
 //    self.fd_prefersNavigationBarHidden = YES;
-    self.title = self.cookDetail.name;
+    [self updateCookDetailUIS];
+    if (!_cookDetail) {
+        [self loadCookDetailData];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.tableView.delegate = self;
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -82,6 +88,61 @@
     self.cookImageBackGroundView.layer.masksToBounds = YES;
     self.cookImageBackGroundView.layer.cornerRadius = 10.f;
     
+    [self _updateTableHeaderView];
+
+    self.tableView.tableFooterView = [UIView new];
+    self.tableView.estimatedRowHeight = 200;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.cookSumaryLabel.attributedText = [[NSAttributedString alloc] initWithString:self.cookDetail.recipe.sumary ?: @"" attributes:MARSTYLEFORMAT.zhengWenAttrDic];;
+    
+    [self _updateTableFooterView];
+}
+
+- (NSString *)cookId
+{
+    return _cookId ?: self.cookDetail.menuId;
+}
+
+- (void)loadCookDetailData
+{
+    [self hiddenEmptyView];
+    [self showActivityView:YES];
+    @weakify(self)
+    [MARMobUtil loadCookDetailWithMid:self.cookId callback:^(MOBAResponse *response, MARCookDetailModel *cookDetailModel, NSString *errMsg) {
+        @strongify(self)
+        if (!strong_self) return;
+        [strong_self showActivityView:NO];
+        strong_self.cookDetail = cookDetailModel;
+        if (response.error) {
+            [strong_self showEmptyViewWithImageimage:[UIImage imageNamed:@"img_loaddata_failure"] description:@"网络不稳定，请点击重试" tapBlock:^{
+                if (!strong_self) return;
+                [strong_self loadCookDetailData];
+                [strong_self hiddenEmptyView];
+            }];
+        }
+    }];
+}
+
+- (void)setCookDetail:(MARCookDetailModel *)cookDetail
+{
+    _cookDetail = cookDetail;
+    [self.tableView reloadData];
+    if (cookDetail)
+    {
+        [self updateCollectTitle];
+        self.navigationItem.rightBarButtonItem = self.collectionBarBtn;
+    }
+    else
+        self.navigationItem.rightBarButtonItem = nil;
+}
+
+- (void)updateCookDetailUIS
+{
+    if (!_cookDetail) nil;
+    [self updateCollectTitle];
+    self.title = self.cookDetail.name;
     NSURL *cookImageURL = [NSURL URLWithString:[self cookImageUrlStr] ?: @""];
     @weakify(self)
     [self.blurImageView sd_setImageWithURL:cookImageURL placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -106,16 +167,9 @@
     self.cookInfoLabel.attributedText = [[NSAttributedString alloc] initWithString:cookInfoStr attributes:MARSTYLEFORMAT.ziBiaoTiAttrDic];
     
     NSString *ingredients = [[self.cookDetail.recipe.ingredients ?: @"" stringByReplacingOccurrencesOfString:@"[" withString:@""] stringByReplacingOccurrencesOfString:@"]" withString:@""];
-    self.cookIngredientsLabel.attributedText = [[NSAttributedString alloc] initWithString:ingredients attributes:MARSTYLEFORMAT.zhengWenAttrDic];;
+    self.cookIngredientsLabel.attributedText = [[NSAttributedString alloc] initWithString:ingredients attributes:MARSTYLEFORMAT.zhengWenAttrDic];
+    
     [self _updateTableHeaderView];
-    
-    self.tableView.tableFooterView = [UIView new];
-    self.tableView.estimatedRowHeight = 200;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
-    self.tableView.showsVerticalScrollIndicator = NO;
-    self.cookSumaryLabel.attributedText = [[NSAttributedString alloc] initWithString:self.cookDetail.recipe.sumary ?: @"" attributes:MARSTYLEFORMAT.zhengWenAttrDic];;
-    
     [self _updateTableFooterView];
 }
 
@@ -150,6 +204,42 @@
         urlStr = self.cookDetail.thumbnail;
     }
     return urlStr;
+}
+
+- (UIBarButtonItem *)collectionBarBtn
+{
+    if (!_collectionBarBtn) {
+        _collectionBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStyleDone target:self action:@selector(clickCollectionCookAction:)];
+    }
+    return _collectionBarBtn;
+}
+
+- (void)clickCollectionCookAction:(UIBarButtonItem *)collectionBarBtn
+{
+    if ([collectionBarBtn.title isEqualToString:@"取消收藏"]) {
+        BOOL deletaFlag = [self.cookDetail deleteToDB];
+        if (deletaFlag) {
+            ShowSuccessMessage(@"取消收藏成功", 1.f);
+        }
+    }
+    else
+    {
+        self.cookDetail.rowid = 0;
+        BOOL saveFlag = [self.cookDetail updateToDB];
+        if (saveFlag) {
+            ShowSuccessMessage(@"收藏成功", 1.f);
+        }
+    }
+    [self updateCollectTitle];
+}
+
+- (void)updateCollectTitle
+{
+    NSArray *cookArray = [MARCookDetailModel searchWithWhere:@{@"menuId": self.cookId}];
+    id cookDetail = [MARCookDetailModel searchSingleWithWhere:@{@"menuId": self.cookId} orderBy:nil];
+    NSString *title = cookArray.count > 0 ? @"取消收藏" : @"收藏";
+    self.collectionBarBtn.title = title;
+
 }
 
 - (void)didReceiveMemoryWarning {

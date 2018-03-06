@@ -10,13 +10,20 @@
 #import <iCarousel.h>
 #import <YWFeedbackFMWK/YWFeedbackKit.h>
 #import <YWFeedbackFMWK/YWFeedbackViewController.h>
+#import "MARCookCollectVC.h"
+#import "MARHistoryDayViewController.h"
+#import "MARWYNewViewController.h"
 
 NSString * const kCellTitle_SelectStyle             = @"选择样式";
 NSString * const kCellTitle_PageScale               = @"页面比利";
-NSString * const kCellTitle_cache                   = @"清除图片缓存";
+NSString * const kCellTitle_imageCache              = @"清除图片缓存";
 NSString * const kCellTitle_videoCache              = @"清除视频缓存";
 NSString * const kCellTitle_More                    = @"更多";
+NSString * const kCellTitle_CookCollect             = @"菜单的收藏";
+NSString * const kCellTitle_WYVideoCollect          = @"视频的收藏";
 NSString * const kCellTitle_Feedback                = @"意见反馈";
+NSString * const kCellTitle_HistoryToday            = @"历史上的今天";
+NSString * const kCellTitle_News                    = @"新闻";
 
 @interface MARHomeSettingVC ()<UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -58,9 +65,16 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
     if (!_titleArray) {
         _titleArray = @[kCellTitle_SelectStyle,
                         kCellTitle_PageScale,
-                        kCellTitle_cache,
+                        kCellTitle_imageCache,
                         kCellTitle_videoCache,
-                        kCellTitle_More];
+                        kCellTitle_CookCollect,
+                        kCellTitle_WYVideoCollect,
+                        kCellTitle_HistoryToday,
+                        kCellTitle_News,
+#ifdef DEBUG
+                        kCellTitle_More,
+#endif
+                        ];
     }
     return _titleArray;
 }
@@ -138,7 +152,7 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
         }
         
         NSString *title = cell.textLabel.text;
-        if ([title isEqualToString:kCellTitle_cache]) {
+        if ([title isEqualToString:kCellTitle_imageCache]) {
             if (isCaculatingSDImageDiskSize) {
                 cell.detailTextLabel.text = nil;
                 UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -193,13 +207,32 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
             [self mar_pushViewController:self.feedbackVC animated:YES];
         }
     }
-    else if ([kCellTitle_cache isEqualToString:title]) {
+    else if ([kCellTitle_imageCache isEqualToString:title]) {
+        [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_clickcell_clearImageCache"];
         [self _clearImageCache];
     }
     else if ([kCellTitle_videoCache isEqualToString:title]) {
+        [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_clickcell_clearVideoCache"];
         [self _clearVideoCache];
     }
-    
+    else if ([kCellTitle_CookCollect isEqualToString:title]) {
+        [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_clickcell_cookCollect"];
+        [self performSegueWithIdentifier:@"goCookCollectVC" sender:nil];
+    }
+    else if ([kCellTitle_WYVideoCollect isEqualToString:title]) {
+        [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_clickcell_WYVideoCollect"];
+        [self performSegueWithIdentifier:@"goWYVideoCollectVC" sender:nil];
+    }
+    else if ([kCellTitle_HistoryToday isEqualToString:title]){
+        [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_clickcell_historyToday"];
+        MARHistoryDayViewController *historyTodayDayVC = (MARHistoryDayViewController *)[UIViewController vcWithStoryboardName:kSBNAME_Mob storyboardId:kSBID_Mob_HistoryDayVC];
+        [self mar_pushViewController:historyTodayDayVC animated:YES];
+    }
+    else if ([kCellTitle_News isEqualToString:title]){
+        [MARDataAnalysis setEventPage:@"homeSettingVC" EventLabel:@"homeSetting_clickcell_wynew"];
+        MARWYNewViewController *wyNewVC = (MARWYNewViewController *)[UIViewController vcWithStoryboardName:kSBNAME_Wangyi storyboardId:kSBID_Wangyi_WYNewViewController];
+        [self mar_pushViewController:wyNewVC animated:YES];
+    }
 }
 
 - (void)chooseHomeStyle
@@ -325,9 +358,15 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
             };
             strong_self.titleArray = @[kCellTitle_SelectStyle,
                                        kCellTitle_PageScale,
-                                       kCellTitle_More,
-                                       kCellTitle_cache,
+                                       kCellTitle_imageCache,
                                        kCellTitle_videoCache,
+                                       kCellTitle_CookCollect,
+                                       kCellTitle_WYVideoCollect,
+                                       kCellTitle_HistoryToday,
+                                       kCellTitle_News,
+#ifdef DEBUG
+                                       kCellTitle_More,
+#endif
                                        kCellTitle_Feedback];
             [strong_self.tableView reloadData];
         } else {
@@ -340,6 +379,11 @@ NSString * const kCellTitle_Feedback                = @"意见反馈";
 {
     if (type == kMARNotificationType_NetworkChangedEnabel) {
         [self getAliFeedbackVC];
+    }
+    else if (type == kMARNotificationType_CaculateCache)
+    {
+        [self caculateVideoDiskSize];
+        [self caculateSDImageDiskSize];
     }
 }
 

@@ -10,4 +10,5 @@
 
 @interface MARCookDetailVC : MARBaseViewController
 @property (nonatomic, strong) MARCookDetailModel *cookDetail;
+@property (nonatomic, strong) NSString *cookId;
 @end

@@ -21,6 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initUMShare];
     [self initAppearance];
+    [self startMonitorNetwork];
     [MARDataAnalysis initDataAnalysis];
     
     if ([MARGLOBALMANAGER isFirstStartForCurrentVersion]) {
