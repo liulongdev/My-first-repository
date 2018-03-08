@@ -54,8 +54,8 @@
 
 - (void)needReloadData
 {
+    [self.tableView reloadData];
     if (self.model.wyNewArray.count > 0) {
-        [self.tableView reloadData];
         self.tableView.contentOffset = self.model.contentOffset;
     }
     MARLog(@">>>> viewWillAppear");
