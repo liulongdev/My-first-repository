@@ -30,4 +30,11 @@
 #define SINAAppSecretKey    @"85cc8447312d14636229a9ed1bb0eb7e"
 #define WechatAppKey        @"wx854d438f0435e825"
 #define WechatAppSecretKey  @"bfd457f41361c27b2e7a359dce348d68"
+
+// 百度语音
+#define BAIDUYY_AppID       @"10869017"
+#define BAIDUYY_APIKEY      @"2uPOevlPxzPlM05LSGpeMiVd"
+#define BAIDUYY_SECRETKEY   @"bGSUQjmrm4cAvrhoMa7Uz108nbZWFc84"
+
+
 #endif /* appkey_h */
