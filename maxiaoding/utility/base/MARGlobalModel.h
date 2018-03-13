@@ -47,7 +47,17 @@
 
 @property (nonatomic, strong) NSDictionary *tuPianJieShaoAttrDic;
 
+// 车型详情中的多文本格式
 @property (nonatomic, strong) NSDictionary *carSimpleInfoAttrDic;
+
+// 天气指数建议多文本格式
+@property (nonatomic, strong) NSDictionary *weatherSuggestionAttrDic;
+
+// 天气简要左边的多文本格式
+@property (nonatomic, strong) NSDictionary *weatherSimpleInfoLeftAttrDic;
+
+// 天气简要右边的多文本格式
+@property (nonatomic, strong) NSDictionary *weatherSimpleInfoRightAttrDic;
 
 @end
 

@@ -202,5 +202,44 @@ NSString * const MARGLobalModelId = @"10000";
     return _carSimpleInfoAttrDic;
 }
 
+- (NSDictionary *)weatherSuggestionAttrDic
+{
+    if (!_weatherSuggestionAttrDic) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 8;
+        style.alignment = NSTextAlignmentLeft;
+        style.lineBreakMode = NSLineBreakByWordWrapping;
+        style.paragraphSpacing = 10;
+        _weatherSuggestionAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : MAREXTFont(12.f), NSForegroundColorAttributeName : RGBHEX(0xffffff)};
+    }
+    return _weatherSuggestionAttrDic;
+}
+
+- (NSDictionary *)weatherSimpleInfoLeftAttrDic
+{
+    if (!_weatherSimpleInfoLeftAttrDic) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 5;
+        style.alignment = NSTextAlignmentRight;
+        style.paragraphSpacing = 8;
+        style.lineBreakMode = NSLineBreakByWordWrapping;
+        _weatherSimpleInfoLeftAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : MAREXTFont(12.f), NSForegroundColorAttributeName : RGBHEX(0xffffff)};
+    }
+    return _weatherSimpleInfoLeftAttrDic;
+}
+
+-(NSDictionary *)weatherSimpleInfoRightAttrDic
+{
+    if (!_weatherSimpleInfoRightAttrDic) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 5;
+        style.alignment = NSTextAlignmentLeft;
+        style.paragraphSpacing = 8;
+        style.lineBreakMode = NSLineBreakByWordWrapping;
+        _weatherSimpleInfoRightAttrDic = @{NSParagraphStyleAttributeName : style, NSFontAttributeName : MAREXTFont(12.f), NSForegroundColorAttributeName : RGBHEX(0xffffff)};
+    }
+    return _weatherSimpleInfoRightAttrDic;
+}
+
 @end
 

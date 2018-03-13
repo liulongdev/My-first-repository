@@ -199,13 +199,15 @@
                 MAAWeatherDayInfoM *todayWeatherInfoM = _weatherM.daily[0];
                 toNightDesc = [NSString stringWithFormat:@"今晚%@, 最低气温%@º。", todayWeatherInfoM.night.weather, todayWeatherInfoM.night.templow];
                 NSString *weatherDesc = [NSString stringWithFormat:@"今天 : 现在%@, 气温%@º。 最高气温%@º。  %@",todayWeatherInfoM.day.weather, _weatherM.temp,  _weatherM.temphigh, toNightDesc];
-                label.text = weatherDesc;
+//                label.text = weatherDesc;
+                label.attributedText = [[NSAttributedString alloc] initWithString:weatherDesc attributes:MARSTYLEFORMAT.weatherSuggestionAttrDic];
             }
             else
             {
                 MAAWeatherDayInfoM *todayWeatherInfoM = _weatherM.daily[0];
                 toNightDesc = [NSString stringWithFormat:@"现在%@, 最低气温%@º。", todayWeatherInfoM.night.weather, todayWeatherInfoM.night.templow];
-                label.text = toNightDesc;
+//                label.text = toNightDesc;
+                label.attributedText = [[NSAttributedString alloc] initWithString:toNightDesc attributes:MARSTYLEFORMAT.weatherSuggestionAttrDic];
             }
         }
         return cell;
@@ -222,22 +224,22 @@
         [leftStr appendString:@"日出:\n"];
         [rightStr appendFormat:@"%@\n", [self todayWeatherDayInfo].sunrise ?: @""];
         
-        [leftStr appendString:@"日落:\n\n"];
-        [rightStr appendFormat:@"%@\n\n", [self todayWeatherDayInfo].sunset ?: @""];
+        [leftStr appendString:@"日落:\n"];
+        [rightStr appendFormat:@"%@\n", [self todayWeatherDayInfo].sunset ?: @""];
         
         [leftStr appendString:@"风级:\n"];
         [rightStr appendFormat:@"%@\n", self.weatherM.windpower ?: @""];
-        [leftStr appendString:@"风速:\n\n"];
-        [rightStr appendFormat:@"%@%@ M/S\n\n", self.weatherM.winddirect ?: @"", self.weatherM.windspeed ?: @""];
+        [leftStr appendString:@"风速:\n"];
+        [rightStr appendFormat:@"%@%@ M/S\n", self.weatherM.winddirect ?: @"", self.weatherM.windspeed ?: @""];
         
         [leftStr appendString:@"湿度:\n"];
         [rightStr appendFormat:@"%@%%\n", self.weatherM.humidity ?: @"未知"];
         
         [leftStr appendString:@"气压:"];
         [rightStr appendFormat:@"%@百帕", self.weatherM.pressure ?: @"未知"];
-        
-        leftLabel.text = leftStr;
-        rightLabel.text = rightStr;
+
+        leftLabel.attributedText = [[NSAttributedString alloc] initWithString:leftStr attributes:MARSTYLEFORMAT.weatherSimpleInfoLeftAttrDic];
+        rightLabel.attributedText = [[NSAttributedString alloc] initWithString:rightStr attributes:MARSTYLEFORMAT.weatherSimpleInfoRightAttrDic];;
         return cell;
     }
     else if (indexPath.row == _weatherM.daily.count + 2)
@@ -250,10 +252,10 @@
             MAAWeatherLifeIndexM *weatherLifeIndexM = self.weatherM.myindex[i];
             [lifeIndexStr appendFormat:@"%@ : %@ 。 %@", weatherLifeIndexM.iname, weatherLifeIndexM.ivalue, weatherLifeIndexM.detail];
             if (i != self.weatherM.myindex.count - 1) {
-                [lifeIndexStr appendString:@"\n\n"];
+                [lifeIndexStr appendString:@"\n"];
             }
         }
-        label.text = lifeIndexStr;
+        label.attributedText = [[NSAttributedString alloc] initWithString:lifeIndexStr attributes:MARSTYLEFORMAT.weatherSuggestionAttrDic];
         return cell;
     }
     return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"error"];
