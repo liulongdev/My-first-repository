@@ -8,7 +8,9 @@
 
 #import "MAACarDetailVC.h"
 #import "MARALIAPINetworkManager.h"
-
+#import "MARMultipleDelegateProxy.h"
+#import <MARLabel.h>
+#import <objc/runtime.h>
 @interface MAACarDetailVC () <UITableViewDataSource, UIScrollViewDelegate, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
@@ -25,12 +27,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint_carImageBackGroundViewWidth;
 
 @property (nonatomic, strong) MAACarModel *carModel;
-
 @end
 
 @implementation MAACarDetailVC
 {
     BOOL loadImageSuccess;
+    MARMultipleDelegateProxy *proxy;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,6 +42,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    // test
+//    proxy = [MARMultipleDelegateProxy new];
+//    proxy.delegateTargets = @[self];
+//    self.tableView.delegate = (id)proxy;
     self.tableView.delegate = self;
 }
 

@@ -36,6 +36,7 @@ static NSString * const mobTitle_wangyiVideo        = @"网易视频";
 
 static NSString * const cellTitle_weather           = @"天气";
 static NSString * const cellTitle_car               = @"汽车（新）";
+static NSString * const cellTitle_baiduVoice        = @"百度语音";
 
 
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>
@@ -86,6 +87,7 @@ static NSString * const cellTitle_car               = @"汽车（新）";
                         mobTitle_wangyiVideo,
                         cellTitle_weather,
                         cellTitle_car,
+                        cellTitle_baiduVoice,
 //                        aliFeedback_feedback,
                         ];
     }
@@ -259,8 +261,11 @@ static NSString * const cellTitle_car               = @"汽车（新）";
         UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Car storyboardId:kSBID_Car_CarBrandListVC];
         [self mar_pushViewController:vc animated:YES];
     }
-    
-    
+    else if ([cellTitle_baiduVoice isEqualToString:label.text])
+    {
+        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_VoiceAudio storyboardId:kSBID_VoiceAudio_VoiceAudioTestVC];
+        [self mar_pushViewController:vc animated:YES];
+    }
 }
 
 - (void)getAliFeedbackVC
@@ -289,6 +294,7 @@ static NSString * const cellTitle_car               = @"汽车（新）";
                             mobTitle_wangyiVideo,
                             cellTitle_weather,
                             cellTitle_car,
+                            cellTitle_baiduVoice,
                             aliFeedback_feedback,
                             ];
             [weakSelf.tableView reloadData];

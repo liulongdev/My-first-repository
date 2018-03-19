@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qX6-9i-PdR">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="eMB-up-T1i">
+            <objects>
+                <navigationController id="qX6-9i-PdR" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WE0-K3-yeW">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Q7V-x7-rSh" kind="relationship" relationship="rootViewController" id="6Xz-zv-KJ7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CL0-Eg-Sbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-892" y="114"/>
+        </scene>
+        <!--Voice Audio TestVC-->
+        <scene sceneID="jzn-Kt-tof">
+            <objects>
+                <viewController storyboardIdentifier="MARVoiceAudioTestVC" id="Q7V-x7-rSh" customClass="MARVoiceAudioTestVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="okc-MV-YQK"/>
+                        <viewControllerLayoutGuide type="bottom" id="GnM-K0-7pf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hbR-6V-ow9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfZ-MD-n3V">
+                                <rect key="frame" x="15" y="94" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="clickStartBtnAction:" destination="Q7V-x7-rSh" eventType="touchUpInside" id="hgC-UJ-58i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDF-1I-B3N">
+                                <rect key="frame" x="64" y="94" width="32" height="30"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="clickStopBtnAction:" destination="Q7V-x7-rSh" eventType="touchUpInside" id="LMI-p6-CyT"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-eo-X5v">
+                                <rect key="frame" x="15" y="139" width="345" height="513"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AOJ-eo-X5v" firstAttribute="top" secondItem="PfZ-MD-n3V" secondAttribute="bottom" constant="15" id="5oa-uI-5GK"/>
+                            <constraint firstItem="AOJ-eo-X5v" firstAttribute="leading" secondItem="hbR-6V-ow9" secondAttribute="leading" constant="15" id="AtO-fi-les"/>
+                            <constraint firstItem="CDF-1I-B3N" firstAttribute="leading" secondItem="PfZ-MD-n3V" secondAttribute="trailing" constant="15" id="VuM-hi-iOE"/>
+                            <constraint firstItem="CDF-1I-B3N" firstAttribute="top" secondItem="okc-MV-YQK" secondAttribute="bottom" constant="30" id="WDT-ZK-KvB"/>
+                            <constraint firstItem="PfZ-MD-n3V" firstAttribute="top" secondItem="okc-MV-YQK" secondAttribute="bottom" constant="30" id="X5l-3u-6YV"/>
+                            <constraint firstItem="GnM-K0-7pf" firstAttribute="top" secondItem="AOJ-eo-X5v" secondAttribute="bottom" constant="15" id="bpe-hR-eyR"/>
+                            <constraint firstAttribute="trailing" secondItem="AOJ-eo-X5v" secondAttribute="trailing" constant="15" id="ttC-kj-Cmd"/>
+                            <constraint firstItem="PfZ-MD-n3V" firstAttribute="leading" secondItem="hbR-6V-ow9" secondAttribute="leading" constant="15" id="z7b-wi-dAZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cjh-7M-Qw5"/>
+                    <connections>
+                        <outlet property="startBtn" destination="PfZ-MD-n3V" id="pNR-cE-tLy"/>
+                        <outlet property="stopBtn" destination="CDF-1I-B3N" id="nDF-Oq-fJv"/>
+                        <outlet property="textView" destination="AOJ-eo-X5v" id="IgT-vR-iqE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XCa-v6-hno" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18" y="114"/>
+        </scene>
+    </scenes>
+</document>
