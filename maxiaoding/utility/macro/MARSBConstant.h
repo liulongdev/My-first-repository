@@ -21,6 +21,8 @@ extern NSString * const kSBNAME_Weather;
 extern NSString * const kSBNAME_Car;
 extern NSString * const kSBNAME_Setting;
 extern NSString * const kSBNAME_VoiceAudio;
+extern NSString * const kSBNAME_FaceRecognition;
+
 /**
  StoreBoard ID of  UIViewcontroller in StoreBoard
  */
@@ -67,6 +69,8 @@ extern NSString * const kSBID_Setting_CookCollectVC;
 extern NSString * const kSBID_Setting_WYVideoCollectVC;
 
 extern NSString * const kSBID_VoiceAudio_VoiceAudioTestVC;
+
+extern NSString * const kSBID_FaceRecognition_FaceRecognitionVC;
 
 @interface MARSBConstant : NSObject
 

@@ -250,7 +250,7 @@
         NSMutableString *lifeIndexStr = [NSMutableString string];
         for (int i = 0; i < self.weatherM.myindex.count; i++) {
             MAAWeatherLifeIndexM *weatherLifeIndexM = self.weatherM.myindex[i];
-            [lifeIndexStr appendFormat:@"%@ : %@ 。 %@", weatherLifeIndexM.iname, weatherLifeIndexM.ivalue, weatherLifeIndexM.detail];
+            [lifeIndexStr appendFormat:@"%@ : %@ 。 %@", weatherLifeIndexM.iname ?:@"", weatherLifeIndexM.ivalue ?: @"", weatherLifeIndexM.detail ?: @""];
             if (i != self.weatherM.myindex.count - 1) {
                 [lifeIndexStr appendString:@"\n"];
             }

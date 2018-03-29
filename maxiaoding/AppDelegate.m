@@ -33,7 +33,9 @@
         else
         {
             [MARGLOBALMANAGER onFirstStartForCurrentVersion:^(BOOL isFirstStartForCurrentVersion) {
-                [MARUTILITY firstStartAppAfterUpdate];
+                if (isFirstStartForCurrentVersion) {
+                    [MARUTILITY firstStartAppAfterUpdate];
+                }
             }];
         }
     }

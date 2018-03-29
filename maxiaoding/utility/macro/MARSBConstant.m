@@ -21,6 +21,7 @@ NSString * const kSBNAME_Weather                        = @"weather";
 NSString * const kSBNAME_Car                            = @"car";
 NSString * const kSBNAME_Setting                        = @"setting";
 NSString * const kSBNAME_VoiceAudio                     = @"voiceaudio";
+NSString * const kSBNAME_FaceRecognition                = @"facerecognition";
 /**
  StoryBoard ID of  UIViewcontroller in StoreBoard
  */
@@ -66,6 +67,9 @@ NSString * const kSBID_Setting_CookCollectVC            = @"MARCookCollectVC";
 NSString * const kSBID_Setting_WYVideoCollectVC         = @"MARWYVideoCollectVC";
 
 NSString * const kSBID_VoiceAudio_VoiceAudioTestVC      = @"MARVoiceAudioTestVC";
+
+NSString * const kSBID_FaceRecognition_FaceRecognitionVC     = @"MARFaceRecognitionVC";
+
 /**
  StoryBoard Segue Identifier
  */

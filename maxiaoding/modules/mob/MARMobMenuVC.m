@@ -38,6 +38,8 @@ static NSString * const cellTitle_weather           = @"天气";
 static NSString * const cellTitle_car               = @"汽车（新）";
 static NSString * const cellTitle_baiduVoice        = @"百度语音";
 
+static NSString * const cellTitle_faceRecognition        = @"头像识别";
+
 
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -88,6 +90,7 @@ static NSString * const cellTitle_baiduVoice        = @"百度语音";
                         cellTitle_weather,
                         cellTitle_car,
                         cellTitle_baiduVoice,
+                        cellTitle_faceRecognition,
 //                        aliFeedback_feedback,
                         ];
     }
@@ -266,6 +269,11 @@ static NSString * const cellTitle_baiduVoice        = @"百度语音";
         UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_VoiceAudio storyboardId:kSBID_VoiceAudio_VoiceAudioTestVC];
         [self mar_pushViewController:vc animated:YES];
     }
+    else if ([cellTitle_faceRecognition isEqualToString:label.text])
+    {
+        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_FaceRecognition storyboardId:kSBID_FaceRecognition_FaceRecognitionVC];
+        [self mar_pushViewController:vc animated:YES];
+    }
 }
 
 - (void)getAliFeedbackVC
@@ -295,6 +303,7 @@ static NSString * const cellTitle_baiduVoice        = @"百度语音";
                             cellTitle_weather,
                             cellTitle_car,
                             cellTitle_baiduVoice,
+                            cellTitle_faceRecognition,
                             aliFeedback_feedback,
                             ];
             [weakSelf.tableView reloadData];

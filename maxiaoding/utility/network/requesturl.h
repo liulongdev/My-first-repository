@@ -24,6 +24,9 @@
 #define SHORTAPI_BindPhone                  @"api/core/v1/user/bindPhone"          // 绑定手机号
 #define SHORTAPI_AddWYVideoNewCollection    @"api/core/v1/wy/new/addVideoNewCollection"    // 增加视频新闻收藏
 
+#define SHORTAPI_CHAT_UpdateUserInfo        @"/api/core/v1/mxdChat/updateMXDCUserInfo"  // 创建或者更新简单的用户信息
+#define SHORTAPI_CHAT_PostMessage           @"/api/core/v1/mxdChat/new/postMXDCMessage"  // 创建或者更新简单的用户信息
+
 #define SERVERAPI_ThirdPlatformLogin        URLAppend(SERVERHOST, SHORTAPI_ThirdPlatformLogin)
 #define SERVERAPI_RegisterUser              URLAppend(SERVERHOST, SHORTAPI_RegisterUser)
 #define SERVERAPI_LoginWithPhone            URLAppend(SERVERHOST, SHORTAPI_LoginWithPhone)
