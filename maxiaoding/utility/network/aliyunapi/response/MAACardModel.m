@@ -924,7 +924,10 @@
 @end
 
 @implementation MAACarSimpleInfoM
-
++ (NSString *)getPrimaryKey
+{
+    return @"id";
+}
 @end
 
 @implementation MAACarBrandM
