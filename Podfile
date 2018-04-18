@@ -21,6 +21,7 @@ def shared_dependencies
   pod 'pop', '~> 1.0.10'
   pod 'VTMagic', '~> 1.2.4'
   pod 'iCarousel', '~> 1.8.3'
+  pod 'MobileVLCKit', '~> 3.0.2'
   
   pod 'UMengUShare/Social/WeChat', '~> 6.4.7'
   pod 'UMengUShare/Social/QQ', '~> 6.4.7'
