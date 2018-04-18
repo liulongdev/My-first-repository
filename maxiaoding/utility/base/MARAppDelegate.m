@@ -143,6 +143,11 @@
     
     [[UINavigationBar appearance] setBackgroundImage:imge forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    if (@available(iOS 11.0, *)){//避免滚动视图顶部出现多余空白以及push或者pop的时候页面有一个上移或者下移的异常动画的问题
+        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    }
+    
 }
 
 - (void)initUMShare
