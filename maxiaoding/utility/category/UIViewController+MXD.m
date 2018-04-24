@@ -28,6 +28,16 @@
     return VC;
 }
 
+- (BOOL)mar_isSupportForceTouch
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability"
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.f) {
+        return self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
+#pragma clang diagnostic pop
+    }
+    return NO;
+}
 
 
 @end

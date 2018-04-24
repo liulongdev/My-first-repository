@@ -62,7 +62,14 @@ static char mar_enterBackGroundTimeIntervalKey;
 - (void)mar_pushViewController:(UIViewController *)VC animated:(BOOL)animated
 {
     VC.mar_prePageName = self.mar_currentPageName;
-    [self.navigationController pushViewController:VC animated:animated];
+    if (self.navigationController) {
+        [self.navigationController pushViewController:VC animated:animated];
+    }
+    else if ([self isKindOfClass:[UINavigationController class]])
+    {
+        [(UINavigationController *)self pushViewController:VC animated:animated];
+    }
+    
 }
 
 

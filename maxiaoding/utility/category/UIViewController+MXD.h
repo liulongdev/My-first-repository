@@ -12,4 +12,6 @@
 
 + (instancetype) vcWithStoryboardName:(NSString *)name storyboardId:(NSString *)storyboardId;
 
+@property (nonatomic, readonly) BOOL mar_isSupportForceTouch;
+
 @end

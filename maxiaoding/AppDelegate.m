@@ -12,6 +12,7 @@
 #import <KTVHTTPCache.h>
 #import <AVFoundation/AVFoundation.h>
 #import "MARHomeTestVC.h"
+#import "MARWYNewViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -136,6 +137,37 @@
     CGRect statusFrame = [[UIApplication sharedApplication] statusBarFrame];
     if (CGRectContainsPoint(statusFrame, point)) {
         [MARGLOBALMANAGER postNotif:kMARNotificationType_ClickAppStatusBar data:nil object:nil];
+    }
+}
+
+// 3D Touch
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability"
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
+{
+#pragma clang diagnostic pop
+    NSString* newIdentifier = [APPBundleIdentifier stringByAppendingString:@".wynew"];
+    if ([shortcutItem.type isEqualToString:newIdentifier]) {
+        MARWYNewViewController *wyNewVC = (MARWYNewViewController *)[UIViewController vcWithStoryboardName:kSBNAME_Wangyi storyboardId:kSBID_Wangyi_WYNewViewController];
+        [self p_mar_pushVC:wyNewVC animated:NO];
+    }
+}
+
+- (void)p_mar_pushVC:(UIViewController *)vc animated:(BOOL)animation
+{
+    if ([self.window.rootViewController isKindOfClass:UINavigationController.class]) {
+        UINavigationController *navi = (UINavigationController *)self.window.rootViewController;
+        BOOL popFlag = NO;
+        for (UIViewController *viewC in navi.viewControllers) {
+            if ([viewC isKindOfClass:[vc class]]) {
+                [navi popToViewController:viewC animated:NO];
+                popFlag = YES;
+                break;
+            }
+        }
+        if (!popFlag) {
+            [navi mar_pushViewController:vc animated:animation];            
+        }
     }
 }
 

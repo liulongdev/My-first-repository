@@ -30,6 +30,39 @@
     return self;
 }
 
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems
+{
+    // 生成UIPreviewAction
+    UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"事件 1" style:UIPreviewActionStyleDefault                 handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"Action 1 selected");
+    }];
+    UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@"事件 2" style:UIPreviewActionStyleDestructive   handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"Action 2 selected");
+    }];
+    UIPreviewAction *action3 = [UIPreviewAction actionWithTitle:@"事件 3" style:UIPreviewActionStyleSelected   handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"Action 3 selected");
+    }];
+    UIPreviewAction *tap1 = [UIPreviewAction actionWithTitle:@"按钮 1" style:UIPreviewActionStyleDefault   handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"tap 1 selected");
+    }];
+    UIPreviewAction *tap2 = [UIPreviewAction actionWithTitle:@"按钮 2" style:UIPreviewActionStyleDestructive   handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"tap 2 selected");
+    }];
+    UIPreviewAction *tap3 = [UIPreviewAction actionWithTitle:@"按钮 3" style:UIPreviewActionStyleSelected   handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"tap 3 selected");
+    }];
+    
+    NSArray *actions = @[action1, action2, action3];
+    NSArray *taps = @[tap1, tap2, tap3];
+    UIPreviewActionGroup *group1 = [UIPreviewActionGroup actionGroupWithTitle:@"一组事件"   style:UIPreviewActionStyleDefault actions:actions];
+    UIPreviewActionGroup *group2 = [UIPreviewActionGroup actionGroupWithTitle:@"一组按钮"   style:UIPreviewActionStyleDefault actions:taps];
+    NSArray *group = @[group1,group2];
+    
+    //当然你也可以反三个单独的action对象的数组，而不是group，具体效果，可以自己试一下
+    
+    return group;
+}
+
 #pragma mark View Lifecycle
 - (void) loadView{
     [super loadView];
@@ -78,6 +111,27 @@
         [self.webView loadRequest:self.URLRequest];
     else if(self.htmlString)
         [self.webView loadHTMLString:self.htmlString baseURL:nil];
+}
+
+- (void)setURL:(NSURL *)URL
+{
+    _URL = URL;
+    if (_URL)
+        [self.webView loadRequest:[NSURLRequest requestWithURL:_URL]];
+}
+
+- (void)setURLRequest:(NSURLRequest *)URLRequest
+{
+    _URLRequest = URLRequest;
+    if(_URLRequest)
+        [self.webView loadRequest:_URLRequest];
+}
+
+- (void)setHtmlString:(NSString *)htmlString
+{
+    _htmlString = htmlString;
+    if(_htmlString)
+        [self.webView loadHTMLString:_htmlString baseURL:nil];
 }
 
 #pragma mark UIWebviewDelegate
@@ -197,6 +251,27 @@
         [self.webView loadRequest:self.URLRequest];
     else if(self.htmlString)
         [self.webView loadHTMLString:self.htmlString baseURL:nil];
+}
+
+- (void)setURL:(NSURL *)URL
+{
+    _URL = URL;
+    if (_URL)
+        [self.webView loadRequest:[NSURLRequest requestWithURL:_URL]];
+}
+
+- (void)setURLRequest:(NSURLRequest *)URLRequest
+{
+    _URLRequest = URLRequest;
+    if(_URLRequest)
+        [self.webView loadRequest:_URLRequest];
+}
+
+- (void)setHtmlString:(NSString *)htmlString
+{
+    _htmlString = htmlString;
+    if(_htmlString)
+        [self.webView loadHTMLString:_htmlString baseURL:nil];
 }
 
 #pragma mark UIWebviewDelegate

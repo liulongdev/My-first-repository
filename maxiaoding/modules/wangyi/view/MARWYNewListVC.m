@@ -12,9 +12,10 @@
 #import "MARWYUtility.h"
 #import "MARWebViewController.h"
 
-@interface MARWYNewListVC () <UITableViewDelegate, UITableViewDataSource>
+@interface MARWYNewListVC () <UITableViewDelegate, UITableViewDataSource, UIViewControllerPreviewingDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) BOOL isLoading;
+@property (nonatomic, strong) MARWebViewController *webVC;
 @end
 
 @implementation MARWYNewListVC
@@ -26,7 +27,6 @@
 {
     [super viewWillAppear:animated];
     [self needReloadData];
-    
     
 //    // 获取所有已知的时区缩写
 //    NSDictionary *zoneAbbreviations = [NSTimeZone abbreviationDictionary];
@@ -253,6 +253,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    _webVC = nil;
     MARLog(@">>>>> viewDidAppear");
 }
 
@@ -289,12 +290,89 @@
         MARWYNewModel *model = self.model.wyNewArray[row];
         [cell setCellData:model];
     }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability"
+    if (cell && [self mar_isSupportForceTouch]) {
+        [self registerForPreviewingWithDelegate:self sourceView:cell];
+    }
+#pragma clang diagnostic pop
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [MARDataAnalysis setEventPage:@"WYNewListVC" EventLabel:@"wangyinew_clickcell"];
+    _webVC = [[MARWebViewController alloc] init];
+    [self prePareDateForIndexPath:indexPath];
+    [self mar_pushViewController:_webVC animated:YES];
+//    NSInteger row = indexPath.row;
+//    if (self.model.wyNewArray.count > row) {
+//        MARWYNewModel *model = self.model.wyNewArray[row];
+//        if (model.skipType) {
+//            if ([model.skipType isEqualToString:WYNEWSkipType_PhotoSet]) {
+//                NSString *skipType = [model.skipID copy];
+//                if (skipType.length > 4) {
+//                    skipType = [[skipType substringFromIndex:4] stringByReplacingOccurrencesOfString:@"|" withString:@"/"];
+//                }
+//                NSString *urlExtStr = skipType;
+//                NSString *url = [NSString stringWithFormat:@"%@/%@/%@.json", WANGYIHOST, WYGetPhotoNewDetail, urlExtStr];
+//                @weakify(self)
+//                [self showActivityView:YES];
+//                [MARNetworkManager mar_get:url parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+//                    @strongify(self)
+//                    if (!strong_self) return;
+//                    [strong_self showActivityView:NO];
+////                    NSLog(@"get photos %@", responseObject);
+//                    if ([responseObject[@"url"] mar_isValidUrl]) {
+//                        MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:responseObject[@"url"]]];
+//                        [strong_self mar_pushViewController:webVC animated:YES];
+//                    }
+//                } failure:^(NSURLSessionTask *task, NSError *error) {
+//                    [weak_self showActivityView:NO];
+//                    NSLog(@">>>>> get photos error : %@", error);
+//                }];
+//            }
+//            else if ([model.skipType isEqualToString:WYNEWSkipType_Video])
+//            {
+//                [MARWYNewNetworkManager getVideoNewDetailWithSkipId:model.skipID success:^(NSURLSessionTask *task, id responseObject) {
+//                    MARWYVideoNewDetailModel *model = [MARWYVideoNewDetailModel mar_modelWithJSON:responseObject];
+//                    if ([model.vurl mar_isValidUrl]) {
+//                        MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:model.vurl]];
+//                        [self mar_pushViewController:webVC animated:YES];
+//                    }
+//                    NSLog(@">>>>>>> get videoDetail : %@", responseObject);
+//                } failure:^(NSURLSessionTask *task, NSError *error) {
+//                    NSLog(@">>>>>>> get videoDetail error : %@", error);
+//                }];
+//            }
+//
+//        }
+//        else if (![model.docid mar_containsString:@"|"])
+//        {
+//            @weakify(self)
+//            [MARWYNewNetworkManager getNewDetailWithDocId:model.docid success:^(NSURLSessionTask *task, id responseObject) {
+//                @strongify(self)
+//                if (!strong_self) return;
+////                NSLog(@"get wynew detail : %@", responseObject);
+//                MARWYNewDetailModel *detailModel = [MARWYNewDetailModel mar_modelWithJSON:responseObject[model.docid]];
+//                NSLog(@">>>>> %@", detailModel);
+//                MARWebViewController *webVC = [[MARWebViewController alloc] init];
+//                webVC.htmlString = [detailModel getHtmlString];
+//                [strong_self mar_pushViewController:webVC animated:YES];
+//            } failure:^(NSURLSessionTask *task, NSError *error) {
+//                NSLog(@"get wynew detail error : %@", error);
+//            }];
+//        }
+//        else if ([model.url mar_isValidUrl]) {
+//            MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:model.url]];
+//            [self mar_pushViewController:webVC animated:YES];
+//        }
+//    }
+}
+
+- (void)prePareDateForIndexPath:(NSIndexPath *)indexPath
+{
+    MARWebViewController *webVC = self.webVC;
     NSInteger row = indexPath.row;
     if (self.model.wyNewArray.count > row) {
         MARWYNewModel *model = self.model.wyNewArray[row];
@@ -312,26 +390,53 @@
                     @strongify(self)
                     if (!strong_self) return;
                     [strong_self showActivityView:NO];
-//                    NSLog(@"get photos %@", responseObject);
+                    //                    NSLog(@"get photos %@", responseObject);
                     if ([responseObject[@"url"] mar_isValidUrl]) {
-                        MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:responseObject[@"url"]]];
-                        [strong_self mar_pushViewController:webVC animated:YES];
+                        if (strong_self.webVC == webVC) {
+                            strong_self.webVC.URL = [NSURL URLWithString:responseObject[@"url"]];
+                        }
+                    }
+                    else
+                    {
+                        if (strong_self.webVC == webVC) {
+                            [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                        }
                     }
                 } failure:^(NSURLSessionTask *task, NSError *error) {
-                    [weak_self showActivityView:NO];
+                    @strongify(self)
+                    if (!strong_self) return;
+                    if (strong_self.webVC == webVC)
+                        [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                    [strong_self showActivityView:NO];
                     NSLog(@">>>>> get photos error : %@", error);
                 }];
             }
             else if ([model.skipType isEqualToString:WYNEWSkipType_Video])
             {
+                @weakify(self)
+                [self showActivityView:YES];
                 [MARWYNewNetworkManager getVideoNewDetailWithSkipId:model.skipID success:^(NSURLSessionTask *task, id responseObject) {
+                    @strongify(self)
+                    if (!strong_self) return;
+                    [strong_self showActivityView:NO];
                     MARWYVideoNewDetailModel *model = [MARWYVideoNewDetailModel mar_modelWithJSON:responseObject];
                     if ([model.vurl mar_isValidUrl]) {
-                        MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:model.vurl]];
-                        [self mar_pushViewController:webVC animated:YES];
+                        if (strong_self.webVC == webVC) {
+                            strong_self.webVC.URL = [NSURL URLWithString:responseObject[@"url"]];
+                        }
+                    }
+                    else
+                    {
+                        if (strong_self.webVC == webVC) {
+                            [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                        }
                     }
                     NSLog(@">>>>>>> get videoDetail : %@", responseObject);
                 } failure:^(NSURLSessionTask *task, NSError *error) {
+                    @strongify(self)
+                    if (!strong_self) return;
+                    if (strong_self.webVC == webVC)
+                        [strong_self.webVC.navigationController popViewControllerAnimated:YES];
                     NSLog(@">>>>>>> get videoDetail error : %@", error);
                 }];
             }
@@ -340,23 +445,69 @@
         else if (![model.docid mar_containsString:@"|"])
         {
             @weakify(self)
+            [self showActivityView:YES];
             [MARWYNewNetworkManager getNewDetailWithDocId:model.docid success:^(NSURLSessionTask *task, id responseObject) {
                 @strongify(self)
                 if (!strong_self) return;
-//                NSLog(@"get wynew detail : %@", responseObject);
+                [strong_self showActivityView:NO];
+                //                NSLog(@"get wynew detail : %@", responseObject);
                 MARWYNewDetailModel *detailModel = [MARWYNewDetailModel mar_modelWithJSON:responseObject[model.docid]];
                 NSLog(@">>>>> %@", detailModel);
-                MARWebViewController *webVC = [[MARWebViewController alloc] init];
-                webVC.htmlString = [detailModel getHtmlString];
-                [strong_self mar_pushViewController:webVC animated:YES];
+                if (strong_self.webVC == webVC) {
+                    strong_self.webVC.htmlString = [detailModel getHtmlString];
+                }
+                else
+                {
+                    if (strong_self.webVC == webVC) {
+                        [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                    }
+                }
             } failure:^(NSURLSessionTask *task, NSError *error) {
+                @strongify(self)
+                if (!strong_self) return;
+                if (strong_self.webVC == webVC)
+                    [strong_self.webVC.navigationController popViewControllerAnimated:YES];
                 NSLog(@"get wynew detail error : %@", error);
             }];
         }
         else if ([model.url mar_isValidUrl]) {
-            MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:model.url]];
-            [self mar_pushViewController:webVC animated:YES];
+            if (self.webVC == webVC) {
+                webVC.URL = [NSURL URLWithString:model.url];
+            }
         }
+        else
+        {
+            if (self.webVC == webVC) {
+                [self.webVC.navigationController popViewControllerAnimated:YES];
+                ShowInfoMessage(@"我迷路了！", 1.f);
+            }
+        }
+    }
+}
+
+#pragma mark - ForceTouch Delegate
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
+{
+    // 防止重复加入
+    if ([self.presentedViewController isKindOfClass:[MARWebViewController class]]) {
+        return nil;
+    }
+    else
+    {
+        _webVC = [[MARWebViewController alloc] init];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability"
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)[previewingContext sourceView]];
+#pragma clang diagnostic pop
+        [self prePareDateForIndexPath:indexPath];
+        return _webVC;
+    }
+}
+
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
+{
+    if (_webVC) {
+        [self mar_pushViewController:_webVC animated:YES];
     }
 }
 
@@ -393,7 +544,6 @@
     _categoryModel = model;
     _refreshLoadFn = 1;
     return self;
-    
 }
 
 @end
