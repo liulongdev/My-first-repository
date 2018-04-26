@@ -12,7 +12,7 @@
 #import "MARCookCategoryListVC.h"
 #import "MARCookCategoryCollectionVC.h"
 #import "MARCookDetailVC.h"
-@interface MARSearchCookVC () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface MARSearchCookVC () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UIViewControllerPreviewingDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *selectCategoryLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraint_tableViewBottom;
@@ -22,6 +22,7 @@
 @property (nonatomic, strong) MARLoadPageModel *pageModel;
 @property (nonatomic, strong) NSString *searchParamName;
 @property (nonatomic, assign) NSInteger totalCount;
+@property (nonatomic, strong) MARCookDetailVC *cookDetailVC;
 - (IBAction)clickSelectCategoryAction:(id)sender;
 
 @end
@@ -172,6 +173,8 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
+    [self mar_registerForPreviewingWithDelegate:self sourceView:cell];
+    
     return cell;
 }
 
@@ -247,5 +250,39 @@
         }
     }
 }
+
+#pragma mark - ForceTouch Delegate
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
+{
+    if ([self.presentedViewController isKindOfClass:[MARCookDetailVC class]]) {
+        return nil;
+    }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability"
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)[previewingContext sourceView]];
+#pragma clang diagnostic pop
+    NSInteger row = indexPath.row;
+    if (_cookDetailArray.count > row) {
+        MARCookDetailModel *model = _cookDetailArray[row];
+        if (model.recipe.method.count > 0 || model.recipe.ingredients || model.recipe.sumary) {
+            _cookDetailVC = (MARCookDetailVC *)[UIViewController vcWithStoryboardName:kSBNAME_Mob storyboardId:kSBID_Mob_CookDetailVC];
+            _cookDetailVC.cookDetail = model;
+            return _cookDetailVC;
+        }
+        else
+        {
+            return nil;
+        }
+    }
+    return nil;
+}
+
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit
+{
+    if (_cookDetailVC) {
+        [self mar_pushViewController:_cookDetailVC animated:YES];
+    }
+}
+
 
 @end

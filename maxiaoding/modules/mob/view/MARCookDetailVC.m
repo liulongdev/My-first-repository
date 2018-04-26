@@ -42,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"收藏的菜谱";
+    MARAdjustsScrollViewInsets_NO(self.tableView, self);
 //    self.fd_prefersNavigationBarHidden = YES;
     [self updateCookDetailUIS];
     if (!_cookDetail) {
@@ -235,11 +236,17 @@
 
 - (void)updateCollectTitle
 {
-    NSArray *cookArray = [MARCookDetailModel searchWithWhere:@{@"menuId": self.cookId}];
-    id cookDetail = [MARCookDetailModel searchSingleWithWhere:@{@"menuId": self.cookId} orderBy:nil];
-    NSString *title = cookArray.count > 0 ? @"取消收藏" : @"收藏";
+//    NSArray *cookArray = [MARCookDetailModel searchWithWhere:@{@"menuId": self.cookId}];
+//    NSString *title = cookArray.count > 0 ? @"取消收藏" : @"收藏";
+    NSString *title = [self titleForCollect];
     self.collectionBarBtn.title = title;
+}
 
+- (NSString *)titleForCollect
+{
+    NSArray *cookArray = [MARCookDetailModel searchWithWhere:@{@"menuId": self.cookId}];
+    NSString *title = cookArray.count > 0 ? @"取消收藏" : @"收藏";
+    return title;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -283,5 +290,62 @@
         self.constraint_cookImageBackGroundViewWidth.constant = MAX(150, MIN(maxPicWidth, 150 * (1 - offsetY / 150)));
     }
 }
+
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems
+{
+    // 生成UIPreviewAction
+    NSString *title = [self titleForCollect];
+    UIPreviewAction *collectAction = [UIPreviewAction actionWithTitle:title style:UIPreviewActionStyleDefault                 handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        if ([title isEqualToString:@"取消收藏"]) {
+            BOOL deletaFlag = [self.cookDetail deleteToDB];
+            if (deletaFlag) {
+                ShowSuccessMessage(@"取消收藏成功", 1.f);
+            }
+        }
+        else
+        {
+            self.cookDetail.rowid = 0;
+            BOOL saveFlag = [self.cookDetail updateToDB];
+            if (saveFlag) {
+                ShowSuccessMessage(@"收藏成功", 1.f);
+            }
+        }
+    }];
+    return @[collectAction];
+}
+
+
+//- (NSArray<id<UIPreviewActionItem>> *)previewActionItems
+//{
+//    // 生成UIPreviewAction
+//    UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"事件 1" style:UIPreviewActionStyleDefault                 handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//        NSLog(@"Action 1 selected");
+//    }];
+//    UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@"事件 2" style:UIPreviewActionStyleDestructive   handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//        NSLog(@"Action 2 selected");
+//    }];
+//    UIPreviewAction *action3 = [UIPreviewAction actionWithTitle:@"事件 3" style:UIPreviewActionStyleSelected   handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//        NSLog(@"Action 3 selected");
+//    }];
+//    UIPreviewAction *tap1 = [UIPreviewAction actionWithTitle:@"按钮 1" style:UIPreviewActionStyleDefault   handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//        NSLog(@"tap 1 selected");
+//    }];
+//    UIPreviewAction *tap2 = [UIPreviewAction actionWithTitle:@"按钮 2" style:UIPreviewActionStyleDestructive   handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//        NSLog(@"tap 2 selected");
+//    }];
+//    UIPreviewAction *tap3 = [UIPreviewAction actionWithTitle:@"按钮 3" style:UIPreviewActionStyleSelected   handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//        NSLog(@"tap 3 selected");
+//    }];
+//
+//    NSArray *actions = @[action1, action2, action3];
+//    NSArray *taps = @[tap1, tap2, tap3];
+//    UIPreviewActionGroup *group1 = [UIPreviewActionGroup actionGroupWithTitle:@"一组事件"   style:UIPreviewActionStyleDefault actions:actions];
+//    UIPreviewActionGroup *group2 = [UIPreviewActionGroup actionGroupWithTitle:@"一组按钮"   style:UIPreviewActionStyleDefault actions:taps];
+//    NSArray *group = @[group1,group2];
+//
+//    //当然你也可以反三个单独的action对象的数组，而不是group，具体效果，可以自己试一下
+//
+//    return group;
+//}
 
 @end

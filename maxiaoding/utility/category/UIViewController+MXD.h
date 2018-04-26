@@ -14,4 +14,6 @@
 
 @property (nonatomic, readonly) BOOL mar_isSupportForceTouch;
 
+- (id <UIViewControllerPreviewing>)mar_registerForPreviewingWithDelegate:(id<UIViewControllerPreviewingDelegate>)delegate sourceView:(UIView *)sourceView;
+
 @end

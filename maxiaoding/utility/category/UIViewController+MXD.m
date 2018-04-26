@@ -39,5 +39,16 @@
     return NO;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability"
+- (id<UIViewControllerPreviewing>)mar_registerForPreviewingWithDelegate:(id<UIViewControllerPreviewingDelegate>)delegate sourceView:(UIView *)sourceView
+{
+    if (sourceView && [self mar_isSupportForceTouch]) {
+        return [self registerForPreviewingWithDelegate:delegate sourceView:sourceView];
+    }
+#pragma clang diagnostic pop
+    return nil;
+}
+
 
 @end
