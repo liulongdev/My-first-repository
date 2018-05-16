@@ -14,7 +14,7 @@
 
 @interface MARAppDelegate : UIResponder<UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
-
+@property (assign, nonatomic) UIBackgroundTaskIdentifier backgroundIdentifier;
 - (void) startMonitorNetwork;
 - (void) stopMonitorNetwork;
 #pragma mark - 注册推送通知
@@ -24,5 +24,9 @@
 - (void) initAppearance;
 
 - (void)initUMShare;
+
+- (void)mar_begingBackgoundTask;
+
+- (void)mar_endBackgroundTask;
 
 @end

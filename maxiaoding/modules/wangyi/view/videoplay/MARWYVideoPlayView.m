@@ -8,6 +8,7 @@
 
 #import "MARWYVideoPlayView.h"
 #import <MARLabel.h>
+#import <MediaPlayer/MediaPlayer.h>
 @interface MARWYVideoPlayView ()
 @property (nonatomic, strong) AVPlayer *player;
 
@@ -68,6 +69,8 @@
     [self mar_whenDoubleTapped:^{
         [weak_self playOrPause:weak_self.playOrPauseBtn];
     }];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testBackGound:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
 - (void)layoutSubviews
@@ -86,7 +89,7 @@
     }
     self.isReadyToPlay = NO;
     _playerItem = playerItem;
-    [self.player replaceCurrentItemWithPlayerItem:playerItem];
+    [self.player replaceCurrentItemWithPlayerItem:_playerItem];
     [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     [self.player play];
     [self.progressView startAnimating];
@@ -139,6 +142,7 @@
 -(void)dealloc {
     [self.playerItem removeObserver:self forKeyPath:@"status"];
     [self.player replaceCurrentItemWithPlayerItem:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 // 暂停按钮的监听
 - (IBAction)playOrPause:(UIButton *)sender {
@@ -271,6 +275,28 @@
         [MARGLOBALMANAGER postNotif:kMARNotificationType_MARWYVideoStatusChanged data:@(_status) object:self];
         [self didChangeValueForKey:@"status"];
     }
+}
+
+- (void)testBackGound:(NSNotification *)noti
+{
+    // BASE_INFO_FUN(@"配置NowPlayingCenter");
+    NSMutableDictionary * info = [NSMutableDictionary dictionary];
+    //音乐的标题
+    [info setObject:self.title forKey:MPMediaItemPropertyTitle];
+    //音乐的艺术家
+    NSString *author= @"Martin";
+    [info setObject:author forKey:MPMediaItemPropertyArtist];
+    //音乐的播放时间
+    [info setObject:@(self.player.currentTime.value) forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+    //音乐的播放速度
+//    [info setObject:@(1) forKey:MPNowPlayingInfoPropertyPlaybackRate];
+    //音乐的总时间
+//    [info setObject:@(100) forKey:MPMediaItemPropertyPlaybackDuration];
+    //音乐的封面
+    MPMediaItemArtwork * artwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"img_media_default"]];
+    [info setObject:artwork forKey:MPMediaItemPropertyArtwork];
+    //完成设置
+    [[MPNowPlayingInfoCenter defaultCenter]setNowPlayingInfo:info];
 }
 
 @end

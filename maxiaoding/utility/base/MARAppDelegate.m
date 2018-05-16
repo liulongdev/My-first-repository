@@ -191,4 +191,20 @@
     [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
 }
 
+- (void)mar_begingBackgoundTask
+{
+    self.backgroundIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [self mar_endBackgroundTask];
+    }];
+    MARLog(@"\n\n\n\n >>>> %ld", self.backgroundIdentifier);
+}
+
+- (void)mar_endBackgroundTask
+{
+    if (self.backgroundIdentifier != UIBackgroundTaskInvalid) {    
+        [[UIApplication sharedApplication] endBackgroundTask:self.backgroundIdentifier];
+        self.backgroundIdentifier = UIBackgroundTaskInvalid;
+    }
+}
+
 @end

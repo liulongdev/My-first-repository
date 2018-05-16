@@ -78,6 +78,10 @@
         [self refreshLoadData];
     }
     ignoreAutoPlayNextVideo = NO;
+    
+    // 开始接受远程控制
+//    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+//    [self becomeFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -85,6 +89,10 @@
     [super viewWillDisappear:animated];
     self.model.contentOffset = self.tableView.contentOffset;
     ignoreAutoPlayNextVideo = YES;
+    
+    // 结束远程控制
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -236,6 +244,25 @@
     return cell;
 }
 
+- (void)playNextVideo
+{
+    if (!self.isLoading && self.model.wyNewArray.count > 0 && !isFullScreen && !ignoreAutoPlayNextVideo) {
+        if (!self.currentSelectedIndexPath) {
+            NSIndexPath *willPlayIndexPath = [NSIndexPath indexPathForRow: 0 inSection:0];
+            [self playVideoWithIndexPath:willPlayIndexPath isToCenter:NO];
+        }
+        else
+        {
+            if (self.model.wyNewArray.count > self.currentSelectedIndexPath.row + 1)
+            {
+                NSIndexPath *willPlayIndexPath = [NSIndexPath indexPathForRow:self.currentSelectedIndexPath.row + 1 inSection:self.currentSelectedIndexPath.section];
+                [self playVideoWithIndexPath:willPlayIndexPath isToCenter:YES];
+            }
+        }
+    }
+    
+}
+
 - (void)clickCollecionBtnAtIndexPath:(NSIndexPath *)indexPath
 {
     [MARDataAnalysis setEventPage:@"WYVideoNewListVC" EventLabel:@"wangyivideonew_clickcollecion"];
@@ -376,6 +403,46 @@
 {
     if (self.magicController.currentViewController == self) {
         [self.tableView mar_scrollToTopAnimated:YES];
+    }
+}
+
+// 重写父类成为响应者方法
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    if (event.type == UIEventTypeRemoteControl) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlTogglePlayPause: // 暂停 ios6
+//                [self.playView pause];
+//                [self actionStopButton:self.musicViewNew.stopButton]; // 调用你所在项目的暂停按钮的响应方法 下面的也是如此
+                break;
+                
+            case UIEventSubtypeRemoteControlPreviousTrack:  // 上一首
+//                [self actionUpButton:self.musicViewNew.upMusicButton];
+                break;
+                
+            case UIEventSubtypeRemoteControlNextTrack: // 下一首
+                [self playNextVideo];
+                MARLog(@">>>>>> play next video\n\n\n\n");
+//                [self actionDownButton:self.musicViewNew.downMusicButton];
+                break;
+                
+            case UIEventSubtypeRemoteControlPlay: //播放
+                [self.playView play];
+//                [self actionStopButton:self.musicViewNew.stopButton];
+                break;
+                
+            case UIEventSubtypeRemoteControlPause: // 暂停 ios7
+                [self.playView pause];
+//                [self actionStopButton:self.musicViewNew.stopButton];
+                break;
+                
+            default:
+                break;
+        }
     }
 }
 

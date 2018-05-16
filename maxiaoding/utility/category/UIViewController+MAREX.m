@@ -12,44 +12,54 @@
 static char mar_prePageNameKey;
 static char mar_pageAppearTimeIntervalKey;
 static char mar_enterBackGroundTimeIntervalKey;
+static char mar_isValidAnalysisVCKey;
+
+@interface UIViewController()
+@property (nonatomic, assign) BOOL mar_isValidAnalysisVC;       // 只记录自己的页面
+@end
 
 @implementation UIViewController (MAREX)
 +(void)load
 {
-    [self mar_swizzleInstanceMethod:@selector(viewDidAppear:) with:@selector(mar_viewDidAppear:)];
-    [self mar_swizzleInstanceMethod:@selector(viewDidDisappear:) with:@selector(mar_viewDidDisappear:)];
+    [self mar_swizzleInstanceMethod:@selector(viewWillAppear:) with:@selector(mar_viewWillAppear:)];
+    [self mar_swizzleInstanceMethod:@selector(viewWillDisappear:) with:@selector(mar_viewWillDisappear:)];
     [self mar_swizzleInstanceMethod:@selector(prepareForSegue:sender:) with:@selector(mar_prepareForSegue:sender:)];
-//    [self mar_swizzleInstanceMethod:@selector(viewWillAppear:) with:@selector(mar_viewWillAppear:)];
-    
 }
 
-//- (void)mar_viewWillAppear:(BOOL)animated
-//{
-//    [self mar_viewWillAppear:animated];
-//}
-
-- (void)mar_viewDidAppear:(BOOL)animated
+- (void)mar_viewWillAppear:(BOOL)animated
 {
-    [self mar_viewDidAppear:animated];
-    [self ex_marAddObserservs];
-    self.mar_pageAppearTimeInterval = [NSDate new].timeIntervalSince1970;
-    [MARDataAnalysis pageAppear:self];
-}
-
-- (void)mar_viewDidDisappear:(BOOL)animated
-{
-    [self mar_viewDidDisappear:animated];
-    [self ex_marRemoveObservers];
-    [MARDataAnalysis pageDisAppear:self];
-    if (self.mar_pageAppearTimeInterval > 0) {
-        NSTimeInterval durationOnPage = (long long)[NSDate new].timeIntervalSince1970 - self.mar_pageAppearTimeInterval;
-        if (durationOnPage > 0) {
-            [MARDataAnalysis setSourcePageName:self.mar_prePageName destinationPagename:self.mar_currentPageName durationOnPage:durationOnPage];
+    [self mar_viewWillAppear:animated];
+    Class cls = [self class];
+    const char *imagePathC = class_getImageName(cls);
+    if (imagePathC) {
+        NSString *imagePath = [NSString stringWithCString:imagePathC encoding:NSUTF8StringEncoding];
+        if ([imagePath containsString:@"maxiaoding.app/maxiaoding"]) {
+            self.mar_isValidAnalysisVC = YES;
         }
     }
-    else
-    {
-        [MARDataAnalysis setSourcePageName:self.mar_prePageName destinationPagename:self.mar_currentPageName];
+    if (self.mar_isValidAnalysisVC) {
+        [self ex_marAddObserservs];
+        self.mar_pageAppearTimeInterval = [NSDate new].timeIntervalSince1970;
+        [MARDataAnalysis pageAppear:self];
+    }
+}
+
+- (void)mar_viewWillDisappear:(BOOL)animated
+{
+    [self mar_viewWillDisappear:animated];
+    if (self.mar_isValidAnalysisVC) {
+        [self ex_marRemoveObservers];
+        [MARDataAnalysis pageDisAppear:self];
+        if (self.mar_pageAppearTimeInterval > 0) {
+            NSTimeInterval durationOnPage = (long long)[NSDate new].timeIntervalSince1970 - self.mar_pageAppearTimeInterval;
+            if (durationOnPage > 0) {
+                [MARDataAnalysis setSourcePageName:self.mar_prePageName destinationPagename:self.mar_currentPageName durationOnPage:durationOnPage];
+            }
+        }
+        else
+        {
+            [MARDataAnalysis setSourcePageName:self.mar_prePageName destinationPagename:self.mar_currentPageName];
+        }
     }
 }
 
@@ -72,6 +82,15 @@ static char mar_enterBackGroundTimeIntervalKey;
     
 }
 
+- (BOOL)mar_isValidAnalysisVC
+{
+    return [objc_getAssociatedObject(self, &mar_isValidAnalysisVCKey) boolValue];
+}
+
+- (void)setMar_isValidAnalysisVC:(BOOL)mar_isValidAnalysisVC
+{
+    objc_setAssociatedObject(self, &mar_isValidAnalysisVCKey, @(mar_isValidAnalysisVC), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 - (long long)mar_pageAppearTimeInterval
 {
