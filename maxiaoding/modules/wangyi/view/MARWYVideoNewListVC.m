@@ -284,18 +284,18 @@
                 ShowErrorMessage(@"本地收藏成功", 1.f);
             }
         }
-//        [MARWYNewNetworkManager addVideoCollecion:model success:^(NSURLSessionTask *task, id responseObject) {
-//            MARNetworkResponse *response = [MARNetworkResponse mar_modelWithJSON:responseObject];
-//            if (response.isSuccess) {
-//                ShowSuccessMessage(@"收藏成功", 1.f);
-//            }
-//            else
-//            {
-//                ShowErrorMessage(@"收藏失败", 1.f);
-//            }
-//        } failure:^(NSURLSessionTask *task, NSError *error) {
-//            ShowErrorMessage(@"收藏失败!", 1.f);
-//        }];
+        [MARWYNewNetworkManager addVideoCollecion:model success:^(NSURLSessionTask *task, id responseObject) {
+            MARNetworkResponse *response = [MARNetworkResponse mar_modelWithJSON:responseObject];
+            if (response.isSuccess) {
+                ShowSuccessMessage(@"收藏成功", 1.f);
+            }
+            else
+            {
+                ShowErrorMessage(@"收藏失败", 1.f);
+            }
+        } failure:^(NSURLSessionTask *task, NSError *error) {
+            ShowErrorMessage(@"收藏失败!", 1.f);
+        }];
     }
 }
 

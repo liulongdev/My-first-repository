@@ -8,7 +8,7 @@
 
 #import "MARCookStepTableCell.h"
 #import <UIImageView+WebCache.h>
-
+#import <UIView+WebCache.h>
 @interface MARCookStepTableCell()
 @property (strong, nonatomic) IBOutlet UIImageView *stepImageView;
 @property (strong, nonatomic) IBOutlet UILabel *stepDetailLabel;
@@ -51,7 +51,7 @@
             self.constraint_stepImageMaxHeight.constant = 1000;
             NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:imageURL];
             @weakify(self)
-            [[SDWebImageManager sharedManager].imageCache queryDiskCacheForKey:key done:^(UIImage *image, SDImageCacheType cacheType) {
+            [[SDWebImageManager sharedManager].imageCache queryCacheOperationForKey:key done:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
                 if (image) {
                     weak_self.stepImageView.image = image;
                     weak_self.constraint_stepImageMaxHeight.constant = kScreenWIDTH * image.size.height / image.size.width;
@@ -61,10 +61,10 @@
                 }
                 else
                 {
-                    [weak_self.stepImageView setShowActivityIndicatorView:YES];
-                    [weak_self.stepImageView setIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                    [weak_self.stepImageView sd_setShowActivityIndicatorView:YES];
+                    [weak_self.stepImageView sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
                     
-                    [weak_self.stepImageView sd_setImageWithURL:imageURL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                    [weak_self.stepImageView sd_setImageWithURL:imageURL placeholderImage:nil options:SDWebImageCacheMemoryOnly progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                         @strongify(self)
                         if (!strong_self) return;
                         if (error) {
@@ -77,7 +77,11 @@
                             if (strong_self.loadAsyncImageCallback) {
                                 strong_self.loadAsyncImageCallback();
                             }
-                            [[SDWebImageManager sharedManager].imageCache storeImage:image recalculateFromImage:YES imageData:nil forKey:[[SDWebImageManager sharedManager] cacheKeyForURL:imageURL] toDisk:YES];
+                            
+                            [[SDWebImageManager sharedManager].imageCache storeImage:image forKey:key toDisk:YES completion:^{
+                                ;
+                            }];
+                            
                             strong_self.stepImageView.alpha = 0;
                             [UIView animateWithDuration:3 animations:^{
                                 strong_self.stepImageView.alpha = 1;

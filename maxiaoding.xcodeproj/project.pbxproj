@@ -191,6 +191,12 @@
 		5B5F217820495A1400F627D2 /* MARCookCollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F217720495A1400F627D2 /* MARCookCollectVC.m */; };
 		5B5F217B20496D5500F627D2 /* MARWYVideoCollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F217A20496D5500F627D2 /* MARWYVideoCollectVC.m */; };
 		5B5F217D204A466800F627D2 /* MARWYVideoNewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B5F217C204A466800F627D2 /* MARWYVideoNewTableCell.xib */; };
+		5B5F9A6E20AE8E1B0049FBF1 /* MARWYYXTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F9A6C20AE8E1B0049FBF1 /* MARWYYXTestVC.m */; };
+		5B5F9A6F20AE8E1B0049FBF1 /* MARWYYXTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B5F9A6D20AE8E1B0049FBF1 /* MARWYYXTestVC.xib */; };
+		5B5F9A7220AE922A0049FBF1 /* MARWYYXNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F9A7120AE922A0049FBF1 /* MARWYYXNetworkManager.m */; };
+		5B5F9A7E20AEB56A0049FBF1 /* WYYXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F9A7D20AEB56A0049FBF1 /* WYYXManager.m */; };
+		5B5F9A8D20AEDD020049FBF1 /* MARSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F9A8C20AEDD020049FBF1 /* MARSessionViewController.m */; };
+		5B5F9A9120B02FF30049FBF1 /* MARSubscribeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F9A9020B02FF30049FBF1 /* MARSubscribeManager.m */; };
 		5B6967D9208EC5810002968C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6967D8208EC5810002968C /* Social.framework */; };
 		5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FF41FF82E9A000BA56A /* MARUserRequest.m */; };
 		5B765FFB1FF8323A000BA56A /* MARUserNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FFA1FF8323A000BA56A /* MARUserNetworkManager.m */; };
@@ -266,7 +272,6 @@
 		5B9B743D2063920700D9F56A /* JSQMessagesTypingIndicatorFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B740F2063920600D9F56A /* JSQMessagesTypingIndicatorFooterView.xib */; };
 		5B9B743E2063920700D9F56A /* JSQMessagesTypingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B74112063920600D9F56A /* JSQMessagesTypingView.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
-		5BB335482099B00900A2215C /* P026_V1_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5BB335472099B00800A2215C /* P026_V1_1.mp4 */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
 		5BD56B20202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56B1F202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.m */; };
 		5BD56B27202AE08700BB0BD1 /* MARCitiesWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56B26202AE08700BB0BD1 /* MARCitiesWeatherVC.m */; };
@@ -575,6 +580,18 @@
 		5B5F217920496D5500F627D2 /* MARWYVideoCollectVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYVideoCollectVC.h; sourceTree = "<group>"; };
 		5B5F217A20496D5500F627D2 /* MARWYVideoCollectVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYVideoCollectVC.m; sourceTree = "<group>"; };
 		5B5F217C204A466800F627D2 /* MARWYVideoNewTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARWYVideoNewTableCell.xib; sourceTree = "<group>"; };
+		5B5F9A6B20AE8E1B0049FBF1 /* MARWYYXTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYYXTestVC.h; sourceTree = "<group>"; };
+		5B5F9A6C20AE8E1B0049FBF1 /* MARWYYXTestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYYXTestVC.m; sourceTree = "<group>"; };
+		5B5F9A6D20AE8E1B0049FBF1 /* MARWYYXTestVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARWYYXTestVC.xib; sourceTree = "<group>"; };
+		5B5F9A7020AE922A0049FBF1 /* MARWYYXNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYYXNetworkManager.h; sourceTree = "<group>"; };
+		5B5F9A7120AE922A0049FBF1 /* MARWYYXNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYYXNetworkManager.m; sourceTree = "<group>"; };
+		5B5F9A7C20AEB56A0049FBF1 /* WYYXManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYYXManager.h; sourceTree = "<group>"; };
+		5B5F9A7D20AEB56A0049FBF1 /* WYYXManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYYXManager.m; sourceTree = "<group>"; };
+		5B5F9A8B20AEDD020049FBF1 /* MARSessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARSessionViewController.h; sourceTree = "<group>"; };
+		5B5F9A8C20AEDD020049FBF1 /* MARSessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARSessionViewController.m; sourceTree = "<group>"; };
+		5B5F9A8F20B02FF30049FBF1 /* MARSubscribeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARSubscribeManager.h; sourceTree = "<group>"; };
+		5B5F9A9020B02FF30049FBF1 /* MARSubscribeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARSubscribeManager.m; sourceTree = "<group>"; };
+		5B5F9A9220B032C90049FBF1 /* MARSubscribeDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARSubscribeDefine.h; sourceTree = "<group>"; };
 		5B6967D8208EC5810002968C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5B765FF31FF82E9A000BA56A /* MARUserRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARUserRequest.h; sourceTree = "<group>"; };
 		5B765FF41FF82E9A000BA56A /* MARUserRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARUserRequest.m; sourceTree = "<group>"; };
@@ -740,7 +757,6 @@
 		5B9B74112063920600D9F56A /* JSQMessagesTypingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQMessagesTypingView.m; sourceTree = "<group>"; };
 		5BB1D1571FE190EB0004396E /* MARHistoryDayDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayDetailVC.h; sourceTree = "<group>"; };
 		5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHistoryDayDetailVC.m; sourceTree = "<group>"; };
-		5BB335472099B00800A2215C /* P026_V1_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = P026_V1_1.mp4; sourceTree = "<group>"; };
 		5BC0F5731FE211DF004C62D4 /* userdefaultkey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userdefaultkey.h; sourceTree = "<group>"; };
 		5BC0F5741FE2218E004C62D4 /* MARMonthDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMonthDayView.h; sourceTree = "<group>"; };
 		5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMonthDayView.m; sourceTree = "<group>"; };
@@ -1072,7 +1088,6 @@
 		5B25F8511FE0D2CA00E85884 /* maxiaoding */ = {
 			isa = PBXGroup;
 			children = (
-				5BB335472099B00800A2215C /* P026_V1_1.mp4 */,
 				5B2C2996205A0E88006C358C /* components */,
 				5B933B5C1FE97048004C2038 /* resource */,
 				5B25F8B11FE0F80500E85884 /* modules */,
@@ -1120,6 +1135,7 @@
 		5B25F8B11FE0F80500E85884 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				5B5F9A6920AE8DB10049FBF1 /* wangyiyunxin */,
 				5BF5BE2D206B2E4E00AE5E66 /* facerecognition */,
 				5B8EADAD205F5D940055F609 /* voiceaudio */,
 				5B1892462041583700173FEF /* setting */,
@@ -1578,6 +1594,41 @@
 				5B92CEC420400E760031BDC5 /* MAANewModel.m */,
 			);
 			path = response;
+			sourceTree = "<group>";
+		};
+		5B5F9A6920AE8DB10049FBF1 /* wangyiyunxin */ = {
+			isa = PBXGroup;
+			children = (
+				5B5F9A8E20B02F350049FBF1 /* manager */,
+				5B5F9A6A20AE8DBE0049FBF1 /* view */,
+				5B5F9A7020AE922A0049FBF1 /* MARWYYXNetworkManager.h */,
+				5B5F9A7120AE922A0049FBF1 /* MARWYYXNetworkManager.m */,
+				5B5F9A7C20AEB56A0049FBF1 /* WYYXManager.h */,
+				5B5F9A7D20AEB56A0049FBF1 /* WYYXManager.m */,
+			);
+			path = wangyiyunxin;
+			sourceTree = "<group>";
+		};
+		5B5F9A6A20AE8DBE0049FBF1 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B5F9A6B20AE8E1B0049FBF1 /* MARWYYXTestVC.h */,
+				5B5F9A6C20AE8E1B0049FBF1 /* MARWYYXTestVC.m */,
+				5B5F9A6D20AE8E1B0049FBF1 /* MARWYYXTestVC.xib */,
+				5B5F9A8B20AEDD020049FBF1 /* MARSessionViewController.h */,
+				5B5F9A8C20AEDD020049FBF1 /* MARSessionViewController.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5B5F9A8E20B02F350049FBF1 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				5B5F9A8F20B02FF30049FBF1 /* MARSubscribeManager.h */,
+				5B5F9A9020B02FF30049FBF1 /* MARSubscribeManager.m */,
+				5B5F9A9220B032C90049FBF1 /* MARSubscribeDefine.h */,
+			);
+			path = manager;
 			sourceTree = "<group>";
 		};
 		5B765FFC1FF8E637000BA56A /* login */ = {
@@ -2067,7 +2118,6 @@
 				5B25F84B1FE0D2CA00E85884 /* Sources */,
 				5B25F84C1FE0D2CA00E85884 /* Frameworks */,
 				5B25F84D1FE0D2CA00E85884 /* Resources */,
-				7E1D026380398B5D98582CEF /* [CP] Embed Pods Frameworks */,
 				27F4BD3FECC3D30D095A0BCB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -2191,7 +2241,6 @@
 				5B9B74332063920700D9F56A /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				5B225DAF202564DB00EB1F2A /* weather_49.png in Resources */,
 				5B2C29D0205A0F08006C358C /* lightRed.bundle in Resources */,
-				5BB335482099B00900A2215C /* P026_V1_1.mp4 in Resources */,
 				5B225DBB202564DB00EB1F2A /* weather_99.png in Resources */,
 				5B25F85C1FE0D2CA00E85884 /* Assets.xcassets in Resources */,
 				5B2C29D4205A0F08006C358C /* record_start.caf in Resources */,
@@ -2242,6 +2291,7 @@
 				5B2C29C2205A0F08006C358C /* bds_easr_mfe_cmvn.dat in Resources */,
 				5B158C7220264963006B6EC9 /* car.storyboard in Resources */,
 				5B029F161FE3C849008ED5CA /* test.storyboard in Resources */,
+				5B5F9A6F20AE8E1B0049FBF1 /* MARWYYXTestVC.xib in Resources */,
 				5B225D9F202564DB00EB1F2A /* weather_21.png in Resources */,
 				5B2C29C9205A0F08006C358C /* darkOrange.bundle in Resources */,
 				5B225D9E202564DB00EB1F2A /* weather_20.png in Resources */,
@@ -2303,13 +2353,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-maxiaoding-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		27F4BD3FECC3D30D095A0BCB /* [CP] Copy Pods Resources */ = {
@@ -2318,28 +2371,40 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding-resources.sh",
+				"${PODS_ROOT}/AlicloudFeedback/feedback/YWFeedbackBundle.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMKitEmoticon.bundle",
+				"${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMKitResource.bundle",
+				"${PODS_ROOT}/NIMSDK/NIMAVChat/Resources/NMCVideoFilter.bundle",
+				"${PODS_ROOT}/PinYin4Objc/PinYin4Objc/Resources/unicode_to_hanyu_pinyin.txt",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Sina/SinaSDK/WeiboSDK.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle",
+				"${PODS_ROOT}/mobAPI/MobProducts/Sample/MobAPIDemo/Sample/Sources/MobAPI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YWFeedbackBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NIMKitEmoticon.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NIMKitResource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NMCVideoFilter.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/unicode_to_hanyu_pinyin.txt",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TencentOpenApi_IOS_Bundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WeiboSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MobAPI.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7E1D026380398B5D98582CEF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2376,8 +2441,10 @@
 				5B029F4A1FE500C1008ED5CA /* UIImageView+SDWEBEXT.m in Sources */,
 				5B029EF31FE25927008ED5CA /* MARPhoneNumberSettingVC.m in Sources */,
 				5B25F8F61FE17CD300E85884 /* MARLoadPageModel.m in Sources */,
+				5B5F9A9120B02FF30049FBF1 /* MARSubscribeManager.m in Sources */,
 				5B9B74342063920700D9F56A /* JSQMessagesComposerTextView.m in Sources */,
 				5BF82332200888E6005DBCDE /* MARWYNewCategoryTitleCell.m in Sources */,
+				5B5F9A7E20AEB56A0049FBF1 /* WYYXManager.m in Sources */,
 				5B225D632024600900EB1F2A /* MARWeatherHourCollectionCell.m in Sources */,
 				5B01CD541FF32922003D2875 /* MARTitleCollectionReuableView.m in Sources */,
 				5BD56B27202AE08700BB0BD1 /* MARCitiesWeatherVC.m in Sources */,
@@ -2460,6 +2527,7 @@
 				5B7660251FFCABFA000BA56A /* MARPhoneOperationVC.m in Sources */,
 				5B25F8CE1FE0F80500E85884 /* MARBaseViewController.m in Sources */,
 				5B9B74182063920700D9F56A /* JSQMessagesViewController.m in Sources */,
+				5B5F9A8D20AEDD020049FBF1 /* MARSessionViewController.m in Sources */,
 				5B01CD611FF38FAC003D2875 /* MARSMS.m in Sources */,
 				5B933B621FE971EF004C2038 /* MAREmptyView.m in Sources */,
 				5B029F0C1FE3C311008ED5CA /* UIViewController+MXD.m in Sources */,
@@ -2475,11 +2543,13 @@
 				5B029F0F1FE3C3D3008ED5CA /* MARSBConstant.m in Sources */,
 				5BDE92B92020D767005969C6 /* MAARequestModel.m in Sources */,
 				5B933B461FE8F054004C2038 /* MARHand.m in Sources */,
+				5B5F9A7220AE922A0049FBF1 /* MARWYYXNetworkManager.m in Sources */,
 				5B510D3820050AEB00F8F1CD /* MARVideoFullVC.m in Sources */,
 				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */,
 				5B9B74172063920700D9F56A /* UIView+JSQMessages.m in Sources */,
 				5B9B743A2063920700D9F56A /* JSQMessagesToolbarContentView.m in Sources */,
 				5B5F217820495A1400F627D2 /* MARCookCollectVC.m in Sources */,
+				5B5F9A6E20AE8E1B0049FBF1 /* MARWYYXTestVC.m in Sources */,
 				5B9B74272063920700D9F56A /* JSQMediaItem.m in Sources */,
 				5B25F8DA1FE0FBCC00E85884 /* MARWXArticleCategoryVC.m in Sources */,
 				5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */,
@@ -2663,7 +2733,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = FD3FY3GTVB;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/maxiaoding/maxiaoding-Prefix.pch";
 				INFOPLIST_FILE = maxiaoding/Info.plist;
@@ -2689,7 +2759,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/maxiaoding/maxiaoding-Prefix.pch";
 				INFOPLIST_FILE = maxiaoding/Info.plist;

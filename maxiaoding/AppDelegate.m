@@ -13,6 +13,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "MARHomeTestVC.h"
 #import "MARWYNewViewController.h"
+#import "MARWYYXTestVC.h"
 @interface AppDelegate ()
 
 @end
@@ -21,6 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initUMShare];
+    [self initWangyiXin];
     [self initAppearance];
     [self startMonitorNetwork];
     [MARDataAnalysis initDataAnalysis];
@@ -42,7 +44,11 @@
     }
     [MARUTILITY startApp];
     
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeTestVC alloc] init]];
+//    UIViewController *settingVC = [UIViewController vcWithStoryboardName:kSBNAME_Setting storyboardId:kSBID_Setting_HomeSettingVC];
+//    UIViewController *settingVC = [UIViewController vcWithStoryboardName:kSBNAME_Mob storyboardId:kSBID_Mob_MenuVC];
+    UIViewController *settingVC = [[MARWYYXTestVC alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:settingVC];
+//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeTestVC alloc] init]];
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = navi;

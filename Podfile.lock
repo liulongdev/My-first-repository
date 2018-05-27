@@ -48,6 +48,7 @@ PODS:
     - LKDBHelper/standard (= 2.5.0)
   - LKDBHelper/standard (2.5.0):
     - FMDB
+  - M80AttributedLabel (1.6.3)
   - MAREXT (0.1.0):
     - MAREXT/ColorArt (= 0.1.0)
     - MAREXT/Debug (= 0.1.0)
@@ -79,6 +80,15 @@ PODS:
   - mobAPI (2.0.1):
     - MOBFoundation
   - MOBFoundation (3.0.8)
+  - NIMKit/Core (2.7.0):
+    - M80AttributedLabel (~> 1.6.3)
+    - SDWebImage (~> 4.2.2)
+    - Toast (~> 3.0)
+    - TZImagePickerController (~> 1.9.0)
+  - NIMKit/Full (2.7.0):
+    - NIMKit/Core
+    - NIMSDK (~> 5.0.0)
+  - NIMSDK (5.0.0)
   - PinYin4Objc (1.1.1)
   - pop (1.0.10)
   - RealReachability (1.1.9):
@@ -86,12 +96,14 @@ PODS:
     - RealReachability/Ping (= 1.1.9)
   - RealReachability/Connection (1.1.9)
   - RealReachability/Ping (1.1.9)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
+  - SDWebImage (4.2.3):
+    - SDWebImage/Core (= 4.2.3)
+  - SDWebImage/Core (4.2.3)
   - SMSSDK (3.0.1):
     - MOBFoundation
   - SVProgressHUD (2.0.4)
+  - Toast (3.1.0)
+  - TZImagePickerController (1.9.8)
   - UICKeyChainStore (2.1.1)
   - UMengUShare/Core (6.4.7):
     - UMengUShare/Network
@@ -131,10 +143,12 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh (~> 3.1.15.1)
   - mobAPI (~> 2.0.1)
+  - NIMKit/Full (~> 2.7.0)
+  - NIMSDK (~> 5.0.0)
   - PinYin4Objc (~> 1.1.1)
   - pop (~> 1.0.10)
   - RealReachability (~> 1.1.8)
-  - SDWebImage (~> 3.8.2)
+  - SDWebImage (~> 4.2.2)
   - SMSSDK (~> 3.0.1)
   - SVProgressHUD (~> 2.0.4)
   - UMengUShare/Social/QQ (~> 6.4.7)
@@ -143,9 +157,48 @@ DEPENDENCIES:
   - UMengUShare/UI (~> 6.4.7)
   - VTMagic (~> 1.2.4)
 
+SPEC REPOS:
+  https://github.com/aliyun/aliyun-specs.git:
+    - AlicloudFeedback
+    - AlicloudMAN
+    - AlicloudUT
+    - AlicloudUTDID
+    - AlicloudUtils
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - CocoaAsyncSocket
+    - CocoaHTTPServer
+    - CocoaLumberjack
+    - FCUUID
+    - FDFullscreenPopGesture
+    - FMDB
+    - iCarousel
+    - KTVHTTPCache
+    - LKDBHelper
+    - M80AttributedLabel
+    - MAREXT
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - mobAPI
+    - MOBFoundation
+    - NIMKit
+    - NIMSDK
+    - PinYin4Objc
+    - pop
+    - RealReachability
+    - SDWebImage
+    - SMSSDK
+    - SVProgressHUD
+    - Toast
+    - TZImagePickerController
+    - UICKeyChainStore
+    - UMengUShare
+    - VTMagic
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AlicloudFeedback: '0887b49a73d6fc172f4a986cae1f92ae4100341e'
+  AlicloudFeedback: 0887b49a73d6fc172f4a986cae1f92ae4100341e
   AlicloudMAN: c0feaa5ba3c8955532d37a82a26b373fa0388be4
   AlicloudUT: 9f20dcfd2753de09261b6c279245da1650a34932
   AlicloudUTDID: f5a7bc1420c5f83e3bd40296e5ab2e5a804a12f8
@@ -159,22 +212,27 @@ SPEC CHECKSUMS:
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   KTVHTTPCache: 5e13a84c6eb85cf33364ec482e9480512af4cee1
   LKDBHelper: 378aa31e334bbb4e7a64928b4e7bae8059386524
+  M80AttributedLabel: d06543195d3e451d2ea62ad76d04aa9cea7661d4
   MAREXT: 20f251052e87c4de82439bd5e345fae8d9ff3afe
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   mobAPI: 7479e6c72caa61145120ad8bbb3cf7b8194f988b
   MOBFoundation: dc4419633249fa4f6a0c0a7ad29cbbb376421ed6
+  NIMKit: 99af1bccfb27fde7cd6e0c9875837ef234ce2d5f
+  NIMSDK: 269b2cd770da10fcc96f56cdfe29f305b4552212
   PinYin4Objc: 3fa9673610368330e2dfb688b1d19a35c3930a78
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   RealReachability: a8c483900986a0f3305733961effbfbb00637a02
-  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
+  SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   SMSSDK: a811c8ea6e89393097037b7cf6493248a40e50f0
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
+  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+  TZImagePickerController: 3b9413ae5d049b1fdc5b0c720ad283f35b679a50
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
   UMengUShare: 5055d0e01c844379e173bdca0840fc9fa9297d88
   VTMagic: b49e5f456dbcbfd9a3588ba92417233a105bc193
 
-PODFILE CHECKSUM: 138fd55ad7639ae388f9bf70b641dfa19e045a55
+PODFILE CHECKSUM: a1dd9a7d4c09d0243ed66618069c8a9fee2fabc1
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.2

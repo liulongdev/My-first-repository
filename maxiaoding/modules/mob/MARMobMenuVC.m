@@ -38,7 +38,7 @@ static NSString * const cellTitle_weather           = @"天气";
 static NSString * const cellTitle_car               = @"汽车（新）";
 static NSString * const cellTitle_baiduVoice        = @"百度语音";
 
-static NSString * const cellTitle_faceRecognition        = @"头像识别";
+static NSString * const cellTitle_faceRecognition   = @"头像识别";
 
 
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>

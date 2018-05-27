@@ -12,7 +12,8 @@
 #define URLAppend(_host_, _serviceurl_)     [[NSURL URLWithString:_serviceurl_ relativeToURL:[NSURL URLWithString:_host_]] absoluteString]
 
 //#define SERVERHOST @"http://192.168.2.3:3000"
-#define SERVERHOST @"https://wx.liulong.site"
+//#define SERVERHOST @"https://wx.liulong.site"
+#define SERVERHOST @"http://liulong.site"
 
 #define SHORTAPI_ThirdPlatformLogin         @"api/core/v1/user/thirdPlatformLogin"  // 第三方平台登陆
 #define SHORTAPI_RegisterUser               @"api/core/v1/user/register"            // 注册用户、

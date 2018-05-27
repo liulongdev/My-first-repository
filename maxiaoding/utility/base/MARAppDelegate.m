@@ -8,9 +8,15 @@
 
 #import "MARAppDelegate.h"
 #import <RealReachability.h>
+#import <NIMSDK/NIMSDK.h>       // 网易信
+#import "MARSubscribeManager.h"
 //#import "NotificationMacro.h"
 //#import "AppMacro.h"
 //#import "css.h"
+
+@interface MARAppDelegate() <NIMLoginManagerDelegate>
+
+@end
 
 @implementation MARAppDelegate
 
@@ -144,9 +150,9 @@
     [[UINavigationBar appearance] setBackgroundImage:imge forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    if (@available(iOS 11.0, *)){//避免滚动视图顶部出现多余空白以及push或者pop的时候页面有一个上移或者下移的异常动画的问题
-        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
-    }
+//    if (@available(iOS 11.0, *)){//避免滚动视图顶部出现多余空白以及push或者pop的时候页面有一个上移或者下移的异常动画的问题
+//        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+//    }
     
 }
 
@@ -206,5 +212,48 @@
         self.backgroundIdentifier = UIBackgroundTaskInvalid;
     }
 }
+
+
+/********************************************************
+ 网易云信  -- start --
+ */
+- (void)initWangyiXin
+{
+    [[NIMSDKConfig sharedConfig] setShouldSyncUnreadCount:YES];
+    [[NIMSDKConfig sharedConfig] setMaxAutoLoginRetryTimes:10];
+    
+    NSString *appKey        = @"f98bfbd723373582824634e8699d0d77";
+    NIMSDKOption *option    = [NIMSDKOption optionWithAppKey:appKey];
+    option.apnsCername      = nil;
+    option.pkCername        = nil;
+    [[NIMSDK sharedSDK] registerWithOption:option];
+    [[[NIMSDK sharedSDK] loginManager] addDelegate:self];
+    NSLog(@"account : %@", [[NIMSDK sharedSDK] loginManager].currentAccount);
+    
+    [[MARSubscribeManager sharedManager] start];
+}
+
+- (void)onLogin:(NIMLoginStep)step
+{
+    NSString *loginMsg = [NSString stringWithFormat:@">>> onLogin : %ld", (long)step];
+    NSLog(@"%@", loginMsg);
+    ShowSuccessMessage(loginMsg, 2.f);
+}
+
+- (void)onAutoLoginFailed:(NSError *)error
+{
+    NSString *onAutoLoginFailed = [NSString stringWithFormat:@">>>> onAutoLoginFailed : %@", error];
+    NSLog(@"%@", onAutoLoginFailed);
+    ShowSuccessMessage(onAutoLoginFailed, 2.f);
+}
+
+- (void)onMultiLoginClientsChanged
+{
+    ShowInfoMessage(@"被踢了", 3.f);
+}
+
+/**
+ 网易云信  -- end --
+ ********************************************************/
 
 @end

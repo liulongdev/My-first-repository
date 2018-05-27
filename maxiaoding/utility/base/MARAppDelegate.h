@@ -25,6 +25,8 @@
 
 - (void)initUMShare;
 
+- (void)initWangyiXin;
+
 - (void)mar_begingBackgoundTask;
 
 - (void)mar_endBackgroundTask;

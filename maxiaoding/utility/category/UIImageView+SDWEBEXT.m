@@ -7,7 +7,7 @@
 //
 
 #import "UIImageView+SDWEBEXT.h"
-
+#import <UIView+WebCache.h>
 @implementation UIImageView (SDWEBEXT)
 
 - (void)mar_setImageDefaultCornerRadiusWithURL:(NSURL *)imageURL
@@ -24,21 +24,23 @@
 {
     NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:imageURL];
     __weak __typeof(self) weakSelf = self;
-    [[SDWebImageManager sharedManager].imageCache queryDiskCacheForKey:key done:^(UIImage *image, SDImageCacheType cacheType) {
+    [[SDWebImageManager sharedManager].imageCache queryCacheOperationForKey:key done:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
         if (image) {
             weakSelf.image = image;
         }
         else
         {
-            [weakSelf setShowActivityIndicatorView:YES];
-            [weakSelf setIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [weakSelf sd_setShowActivityIndicatorView:YES];
+            [weakSelf sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
             
             [weakSelf sd_setImageWithURL:imageURL placeholderImage:image options:SDWebImageCacheMemoryOnly progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 if (image) {
                     image = [image mar_imageByRoundCornerRadius:(1/10.f * MIN(image.size.height, image.size.width))];
                     weakSelf.image = image;
                     
-                    [[SDWebImageManager sharedManager].imageCache storeImage:image recalculateFromImage:YES imageData:nil forKey:[[SDWebImageManager sharedManager] cacheKeyForURL:imageURL] toDisk:YES];
+                    [[SDWebImageManager sharedManager].imageCache storeImage:image forKey:key toDisk:YES completion:^{
+                        ;
+                    }];
                     weakSelf.alpha = 0;
                     [UIView animateWithDuration:1 animations:^{
                         weakSelf.alpha = 1;

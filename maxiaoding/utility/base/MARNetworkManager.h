@@ -152,6 +152,16 @@ typedef void (^MARNetworkProgress)(CGFloat progress);
                              success:(MARNetworkSuccess)success
                              failure:(MARNetworkFailure)failure;
 
+// 不私自调用
+- (NSURLSessionDataTask *)_mar_requestType:(MARNetworkRequestType)type
+                                 urlString:(NSString *)urlString
+                                parameters:(id)parameters
+                                  progress:(MARNetworkProgress)progress
+                                   success:(MARNetworkSuccess)success
+                                   failure:(MARNetworkFailure)failure
+                               loadingType:(MARNetworkLoadingType)loadingType
+                                    inView:(UIView *)inView;
+
 /**
  *  网络请求的类方法
  *
