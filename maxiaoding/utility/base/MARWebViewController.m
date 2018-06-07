@@ -147,8 +147,33 @@
     [webView evaluateJavaScript:@"document.title" completionHandler:^(id _Nullable response, NSError * _Nullable error) {
         weakSelf.title = response;
     }];
+    
+#ifdef MARSocialShareManagerOn
+    if (self.messageModel) {
+        UIBarButtonItem *shareBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(socialShareAction:)];
+        self.navigationItem.rightBarButtonItem = shareBarBtn;
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+//    UIBarButtonItem *shareBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(socialShareAction:)];
+//    self.navigationItem.rightBarButtonItem = shareBarBtn;
+#else
     self.navigationItem.rightBarButtonItem = nil;
+#endif
 }
+
+#ifdef MARSocialShareManagerOn
+- (void)socialShareAction:(id)sender
+{
+    [MARSocialShareManager setSupportPlatforms];
+    [MARSocialShareManager showShareMenuViewInWindowWithMessage:self.messageModel complete:^(id result, NSError *error) {
+        NSLog(@"j>>>>>>> result : %@", result);
+        
+    }];
+}
+#endif
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
 {

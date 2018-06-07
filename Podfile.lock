@@ -143,9 +143,43 @@ DEPENDENCIES:
   - UMengUShare/UI (~> 6.4.7)
   - VTMagic (~> 1.2.4)
 
+SPEC REPOS:
+  https://github.com/aliyun/aliyun-specs.git:
+    - AlicloudFeedback
+    - AlicloudMAN
+    - AlicloudUT
+    - AlicloudUTDID
+    - AlicloudUtils
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - CocoaAsyncSocket
+    - CocoaHTTPServer
+    - CocoaLumberjack
+    - FCUUID
+    - FDFullscreenPopGesture
+    - FMDB
+    - iCarousel
+    - KTVHTTPCache
+    - LKDBHelper
+    - MAREXT
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - mobAPI
+    - MOBFoundation
+    - PinYin4Objc
+    - pop
+    - RealReachability
+    - SDWebImage
+    - SMSSDK
+    - SVProgressHUD
+    - UICKeyChainStore
+    - UMengUShare
+    - VTMagic
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AlicloudFeedback: '0887b49a73d6fc172f4a986cae1f92ae4100341e'
+  AlicloudFeedback: 0887b49a73d6fc172f4a986cae1f92ae4100341e
   AlicloudMAN: c0feaa5ba3c8955532d37a82a26b373fa0388be4
   AlicloudUT: 9f20dcfd2753de09261b6c279245da1650a34932
   AlicloudUTDID: f5a7bc1420c5f83e3bd40296e5ab2e5a804a12f8
@@ -168,7 +202,7 @@ SPEC CHECKSUMS:
   PinYin4Objc: 3fa9673610368330e2dfb688b1d19a35c3930a78
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   RealReachability: a8c483900986a0f3305733961effbfbb00637a02
-  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SMSSDK: a811c8ea6e89393097037b7cf6493248a40e50f0
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
@@ -177,4 +211,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 138fd55ad7639ae388f9bf70b641dfa19e045a55
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.2

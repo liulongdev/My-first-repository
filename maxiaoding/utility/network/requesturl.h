@@ -13,6 +13,7 @@
 
 //#define SERVERHOST @"http://192.168.2.3:3000"
 #define SERVERHOST @"https://wx.liulong.site"
+//#define SERVERHOST @"http://liulong.site"
 
 #define SHORTAPI_ThirdPlatformLogin         @"api/core/v1/user/thirdPlatformLogin"  // 第三方平台登陆
 #define SHORTAPI_RegisterUser               @"api/core/v1/user/register"            // 注册用户、

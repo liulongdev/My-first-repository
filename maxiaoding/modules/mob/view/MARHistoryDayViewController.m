@@ -150,12 +150,12 @@
 - (NSString *)dateStr
 {
     if (!_dateStr || ![_dateStr isKindOfClass:[NSString class]] || _dateStr.length != 4) {
-        MARGLOBALMANAGER.dataFormatter.dateFormat = @"MMdd";
+        MARGLOBALMANAGER.dateFormatter.dateFormat = @"MMdd";
         if (_date) {
-            _dateStr = [MARGLOBALMANAGER.dataFormatter stringFromDate:_date];
+            _dateStr = [MARGLOBALMANAGER.dateFormatter stringFromDate:_date];
         }
         else
-            _dateStr = [MARGLOBALMANAGER.dataFormatter stringFromDate:[NSDate date]];
+            _dateStr = [MARGLOBALMANAGER.dateFormatter stringFromDate:[NSDate date]];
     }
     return _dateStr;
 }

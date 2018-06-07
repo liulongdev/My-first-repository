@@ -9,7 +9,14 @@
 #import "MARBaseViewController.h"
 #if __has_include(<WebKit/WebKit.h>)
 #import <WebKit/WebKit.h>
+
+#if __has_include("MARSocialShareManager.h")
+#define MARSocialShareManagerOn
+#import "MARSocialShareManager.h"
 #endif
+
+#endif
+
 @interface MARWebViewController : MARBaseViewController
 
 /** Initializes a web vew controller that will load the given `NSURL` object.
@@ -41,6 +48,10 @@
 @property (nonatomic,strong) WKWebView *webView;
 #else
 @property (nonatomic,strong) UIWebView *webView;
+#endif
+
+#ifdef MARSocialShareManagerOn
+@property (nonatomic,strong) MARSocialShareMessageModel *messageModel;
 #endif
 
 @end

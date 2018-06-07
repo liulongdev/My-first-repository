@@ -303,7 +303,9 @@
 {
     [MARDataAnalysis setEventPage:@"WYNewListVC" EventLabel:@"wangyinew_clickcell"];
     _webVC = [[MARWebViewController alloc] init];
-    [self prePareDateForIndexPath:indexPath];
+//    [self prePareDateForIndexPath:indexPath];
+    MARSocialShareMessageModel *message = [self prepareMessageForIndexPath:indexPath];
+    _webVC.messageModel = message;
     [self mar_pushViewController:_webVC animated:YES];
 //    NSInteger row = indexPath.row;
 //    if (self.model.wyNewArray.count > row) {
@@ -368,6 +370,133 @@
 //            [self mar_pushViewController:webVC animated:YES];
 //        }
 //    }
+}
+
+- (MARSocialShareMessageModel *)prepareMessageForIndexPath:(NSIndexPath *)indexPath
+{
+    MARSocialShareMessageModel *messageModel = [MARSocialShareMessageModel new];
+    MARWebViewController *webVC = self.webVC;
+    NSInteger row = indexPath.row;
+    if (self.model.wyNewArray.count > row) {
+        MARWYNewModel *model = self.model.wyNewArray[row];
+        messageModel.title = model.title;
+        messageModel.thumImage = model.imgsrc;
+        messageModel.shareDesc = model.digest;
+        if (model.skipType) {
+            if ([model.skipType isEqualToString:WYNEWSkipType_PhotoSet]) {
+                NSString *skipType = [model.skipID copy];
+                if (skipType.length > 4) {
+                    skipType = [[skipType substringFromIndex:4] stringByReplacingOccurrencesOfString:@"|" withString:@"/"];
+                }
+                NSString *urlExtStr = skipType;
+                NSString *url = [NSString stringWithFormat:@"%@/%@/%@.json", WANGYIHOST, WYGetPhotoNewDetail, urlExtStr];
+                @weakify(self)
+                [self showActivityView:YES];
+                [MARNetworkManager mar_get:url parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+                    @strongify(self)
+                    if (!strong_self) return;
+                    [strong_self showActivityView:NO];
+                    //                    NSLog(@"get photos %@", responseObject);
+                    if ([responseObject[@"url"] mar_isValidUrl]) {
+                        if (strong_self.webVC == webVC) {
+                            messageModel.URLString = responseObject[@"url"];
+                            strong_self.webVC.URL = [NSURL URLWithString:responseObject[@"url"]];
+                        }
+                    }
+                    else
+                    {
+                        if (strong_self.webVC == webVC) {
+                            [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                        }
+                    }
+                } failure:^(NSURLSessionTask *task, NSError *error) {
+                    @strongify(self)
+                    if (!strong_self) return;
+                    if (strong_self.webVC == webVC)
+                        [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                    [strong_self showActivityView:NO];
+                    NSLog(@">>>>> get photos error : %@", error);
+                }];
+            }
+            else if ([model.skipType isEqualToString:WYNEWSkipType_Video])
+            {
+                @weakify(self)
+                [self showActivityView:YES];
+                [MARWYNewNetworkManager getVideoNewDetailWithSkipId:model.skipID success:^(NSURLSessionTask *task, id responseObject) {
+                    @strongify(self)
+                    if (!strong_self) return;
+                    [strong_self showActivityView:NO];
+                    MARWYVideoNewDetailModel *model = [MARWYVideoNewDetailModel mar_modelWithJSON:responseObject];
+                    if ([model.vurl mar_isValidUrl]) {
+                        if (strong_self.webVC == webVC) {
+                            messageModel.URLString = responseObject[@"url"];
+                            strong_self.webVC.URL = [NSURL URLWithString:responseObject[@"url"]];
+                        }
+                    }
+                    else
+                    {
+                        if (strong_self.webVC == webVC) {
+                            [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                        }
+                    }
+                    NSLog(@">>>>>>> get videoDetail : %@", responseObject);
+                } failure:^(NSURLSessionTask *task, NSError *error) {
+                    @strongify(self)
+                    if (!strong_self) return;
+                    if (strong_self.webVC == webVC)
+                        [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                    NSLog(@">>>>>>> get videoDetail error : %@", error);
+                }];
+            }
+            
+        }
+        else if (![model.docid mar_containsString:@"|"])
+        {
+            //  specail
+            if ([model.url mar_isValidUrl]) {
+                messageModel.URLString = model.url;
+            }
+            @weakify(self)
+            [self showActivityView:YES];
+            [MARWYNewNetworkManager getNewDetailWithDocId:model.docid success:^(NSURLSessionTask *task, id responseObject) {
+                @strongify(self)
+                if (!strong_self) return;
+                [strong_self showActivityView:NO];
+                //                NSLog(@"get wynew detail : %@", responseObject);
+                MARWYNewDetailModel *detailModel = [MARWYNewDetailModel mar_modelWithJSON:responseObject[model.docid]];
+                NSLog(@">>>>> %@", detailModel);
+                if (strong_self.webVC == webVC) {
+                    strong_self.webVC.htmlString = [detailModel getHtmlString];
+                }
+                else
+                {
+                    if (strong_self.webVC == webVC) {
+                        [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                    }
+                }
+            } failure:^(NSURLSessionTask *task, NSError *error) {
+                @strongify(self)
+                if (!strong_self) return;
+                if (strong_self.webVC == webVC)
+                    [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                NSLog(@"get wynew detail error : %@", error);
+            }];
+        }
+        else if ([model.url mar_isValidUrl]) {
+            if (self.webVC == webVC) {
+                webVC.URL = [NSURL URLWithString:model.url];
+            }
+        }
+        else
+        {
+            messageModel = nil;
+            if (self.webVC == webVC) {
+                [self.webVC.navigationController popViewControllerAnimated:YES];
+                ShowInfoMessage(@"我迷路了！", 1.f);
+            }
+        }
+    }
+    return messageModel;
 }
 
 - (void)prePareDateForIndexPath:(NSIndexPath *)indexPath

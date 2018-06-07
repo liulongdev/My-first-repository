@@ -152,8 +152,8 @@
     if (!date) {
         return;
     }
-    MARGLOBALMANAGER.dataFormatter.dateFormat = @"yyyy-MM-dd";
-    [self loadLaohuangliWithDateStr:[MARGLOBALMANAGER.dataFormatter stringFromDate:date]  callback:callback];
+    MARGLOBALMANAGER.dateFormatter.dateFormat = @"yyyy-MM-dd";
+    [self loadLaohuangliWithDateStr:[MARGLOBALMANAGER.dateFormatter stringFromDate:date]  callback:callback];
 }
 
 + (void)loadCarBrandListCallback:(void (^)(MOBAResponse *, NSArray<MARCarBrandModel *> *, NSString *))callback

@@ -204,6 +204,7 @@
 		5B8EADE0205F847E0055F609 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EADC5205F847D0055F609 /* .gitignore */; };
 		5B8EADE1205F847E0055F609 /* libBaiduSpeechSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8EADC6205F847D0055F609 /* libBaiduSpeechSDK.a */; };
 		5B8EADE2205F847E0055F609 /* .gitIgnore in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EADC9205F847E0055F609 /* .gitIgnore */; };
+		5B9227FD20C9110900EF05FA /* MARSocialShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9227FC20C9110900EF05FA /* MARSocialShareManager.m */; };
 		5B92CEC520400E760031BDC5 /* MAANewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B92CEC420400E760031BDC5 /* MAANewModel.m */; };
 		5B933B2C1FE767AD004C2038 /* MARDataAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B2B1FE767AD004C2038 /* MARDataAnalysis.m */; };
 		5B933B321FE79999004C2038 /* UIViewController+MAREX.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B311FE79998004C2038 /* UIViewController+MAREX.m */; };
@@ -266,7 +267,6 @@
 		5B9B743D2063920700D9F56A /* JSQMessagesTypingIndicatorFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B740F2063920600D9F56A /* JSQMessagesTypingIndicatorFooterView.xib */; };
 		5B9B743E2063920700D9F56A /* JSQMessagesTypingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B74112063920600D9F56A /* JSQMessagesTypingView.m */; };
 		5BB1D1591FE190EB0004396E /* MARHistoryDayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */; };
-		5BB335482099B00900A2215C /* P026_V1_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5BB335472099B00800A2215C /* P026_V1_1.mp4 */; };
 		5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */; };
 		5BD56B20202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56B1F202A0ADF00BB0BD1 /* MARWeatherChooseCityVC.m */; };
 		5BD56B27202AE08700BB0BD1 /* MARCitiesWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56B26202AE08700BB0BD1 /* MARCitiesWeatherVC.m */; };
@@ -616,6 +616,8 @@
 		5B8EADDD205F847E0055F609 /* BDSSpeechSynthesizerParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSSpeechSynthesizerParams.h; sourceTree = "<group>"; };
 		5B8EADDE205F847E0055F609 /* BDSSynthesizerLogLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSSynthesizerLogLevel.h; sourceTree = "<group>"; };
 		5B8EADDF205F847E0055F609 /* BDSTTSEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSTTSEventManager.h; sourceTree = "<group>"; };
+		5B9227FB20C9110900EF05FA /* MARSocialShareManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARSocialShareManager.h; sourceTree = "<group>"; };
+		5B9227FC20C9110900EF05FA /* MARSocialShareManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARSocialShareManager.m; sourceTree = "<group>"; };
 		5B92CEC320400E760031BDC5 /* MAANewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAANewModel.h; sourceTree = "<group>"; };
 		5B92CEC420400E760031BDC5 /* MAANewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAANewModel.m; sourceTree = "<group>"; };
 		5B933B2A1FE767AD004C2038 /* MARDataAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARDataAnalysis.h; sourceTree = "<group>"; };
@@ -740,7 +742,6 @@
 		5B9B74112063920600D9F56A /* JSQMessagesTypingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQMessagesTypingView.m; sourceTree = "<group>"; };
 		5BB1D1571FE190EB0004396E /* MARHistoryDayDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHistoryDayDetailVC.h; sourceTree = "<group>"; };
 		5BB1D1581FE190EB0004396E /* MARHistoryDayDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHistoryDayDetailVC.m; sourceTree = "<group>"; };
-		5BB335472099B00800A2215C /* P026_V1_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = P026_V1_1.mp4; sourceTree = "<group>"; };
 		5BC0F5731FE211DF004C62D4 /* userdefaultkey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userdefaultkey.h; sourceTree = "<group>"; };
 		5BC0F5741FE2218E004C62D4 /* MARMonthDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARMonthDayView.h; sourceTree = "<group>"; };
 		5BC0F5751FE2218E004C62D4 /* MARMonthDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARMonthDayView.m; sourceTree = "<group>"; };
@@ -1072,7 +1073,6 @@
 		5B25F8511FE0D2CA00E85884 /* maxiaoding */ = {
 			isa = PBXGroup;
 			children = (
-				5BB335472099B00800A2215C /* P026_V1_1.mp4 */,
 				5B2C2996205A0E88006C358C /* components */,
 				5B933B5C1FE97048004C2038 /* resource */,
 				5B25F8B11FE0F80500E85884 /* modules */,
@@ -1220,6 +1220,7 @@
 		5B25F8B61FE0F80500E85884 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				5B9227FA20C910CF00EF05FA /* socialshare */,
 				5B01CD5E1FF38D21003D2875 /* sms */,
 				5B4805321FF27B94000C9FD3 /* network */,
 				5B933B291FE7679D004C2038 /* dataanalysis */,
@@ -1723,6 +1724,15 @@
 			path = TTS;
 			sourceTree = "<group>";
 		};
+		5B9227FA20C910CF00EF05FA /* socialshare */ = {
+			isa = PBXGroup;
+			children = (
+				5B9227FB20C9110900EF05FA /* MARSocialShareManager.h */,
+				5B9227FC20C9110900EF05FA /* MARSocialShareManager.m */,
+			);
+			path = socialshare;
+			sourceTree = "<group>";
+		};
 		5B933B291FE7679D004C2038 /* dataanalysis */ = {
 			isa = PBXGroup;
 			children = (
@@ -2067,7 +2077,6 @@
 				5B25F84B1FE0D2CA00E85884 /* Sources */,
 				5B25F84C1FE0D2CA00E85884 /* Frameworks */,
 				5B25F84D1FE0D2CA00E85884 /* Resources */,
-				7E1D026380398B5D98582CEF /* [CP] Embed Pods Frameworks */,
 				27F4BD3FECC3D30D095A0BCB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -2191,7 +2200,6 @@
 				5B9B74332063920700D9F56A /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				5B225DAF202564DB00EB1F2A /* weather_49.png in Resources */,
 				5B2C29D0205A0F08006C358C /* lightRed.bundle in Resources */,
-				5BB335482099B00900A2215C /* P026_V1_1.mp4 in Resources */,
 				5B225DBB202564DB00EB1F2A /* weather_99.png in Resources */,
 				5B25F85C1FE0D2CA00E85884 /* Assets.xcassets in Resources */,
 				5B2C29D4205A0F08006C358C /* record_start.caf in Resources */,
@@ -2303,13 +2311,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-maxiaoding-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		27F4BD3FECC3D30D095A0BCB /* [CP] Copy Pods Resources */ = {
@@ -2318,28 +2329,32 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding-resources.sh",
+				"${PODS_ROOT}/AlicloudFeedback/feedback/YWFeedbackBundle.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/PinYin4Objc/PinYin4Objc/Resources/unicode_to_hanyu_pinyin.txt",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Sina/SinaSDK/WeiboSDK.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle",
+				"${PODS_ROOT}/mobAPI/MobProducts/Sample/MobAPIDemo/Sample/Sources/MobAPI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YWFeedbackBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/unicode_to_hanyu_pinyin.txt",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TencentOpenApi_IOS_Bundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WeiboSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MobAPI.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7E1D026380398B5D98582CEF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2446,6 +2461,7 @@
 				5B225D5620240C9200EB1F2A /* MARWeatherVC.m in Sources */,
 				5B25F8621FE0D2CA00E85884 /* main.m in Sources */,
 				5BF8232F20076A81005DBCDE /* MARWYChooseNewCategoryVC.m in Sources */,
+				5B9227FD20C9110900EF05FA /* MARSocialShareManager.m in Sources */,
 				5B9B742B2063920700D9F56A /* JSQPhotoMediaItem.m in Sources */,
 				5B029F2A1FE4043D008ED5CA /* MARHomeCustomVC.m in Sources */,
 				5B9B74142063920700D9F56A /* NSString+JSQMessages.m in Sources */,

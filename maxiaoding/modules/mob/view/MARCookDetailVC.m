@@ -11,6 +11,7 @@
 #import <UIImageView+WebCache.h>
 #import "MARCookStepTableCell.h"
 #import "MARMobUtil.h"
+#import "MARSocialShareManager.h"
 
 @interface MARCookDetailVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -32,6 +33,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *cookSumaryLabel;
 
 @property (nonatomic, strong) UIBarButtonItem *collectionBarBtn;
+
+@property (nonatomic, strong) UIBarButtonItem *shareBarBtn;
 
 @end
 
@@ -133,7 +136,8 @@
     if (cookDetail)
     {
         [self updateCollectTitle];
-        self.navigationItem.rightBarButtonItem = self.collectionBarBtn;
+//        self.navigationItem.rightBarButtonItem = self.collectionBarBtn;
+        self.navigationItem.rightBarButtonItems = @[self.collectionBarBtn, self.shareBarBtn];
     }
     else
         self.navigationItem.rightBarButtonItem = nil;
@@ -215,6 +219,14 @@
     return _collectionBarBtn;
 }
 
+- (UIBarButtonItem *)shareBarBtn
+{
+    if (!_shareBarBtn) {
+        _shareBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(clickShareAction:)];
+    }
+    return _shareBarBtn;
+}
+
 - (void)clickCollectionCookAction:(UIBarButtonItem *)collectionBarBtn
 {
     if ([collectionBarBtn.title isEqualToString:@"取消收藏"]) {
@@ -232,6 +244,71 @@
         }
     }
     [self updateCollectTitle];
+}
+
+- (void)clickShareAction:(id)sender
+{
+    MARSocialShareMessageModel *messageModel = [MARSocialShareMessageModel new];
+    messageModel.messageType = MARSocialShareMessageType_Image;
+    messageModel.title = self.cookDetail.name;
+    
+    UIScrollView *scrollView = self.tableView;
+    if (CGRectGetHeight(scrollView.frame) >= scrollView.contentSize.height) {
+        UIImage* viewImage = nil;
+        UIGraphicsBeginImageContextWithOptions(scrollView.contentSize, scrollView.opaque, 0.0);
+        {
+            CGPoint savedContentOffset = scrollView.contentOffset;
+            CGRect savedFrame = scrollView.frame;
+            
+            scrollView.contentOffset = CGPointZero;
+            scrollView.frame = CGRectMake(0, 0, scrollView.contentSize.width, MAX(scrollView.contentSize.height, CGRectGetHeight(scrollView.frame)));
+            
+            [scrollView.layer renderInContext: UIGraphicsGetCurrentContext()];
+            viewImage = UIGraphicsGetImageFromCurrentImageContext();
+            
+            scrollView.contentOffset = savedContentOffset;
+            scrollView.frame = savedFrame;
+        }
+        UIGraphicsEndImageContext();
+        messageModel.image = viewImage;
+        messageModel.thumImage = [self cookImageUrlStr];
+        [MARSocialShareManager setSupportPlatforms];
+        [MARSocialShareManager showShareMenuViewInWindowWithMessage:messageModel complete:nil];
+        return;
+    }
+    CGPoint off = scrollView.contentOffset;
+    off.y = scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom;
+    [scrollView setContentOffset:off animated:YES];
+    @weakify(self)
+    self.view.userInteractionEnabled = NO;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        UIImage* viewImage = nil;
+        weak_self.view.userInteractionEnabled = YES;    UIGraphicsBeginImageContextWithOptions(CGSizeMake(CGRectGetWidth(scrollView.frame), scrollView.contentSize.height/scrollView.contentSize.width * CGRectGetWidth(scrollView.frame)), scrollView.opaque, 0.0);
+        {
+            CGPoint savedContentOffset = scrollView.contentOffset;
+            CGRect savedFrame = scrollView.frame;
+            
+            scrollView.contentOffset = CGPointZero;
+            scrollView.frame = CGRectMake(0, 0, scrollView.contentSize.width, MAX(scrollView.contentSize.height, CGRectGetHeight(scrollView.frame)));
+            CGContextRef contextRef = UIGraphicsGetCurrentContext();
+            
+            [scrollView.layer renderInContext:contextRef];
+            viewImage = UIGraphicsGetImageFromCurrentImageContext();
+            
+            scrollView.contentOffset = savedContentOffset;
+            scrollView.frame = savedFrame;
+        }
+        UIGraphicsEndImageContext();
+        mar_dispatch_async_on_main_queue(^{
+            messageModel.image = viewImage;
+            messageModel.thumImage = [self cookImageUrlStr];
+            [MARSocialShareManager setSupportPlatforms];
+            [MARSocialShareManager showShareMenuViewInWindowWithMessage:messageModel complete:nil];
+        });
+    });
+    
+    
+    
 }
 
 - (void)updateCollectTitle

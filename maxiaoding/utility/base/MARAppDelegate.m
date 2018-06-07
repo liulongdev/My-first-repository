@@ -188,6 +188,20 @@
 - (void)confitUShareSettings
 {
     [UMSocialGlobal shareInstance].isUsingWaterMark = YES;
+    //创建图片水印配置类
+    UMSocialImageWarterMarkConfig* imageWarterMarkConfig= [[UMSocialImageWarterMarkConfig alloc] init];
+    imageWarterMarkConfig.warterMarkImage = [UIImage mar_imageFromText:@"马小丁-Martin" font:MARFontNameHelvetica fontSize:14.f imageSize:CGSizeMake(100, 20)]; // [UIImage mar_imageWithSize:CGSizeMake(100, 20) backgroundColor:[UIColor blackColor] maskedText:@"马小丁-Martin" font:MARFontNameHelvetica fontSize:14.f];
+    imageWarterMarkConfig.warterMarkImageAlpha = 0.7;
+    imageWarterMarkConfig.warterMarkImageScale = 0.4;
+    imageWarterMarkConfig.paddingToHorizontalParentBorder = 10;
+    imageWarterMarkConfig.paddingToVerticalParentBorder = 10;
+    //创建水印配置类
+    UMSocialWarterMarkConfig* warterMarkConfig = [[UMSocialWarterMarkConfig alloc] init];
+    warterMarkConfig.stringAndImageWarterMarkPositon = UMSocialImageWarterMarkBottomRight;
+    [warterMarkConfig setUserDefinedImageWarterMarkConfig:imageWarterMarkConfig];
+    
+    //设置水印配置类
+    [UMSocialGlobal shareInstance].warterMarkConfig = warterMarkConfig;
     [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
 }
 

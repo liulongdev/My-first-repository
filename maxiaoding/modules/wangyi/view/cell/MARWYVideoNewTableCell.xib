@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -87,7 +87,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7V-1i-ZZQ">
-                                <rect key="frame" x="307" y="6" width="60" height="30"/>
+                                <rect key="frame" x="239" y="6" width="60" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="F91-nR-TSQ"/>
                                     <constraint firstAttribute="width" constant="60" id="KFM-mu-U7b"/>
@@ -98,16 +98,31 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8W-m2-aJw">
-                                <rect key="frame" x="268.5" y="12" width="35.5" height="17"/>
+                                <rect key="frame" x="200.5" y="12" width="35.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKw-LD-gJS">
+                                <rect key="frame" x="307" y="6" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KAz-yM-c3h"/>
+                                    <constraint firstAttribute="width" constant="60" id="Yhk-Nz-fEN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="分享">
+                                    <color key="titleColor" red="0.01673719618" green="0.31556532120000003" blue="0.50222439240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickShareAction:" destination="qDz-xL-RpU" eventType="touchUpInside" id="TGc-Gt-75Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="m7V-1i-ZZQ" secondAttribute="trailing" constant="8" id="2SY-Lc-7Fj"/>
+                            <constraint firstItem="PKw-LD-gJS" firstAttribute="centerY" secondItem="QcX-j1-bWV" secondAttribute="centerY" id="8eb-8a-cmQ"/>
                             <constraint firstItem="xaU-SY-Usw" firstAttribute="centerY" secondItem="QcX-j1-bWV" secondAttribute="centerY" id="Bit-Fh-cEj"/>
+                            <constraint firstAttribute="trailing" secondItem="PKw-LD-gJS" secondAttribute="trailing" constant="8" id="CCj-X0-vUp"/>
                             <constraint firstItem="xaU-SY-Usw" firstAttribute="top" secondItem="QcX-j1-bWV" secondAttribute="top" constant="6" id="NqE-ow-IS5"/>
                             <constraint firstItem="xaU-SY-Usw" firstAttribute="leading" secondItem="QcX-j1-bWV" secondAttribute="leading" constant="15" id="O6q-2B-R5S"/>
                             <constraint firstItem="m7V-1i-ZZQ" firstAttribute="centerY" secondItem="QcX-j1-bWV" secondAttribute="centerY" id="SaD-5b-n3R"/>
@@ -115,6 +130,7 @@
                             <constraint firstItem="H8W-m2-aJw" firstAttribute="centerY" secondItem="QcX-j1-bWV" secondAttribute="centerY" id="ipi-uP-tHw"/>
                             <constraint firstItem="m7V-1i-ZZQ" firstAttribute="leading" secondItem="H8W-m2-aJw" secondAttribute="trailing" constant="3" id="lcl-AW-3cd"/>
                             <constraint firstItem="wT9-dc-XH8" firstAttribute="centerY" secondItem="QcX-j1-bWV" secondAttribute="centerY" id="lmc-o1-hUi"/>
+                            <constraint firstItem="PKw-LD-gJS" firstAttribute="leading" secondItem="m7V-1i-ZZQ" secondAttribute="trailing" constant="8" id="q6l-9Q-gGl"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -132,6 +148,7 @@
                 <outlet property="collecionBtn" destination="m7V-1i-ZZQ" id="sNe-oD-Kcz"/>
                 <outlet property="playBtn" destination="4bE-77-X5H" id="p4T-Vn-PZe"/>
                 <outlet property="publishTimeLabel" destination="H8W-m2-aJw" id="pKY-7z-fMn"/>
+                <outlet property="shareBtn" destination="PKw-LD-gJS" id="VOA-GU-rCP"/>
                 <outlet property="sizeLabel" destination="yhG-gt-hnb" id="vN5-YJ-PNX"/>
                 <outlet property="sourceImageView" destination="xaU-SY-Usw" id="8CE-Zm-hCq"/>
                 <outlet property="sourceNameLabel" destination="wT9-dc-XH8" id="d2j-AT-bg9"/>
