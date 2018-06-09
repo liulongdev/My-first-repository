@@ -330,9 +330,9 @@
     if (!self.messageModel) {
         self.messageModel = [MARSocialShareMessageModel new];
         self.messageModel.title = self.title;
-        self.messageModel.messageType = MARSocialShareMessageType_Image;
-        self.messageModel.image = [UIImage mar_screenShotWithScrollView:self.webView.scrollView];
     }
+    self.messageModel.messageType = MARSocialShareMessageType_Image;
+    self.messageModel.image = [UIImage mar_screenShotWithScrollView:self.webView.scrollView];
 #endif
     [MARSocialShareManager setSupportPlatforms];
     [MARSocialShareManager showShareMenuViewInWindowWithMessage:self.messageModel complete:^(id result, NSError *error) {

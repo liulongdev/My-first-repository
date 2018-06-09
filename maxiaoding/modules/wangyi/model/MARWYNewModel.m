@@ -97,11 +97,27 @@
 
 @end
 
+@implementation MARWYPhotoNewPhotoDetialModel
+
++ (NSString *)getPrimaryKey
+{
+    return @"photoid";
+}
+
+MARModelSynthCoderAndHash
+
+@end
+
 @implementation MARWYPhotoNewModel
 
 + (NSString *)getPrimaryKey
 {
-    return @"autoid";
+    return @"postid";
+}
+
++ (NSDictionary<NSString *,id> *)mar_modelContainerPropertyGenericClass
+{
+    return @{@"photos": [MARWYPhotoNewPhotoDetialModel class]};
 }
 
 - (BOOL)isEqual:(id)object

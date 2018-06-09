@@ -22,6 +22,7 @@
 /**
  *  多图数组
  */
+@property (nonatomic, assign) NSInteger imgsum;     // 多图数量
 @property (nonatomic, strong) NSArray *imgextra;
 @property (nonatomic, strong) NSString *photosetID;
 @property (nonatomic, assign) NSInteger hashead;
@@ -156,7 +157,22 @@
 
 @end
 
-@interface MARWYPhotoNewModel : MARBaseDBModel
+@interface MARWYPhotoNewPhotoDetialModel : MARBaseDBModel
+
+@property (nonatomic, strong) NSString *cimgurl;
+@property (nonatomic, strong) NSString *imgtitle;
+@property (nonatomic, strong) NSString *imgurl;
+@property (nonatomic, strong) NSString *newsurl;
+@property (nonatomic, strong) NSString *note;
+@property (nonatomic, strong) NSString *photohtml;
+@property (nonatomic, strong) NSString *photoid;
+@property (nonatomic, strong) NSString *simgurl;
+@property (nonatomic, strong) NSString *squareimgurl;
+@property (nonatomic, strong) NSString *timgurl;
+
+@end
+
+@interface MARWYPhotoNewModel : MARBaseDBModel <MARModelDelegate>
 
 @property (nonatomic, strong) NSString *autoid;
 @property (nonatomic, strong) NSString *boardid;
@@ -169,7 +185,7 @@
 @property (nonatomic, strong) NSString *desc;
 @property (nonatomic, assign) NSInteger imgsum;
 @property (nonatomic, strong) NSString *neteasecode;
-@property (nonatomic, strong) NSArray *photos;
+@property (nonatomic, strong) NSArray<MARWYPhotoNewPhotoDetialModel *> *photos;
 @property (nonatomic, strong) NSString *postid;
 @property (nonatomic, strong) NSArray *relatedids;
 @property (nonatomic, strong) NSString *reporter;

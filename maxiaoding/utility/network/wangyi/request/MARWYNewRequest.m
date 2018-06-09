@@ -27,9 +27,9 @@
 
 - (void)setSignature
 {
-    _ts = @"1515393095";
-    _sign = @"7eFT5nh9qzmonv+iOvKmqmk6ziKtcFHuolPv9o5qzst48ErR02zJ6/KXOnxX046I";
-    _devId = @"I9mEvOjEpr7x6qKZ0E/jqz+XNYccr98jb6FUP/c34MDLszEoKIcbpbZWUwpshTwP";
+    _ts = @"1528533485"; //@"1515393095";
+    _sign = @"c9XHV48wLZRfzfUWinbhERKmS2zX8bQIhi7rtrbPl3V48ErR02zJ6/KXOnxX046I"; // @"7eFT5nh9qzmonv+iOvKmqmk6ziKtcFHuolPv9o5qzst48ErR02zJ6/KXOnxX046I";
+    _devId = @"XnIir8tmW/H4R4WYVMASAG2I+Rsbacb0yGSTKSjJ9AbeZdN1IqMp1mB5rxMd6EyX"; //@"I9mEvOjEpr7x6qKZ0E/jqz+XNYccr98jb6FUP/c34MDLszEoKIcbpbZWUwpshTwP";
 }
 
 @end

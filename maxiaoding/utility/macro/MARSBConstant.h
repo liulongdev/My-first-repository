@@ -22,6 +22,7 @@ extern NSString * const kSBNAME_Car;
 extern NSString * const kSBNAME_Setting;
 extern NSString * const kSBNAME_VoiceAudio;
 extern NSString * const kSBNAME_FaceRecognition;
+extern NSString * const kSBNAME_WYPhotoBrowser;
 
 /**
  StoreBoard ID of  UIViewcontroller in StoreBoard
@@ -71,6 +72,8 @@ extern NSString * const kSBID_Setting_WYVideoCollectVC;
 extern NSString * const kSBID_VoiceAudio_VoiceAudioTestVC;
 
 extern NSString * const kSBID_FaceRecognition_FaceRecognitionVC;
+
+extern NSString * const kSBID_WYPhotoBrowser_PhotoBrowserVC;
 
 @interface MARSBConstant : NSObject
 

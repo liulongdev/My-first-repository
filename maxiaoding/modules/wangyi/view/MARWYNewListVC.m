@@ -11,6 +11,7 @@
 #import <MJRefresh.h>
 #import "MARWYUtility.h"
 #import "MARWebViewController.h"
+#import "MARWYPhotoBrowserVC.h"
 
 @interface MARWYNewListVC () <UITableViewDelegate, UITableViewDataSource, UIViewControllerPreviewingDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -336,10 +337,25 @@
                     if (!strong_self) return;
                     [strong_self showActivityView:NO];
                     //                    NSLog(@"get photos %@", responseObject);
-                    if ([responseObject[@"url"] mar_isValidUrl]) {
+                    MARWYPhotoNewModel *model = [MARWYPhotoNewModel mar_modelWithJSON:responseObject];
+                    [strong_self.navigationController popViewControllerAnimated:YES];
+                    
+                    MARWYPhotoBrowserVC *photoBrowserVC = (MARWYPhotoBrowserVC *)[UIViewController vcWithStoryboardName:kSBNAME_WYPhotoBrowser storyboardId:kSBID_WYPhotoBrowser_PhotoBrowserVC];
+                    photoBrowserVC.photoNewModel = model;
+                    
+                    photoBrowserVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                    
+                    [strong_self mar_gcdPerformAfterDelay:0.5 usingBlock:^(id  _Nonnull objSelf) {
+                        photoBrowserVC.backgroundImage = [[[UIApplication sharedApplication].keyWindow mar_snapshotImage] mar_imageByBlurRadius:15 tintColor:RGBAHEX(0xfeeeed, 0.3) tintMode:kCGBlendModeNormal saturation:1.8 maskImage:nil];
+                        [strong_self presentViewController:photoBrowserVC animated:YES completion:nil];
+                    }];
+                    
+                    return;
+                    NSLog(@">>>>>  res : %@", responseObject);
+                    if ([model.url mar_isValidUrl]) {
                         if (strong_self.webVC == webVC) {
-                            messageModel.URLString = responseObject[@"url"];
-                            strong_self.webVC.URL = [NSURL URLWithString:responseObject[@"url"]];
+                            messageModel.URLString = model.url;
+                            strong_self.webVC.URL = [NSURL URLWithString:model.url];
                         }
                     }
                     else

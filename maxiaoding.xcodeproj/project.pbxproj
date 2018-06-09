@@ -272,6 +272,10 @@
 		5BD56B27202AE08700BB0BD1 /* MARCitiesWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD56B26202AE08700BB0BD1 /* MARCitiesWeatherVC.m */; };
 		5BDE92B62020D464005969C6 /* MAAWeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE92B52020D464005969C6 /* MAAWeatherModel.m */; };
 		5BDE92B92020D767005969C6 /* MAARequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE92B82020D767005969C6 /* MAARequestModel.m */; };
+		5BEC5DCD20CC0F94005C5CF7 /* YYPhotoBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC5DCC20CC0F94005C5CF7 /* YYPhotoBrowseView.m */; };
+		5BEC5DCF20CC2119005C5CF7 /* MARWYPhotoBrowser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BEC5DCE20CC2119005C5CF7 /* MARWYPhotoBrowser.storyboard */; };
+		5BEC5DD220CC2423005C5CF7 /* MARWYPhotoBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC5DD120CC2423005C5CF7 /* MARWYPhotoBrowserVC.m */; };
+		5BEC5DD520CC2458005C5CF7 /* MARWYPhotoBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC5DD420CC2458005C5CF7 /* MARWYPhotoBrowserCell.m */; };
 		5BF0ED3F202D7193003C0A90 /* UIApplication+MXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0ED3E202D7193003C0A90 /* UIApplication+MXD.m */; };
 		5BF5BE2F206B2E8B00AE5E66 /* facerecognition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5BE2E206B2E8B00AE5E66 /* facerecognition.storyboard */; };
 		5BF5BE33206B2EB300AE5E66 /* MARFaceRecognitionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5BE32206B2EB300AE5E66 /* MARFaceRecognitionVC.m */; };
@@ -754,6 +758,13 @@
 		5BDE92B52020D464005969C6 /* MAAWeatherModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAAWeatherModel.m; sourceTree = "<group>"; };
 		5BDE92B72020D767005969C6 /* MAARequestModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAARequestModel.h; sourceTree = "<group>"; };
 		5BDE92B82020D767005969C6 /* MAARequestModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAARequestModel.m; sourceTree = "<group>"; };
+		5BEC5DCB20CC0F94005C5CF7 /* YYPhotoBrowseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYPhotoBrowseView.h; sourceTree = "<group>"; };
+		5BEC5DCC20CC0F94005C5CF7 /* YYPhotoBrowseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYPhotoBrowseView.m; sourceTree = "<group>"; };
+		5BEC5DCE20CC2119005C5CF7 /* MARWYPhotoBrowser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MARWYPhotoBrowser.storyboard; sourceTree = "<group>"; };
+		5BEC5DD020CC2423005C5CF7 /* MARWYPhotoBrowserVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYPhotoBrowserVC.h; sourceTree = "<group>"; };
+		5BEC5DD120CC2423005C5CF7 /* MARWYPhotoBrowserVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYPhotoBrowserVC.m; sourceTree = "<group>"; };
+		5BEC5DD320CC2458005C5CF7 /* MARWYPhotoBrowserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYPhotoBrowserCell.h; sourceTree = "<group>"; };
+		5BEC5DD420CC2458005C5CF7 /* MARWYPhotoBrowserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYPhotoBrowserCell.m; sourceTree = "<group>"; };
 		5BF0ED3D202D7193003C0A90 /* UIApplication+MXD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+MXD.h"; sourceTree = "<group>"; };
 		5BF0ED3E202D7193003C0A90 /* UIApplication+MXD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+MXD.m"; sourceTree = "<group>"; };
 		5BF5BE2E206B2E8B00AE5E66 /* facerecognition.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = facerecognition.storyboard; sourceTree = "<group>"; };
@@ -1444,6 +1455,7 @@
 		5B42ED991FFE4BBF00B98D68 /* wangyi */ = {
 			isa = PBXGroup;
 			children = (
+				5BEC5DCA20CC0F68005C5CF7 /* photo */,
 				5B375C92200274E4001E02F2 /* css */,
 				5B42EDA01FFE4C9400B98D68 /* controller */,
 				5B42ED9D1FFE4C9400B98D68 /* model */,
@@ -2039,6 +2051,20 @@
 			path = user;
 			sourceTree = "<group>";
 		};
+		5BEC5DCA20CC0F68005C5CF7 /* photo */ = {
+			isa = PBXGroup;
+			children = (
+				5BEC5DCB20CC0F94005C5CF7 /* YYPhotoBrowseView.h */,
+				5BEC5DCC20CC0F94005C5CF7 /* YYPhotoBrowseView.m */,
+				5BEC5DCE20CC2119005C5CF7 /* MARWYPhotoBrowser.storyboard */,
+				5BEC5DD020CC2423005C5CF7 /* MARWYPhotoBrowserVC.h */,
+				5BEC5DD120CC2423005C5CF7 /* MARWYPhotoBrowserVC.m */,
+				5BEC5DD320CC2458005C5CF7 /* MARWYPhotoBrowserCell.h */,
+				5BEC5DD420CC2458005C5CF7 /* MARWYPhotoBrowserCell.m */,
+			);
+			path = photo;
+			sourceTree = "<group>";
+		};
 		5BF5BE2D206B2E4E00AE5E66 /* facerecognition */ = {
 			isa = PBXGroup;
 			children = (
@@ -2239,6 +2265,7 @@
 				5B9B743D2063920700D9F56A /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				5B2C29C1205A0F08006C358C /* bds_easr_input_model.dat in Resources */,
 				5B225DB3202564DB00EB1F2A /* weather_55.png in Resources */,
+				5BEC5DCF20CC2119005C5CF7 /* MARWYPhotoBrowser.storyboard in Resources */,
 				5B2C29C8205A0F08006C358C /* darkGreen.bundle in Resources */,
 				5B2C29D3205A0F08006C358C /* record_fail.caf in Resources */,
 				5B225DA8202564DB00EB1F2A /* weather_3.png in Resources */,
@@ -2375,6 +2402,7 @@
 				5B9B741A2063920700D9F56A /* JSQMessagesAvatarImageFactory.m in Sources */,
 				5B029EFE1FE2824C008ED5CA /* MARCarBrandModel.m in Sources */,
 				5BC0F5761FE2218E004C62D4 /* MARMonthDayView.m in Sources */,
+				5BEC5DCD20CC0F94005C5CF7 /* YYPhotoBrowseView.m in Sources */,
 				5B9B743C2063920700D9F56A /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				5B25F8D01FE0F80500E85884 /* MARNetworkResponse.m in Sources */,
 				5B933B3F1FE82674004C2038 /* MARSettingVC.m in Sources */,
@@ -2395,6 +2423,7 @@
 				5BF82332200888E6005DBCDE /* MARWYNewCategoryTitleCell.m in Sources */,
 				5B225D632024600900EB1F2A /* MARWeatherHourCollectionCell.m in Sources */,
 				5B01CD541FF32922003D2875 /* MARTitleCollectionReuableView.m in Sources */,
+				5BEC5DD520CC2458005C5CF7 /* MARWYPhotoBrowserCell.m in Sources */,
 				5BD56B27202AE08700BB0BD1 /* MARCitiesWeatherVC.m in Sources */,
 				5B9B74252063920700D9F56A /* JSQAudioMediaItem.m in Sources */,
 				5B375C9A20037D2D001E02F2 /* MARWYVideoNewListVC.m in Sources */,
@@ -2509,6 +2538,7 @@
 				5B9B741B2063920700D9F56A /* JSQMessagesBubbleImageFactory.m in Sources */,
 				5BF5BE33206B2EB300AE5E66 /* MARFaceRecognitionVC.m in Sources */,
 				5B9B74222063920700D9F56A /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
+				5BEC5DD220CC2423005C5CF7 /* MARWYPhotoBrowserVC.m in Sources */,
 				5B029F071FE2EB61008ED5CA /* MARCarDetailVC.m in Sources */,
 				5BF8232B2007386C005DBCDE /* MARWYDataProxy.m in Sources */,
 				5B42ED921FFE43DE00B98D68 /* MARWYNewNetworkManager.m in Sources */,

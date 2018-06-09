@@ -48,6 +48,26 @@
         {
            self.videoFlagImageView.hidden = YES;
         }
+        
+        if ([model.skipType isEqualToString:WYNEWSkipType_PhotoSet]) {
+            if (model.imgsum > 0) {
+                self.wyTitleLabel.text = [NSString stringWithFormat:@"%@ (多图|%@张)", model.title, MARSTRWITHINT(model.imgsum)];
+            }
+            else
+            {
+                self.wyTitleLabel.text = [NSString stringWithFormat:@"%@ (多图)", model.title];
+            }
+//            NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:model.imgextra.count];
+//            for (NSDictionary *dic in model.imgextra) {
+//                if ([dic isKindOfClass:[NSDictionary class]] && dic[@"imgsrc"]) {
+//                    [imageArray addObject:[NSURL URLWithString:dic[@"imgsrc"]?:@""]];
+//                }
+//            }
+        }
+        else
+        {
+            
+        }
     }
 }
 
