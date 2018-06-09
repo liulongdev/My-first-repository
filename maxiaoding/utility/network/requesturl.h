@@ -52,6 +52,7 @@
 #define WYGetNewArticleList4                                               @"recommend/getComRecNews"
 #define WYGetChanListNews                           @"/recommend/getChanListNews"   // 视频
 #define WYGetPhotoNewDetail                         @"photo/api/set"          // 获取图片类型的新闻
+#define WYGetSpecialNewDetail                       @"nc/article/preload"       // 获取特殊类型的新闻
 // @"/nc/article/list/T1492136373327/0-20.html"
 #define WYGetVideoNewDetail                         @"nc/video/detail"          // 获取视频类新闻具体描述
 #define WY_GETNewDetail                             @"nc/article"               // 根据docid获取帖子详情

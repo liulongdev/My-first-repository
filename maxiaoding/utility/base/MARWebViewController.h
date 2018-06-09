@@ -7,14 +7,19 @@
 //
 
 #import "MARBaseViewController.h"
-#if __has_include(<WebKit/WebKit.h>)
-#import <WebKit/WebKit.h>
 
 #if __has_include("MARSocialShareManager.h")
 #define MARSocialShareManagerOn
+#define MARSocailShareWithImage
 #import "MARSocialShareManager.h"
 #endif
 
+#if __has_include(<WebKit/WebKit.h>)
+//#define MARWebVCUseWebKitOn
+#ifdef MARWebVCUseWebKitOn
+#undef MARSocailShareWithImage      // 如果用WkWebview无法截图
+#endif
+#import <WebKit/WebKit.h>
 #endif
 
 @interface MARWebViewController : MARBaseViewController
@@ -44,7 +49,7 @@
 @property (nonatomic,strong) NSString *htmlString;
 
 /** Returns the `UIWebView`    managed by the controller object. */
-#if __has_include(<WebKit/WebKit.h>)
+#ifdef MARWebVCUseWebKitOn
 @property (nonatomic,strong) WKWebView *webView;
 #else
 @property (nonatomic,strong) UIWebView *webView;

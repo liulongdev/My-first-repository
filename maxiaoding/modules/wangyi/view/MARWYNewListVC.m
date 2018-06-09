@@ -307,69 +307,6 @@
     MARSocialShareMessageModel *message = [self prepareMessageForIndexPath:indexPath];
     _webVC.messageModel = message;
     [self mar_pushViewController:_webVC animated:YES];
-//    NSInteger row = indexPath.row;
-//    if (self.model.wyNewArray.count > row) {
-//        MARWYNewModel *model = self.model.wyNewArray[row];
-//        if (model.skipType) {
-//            if ([model.skipType isEqualToString:WYNEWSkipType_PhotoSet]) {
-//                NSString *skipType = [model.skipID copy];
-//                if (skipType.length > 4) {
-//                    skipType = [[skipType substringFromIndex:4] stringByReplacingOccurrencesOfString:@"|" withString:@"/"];
-//                }
-//                NSString *urlExtStr = skipType;
-//                NSString *url = [NSString stringWithFormat:@"%@/%@/%@.json", WANGYIHOST, WYGetPhotoNewDetail, urlExtStr];
-//                @weakify(self)
-//                [self showActivityView:YES];
-//                [MARNetworkManager mar_get:url parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
-//                    @strongify(self)
-//                    if (!strong_self) return;
-//                    [strong_self showActivityView:NO];
-////                    NSLog(@"get photos %@", responseObject);
-//                    if ([responseObject[@"url"] mar_isValidUrl]) {
-//                        MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:responseObject[@"url"]]];
-//                        [strong_self mar_pushViewController:webVC animated:YES];
-//                    }
-//                } failure:^(NSURLSessionTask *task, NSError *error) {
-//                    [weak_self showActivityView:NO];
-//                    NSLog(@">>>>> get photos error : %@", error);
-//                }];
-//            }
-//            else if ([model.skipType isEqualToString:WYNEWSkipType_Video])
-//            {
-//                [MARWYNewNetworkManager getVideoNewDetailWithSkipId:model.skipID success:^(NSURLSessionTask *task, id responseObject) {
-//                    MARWYVideoNewDetailModel *model = [MARWYVideoNewDetailModel mar_modelWithJSON:responseObject];
-//                    if ([model.vurl mar_isValidUrl]) {
-//                        MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:model.vurl]];
-//                        [self mar_pushViewController:webVC animated:YES];
-//                    }
-//                    NSLog(@">>>>>>> get videoDetail : %@", responseObject);
-//                } failure:^(NSURLSessionTask *task, NSError *error) {
-//                    NSLog(@">>>>>>> get videoDetail error : %@", error);
-//                }];
-//            }
-//
-//        }
-//        else if (![model.docid mar_containsString:@"|"])
-//        {
-//            @weakify(self)
-//            [MARWYNewNetworkManager getNewDetailWithDocId:model.docid success:^(NSURLSessionTask *task, id responseObject) {
-//                @strongify(self)
-//                if (!strong_self) return;
-////                NSLog(@"get wynew detail : %@", responseObject);
-//                MARWYNewDetailModel *detailModel = [MARWYNewDetailModel mar_modelWithJSON:responseObject[model.docid]];
-//                NSLog(@">>>>> %@", detailModel);
-//                MARWebViewController *webVC = [[MARWebViewController alloc] init];
-//                webVC.htmlString = [detailModel getHtmlString];
-//                [strong_self mar_pushViewController:webVC animated:YES];
-//            } failure:^(NSURLSessionTask *task, NSError *error) {
-//                NSLog(@"get wynew detail error : %@", error);
-//            }];
-//        }
-//        else if ([model.url mar_isValidUrl]) {
-//            MARWebViewController *webVC = [[MARWebViewController alloc] initWithURL:[NSURL URLWithString:model.url]];
-//            [self mar_pushViewController:webVC animated:YES];
-//        }
-//    }
 }
 
 - (MARSocialShareMessageModel *)prepareMessageForIndexPath:(NSIndexPath *)indexPath
@@ -382,7 +319,9 @@
         messageModel.title = model.title;
         messageModel.thumImage = model.imgsrc;
         messageModel.shareDesc = model.digest;
-        if (model.skipType) {
+        // 特殊处理的类别
+        NSArray *skipTypeArray = @[WYNEWSkipType_PhotoSet, WYNEWSkipType_Video, WYNEWSkipType_Special]; // WYNEWSkipType_Live
+        if (model.skipType && [skipTypeArray containsObject:model.skipType]) {
             if ([model.skipType isEqualToString:WYNEWSkipType_PhotoSet]) {
                 NSString *skipType = [model.skipID copy];
                 if (skipType.length > 4) {
@@ -429,8 +368,9 @@
                     MARWYVideoNewDetailModel *model = [MARWYVideoNewDetailModel mar_modelWithJSON:responseObject];
                     if ([model.vurl mar_isValidUrl]) {
                         if (strong_self.webVC == webVC) {
-                            messageModel.URLString = responseObject[@"url"];
-                            strong_self.webVC.URL = [NSURL URLWithString:responseObject[@"url"]];
+                            messageModel.URLString = model.vurl;
+                            messageModel.shareDesc = model.desc;
+                            strong_self.webVC.URL = [NSURL URLWithString:model.vurl];
                         }
                     }
                     else
@@ -448,7 +388,36 @@
                     NSLog(@">>>>>>> get videoDetail error : %@", error);
                 }];
             }
-            
+            else if ([model.skipType isEqualToString:WYNEWSkipType_Special])
+            {
+                NSString *postId = model.postid;
+                NSString *url = [NSString stringWithFormat:@"%@/%@/%@/full.html", WANGYIHOST, WYGetSpecialNewDetail, postId];
+                @weakify(self)
+                [self showActivityView:YES];
+                [MARNetworkManager mar_get:url parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+                    @strongify(self)
+                    if (!strong_self) return;
+                    [strong_self showActivityView:NO];
+                    MARWYNewDetailModel *detailModel = [MARWYNewDetailModel mar_modelWithJSON:responseObject[model.postid]];
+                    NSLog(@">>>>> %@", detailModel);
+                    if (strong_self.webVC == webVC) {
+                        strong_self.webVC.htmlString = [detailModel getHtmlString];
+                    }
+                    else
+                    {
+                        if (strong_self.webVC == webVC) {
+                            [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                        }
+                    }
+                } failure:^(NSURLSessionTask *task, NSError *error) {
+                    @strongify(self)
+                    if (!strong_self) return;
+                    if (strong_self.webVC == webVC)
+                        [strong_self.webVC.navigationController popViewControllerAnimated:YES];
+                    NSLog(@"get wynew detail error : %@", error);
+                }];
+                    
+            }
         }
         else if (![model.docid mar_containsString:@"|"])
         {
@@ -456,13 +425,17 @@
             if ([model.url mar_isValidUrl]) {
                 messageModel.URLString = model.url;
             }
+            else
+            {
+                messageModel = nil;
+            }
             @weakify(self)
             [self showActivityView:YES];
             [MARWYNewNetworkManager getNewDetailWithDocId:model.docid success:^(NSURLSessionTask *task, id responseObject) {
                 @strongify(self)
                 if (!strong_self) return;
                 [strong_self showActivityView:NO];
-                //                NSLog(@"get wynew detail : %@", responseObject);
+                //                NSLog(@"get wynew detail  : %@", responseObject);
                 MARWYNewDetailModel *detailModel = [MARWYNewDetailModel mar_modelWithJSON:responseObject[model.docid]];
                 NSLog(@">>>>> %@", detailModel);
                 if (strong_self.webVC == webVC) {

@@ -78,14 +78,14 @@
         [body replaceOccurrencesOfString:imageModel.ref withString:imgHtml options:NSCaseInsensitiveSearch range:NSMakeRange(0, body.length)];
     }
     
-    if (_video) {
+    for (MARWYNewDetailVideoModel *videoModel in _video) {
         NSMutableString *videoHtml = [NSMutableString string];
         [videoHtml appendFormat:@"<div class=\"wy-video-parent\">"];
         CGFloat maxWidth = [UIScreen mainScreen].bounds.size.width * 0.95;
         CGFloat height = maxWidth * 3/4;
-        [videoHtml appendFormat:@"<video width=\"%f\" height=\"%f\" controls><source src=\"%@\" type=\"%@\">您的浏览器不支持 HTML5 video 标签。</video>", maxWidth, height, self.video.url_mp4,@"video/mp4"];
+        [videoHtml appendFormat:@"<video width=\"%f\" height=\"%f\" playsinline webkit-playsinline=\"true\" controls><source src=\"%@\" type=\"%@\">您的浏览器不支持 HTML5 video 标签。</video>", maxWidth, height, videoModel.url_mp4,@"video/mp4"];
         [videoHtml appendFormat:@"</div>"];
-        
+        [body replaceOccurrencesOfString:videoModel.ref withString:videoHtml options:NSCaseInsensitiveSearch range:NSMakeRange(0, body.length)];
     }
     
     return body;

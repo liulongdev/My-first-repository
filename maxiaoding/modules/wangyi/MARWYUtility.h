@@ -10,6 +10,8 @@
 #import "MARWYDataProxy.h"
 static NSString * const WYNEWSkipType_PhotoSet = @"photoset";
 static NSString * const WYNEWSkipType_Video = @"video";
+static NSString * const WYNEWSkipType_Special = @"special";
+static NSString * const WYNEWSkipType_Live = @"live";
 
 #define MARWYUTILITY [MARWYUtility sharedInstance]
 

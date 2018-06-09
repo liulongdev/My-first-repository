@@ -45,7 +45,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSArray<MARWYNewDetailTopicModel *> *topiclist;
 @property (nonatomic, strong) NSArray<MARWYNewDetailTopicModel *> *topiclist_news;
-@property (nonatomic, strong) MARWYNewDetailVideoModel *video;
+@property (nonatomic, strong) NSArray<MARWYNewDetailVideoModel *> *video;
 @property (nonatomic, strong) NSString *voicecomment;
 @property (nonatomic, strong) NSArray *votes;
 @property (nonatomic, strong) NSArray *ydbaike;

@@ -89,4 +89,19 @@
 
 @implementation MARSocialShareMessageModel
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    return [self mar_modelCopy];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    return [self mar_modelInitWithCoder:aDecoder];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [self mar_modelEncodeWithCoder:aCoder];
+}
+
 @end

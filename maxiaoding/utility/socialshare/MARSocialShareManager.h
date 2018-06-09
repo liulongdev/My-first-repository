@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, MARSocialShareMessageType){
     MARSocialShareMessageType_Image,
 };
 
-@interface MARSocialShareMessageModel : NSObject
+@interface MARSocialShareMessageModel : NSObject <NSCopying , NSCoding>
 @property (nonatomic, assign) MARSocialShareMessageType messageType;
 @property (nonatomic, strong) NSString *title;          // 标题
 @property (nonatomic, strong) id image;             // 图片 UIImage|NSData|NSString

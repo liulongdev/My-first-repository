@@ -190,11 +190,13 @@
     [UMSocialGlobal shareInstance].isUsingWaterMark = YES;
     //创建图片水印配置类
     UMSocialImageWarterMarkConfig* imageWarterMarkConfig= [[UMSocialImageWarterMarkConfig alloc] init];
-    imageWarterMarkConfig.warterMarkImage = [UIImage mar_imageFromText:@"马小丁-Martin" font:MARFontNameHelvetica fontSize:14.f imageSize:CGSizeMake(100, 20)]; // [UIImage mar_imageWithSize:CGSizeMake(100, 20) backgroundColor:[UIColor blackColor] maskedText:@"马小丁-Martin" font:MARFontNameHelvetica fontSize:14.f];
-    imageWarterMarkConfig.warterMarkImageAlpha = 0.7;
-    imageWarterMarkConfig.warterMarkImageScale = 0.4;
-    imageWarterMarkConfig.paddingToHorizontalParentBorder = 10;
-    imageWarterMarkConfig.paddingToVerticalParentBorder = 10;
+    NSString *markString = @"马小丁-Martin";
+    CGSize markStrSize = [markString boundingRectWithSize:CGSizeMake(100, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont mar_fontForFontName:MARFontNameHelvetica size:10.f], } context:nil].size;
+    imageWarterMarkConfig.warterMarkImage = [[UIImage mar_imageFromText:markString font:MARFontNameHelvetica fontSize:10.f imageSize:markStrSize] mar_imageByTintColor:RGBHEX(0x4876FF)];
+    imageWarterMarkConfig.warterMarkImageAlpha = 0.5;
+    imageWarterMarkConfig.warterMarkImageScale = 0.3;
+    imageWarterMarkConfig.paddingToHorizontalParentBorder = 5;
+    imageWarterMarkConfig.paddingToVerticalParentBorder = 5;
     //创建水印配置类
     UMSocialWarterMarkConfig* warterMarkConfig = [[UMSocialWarterMarkConfig alloc] init];
     warterMarkConfig.stringAndImageWarterMarkPositon = UMSocialImageWarterMarkBottomRight;

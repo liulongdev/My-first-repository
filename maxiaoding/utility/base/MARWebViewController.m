@@ -11,8 +11,7 @@
 #import <Masonry.h>
 #endif
 
-
-#if __has_include(<WebKit/WebKit.h>)
+#ifdef MARWebVCUseWebKitOn
 @interface MARWebViewController ()<WKNavigationDelegate, WKUIDelegate>
 @property (nonatomic, assign) BOOL hasLoadFirstRequest;
 @end
@@ -157,8 +156,6 @@
     {
         self.navigationItem.rightBarButtonItem = nil;
     }
-//    UIBarButtonItem *shareBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(socialShareAction:)];
-//    self.navigationItem.rightBarButtonItem = shareBarBtn;
 #else
     self.navigationItem.rightBarButtonItem = nil;
 #endif
@@ -167,10 +164,17 @@
 #ifdef MARSocialShareManagerOn
 - (void)socialShareAction:(id)sender
 {
+    self.messageModel.messageType = MARSocialShareMessageType_Image;
+    self.messageModel.image = [UIImage mar_screenShotWithScrollView:self.webView.scrollView];
     [MARSocialShareManager setSupportPlatforms];
     [MARSocialShareManager showShareMenuViewInWindowWithMessage:self.messageModel complete:^(id result, NSError *error) {
-        NSLog(@"j>>>>>>> result : %@", result);
-        
+        if (!error) {
+            ShowSuccessMessage(@"分享成功～", 1.5f);
+        }
+        else
+        {
+            ShowErrorMessage(@"分享失败～", 1.5f);
+        }
     }];
 }
 #endif
@@ -219,12 +223,12 @@
 #pragma mark View Lifecycle
 - (void) loadView{
     [super loadView];
-    
+    MARAdjustsScrollViewInsets_NO(self.webView.scrollView, self);
     self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     self.webView.delegate = self;
     self.webView.scalesPageToFit = YES;
     self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
+    self.webView.allowsInlineMediaPlayback = YES;
     [self.view addSubview:self.webView];
 #if __has_include(<Masonry.h>)
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -285,12 +289,26 @@
     
 }
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
-    //    self.navigationItem.rightBarButtonItem = self.actionBarButtonItem;
+#ifdef MARSocialShareManagerOn
+#ifdef MARSocailShareWithImage
+    UIBarButtonItem *shareBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(socialShareAction:)];
+    self.navigationItem.rightBarButtonItem = shareBarBtn;
+#else
+    if (self.messageModel) {
+        UIBarButtonItem *shareBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(socialShareAction:)];
+        self.navigationItem.rightBarButtonItem = shareBarBtn;
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+#endif
+#else
     self.navigationItem.rightBarButtonItem = nil;
+#endif
     self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
 - (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    //    self.navigationItem.rightBarButtonItem = self.actionBarButtonItem;
     self.navigationItem.rightBarButtonItem = nil;
     self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
@@ -304,6 +322,31 @@
     
     return YES;
 }
+
+#ifdef MARSocialShareManagerOn
+- (void)socialShareAction:(id)sender
+{
+#ifdef MARSocailShareWithImage
+    if (!self.messageModel) {
+        self.messageModel = [MARSocialShareMessageModel new];
+        self.messageModel.title = self.title;
+        self.messageModel.messageType = MARSocialShareMessageType_Image;
+        self.messageModel.image = [UIImage mar_screenShotWithScrollView:self.webView.scrollView];
+    }
+#endif
+    [MARSocialShareManager setSupportPlatforms];
+    [MARSocialShareManager showShareMenuViewInWindowWithMessage:self.messageModel complete:^(id result, NSError *error) {
+        if (!error) {
+            ShowSuccessMessage(@"分享成功～", 1.5f);
+        }
+        else
+        {
+            ShowErrorMessage(@"分享失败～", 1.5f);
+        }
+    }];
+    
+}
+#endif
 
 @end
 

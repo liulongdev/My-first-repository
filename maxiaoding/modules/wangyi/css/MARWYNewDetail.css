@@ -28,7 +28,8 @@ body {
 .wy-newcomment {
     font-size:15px;
     text-decoration:none;
-    color:#f33;
+    color:gray;
+/*    color:#f33;*/
     float:right;
     display: inline-block;
     margin-right:10px;
