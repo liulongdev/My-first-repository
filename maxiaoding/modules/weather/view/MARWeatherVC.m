@@ -37,7 +37,7 @@
 
 - (void)UIGlobal
 {
-    self.tableView.backgroundColor = [UIColor purpleColor];
+    self.tableView.backgroundColor = RGBHEX(0xCDAF95);
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 15;
     

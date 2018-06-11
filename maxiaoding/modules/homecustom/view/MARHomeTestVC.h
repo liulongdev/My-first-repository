@@ -10,4 +10,6 @@
 
 @interface MARHomeTestVC : MARBaseViewController
 
+- (UIViewController *)currentViewController;
+
 @end
