@@ -128,17 +128,17 @@
         @strongify(self)
         if (!strong_self) return;
         strong_self.isLoading = NO;
-        [self.model.wyNewArray addObjectsFromArray:array];
-        if (self.model.wyNewArray.count <= 0) {
-            self.model.isDataEmpty = YES;
-            [self showEmptyViewWithImageimage:nil description:@"敬请期待..."];
+        [strong_self.model.wyNewArray addObjectsFromArray:array];
+        if (strong_self.model.wyNewArray.count <= 0) {
+            strong_self.model.isDataEmpty = YES;
+            [strong_self showEmptyViewWithImageimage:nil description:@"敬请期待..."];
         }
         else
-            self.model.isDataEmpty = NO;
+            strong_self.model.isDataEmpty = NO;
         
-        [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
-        [self.tableView.mj_footer endRefreshing];
+        [strong_self.tableView reloadData];
+        [strong_self.tableView.mj_header endRefreshing];
+        [strong_self.tableView.mj_footer endRefreshing];
         [strong_self.tableView reloadData];
     } failure:^(NSURLSessionTask *task, NSError *error) {
         @strongify(self)

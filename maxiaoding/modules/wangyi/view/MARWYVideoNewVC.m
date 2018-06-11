@@ -13,6 +13,9 @@
 #import "UIScrollView+MXD.h"
 #import "MARWYVideoNewListVC.h"
 #import "MARWYVideoPlayView.h"
+#import "MARWYVideoPlayNewListVC.h"
+
+#define ZFMARVideoOn
 
 @interface MARWYVideoNewVC () <VTMagicViewDelegate, VTMagicViewDataSource>
 @property (nonatomic, strong) NSArray<MARWYVideoCategoryTitleModel *> *categoryArray;
@@ -181,6 +184,22 @@
 - (UIViewController *)magicView:(VTMagicView *)magicView viewControllerAtPage:(NSUInteger)pageIndex
 {
     static NSString *vcIdentifier = @"vcIdentifier";
+#ifdef ZFMARVideoOn
+    MARWYVideoPlayNewListVC *videoPlayerNewListVC =  [magicView dequeueReusablePageWithIdentifier:vcIdentifier];
+    if (!videoPlayerNewListVC)
+    {
+        videoPlayerNewListVC = [MARWYVideoPlayNewListVC new];
+    }
+    
+    if (_categoryArray.count > pageIndex) {
+        MARWYVideoCategoryTitleModel *key = self.categoryArray[pageIndex];
+        if (!self.wyNewCategoryDictionary[key]) {
+            self.wyNewCategoryDictionary[key] = [[MARWYVideoNewListPropertyModel alloc] initWithCategoryModel:key];
+        }
+        videoPlayerNewListVC.model  = self.wyNewCategoryDictionary[key];
+    }
+    return videoPlayerNewListVC;
+#else
     MARWYVideoNewListVC *videoNewListVC = [magicView dequeueReusablePageWithIdentifier:vcIdentifier];
     if (!videoNewListVC) {
         videoNewListVC = (MARWYVideoNewListVC *)[UIViewController vcWithStoryboardName:kSBNAME_Wangyi storyboardId:kSBID_Wangyi_WYVideoNewListVC];
@@ -193,6 +212,7 @@
         videoNewListVC.model  = self.wyNewCategoryDictionary[key];
     }
     return videoNewListVC;
+#endif
 }
 
 - (void)magicView:(VTMagicView *)magicView viewDidAppear:(UIViewController *)viewController atPage:(NSUInteger)pageIndex {
@@ -209,9 +229,9 @@
 
 - (void)locationVideoItemAction:(id)sender
 {
-    MARWYVideoNewListVC *videoNewListVC = self.magicController.currentViewController;
-    if ([videoNewListVC isKindOfClass:[MARWYVideoNewListVC class]]) {
-        [videoNewListVC locationMediaCell];
+    UIViewController *videoNewListVC = self.magicController.currentViewController;
+    if ([videoNewListVC respondsToSelector:@selector(locationMediaCell)]) {
+        [videoNewListVC performSelector:@selector(locationMediaCell)];
     }
     
 }
@@ -263,18 +283,26 @@
     }
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskAll;
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-    return UIInterfaceOrientationPortrait;
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return [self.magicController.currentViewController preferredStatusBarStyle];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return [self.magicController.currentViewController prefersStatusBarHidden];
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    return [self.magicController.currentViewController preferredStatusBarUpdateAnimation];
 }
 
 - (BOOL)shouldAutorotate
 {
-    return YES;
+    return NO;
 }
 
 @end

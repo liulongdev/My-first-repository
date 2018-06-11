@@ -40,12 +40,13 @@
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskLandscape;
+    return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-    return UIInterfaceOrientationLandscapeRight;
-}
+//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+//    return UIInterfaceOrientationMaskAllButUpsideDown;
+//    return UIInterfaceOrientationLandscapeRight;
+//}
 
 - (BOOL)shouldAutorotate
 {

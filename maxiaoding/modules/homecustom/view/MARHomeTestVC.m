@@ -8,6 +8,7 @@
 
 #import "MARHomeTestVC.h"
 #import "MARHomeDateView.h"
+#import "MARHomeVC.h"
 #import <iCarousel.h>
 #import "MARCitiesWeatherVC.h"
 #import "MAACarBrandListVC.h"
@@ -97,8 +98,12 @@
 - (UIView *)timeInfoView
 {
     if (!_timeInfoView) {
-        _timeInfoView = [MARHomeDateView nibView];
-        _timeInfoView.backgroundColor = RGBHEX(0x99ccff);
+        MARHomeVC *homeVC = [[MARHomeVC alloc] init];
+        [self addChildViewController:homeVC];
+        _timeInfoView = homeVC.view;
+        
+//        _timeInfoView = [MARHomeDateView nibView];
+//        _timeInfoView.backgroundColor = RGBHEX(0x99ccff);
     }
     return _timeInfoView;
 }
@@ -222,6 +227,52 @@
     {
         [self.carousel reloadData];
     }
+}
+
+- (UIViewController *)currentViewController
+{
+    // timeinfo 不是controller
+    if (self.childViewControllers.count > self.carousel.currentItemIndex && self.carousel.currentItemIndex > 0)
+    {
+        return self.childViewControllers[self.carousel.currentItemIndex];
+    }
+    return nil;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    UIViewController *vc = [self currentViewController];
+    if (vc) {
+        return [vc preferredStatusBarStyle];
+    }
+    else
+        return UIStatusBarStyleDefault;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    UIViewController *vc = [self currentViewController];
+    if (vc) {
+        return [vc prefersStatusBarHidden];
+    }
+    else
+        return NO;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    UIViewController *vc = [self currentViewController];
+    if (vc) {
+        return [vc preferredStatusBarUpdateAnimation];
+    }
+    else
+        return UIStatusBarAnimationFade;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
 }
 
 @end
