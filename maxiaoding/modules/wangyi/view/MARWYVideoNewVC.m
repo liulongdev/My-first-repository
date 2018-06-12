@@ -52,6 +52,10 @@
         scrollView.fd_popGestureEnabled = enabled;
         MARAdjustsScrollViewInsets_NO(scrollView, self);
     }
+    if (!self.isHomeStyle) {
+        _magicController.magicView.scrollEnabled = enabled;
+    }
+    self.fd_interactivePopDisabled = !enabled;
 }
 
 - (VTMagicController *)magicController {

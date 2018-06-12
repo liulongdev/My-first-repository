@@ -15,6 +15,7 @@
 #import "MARWYVideoNewVC.h"
 #import "MARCookCategoryCollectionVC.h"
 #import "MARHomeSettingVC.h"
+
 @interface MARHomeTestVC () <iCarouselDataSource, iCarouselDelegate>
 @property (nonatomic, strong) iCarousel *carousel;
 @property (nonatomic, strong) UIView *timeInfoView;
@@ -226,6 +227,21 @@
     else if (type == kMARNotificationType_NeedReloadHomeMagicView)
     {
         [self.carousel reloadData];
+    }
+    else if (type == kMARNotificationType_MARWYVideoStatusChanged)
+    {
+        // 如果当前正在播放视频的时候不可滑动    MARVideoStatusPlaying
+        if ([data integerValue] == 1) {
+            if ([[self currentViewController] isKindOfClass:[MARWYVideoNewVC class]]) {
+                self.carousel.scrollEnabled = NO;
+            }
+        }
+        else
+        {
+            if (!self.carousel.scrollEnabled) {
+                self.carousel.scrollEnabled = YES;
+            }
+        }
     }
 }
 

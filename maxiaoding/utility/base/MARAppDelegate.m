@@ -7,93 +7,32 @@
 //
 
 #import "MARAppDelegate.h"
-#import <RealReachability.h>
-//#import "NotificationMacro.h"
-//#import "AppMacro.h"
-//#import "css.h"
 
 @implementation MARAppDelegate
 
 -(void)startMonitorNetwork
 {
-    //开启网络状况的监听  RealReachability 替代
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(reachabilityChanged:)
-//                                                 name: kReachabilityChangedNotification
-//                                               object: nil];
-//    Reachability * reach = [Reachability reachabilityWithHostName:@"www.baidu.com"];
-//    [reach startNotifier];
-    [GLobalRealReachability startNotifier];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(networkChanged:)
-                                                 name:kRealReachabilityChangedNotification
-                                               object:nil];
+    [MARGLOBALMANAGER setNotifyChangeNetStatusForKey:@"MARAppMonitor" block:^(MARReachabilityNetStatus reachabilityNetStatus) {
+        switch (reachabilityNetStatus) {
+            case MARReachabilityNetStatusWIFI:
+            case MARReachabilityNetStatusWAN2G:
+            case MARReachabilityNetStatusWAN3G:
+            case MARReachabilityNetStatusWAN4G:
+            case MARReachabilityNetStatusWAN:
+                [MARGLOBALMANAGER postNotif:kMARNotificationType_NetworkChangedEnabel data:nil object:nil];
+                break;
+            case MARReachabilityNetStatusNotReachbale:
+                [MARGLOBALMANAGER postNotif:kMARNotificationType_NetworkChangedDisEnabel data:nil object:nil];
+                break;
+        }
+    }];
 }
 
 - (void) stopMonitorNetwork
 {
-    [GLobalRealReachability stopNotifier];
+    [MARGLOBALMANAGER setNotifyChangeNetStatusForKey:@"MARAppMonitor" block:nil];
 }
 
-- (void)networkChanged:(NSNotification *)notification
-{
-    RealReachability *reachability = (RealReachability *)notification.object;
-    ReachabilityStatus status = [reachability currentReachabilityStatus];
-    NSLog(@"currentStatus:%@",@(status));
-    
-//    [GLobalRealReachability reachabilityWithBlock:^(ReachabilityStatus status) {
-        switch (status)
-        {
-            case RealStatusNotReachable:
-            {
-                //  case NotReachable handler
-                [MARGLOBALMANAGER postNotif:kMARNotificationType_NetworkChangedDisEnabel data:nil object:nil];
-                break;
-            }
-                
-            case RealStatusViaWiFi:
-            {
-                [MARGLOBALMANAGER postNotif:kMARNotificationType_NetworkChangedEnabel data:nil object:nil];
-                //  case ReachableViaWiFi handler
-                break;
-            }
-                
-            case RealStatusViaWWAN:
-            {
-                [MARGLOBALMANAGER postNotif:kMARNotificationType_NetworkChangedEnabel data:nil object:nil];
-                //  case ReachableViaWWAN handler
-                break;
-            }
-                
-            default:
-                break;
-        }
-//    }];
-//    // 获取当前的数据网络连接类型
-//    WWANAccessType accessType = [GLobalRealReachability currentWWANtype];
-//    switch (accessType) {
-//        case WWANType2G:
-//            
-//            break;
-//        case WWANType3G:
-//            
-//            break;
-//        case WWANType4G:
-//            
-//            break;
-//        default:
-//            break;
-//    }
-}
-// RealReachability 替代
-//- (void) reachabilityChanged: (NSNotification* )noti
-//{
-//    Reachability* curReach = [noti object];
-//    NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
-//    GLOBALMANAGER.currentNetWork = curReach.currentReachabilityStatus;
-//    // 发送网络改变通知
-//    [GLOBALMANAGER postNotif:kMARNotification_ReachabilityChanged data:nil object:nil];
-//}
 #pragma mark - 注册推送通知
 #pragma mark 申请DeviceToken
 - (void)registerDeviceToken

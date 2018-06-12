@@ -40,6 +40,11 @@
     [super viewDidLoad];
 }
 
+- (void)dealloc
+{
+    [_playerManager mar_removeAllBlockObservers];   // 保险起见
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -258,7 +263,6 @@
         _player.assetURLs = self.urls;
         /// 以下设置滑出屏幕后不停止播放
         self.player.stopWhileNotVisible = NO;
-
         
         @weakify(self)
         _player.orientationDidChanged = ^(ZFPlayerController * _Nonnull player, BOOL isFullScreen) {
@@ -292,6 +296,9 @@
 {
     if (!_playerManager) {
         _playerManager = [[ZFAVPlayerManager alloc] init];
+        [_playerManager mar_addObserverForKeyPath:@"playState" options:NSKeyValueObservingOptionNew task:^(id  _Nonnull obj, NSDictionary * _Nonnull change) {
+            [MARGLOBALMANAGER postNotif:kMARNotificationType_MARWYVideoStatusChanged data:@([change[NSKeyValueChangeNewKey] integerValue]) object:self];
+        }];
     }
     return _playerManager;
 }
@@ -347,6 +354,10 @@
 {
     [_player stopCurrentPlayingCell];
     [_controlView resetControlView];
+    [_playerManager mar_removeAllBlockObservers];
+    _playerManager = nil;
+    _controlView = nil;
+    _player = nil;
     [MARGLOBALMANAGER postNotif:kMARNotificationType_MARWYVideoStatusChanged data:@(MARVideoStatusRemoved) object:self];
 }
 
