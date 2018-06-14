@@ -192,7 +192,7 @@
         strong_self.isLoading = NO;
         [strong_self.model.wyNewArray addObjectsFromArray:array];
         [array enumerateObjectsUsingBlock:^(MARWYVideoNewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSURL *URL = [NSURL URLWithString:obj.mp4_url ?: @""];
+            NSURL *URL = [strong_self generateURLWithStr:obj.mp4_url];
             [strong_self.urls addObject:URL];
         }];
         if (strong_self.model.wyNewArray.count <= 0) {
@@ -336,10 +336,21 @@
 {
     _model = model;
     [self.urls removeAllObjects];
+    @weakify(self)
     [self.model.wyNewArray enumerateObjectsUsingBlock:^(MARWYVideoNewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSURL *URL = [NSURL URLWithString:obj.mp4_url ?: @""];
-        [self.urls addObject:URL];
+        @strongify(self)
+        if (!strong_self) return;
+        NSURL *URL = [strong_self generateURLWithStr:obj.mp4_url];
+        [strong_self.urls addObject:URL];
     }];
+}
+
+- (NSURL *)generateURLWithStr:(NSString *)urlString
+{
+    urlString = [KTVHTTPCache proxyURLStringWithOriginalURLString:urlString ?: @""];
+    NSURL *URL = [NSURL URLWithString:urlString ?: @""];
+    
+    return URL;
 }
 
 - (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj
