@@ -183,10 +183,10 @@
 }
 
 - (IBAction)clickQuickBtnAcion:(id)sender {
-    if (![self.phoneQuickTF.text mar_isMobileNumber]) {
-        ShowInfoMessage(@"请输入正确的手机号", 1.f);
-        return;
-    }
+//    if (![self.phoneQuickTF.text mar_isMobileNumber]) {
+//        ShowInfoMessage(@"请输入正确的手机号", 1.f);
+//        return;
+//    }
     
     UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Login storyboardId:kSBID_Login_PhoneOperationVC];
     if ([vc isKindOfClass:[MARPhoneOperationVC class]]) {

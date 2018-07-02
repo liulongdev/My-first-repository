@@ -42,6 +42,10 @@
 		5B158C7B20275B74006B6EC9 /* MAACarTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B158C7A20275B74006B6EC9 /* MAACarTypeVC.m */; };
 		5B1892492041585E00173FEF /* setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1892482041585E00173FEF /* setting.storyboard */; };
 		5B18924C20415E9400173FEF /* MARHomeSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B18924B20415E9400173FEF /* MARHomeSettingVC.m */; };
+		5B1AD1D620DA2355001BCA14 /* gpuimage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1AD1D520DA2355001BCA14 /* gpuimage.storyboard */; };
+		5B1AD1DA20DA237F001BCA14 /* MARGpuImageMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1AD1D920DA237F001BCA14 /* MARGpuImageMenuVC.m */; };
+		5B1AD1DD20DA2457001BCA14 /* MARGpuImageCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1AD1DC20DA2457001BCA14 /* MARGpuImageCameraVC.m */; };
+		5B1AD1E020DA34B5001BCA14 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1AD1DF20DA34B5001BCA14 /* GPUImageBeautifyFilter.m */; };
 		5B225D3E202233D800EB1F2A /* MAACardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D3D202233D800EB1F2A /* MAACardModel.m */; };
 		5B225D5320240C5500EB1F2A /* weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B225D5220240C5500EB1F2A /* weather.storyboard */; };
 		5B225D5620240C9200EB1F2A /* MARWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B225D5520240C9200EB1F2A /* MARWeatherVC.m */; };
@@ -102,7 +106,7 @@
 		5B25F8621FE0D2CA00E85884 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8611FE0D2CA00E85884 /* main.m */; };
 		5B25F86C1FE0D2CA00E85884 /* maxiaodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F86B1FE0D2CA00E85884 /* maxiaodingTests.m */; };
 		5B25F8771FE0D2CA00E85884 /* maxiaodingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8761FE0D2CA00E85884 /* maxiaodingUITests.m */; };
-		5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8B91FE0F80500E85884 /* MARAppDelegate.m */; };
+		5B25F8CC1FE0F80500E85884 /* MARAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8B91FE0F80500E85884 /* MARAppDelegate.mm */; };
 		5B25F8CE1FE0F80500E85884 /* MARBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8BD1FE0F80500E85884 /* MARBaseViewController.m */; };
 		5B25F8CF1FE0F80500E85884 /* MARNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8BF1FE0F80500E85884 /* MARNetworkManager.m */; };
 		5B25F8D01FE0F80500E85884 /* MARNetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25F8C11FE0F80500E85884 /* MARNetworkResponse.m */; };
@@ -220,6 +224,10 @@
 		5B6EC64E20CE467D00971A07 /* MARWYVideoPlayNewListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6EC64D20CE467D00971A07 /* MARWYVideoPlayNewListVC.m */; };
 		5B6EC65520CE589F00971A07 /* MARWYVideoPlayTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6EC65320CE589F00971A07 /* MARWYVideoPlayTableCell.m */; };
 		5B6EC65620CE589F00971A07 /* MARWYVideoPlayTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6EC65420CE589F00971A07 /* MARWYVideoPlayTableCell.xib */; };
+		5B76060D20D386F60059B4E2 /* opencvdemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B76060C20D386F60059B4E2 /* opencvdemo.storyboard */; };
+		5B76061020D3874D0059B4E2 /* MAROpencvTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B76060F20D3874D0059B4E2 /* MAROpencvTestVC.m */; };
+		5B76061320D38D7B0059B4E2 /* MAROpenCVUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B76061220D38D7B0059B4E2 /* MAROpenCVUtil.mm */; };
+		5B76061720D394F80059B4E2 /* UIImage+MAROpencv.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B76061620D394F80059B4E2 /* UIImage+MAROpencv.mm */; };
 		5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FF41FF82E9A000BA56A /* MARUserRequest.m */; };
 		5B765FFB1FF8323A000BA56A /* MARUserNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FFA1FF8323A000BA56A /* MARUserNetworkManager.m */; };
 		5B765FFE1FF8E647000BA56A /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B765FFD1FF8E647000BA56A /* login.storyboard */; };
@@ -232,6 +240,8 @@
 		5B8EADE0205F847E0055F609 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EADC5205F847D0055F609 /* .gitignore */; };
 		5B8EADE1205F847E0055F609 /* libBaiduSpeechSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8EADC6205F847D0055F609 /* libBaiduSpeechSDK.a */; };
 		5B8EADE2205F847E0055F609 /* .gitIgnore in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EADC9205F847E0055F609 /* .gitIgnore */; };
+		5B8EE36C20E9F7FE008BAE3C /* litdemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B8EE36B20E9F7FE008BAE3C /* litdemo.storyboard */; };
+		5B8EE37020E9F87C008BAE3C /* MARAppstoreCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8EE36F20E9F87C008BAE3C /* MARAppstoreCommentVC.m */; };
 		5B9227FD20C9110900EF05FA /* MARSocialShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9227FC20C9110900EF05FA /* MARSocialShareManager.m */; };
 		5B92CEC520400E760031BDC5 /* MAANewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B92CEC420400E760031BDC5 /* MAANewModel.m */; };
 		5B933B2C1FE767AD004C2038 /* MARDataAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B2B1FE767AD004C2038 /* MARDataAnalysis.m */; };
@@ -249,6 +259,7 @@
 		5B933B5F1FE9706E004C2038 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B933B5E1FE9706E004C2038 /* images.xcassets */; };
 		5B933B621FE971EF004C2038 /* MAREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B933B611FE971EF004C2038 /* MAREmptyView.m */; };
 		5B9498D21FF617D500FF9731 /* MARFontConfigVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9498D11FF617D500FF9731 /* MARFontConfigVC.m */; };
+		5B985EF520DBA06B00110E96 /* MAROpencvCameraVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B985EF420DBA06B00110E96 /* MAROpencvCameraVC.mm */; };
 		5B9B74122063920700D9F56A /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B73B02063920600D9F56A /* JSQMessagesAssets.bundle */; };
 		5B9B74132063920700D9F56A /* NSBundle+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B73B32063920600D9F56A /* NSBundle+JSQMessages.m */; };
 		5B9B74142063920700D9F56A /* NSString+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B73B52063920600D9F56A /* NSString+JSQMessages.m */; };
@@ -397,6 +408,13 @@
 		5B1892482041585E00173FEF /* setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = setting.storyboard; sourceTree = "<group>"; };
 		5B18924A20415E9400173FEF /* MARHomeSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARHomeSettingVC.h; sourceTree = "<group>"; };
 		5B18924B20415E9400173FEF /* MARHomeSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARHomeSettingVC.m; sourceTree = "<group>"; };
+		5B1AD1D520DA2355001BCA14 /* gpuimage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = gpuimage.storyboard; sourceTree = "<group>"; };
+		5B1AD1D820DA237F001BCA14 /* MARGpuImageMenuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARGpuImageMenuVC.h; sourceTree = "<group>"; };
+		5B1AD1D920DA237F001BCA14 /* MARGpuImageMenuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARGpuImageMenuVC.m; sourceTree = "<group>"; };
+		5B1AD1DB20DA2457001BCA14 /* MARGpuImageCameraVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARGpuImageCameraVC.h; sourceTree = "<group>"; };
+		5B1AD1DC20DA2457001BCA14 /* MARGpuImageCameraVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARGpuImageCameraVC.m; sourceTree = "<group>"; };
+		5B1AD1DE20DA34B5001BCA14 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
+		5B1AD1DF20DA34B5001BCA14 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
 		5B225D3C202233D800EB1F2A /* MAACarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAACarModel.h; sourceTree = "<group>"; };
 		5B225D3D202233D800EB1F2A /* MAACardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACardModel.m; sourceTree = "<group>"; };
 		5B225D5220240C5500EB1F2A /* weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = weather.storyboard; sourceTree = "<group>"; };
@@ -473,7 +491,7 @@
 		5B25F8781FE0D2CA00E85884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B25F8851FE0D6FF00E85884 /* maxiaoding-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "maxiaoding-Prefix.pch"; sourceTree = "<group>"; };
 		5B25F8B81FE0F80500E85884 /* MARAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARAppDelegate.h; sourceTree = "<group>"; };
-		5B25F8B91FE0F80500E85884 /* MARAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARAppDelegate.m; sourceTree = "<group>"; };
+		5B25F8B91FE0F80500E85884 /* MARAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MARAppDelegate.mm; sourceTree = "<group>"; };
 		5B25F8BC1FE0F80500E85884 /* MARBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARBaseViewController.h; sourceTree = "<group>"; };
 		5B25F8BD1FE0F80500E85884 /* MARBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARBaseViewController.m; sourceTree = "<group>"; };
 		5B25F8BE1FE0F80500E85884 /* MARNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARNetworkManager.h; sourceTree = "<group>"; };
@@ -666,6 +684,13 @@
 		5B6EC65220CE589F00971A07 /* MARWYVideoPlayTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYVideoPlayTableCell.h; sourceTree = "<group>"; };
 		5B6EC65320CE589F00971A07 /* MARWYVideoPlayTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYVideoPlayTableCell.m; sourceTree = "<group>"; };
 		5B6EC65420CE589F00971A07 /* MARWYVideoPlayTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARWYVideoPlayTableCell.xib; sourceTree = "<group>"; };
+		5B76060C20D386F60059B4E2 /* opencvdemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = opencvdemo.storyboard; sourceTree = "<group>"; };
+		5B76060E20D3874D0059B4E2 /* MAROpencvTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAROpencvTestVC.h; sourceTree = "<group>"; };
+		5B76060F20D3874D0059B4E2 /* MAROpencvTestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAROpencvTestVC.m; sourceTree = "<group>"; };
+		5B76061120D38D7B0059B4E2 /* MAROpenCVUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAROpenCVUtil.h; sourceTree = "<group>"; };
+		5B76061220D38D7B0059B4E2 /* MAROpenCVUtil.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MAROpenCVUtil.mm; sourceTree = "<group>"; };
+		5B76061520D394F80059B4E2 /* UIImage+MAROpencv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+MAROpencv.h"; sourceTree = "<group>"; };
+		5B76061620D394F80059B4E2 /* UIImage+MAROpencv.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+MAROpencv.mm"; sourceTree = "<group>"; };
 		5B765FF31FF82E9A000BA56A /* MARUserRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARUserRequest.h; sourceTree = "<group>"; };
 		5B765FF41FF82E9A000BA56A /* MARUserRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARUserRequest.m; sourceTree = "<group>"; };
 		5B765FF61FF8302E000BA56A /* requesturl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = requesturl.h; sourceTree = "<group>"; };
@@ -706,6 +731,9 @@
 		5B8EADDD205F847E0055F609 /* BDSSpeechSynthesizerParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSSpeechSynthesizerParams.h; sourceTree = "<group>"; };
 		5B8EADDE205F847E0055F609 /* BDSSynthesizerLogLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSSynthesizerLogLevel.h; sourceTree = "<group>"; };
 		5B8EADDF205F847E0055F609 /* BDSTTSEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSTTSEventManager.h; sourceTree = "<group>"; };
+		5B8EE36B20E9F7FE008BAE3C /* litdemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = litdemo.storyboard; sourceTree = "<group>"; };
+		5B8EE36E20E9F87C008BAE3C /* MARAppstoreCommentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARAppstoreCommentVC.h; sourceTree = "<group>"; };
+		5B8EE36F20E9F87C008BAE3C /* MARAppstoreCommentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARAppstoreCommentVC.m; sourceTree = "<group>"; };
 		5B9227FB20C9110900EF05FA /* MARSocialShareManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARSocialShareManager.h; sourceTree = "<group>"; };
 		5B9227FC20C9110900EF05FA /* MARSocialShareManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARSocialShareManager.m; sourceTree = "<group>"; };
 		5B92CEC320400E760031BDC5 /* MAANewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAANewModel.h; sourceTree = "<group>"; };
@@ -738,6 +766,8 @@
 		5B933B611FE971EF004C2038 /* MAREmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAREmptyView.m; sourceTree = "<group>"; };
 		5B9498D01FF617D500FF9731 /* MARFontConfigVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARFontConfigVC.h; sourceTree = "<group>"; };
 		5B9498D11FF617D500FF9731 /* MARFontConfigVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARFontConfigVC.m; sourceTree = "<group>"; };
+		5B985EF320DBA06B00110E96 /* MAROpencvCameraVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAROpencvCameraVC.h; sourceTree = "<group>"; };
+		5B985EF420DBA06B00110E96 /* MAROpencvCameraVC.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MAROpencvCameraVC.mm; sourceTree = "<group>"; };
 		5B9B73B02063920600D9F56A /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
 		5B9B73B22063920600D9F56A /* NSBundle+JSQMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+JSQMessages.h"; sourceTree = "<group>"; };
 		5B9B73B32063920600D9F56A /* NSBundle+JSQMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+JSQMessages.m"; sourceTree = "<group>"; };
@@ -1018,6 +1048,7 @@
 		5B1892462041583700173FEF /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				5B1892482041585E00173FEF /* setting.storyboard */,
 				5B1892472041584700173FEF /* view */,
 			);
 			path = setting;
@@ -1028,6 +1059,28 @@
 			children = (
 				5B18924A20415E9400173FEF /* MARHomeSettingVC.h */,
 				5B18924B20415E9400173FEF /* MARHomeSettingVC.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5B1AD1D420DA2344001BCA14 /* gpuimage */ = {
+			isa = PBXGroup;
+			children = (
+				5B1AD1D720DA235D001BCA14 /* view */,
+				5B1AD1D520DA2355001BCA14 /* gpuimage.storyboard */,
+			);
+			path = gpuimage;
+			sourceTree = "<group>";
+		};
+		5B1AD1D720DA235D001BCA14 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B1AD1D820DA237F001BCA14 /* MARGpuImageMenuVC.h */,
+				5B1AD1D920DA237F001BCA14 /* MARGpuImageMenuVC.m */,
+				5B1AD1DB20DA2457001BCA14 /* MARGpuImageCameraVC.h */,
+				5B1AD1DC20DA2457001BCA14 /* MARGpuImageCameraVC.m */,
+				5B1AD1DE20DA34B5001BCA14 /* GPUImageBeautifyFilter.h */,
+				5B1AD1DF20DA34B5001BCA14 /* GPUImageBeautifyFilter.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1224,10 +1277,12 @@
 		5B25F8B11FE0F80500E85884 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				5B8EE36A20E9F7D0008BAE3C /* test */,
+				5B1AD1D420DA2344001BCA14 /* gpuimage */,
+				5B76060A20D386D20059B4E2 /* opencv */,
 				5BF5BE2D206B2E4E00AE5E66 /* facerecognition */,
 				5B8EADAD205F5D940055F609 /* voiceaudio */,
 				5B1892462041583700173FEF /* setting */,
-				5B1892482041585E00173FEF /* setting.storyboard */,
 				5B225DBC20263A4200EB1F2A /* car */,
 				5B225D5020240C2600EB1F2A /* weather */,
 				5B42ED991FFE4BBF00B98D68 /* wangyi */,
@@ -1341,7 +1396,7 @@
 				5B25F9011FE188C300E85884 /* MARBaseDBModel.h */,
 				5B25F9001FE188C200E85884 /* MARBaseDBModel.m */,
 				5B25F8B81FE0F80500E85884 /* MARAppDelegate.h */,
-				5B25F8B91FE0F80500E85884 /* MARAppDelegate.m */,
+				5B25F8B91FE0F80500E85884 /* MARAppDelegate.mm */,
 				5B933B601FE971EF004C2038 /* MAREmptyView.h */,
 				5B933B611FE971EF004C2038 /* MAREmptyView.m */,
 				5B25F8BC1FE0F80500E85884 /* MARBaseViewController.h */,
@@ -1798,6 +1853,38 @@
 			path = response;
 			sourceTree = "<group>";
 		};
+		5B76060A20D386D20059B4E2 /* opencv */ = {
+			isa = PBXGroup;
+			children = (
+				5B76061420D394DF0059B4E2 /* util */,
+				5B76060B20D386E10059B4E2 /* view */,
+				5B76060C20D386F60059B4E2 /* opencvdemo.storyboard */,
+			);
+			path = opencv;
+			sourceTree = "<group>";
+		};
+		5B76060B20D386E10059B4E2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B76060E20D3874D0059B4E2 /* MAROpencvTestVC.h */,
+				5B76060F20D3874D0059B4E2 /* MAROpencvTestVC.m */,
+				5B985EF320DBA06B00110E96 /* MAROpencvCameraVC.h */,
+				5B985EF420DBA06B00110E96 /* MAROpencvCameraVC.mm */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5B76061420D394DF0059B4E2 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				5B76061120D38D7B0059B4E2 /* MAROpenCVUtil.h */,
+				5B76061220D38D7B0059B4E2 /* MAROpenCVUtil.mm */,
+				5B76061520D394F80059B4E2 /* UIImage+MAROpencv.h */,
+				5B76061620D394F80059B4E2 /* UIImage+MAROpencv.mm */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		5B765FFC1FF8E637000BA56A /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1939,6 +2026,32 @@
 				5B8EADDF205F847E0055F609 /* BDSTTSEventManager.h */,
 			);
 			path = TTS;
+			sourceTree = "<group>";
+		};
+		5B8EE36920E9F73E008BAE3C /* appstorecomment */ = {
+			isa = PBXGroup;
+			children = (
+				5B8EE36D20E9F85A008BAE3C /* view */,
+			);
+			path = appstorecomment;
+			sourceTree = "<group>";
+		};
+		5B8EE36A20E9F7D0008BAE3C /* test */ = {
+			isa = PBXGroup;
+			children = (
+				5B8EE36B20E9F7FE008BAE3C /* litdemo.storyboard */,
+				5B8EE36920E9F73E008BAE3C /* appstorecomment */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		5B8EE36D20E9F85A008BAE3C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B8EE36E20E9F87C008BAE3C /* MARAppstoreCommentVC.h */,
+				5B8EE36F20E9F87C008BAE3C /* MARAppstoreCommentVC.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		5B9227FA20C910CF00EF05FA /* socialshare */ = {
@@ -2442,6 +2555,7 @@
 				5B225DB8202564DB00EB1F2A /* weather_7.png in Resources */,
 				5B2C29C4205A0F08006C358C /* bds_easr_wakeup_words.dat in Resources */,
 				5B225D92202564DB00EB1F2A /* weather_1.png in Resources */,
+				5B1AD1D620DA2355001BCA14 /* gpuimage.storyboard in Resources */,
 				5B9B74382063920700D9F56A /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				5BF5BE2F206B2E8B00AE5E66 /* facerecognition.storyboard in Resources */,
 				5B029F2B1FE4043D008ED5CA /* MARHomeCustomVC.xib in Resources */,
@@ -2469,6 +2583,7 @@
 				5B225DA9202564DB00EB1F2A /* weather_30.png in Resources */,
 				5B029EF51FE2654B008ED5CA /* mob_error.plist in Resources */,
 				5B225DB9202564DB00EB1F2A /* weather_8.png in Resources */,
+				5B76060D20D386F60059B4E2 /* opencvdemo.storyboard in Resources */,
 				5B2C29CA205A0F08006C358C /* darkRed.bundle in Resources */,
 				5B9B743D2063920700D9F56A /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				5B2C29C1205A0F08006C358C /* bds_easr_input_model.dat in Resources */,
@@ -2486,6 +2601,7 @@
 				5B158C7220264963006B6EC9 /* car.storyboard in Resources */,
 				5B029F161FE3C849008ED5CA /* test.storyboard in Resources */,
 				5B225D9F202564DB00EB1F2A /* weather_21.png in Resources */,
+				5B8EE36C20E9F7FE008BAE3C /* litdemo.storyboard in Resources */,
 				5B2C29C9205A0F08006C358C /* darkOrange.bundle in Resources */,
 				5B225D9E202564DB00EB1F2A /* weather_20.png in Resources */,
 				5B225DB1202564DB00EB1F2A /* weather_53.png in Resources */,
@@ -2566,6 +2682,11 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-maxiaoding/Pods-maxiaoding-resources.sh",
 				"${PODS_ROOT}/AlicloudFeedback/feedback/YWFeedbackBundle.bundle",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/PinYin4Objc/PinYin4Objc/Resources/unicode_to_hanyu_pinyin.txt",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
@@ -2578,6 +2699,11 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YWFeedbackBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/unicode_to_hanyu_pinyin.txt",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
@@ -2622,6 +2748,7 @@
 				5B356BF820CD820A007ADAD0 /* UIScrollView+ZFPlayer.m in Sources */,
 				5B029F041FE2E016008ED5CA /* MARMobUtil.m in Sources */,
 				5B7660051FF8E776000BA56A /* MARLoginViewController.m in Sources */,
+				5B985EF520DBA06B00110E96 /* MAROpencvCameraVC.mm in Sources */,
 				5B9B74152063920700D9F56A /* UIColor+JSQMessages.m in Sources */,
 				5B933B531FE91711004C2038 /* MARTXNewsVC.m in Sources */,
 				5B9B74232063920700D9F56A /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
@@ -2637,7 +2764,9 @@
 				5B356BFC20CD820A007ADAD0 /* ZFKVOController.m in Sources */,
 				5B225D632024600900EB1F2A /* MARWeatherHourCollectionCell.m in Sources */,
 				5B01CD541FF32922003D2875 /* MARTitleCollectionReuableView.m in Sources */,
+				5B1AD1DD20DA2457001BCA14 /* MARGpuImageCameraVC.m in Sources */,
 				5BEC5DD520CC2458005C5CF7 /* MARWYPhotoBrowserCell.m in Sources */,
+				5B76061320D38D7B0059B4E2 /* MAROpenCVUtil.mm in Sources */,
 				5BD56B27202AE08700BB0BD1 /* MARCitiesWeatherVC.m in Sources */,
 				5B9B74252063920700D9F56A /* JSQAudioMediaItem.m in Sources */,
 				5B375C9A20037D2D001E02F2 /* MARWYVideoNewListVC.m in Sources */,
@@ -2654,6 +2783,7 @@
 				5B18924C20415E9400173FEF /* MARHomeSettingVC.m in Sources */,
 				5B375CA12003C287001E02F2 /* MARWYVideoPlayView.m in Sources */,
 				5B029F3E1FE4BA1A008ED5CA /* MARCookCategoryModel.m in Sources */,
+				5B1AD1E020DA34B5001BCA14 /* GPUImageBeautifyFilter.m in Sources */,
 				5B9B741D2063920700D9F56A /* JSQMessagesTimestampFormatter.m in Sources */,
 				5B9B74362063920700D9F56A /* JSQMessagesLabel.m in Sources */,
 				5B9B74392063920700D9F56A /* JSQMessagesMediaPlaceholderView.m in Sources */,
@@ -2706,6 +2836,7 @@
 				5B25F8D71FE0FABE00E85884 /* MARWXArticleCategoryCell.m in Sources */,
 				5B9B74292063920700D9F56A /* JSQMessagesAvatarImage.m in Sources */,
 				5B42EDB11FFF254500B98D68 /* MARWYUtility.m in Sources */,
+				5B76061720D394F80059B4E2 /* UIImage+MAROpencv.mm in Sources */,
 				5B7660221FFCABDE000BA56A /* MARSetPasswrodVC.m in Sources */,
 				5B029F011FE2C317008ED5CA /* MARCarSeriesVC.m in Sources */,
 				5B225D5A20244C6000EB1F2A /* MARWeatherDayCell.m in Sources */,
@@ -2750,8 +2881,10 @@
 				5B933B461FE8F054004C2038 /* MARHand.m in Sources */,
 				5B356C0B20CD820A007ADAD0 /* KSMediaPlayerManager.m in Sources */,
 				5B510D3820050AEB00F8F1CD /* MARVideoFullVC.m in Sources */,
-				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.m in Sources */,
+				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.mm in Sources */,
 				5B9B74172063920700D9F56A /* UIView+JSQMessages.m in Sources */,
+				5B76061020D3874D0059B4E2 /* MAROpencvTestVC.m in Sources */,
+				5B8EE37020E9F87C008BAE3C /* MARAppstoreCommentVC.m in Sources */,
 				5B9B743A2063920700D9F56A /* JSQMessagesToolbarContentView.m in Sources */,
 				5B5F217820495A1400F627D2 /* MARCookCollectVC.m in Sources */,
 				5B9B74272063920700D9F56A /* JSQMediaItem.m in Sources */,
@@ -2775,6 +2908,7 @@
 				5B356C0920CD820A007ADAD0 /* ZFPortraitControlView.m in Sources */,
 				5B029F071FE2EB61008ED5CA /* MARCarDetailVC.m in Sources */,
 				5BF8232B2007386C005DBCDE /* MARWYDataProxy.m in Sources */,
+				5B1AD1DA20DA237F001BCA14 /* MARGpuImageMenuVC.m in Sources */,
 				5B42ED921FFE43DE00B98D68 /* MARWYNewNetworkManager.m in Sources */,
 				5B25F8FF1FE1808F00E85884 /* MARHistoryDayTableCell.m in Sources */,
 			);
@@ -2945,6 +3079,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = FD3FY3GTVB;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/maxiaoding/components/ZFPlayer/Classes/KSYMediaPlayer/Frameworks",
@@ -2975,6 +3110,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/maxiaoding/components/ZFPlayer/Classes/KSYMediaPlayer/Frameworks",

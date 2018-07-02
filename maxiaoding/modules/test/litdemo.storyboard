@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bp9-TU-tEo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="CDk-F0-1E2">
+            <objects>
+                <navigationController id="bp9-TU-tEo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6l3-LK-j0S">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FLB-ch-qa5" kind="show" id="25X-ec-0wP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ozG-hT-iLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-356" y="125"/>
+        </scene>
+        <!--Appstore CommentVC-->
+        <scene sceneID="zG2-Tb-Y0Z">
+            <objects>
+                <viewController storyboardIdentifier="MARAppstoreCommentVC" id="FLB-ch-qa5" customClass="MARAppstoreCommentVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZFA-75-Jke"/>
+                        <viewControllerLayoutGuide type="bottom" id="S1A-Yk-M4V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VtH-CE-j1y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAF-Wc-SNA">
+                                <rect key="frame" x="15" y="60" width="94" height="30"/>
+                                <state key="normal" title="进入Appstore"/>
+                                <connections>
+                                    <action selector="gotoAppstoreWriteReview:" destination="FLB-ch-qa5" eventType="touchUpInside" id="Oic-8b-c2i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOf-JO-x6M">
+                                <rect key="frame" x="15" y="120" width="350" height="30"/>
+                                <state key="normal" title="内部：弹窗评分，一年只能使用三次，最低10.3版本"/>
+                                <connections>
+                                    <action selector="appstoreJustScoreInside:" destination="FLB-ch-qa5" eventType="touchUpInside" id="nph-u6-vuj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLi-6u-pFU">
+                                <rect key="frame" x="15" y="180" width="260" height="30"/>
+                                <state key="normal" title="内部：展示appstore内容，评论有深度"/>
+                                <connections>
+                                    <action selector="appstoreWriteReviewInside:" destination="FLB-ch-qa5" eventType="touchUpInside" id="OCh-19-mhc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FOf-JO-x6M" firstAttribute="leading" secondItem="vAF-Wc-SNA" secondAttribute="leading" id="5v0-Fx-1Si"/>
+                            <constraint firstItem="FOf-JO-x6M" firstAttribute="top" secondItem="vAF-Wc-SNA" secondAttribute="bottom" constant="30" id="79Q-4l-KLh"/>
+                            <constraint firstItem="yLi-6u-pFU" firstAttribute="top" secondItem="FOf-JO-x6M" secondAttribute="bottom" constant="30" id="7Us-fV-Yfp"/>
+                            <constraint firstItem="yLi-6u-pFU" firstAttribute="leading" secondItem="vAF-Wc-SNA" secondAttribute="leading" id="DUM-Vl-Dt8"/>
+                            <constraint firstItem="vAF-Wc-SNA" firstAttribute="top" secondItem="ZFA-75-Jke" secondAttribute="bottom" constant="40" id="LCW-3u-qWo"/>
+                            <constraint firstItem="vAF-Wc-SNA" firstAttribute="leading" secondItem="VtH-CE-j1y" secondAttribute="leading" constant="15" id="VEL-VK-Tvs"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ugr-pz-u9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="486" y="125"/>
+        </scene>
+    </scenes>
+</document>

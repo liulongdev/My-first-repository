@@ -27,6 +27,9 @@ def shared_dependencies
   pod 'UMengUShare/Social/Sina', '~> 6.4.7'
   pod 'UMengUShare/UI', '~> 6.4.7'
   pod 'KTVHTTPCache', '~> 1.0.0'
+  
+  pod 'OpenCV', '2.4.9'
+  pod 'GPUImage', '~> 0.1.7'
 #  pod 'UMengUShare/Social/ReducedWeChat', '~> 6.4.7'
 #  pod 'UMengUShare/Social/ReducedQQ', '~> 6.4.7'
 #  pod 'UMengUShare/Social/ReducedSina', '~> 6.4.7'

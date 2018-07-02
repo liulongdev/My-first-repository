@@ -42,7 +42,9 @@
     }
     [MARUTILITY startApp];
     
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeTestVC alloc] init]];
+//    UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Mob storyboardId:kSBID_Mob_MenuVC];
+    UIViewController *vc = [[MARHomeTestVC alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = navi;

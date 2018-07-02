@@ -23,7 +23,9 @@ extern NSString * const kSBNAME_Setting;
 extern NSString * const kSBNAME_VoiceAudio;
 extern NSString * const kSBNAME_FaceRecognition;
 extern NSString * const kSBNAME_WYPhotoBrowser;
-
+extern NSString * const kSBNAME_Opencv;
+extern NSString * const kSBNAME_GpuImage;
+extern NSString * const kSBNAME_LitDemo;
 /**
  StoreBoard ID of  UIViewcontroller in StoreBoard
  */
@@ -74,6 +76,13 @@ extern NSString * const kSBID_VoiceAudio_VoiceAudioTestVC;
 extern NSString * const kSBID_FaceRecognition_FaceRecognitionVC;
 
 extern NSString * const kSBID_WYPhotoBrowser_PhotoBrowserVC;
+
+extern NSString * const kSBID_OpencvDemo_OpencvTestVC;
+
+extern NSString * const kSBID_GpuImage_GpuImageMenuVC;
+extern NSString * const kSBID_GpuImage_GpuImageCameraVC;
+
+extern NSString * const kSBID_LitDemo_AppstoreCommentVC;
 
 @interface MARSBConstant : NSObject
 

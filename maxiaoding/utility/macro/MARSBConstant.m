@@ -23,6 +23,10 @@ NSString * const kSBNAME_Setting                        = @"setting";
 NSString * const kSBNAME_VoiceAudio                     = @"voiceaudio";
 NSString * const kSBNAME_FaceRecognition                = @"facerecognition";
 NSString * const kSBNAME_WYPhotoBrowser                 = @"MARWYPhotoBrowser";
+NSString * const kSBNAME_Opencv                         = @"opencvdemo";
+NSString * const kSBNAME_GpuImage                       = @"gpuimage";
+NSString * const kSBNAME_LitDemo                        = @"litdemo";
+
 /**
  StoryBoard ID of  UIViewcontroller in StoreBoard
  */
@@ -72,6 +76,15 @@ NSString * const kSBID_VoiceAudio_VoiceAudioTestVC      = @"MARVoiceAudioTestVC"
 NSString * const kSBID_FaceRecognition_FaceRecognitionVC     = @"MARFaceRecognitionVC";
 
 NSString * const kSBID_WYPhotoBrowser_PhotoBrowserVC    = @"MARWYPhotoBrowserVC";
+
+NSString * const kSBID_OpencvDemo_OpencvTestVC          = @"MAROpencvTestVC";
+
+NSString * const kSBID_GpuImage_GpuImageMenuVC          = @"MARGpuImageMenuVC";
+NSString * const kSBID_GpuImage_GpuImageCameraVC        = @"MARGpuImageCameraVC";
+
+NSString * const kSBID_LitDemo_AppstoreCommentVC       = @"MARAppstoreCommentVC";
+
+
 /**
  StoryBoard Segue Identifier
  */

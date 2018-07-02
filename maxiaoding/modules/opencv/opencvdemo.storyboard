@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CwJ-Et-4rW">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="5Xu-NM-tBn">
+            <objects>
+                <navigationController id="CwJ-Et-4rW" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h63-Fv-UKo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ANM-bb-Lkj" kind="relationship" relationship="rootViewController" id="vBz-sm-iu1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HIo-gV-A0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-271" y="113"/>
+        </scene>
+        <!--Opencv TestVC-->
+        <scene sceneID="jC2-q8-PQn">
+            <objects>
+                <viewController storyboardIdentifier="MAROpencvTestVC" id="ANM-bb-Lkj" customClass="MAROpencvTestVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="euv-CO-dDj"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bq0-4H-jZ6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7T3-FO-pnR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cNt-WP-AXJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="222"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="222" id="CBe-Wm-KXn"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqP-uA-Gus">
+                                <rect key="frame" x="0.0" y="64" width="375" height="222"/>
+                                <connections>
+                                    <action selector="clickSelectImageBtnAction:" destination="ANM-bb-Lkj" eventType="touchUpInside" id="RGO-y6-mH3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlf-s3-9CB">
+                                <rect key="frame" x="164" y="316" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="clickTestBtnAction:" destination="ANM-bb-Lkj" eventType="touchUpInside" id="NnV-jd-fHj"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yyU-dI-aIh">
+                                <rect key="frame" x="0.0" y="368" width="375" height="222"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="222" id="lM4-6X-l2K"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cNt-WP-AXJ" secondAttribute="trailing" id="0kW-u1-c5N"/>
+                            <constraint firstItem="cNt-WP-AXJ" firstAttribute="leading" secondItem="7T3-FO-pnR" secondAttribute="leading" id="99n-8z-diQ"/>
+                            <constraint firstItem="cNt-WP-AXJ" firstAttribute="top" secondItem="euv-CO-dDj" secondAttribute="bottom" id="EVb-3T-sTE"/>
+                            <constraint firstItem="yyU-dI-aIh" firstAttribute="top" secondItem="dlf-s3-9CB" secondAttribute="bottom" constant="22" id="IGl-Op-smn"/>
+                            <constraint firstItem="dlf-s3-9CB" firstAttribute="centerX" secondItem="7T3-FO-pnR" secondAttribute="centerX" id="ISq-MV-LSZ"/>
+                            <constraint firstItem="dlf-s3-9CB" firstAttribute="top" secondItem="cNt-WP-AXJ" secondAttribute="bottom" constant="30" id="Kiv-bK-BUG"/>
+                            <constraint firstAttribute="trailing" secondItem="yyU-dI-aIh" secondAttribute="trailing" id="NRJ-Dj-ETh"/>
+                            <constraint firstItem="rqP-uA-Gus" firstAttribute="centerX" secondItem="cNt-WP-AXJ" secondAttribute="centerX" id="VDA-qX-wz4"/>
+                            <constraint firstItem="yyU-dI-aIh" firstAttribute="leading" secondItem="7T3-FO-pnR" secondAttribute="leading" id="g1J-ez-w4z"/>
+                            <constraint firstItem="rqP-uA-Gus" firstAttribute="height" secondItem="cNt-WP-AXJ" secondAttribute="height" id="kAG-Fy-Hpm"/>
+                            <constraint firstItem="rqP-uA-Gus" firstAttribute="centerY" secondItem="cNt-WP-AXJ" secondAttribute="centerY" id="qbY-c2-kaa"/>
+                            <constraint firstItem="rqP-uA-Gus" firstAttribute="width" secondItem="cNt-WP-AXJ" secondAttribute="width" id="zPy-5G-QyF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jG5-3d-98t"/>
+                    <connections>
+                        <outlet property="imageView" destination="cNt-WP-AXJ" id="JX8-B2-5OG"/>
+                        <outlet property="otherImageView" destination="yyU-dI-aIh" id="98R-3e-LCD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lvn-zc-enl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="636" y="112.89355322338831"/>
+        </scene>
+    </scenes>
+</document>

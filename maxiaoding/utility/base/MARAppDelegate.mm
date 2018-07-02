@@ -64,6 +64,7 @@
 
 - (void)initAppearance
 {
+//    [self registerUncaughtExceptionHandler];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(APPNaviBarTint, 1)];
     [[UINavigationBar appearance] setTintColor:UIColorFromRGB(APPNaviTint, 1)];
@@ -160,6 +161,22 @@
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundIdentifier];
         self.backgroundIdentifier = UIBackgroundTaskInvalid;
     }
+}
+
+- (void)registerUncaughtExceptionHandler
+{
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+}
+
+void uncaughtExceptionHandler(NSException *exception)
+{
+    // 异常的堆栈信息
+    NSArray *stackArray = [exception callStackSymbols];
+    // 异常信息
+    NSString *reson = [exception reason];
+    // 异常名称
+    NSString *name = [exception name];
+    NSLog(@"reaon:%@/nname:%@/nstatck : %@",reson, name, stackArray);
 }
 
 @end

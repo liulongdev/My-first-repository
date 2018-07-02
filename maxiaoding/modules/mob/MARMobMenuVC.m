@@ -17,6 +17,7 @@
 #import "MARWYVideoNewVC.h"
 #import "MAACarBrandListVC.h"
 #import "MARCitiesWeatherVC.h"
+#import "MAROpencvCameraVC.h"
 
 static NSString * const mobTitle_wxArticle          = @"微信热门";
 static NSString * const mobTitle_historyToday       = @"历史上的今天";
@@ -40,6 +41,11 @@ static NSString * const cellTitle_baiduVoice        = @"百度语音";
 
 static NSString * const cellTitle_faceRecognition        = @"头像识别";
 
+static NSString * const cellTitle_opencvTest        = @"opencv test";
+
+static NSString * const cellTitle_gpuLvjingTest        = @"CPU lvjing";
+
+static NSString * const cellTitle_appstoreComment       = @"应用评分";
 
 @interface MARMobMenuVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -91,6 +97,9 @@ static NSString * const cellTitle_faceRecognition        = @"头像识别";
                         cellTitle_car,
                         cellTitle_baiduVoice,
                         cellTitle_faceRecognition,
+                        cellTitle_opencvTest,
+                        cellTitle_gpuLvjingTest,
+                        cellTitle_appstoreComment,
 //                        aliFeedback_feedback,
                         ];
     }
@@ -274,6 +283,24 @@ static NSString * const cellTitle_faceRecognition        = @"头像识别";
         UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_FaceRecognition storyboardId:kSBID_FaceRecognition_FaceRecognitionVC];
         [self mar_pushViewController:vc animated:YES];
     }
+    else if ([cellTitle_opencvTest isEqualToString:label.text])
+    {
+        MAROpencvCameraVC *vc = [[MAROpencvCameraVC alloc] init];
+        [self mar_pushViewController:vc animated:YES];
+//        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Opencv storyboardId:kSBID_OpencvDemo_OpencvTestVC];
+//        [self mar_pushViewController:vc animated:YES];
+    }
+    else if ([cellTitle_gpuLvjingTest isEqualToString:label.text])
+    {
+        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_GpuImage storyboardId:kSBID_GpuImage_GpuImageCameraVC];
+        [self mar_pushViewController:vc animated:YES];
+    }
+    else if ([cellTitle_appstoreComment isEqualToString:label.text])
+    {
+        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_LitDemo storyboardId:kSBID_LitDemo_AppstoreCommentVC];
+        [self mar_pushViewController:vc animated:YES];
+    }
+    
 }
 
 - (void)getAliFeedbackVC
@@ -304,6 +331,9 @@ static NSString * const cellTitle_faceRecognition        = @"头像识别";
                             cellTitle_car,
                             cellTitle_baiduVoice,
                             cellTitle_faceRecognition,
+                            cellTitle_opencvTest,
+                            cellTitle_gpuLvjingTest,
+                            cellTitle_appstoreComment,
                             aliFeedback_feedback,
                             ];
             [weakSelf.tableView reloadData];
