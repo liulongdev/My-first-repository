@@ -60,5 +60,8 @@
 // 自定义点击App的状态栏事件
 - (void)clickAppStatusBar;
 
+// 返回行为封装
+- (void)backAction:(id)sender;
+
 @end
 

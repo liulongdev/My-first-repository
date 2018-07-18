@@ -253,6 +253,23 @@
     }
 }
 
+- (void)backAction:(id)sender
+{
+    if ([self.navigationController respondsToSelector:@selector(popViewControllerAnimated:)]) {
+        if (self.navigationController.viewControllers.count > 1) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else if ([self.navigationController respondsToSelector:@selector(dismissViewControllerAnimated:completion:)])
+        {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }
+    }
+    else if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)])
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 - (void)dealloc
 {
     [self __removeObserverGlobal];

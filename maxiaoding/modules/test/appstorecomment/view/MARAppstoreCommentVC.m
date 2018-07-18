@@ -26,10 +26,13 @@
 
 - (void)appsotreCommentInside
 {
-    if([SKStoreReviewController respondsToSelector:@selector(requestReview)]) {// iOS 10.3 以上支持
-        //防止键盘遮挡
-        [[UIApplication sharedApplication].keyWindow endEditing:YES];
-        [SKStoreReviewController requestReview];
+    if (@available(iOS 10.3, *))
+    {
+        if([SKStoreReviewController respondsToSelector:@selector(requestReview)]) {// iOS 10.3 以上支持
+            //防止键盘遮挡
+            [[UIApplication sharedApplication].keyWindow endEditing:YES];
+            [SKStoreReviewController requestReview];
+        }
     }
 }
 
