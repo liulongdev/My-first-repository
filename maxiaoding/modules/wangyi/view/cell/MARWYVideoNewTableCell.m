@@ -80,8 +80,7 @@
             self.publishTimeLabel.text = briefTimeStr ?: model.ptime;
             
         }
-        
-        if ([GLobalRealReachability currentReachabilityStatus] == RealStatusViaWWAN) {
+        if ([MARGLOBALMANAGER isNetworkWWAN]) {
             self.sizeLabel.text = [MARGLOBALMANAGER.byteFormatter stringFromByteCount:model.sizeSD * 1024];
         }
         else

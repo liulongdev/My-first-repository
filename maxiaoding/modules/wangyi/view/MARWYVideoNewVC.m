@@ -52,6 +52,10 @@
         scrollView.fd_popGestureEnabled = enabled;
         MARAdjustsScrollViewInsets_NO(scrollView, self);
     }
+    if (!self.isHomeStyle) {
+        _magicController.magicView.scrollEnabled = enabled;
+    }
+    self.fd_interactivePopDisabled = !enabled;
 }
 
 - (VTMagicController *)magicController {
@@ -240,23 +244,15 @@
 {
     // 视频播放过程中不可右滑退出
     if (type == kMARNotificationType_MARWYVideoStatusChanged) {
-        // 首页播放视频时候不可右滑返回
-        if (self.magicController.currentPage == 0)
-        {
-            if ([data integerValue] == MARVideoStatusPlaying) {
-                [self _setPopGestureEnabled:NO];
-            }
-            else
-            {
-                [self _setPopGestureEnabled:YES];
-            }
-        }
+        // 播放视频时候不可左右滑和返回
         // 是否显示右上角定位视频按钮
         if ([data integerValue] == MARVideoStatusPlaying) {
             self.navigationItem.rightBarButtonItem = self.locationVideoItem;
+            [self _setPopGestureEnabled:NO];
         }
         else
         {
+            [self _setPopGestureEnabled:YES];
             self.navigationItem.rightBarButtonItem = nil;
         }
     }

@@ -50,6 +50,7 @@
 
     NSError * error;
     [KTVHTTPCache proxyStart:&error];
+//    [KTVHTTPCache logSetConsoleLogEnable:YES];
     
     // 可以有效防止静音键开启无声音
     AVAudioSession *avSession = [AVAudioSession sharedInstance];

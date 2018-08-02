@@ -41,6 +41,7 @@ static char mar_isValidAnalysisVCKey;
         [self ex_marAddObserservs];
         self.mar_pageAppearTimeInterval = [NSDate new].timeIntervalSince1970;
         [MARDataAnalysis pageAppear:self];
+        MARLog(@">>>>>  view will appear: %@", NSStringFromClass(self.class));
     }
 }
 

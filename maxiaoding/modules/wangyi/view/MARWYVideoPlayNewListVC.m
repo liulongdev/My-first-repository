@@ -40,6 +40,11 @@
     [super viewDidLoad];
 }
 
+- (void)dealloc
+{
+    [_playerManager mar_removeAllBlockObservers];   // 保险起见
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -187,7 +192,7 @@
         strong_self.isLoading = NO;
         [strong_self.model.wyNewArray addObjectsFromArray:array];
         [array enumerateObjectsUsingBlock:^(MARWYVideoNewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSURL *URL = [NSURL URLWithString:obj.mp4_url ?: @""];
+            NSURL *URL = [strong_self generateURLWithStr:obj.mp4_url];
             [strong_self.urls addObject:URL];
         }];
         if (strong_self.model.wyNewArray.count <= 0) {
@@ -258,7 +263,6 @@
         _player.assetURLs = self.urls;
         /// 以下设置滑出屏幕后不停止播放
         self.player.stopWhileNotVisible = NO;
-
         
         @weakify(self)
         _player.orientationDidChanged = ^(ZFPlayerController * _Nonnull player, BOOL isFullScreen) {
@@ -292,6 +296,9 @@
 {
     if (!_playerManager) {
         _playerManager = [[ZFAVPlayerManager alloc] init];
+        [_playerManager mar_addObserverForKeyPath:@"playState" options:NSKeyValueObservingOptionNew task:^(id  _Nonnull obj, NSDictionary * _Nonnull change) {
+            [MARGLOBALMANAGER postNotif:kMARNotificationType_MARWYVideoStatusChanged data:@([change[NSKeyValueChangeNewKey] integerValue]) object:self];
+        }];
     }
     return _playerManager;
 }
@@ -329,10 +336,21 @@
 {
     _model = model;
     [self.urls removeAllObjects];
+    @weakify(self)
     [self.model.wyNewArray enumerateObjectsUsingBlock:^(MARWYVideoNewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSURL *URL = [NSURL URLWithString:obj.mp4_url ?: @""];
-        [self.urls addObject:URL];
+        @strongify(self)
+        if (!strong_self) return;
+        NSURL *URL = [strong_self generateURLWithStr:obj.mp4_url];
+        [strong_self.urls addObject:URL];
     }];
+}
+
+- (NSURL *)generateURLWithStr:(NSString *)urlString
+{
+    urlString = [KTVHTTPCache proxyURLStringWithOriginalURLString:urlString ?: @""];
+    NSURL *URL = [NSURL URLWithString:urlString ?: @""];
+    
+    return URL;
 }
 
 - (void)getNotifType:(NSInteger)type data:(id)data target:(id)obj
@@ -347,6 +365,10 @@
 {
     [_player stopCurrentPlayingCell];
     [_controlView resetControlView];
+    [_playerManager mar_removeAllBlockObservers];
+    _playerManager = nil;
+    _controlView = nil;
+    _player = nil;
     [MARGLOBALMANAGER postNotif:kMARNotificationType_MARWYVideoStatusChanged data:@(MARVideoStatusRemoved) object:self];
 }
 
