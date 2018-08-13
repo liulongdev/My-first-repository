@@ -11,6 +11,7 @@
 #import "MAAWeatherModel.h"
 #import "MAACarModel.h"
 #import "MAANewModel.h"
+#import "MAAIpLocationModel.h"
 
 /** @brief     阿里云API接口集合
     @file      MARALIAPINetworkManager.h
@@ -76,4 +77,16 @@
 + (void)new_getNewListWithType:(NSString *)type
                        success:(void (^)(NSArray<MAANewModel *> *newArray))success
                        failure:(MARNetworkFailure)failure;
+
+
+/**
+ https://market.aliyun.com/products/57002003/cmapi021970.html?spm=5176.730005.productlist.d_cmapi021970.Afrjrk#sku=yuncode1597000000
+ 快速查询出该IP地址的归属地相关信息
+ @param ip ip地址
+ @param success 成功回调
+ @param failure 失败回调
+ */
++ (void)ip_getLocationWithIp:(NSString *)ip
+                     success:(void (^)(MAAIpLocationModel *ipLocationModel))success
+                     failure:(MARNetworkFailure)failure;
 @end

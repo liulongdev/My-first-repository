@@ -44,7 +44,6 @@
     self.title = _videoDetailModel.title;
     [self.coverImageView setIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:_videoDetailModel.topicImg ?: @""] placeholderImage:nil];
->>>>>>> f9ec64b5245dc3a6073f913d75f9021aa28f7493
 }
 
 - (void)UIGlobal

@@ -210,4 +210,24 @@
     } failure:failure];
 }
 
++ (void)ip_getLocationWithIp:(NSString *)ip
+                     success:(void (^)(MAAIpLocationModel *))success
+                     failure:(MARNetworkFailure)failure
+{
+    MARALIAPIModel *model = [MARALIAPIModel new];
+    model.appCode = MAAAPPCODE;
+    model.host = @"https://api01.aliyun.venuscn.com";
+    model.path = @"/ip";
+    model.method = @"GET";
+    model.queryDic = @{@"ip": ip ?: @""};
+    model.bodys = nil;
+    
+    [self p_reqeustWithModel:model success:^(NSURLSessionTask *task, id responseObject) {
+        if ([responseObject[@"ret"] integerValue] == 200) {
+            MAAIpLocationModel *model = [MAAIpLocationModel mar_modelWithJSON:responseObject[@"data"]];
+            if (success) success(model);
+        }
+    } failure:failure];
+}
+
 @end
