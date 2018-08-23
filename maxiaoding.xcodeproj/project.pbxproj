@@ -225,7 +225,7 @@
 		5B6EC65520CE589F00971A07 /* MARWYVideoPlayTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6EC65320CE589F00971A07 /* MARWYVideoPlayTableCell.m */; };
 		5B6EC65620CE589F00971A07 /* MARWYVideoPlayTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6EC65420CE589F00971A07 /* MARWYVideoPlayTableCell.xib */; };
 		5B76060D20D386F60059B4E2 /* opencvdemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B76060C20D386F60059B4E2 /* opencvdemo.storyboard */; };
-		5B76061020D3874D0059B4E2 /* MAROpencvTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B76060F20D3874D0059B4E2 /* MAROpencvTestVC.m */; };
+		5B76061020D3874D0059B4E2 /* MAROpencvTestVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B76060F20D3874D0059B4E2 /* MAROpencvTestVC.mm */; };
 		5B76061320D38D7B0059B4E2 /* MAROpenCVUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B76061220D38D7B0059B4E2 /* MAROpenCVUtil.mm */; };
 		5B76061720D394F80059B4E2 /* UIImage+MAROpencv.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B76061620D394F80059B4E2 /* UIImage+MAROpencv.mm */; };
 		5B765FF51FF82E9A000BA56A /* MARUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B765FF41FF82E9A000BA56A /* MARUserRequest.m */; };
@@ -686,7 +686,7 @@
 		5B6EC65420CE589F00971A07 /* MARWYVideoPlayTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARWYVideoPlayTableCell.xib; sourceTree = "<group>"; };
 		5B76060C20D386F60059B4E2 /* opencvdemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = opencvdemo.storyboard; sourceTree = "<group>"; };
 		5B76060E20D3874D0059B4E2 /* MAROpencvTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAROpencvTestVC.h; sourceTree = "<group>"; };
-		5B76060F20D3874D0059B4E2 /* MAROpencvTestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAROpencvTestVC.m; sourceTree = "<group>"; };
+		5B76060F20D3874D0059B4E2 /* MAROpencvTestVC.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MAROpencvTestVC.mm; sourceTree = "<group>"; };
 		5B76061120D38D7B0059B4E2 /* MAROpenCVUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAROpenCVUtil.h; sourceTree = "<group>"; };
 		5B76061220D38D7B0059B4E2 /* MAROpenCVUtil.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MAROpenCVUtil.mm; sourceTree = "<group>"; };
 		5B76061520D394F80059B4E2 /* UIImage+MAROpencv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+MAROpencv.h"; sourceTree = "<group>"; };
@@ -1867,7 +1867,7 @@
 			isa = PBXGroup;
 			children = (
 				5B76060E20D3874D0059B4E2 /* MAROpencvTestVC.h */,
-				5B76060F20D3874D0059B4E2 /* MAROpencvTestVC.m */,
+				5B76060F20D3874D0059B4E2 /* MAROpencvTestVC.mm */,
 				5B985EF320DBA06B00110E96 /* MAROpencvCameraVC.h */,
 				5B985EF420DBA06B00110E96 /* MAROpencvCameraVC.mm */,
 			);
@@ -2883,7 +2883,7 @@
 				5B510D3820050AEB00F8F1CD /* MARVideoFullVC.m in Sources */,
 				5B25F8CC1FE0F80500E85884 /* MARAppDelegate.mm in Sources */,
 				5B9B74172063920700D9F56A /* UIView+JSQMessages.m in Sources */,
-				5B76061020D3874D0059B4E2 /* MAROpencvTestVC.m in Sources */,
+				5B76061020D3874D0059B4E2 /* MAROpencvTestVC.mm in Sources */,
 				5B8EE37020E9F87C008BAE3C /* MARAppstoreCommentVC.m in Sources */,
 				5B9B743A2063920700D9F56A /* JSQMessagesToolbarContentView.m in Sources */,
 				5B5F217820495A1400F627D2 /* MARCookCollectVC.m in Sources */,
