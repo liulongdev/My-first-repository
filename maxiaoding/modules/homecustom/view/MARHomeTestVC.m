@@ -60,7 +60,7 @@
 {
     if (!_viewArray) {
         _viewArray = @[
-//                       self.timeInfoView,
+                       self.timeInfoView,
                        self.weatherView,
                        self.carView,
                        self.wyVideoView,

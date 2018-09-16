@@ -285,10 +285,10 @@ static NSString * const cellTitle_appstoreComment       = @"应用评分";
     }
     else if ([cellTitle_opencvTest isEqualToString:label.text])
     {
-        MAROpencvCameraVC *vc = [[MAROpencvCameraVC alloc] init];
-        [self mar_pushViewController:vc animated:YES];
-//        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Opencv storyboardId:kSBID_OpencvDemo_OpencvTestVC];
+//        MAROpencvCameraVC *vc = [[MAROpencvCameraVC alloc] init];
 //        [self mar_pushViewController:vc animated:YES];
+        UIViewController *vc = [UIViewController vcWithStoryboardName:kSBNAME_Opencv storyboardId:kSBID_OpencvDemo_OpencvTestVC];
+        [self mar_pushViewController:vc animated:YES];
     }
     else if ([cellTitle_gpuLvjingTest isEqualToString:label.text])
     {

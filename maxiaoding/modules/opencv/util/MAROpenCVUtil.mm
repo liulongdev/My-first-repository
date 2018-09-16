@@ -35,8 +35,11 @@
 
 + (void)test3:(UIImage *)image other:(UIImage *)otherImage
 {
-    cv::Mat img_1 = [image CVMat];
-    cv::Mat img_2 = [otherImage CVMat];
+    cv::Mat img_1,img_2;
+    cv::cvtColor([image CVMat], img_1, CV_RGB2GRAY);
+    cv::cvtColor([otherImage CVMat], img_2, CV_RGB2GRAY);
+//    cv::Mat img_1 = [image CVMat];
+//    cv::Mat img_2 = [otherImage CVMat];
     
     cv::ORB orb(100);
     std::vector<cv::KeyPoint> keyPoints_1, keyPoints_2;
