@@ -619,6 +619,8 @@
 		5B375CA22003C295001E02F2 /* MARWYVideoPlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MARWYVideoPlayView.xib; sourceTree = "<group>"; };
 		5B390BC82028894A000EFE62 /* MAACarDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAACarDetailVC.h; sourceTree = "<group>"; };
 		5B390BC92028894A000EFE62 /* MAACarDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAACarDetailVC.m; sourceTree = "<group>"; };
+		5B3E95BC214E624600FFB37E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		5B3E95BE214E625900FFB37E /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		5B42ED901FFE43DE00B98D68 /* MARWYNewNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYNewNetworkManager.h; sourceTree = "<group>"; };
 		5B42ED911FFE43DE00B98D68 /* MARWYNewNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MARWYNewNetworkManager.m; sourceTree = "<group>"; };
 		5B42ED931FFE43FE00B98D68 /* MARWYNewRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MARWYNewRequest.h; sourceTree = "<group>"; };
@@ -917,6 +919,8 @@
 		31AC40C9E48F76669A089217 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B3E95BE214E625900FFB37E /* libstdc++.6.0.9.tbd */,
+				5B3E95BC214E624600FFB37E /* libstdc++.tbd */,
 				5B6967D8208EC5810002968C /* Social.framework */,
 				5B2C2994205A0BD6006C358C /* GLKit.framework */,
 				5B2C2992205A0BD0006C358C /* SystemConfiguration.framework */,
@@ -2940,6 +2944,7 @@
 			baseConfigurationReference = 62A83676F16EBD22EFEE8754 /* Pods-maxiaoding.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -2950,8 +2955,43 @@
 					"$(PROJECT_DIR)/maxiaoding/components/ZFPlayer/Classes/KSYMediaPlayer/Frameworks",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/maxiaoding/maxiaoding-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/AlicloudFeedback\"",
+					"\"${PODS_ROOT}/Headers/Public/AlicloudMAN\"",
+					"\"${PODS_ROOT}/Headers/Public/AlicloudUT\"",
+					"\"${PODS_ROOT}/Headers/Public/AlicloudUTDID\"",
+					"\"${PODS_ROOT}/Headers/Public/AlicloudUtils\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaHTTPServer\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
+					"\"${PODS_ROOT}/Headers/Public/FCUUID\"",
+					"\"${PODS_ROOT}/Headers/Public/FDFullscreenPopGesture\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/KTVHTTPCache\"",
+					"\"${PODS_ROOT}/Headers/Public/LKDBHelper\"",
+					"\"${PODS_ROOT}/Headers/Public/MAREXT\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/MOBFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/PinYin4Objc\"",
+					"\"${PODS_ROOT}/Headers/Public/RealReachability\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SMSSDK\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/UICKeyChainStore\"",
+					"\"${PODS_ROOT}/Headers/Public/UMengUShare\"",
+					"\"${PODS_ROOT}/Headers/Public/VTMagic\"",
+					"\"${PODS_ROOT}/Headers/Public/iCarousel\"",
+					"\"${PODS_ROOT}/Headers/Public/mobAPI\"",
+					"\"${PODS_ROOT}/Headers/Public/pop\"",
+				);
 				INFOPLIST_FILE = maxiaoding/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2970,6 +3010,7 @@
 			baseConfigurationReference = F54FA193DE0A4D5843643552 /* Pods-maxiaoding.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -2980,8 +3021,43 @@
 					"$(PROJECT_DIR)/maxiaoding/components/ZFPlayer/Classes/KSYMediaPlayer/Frameworks",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/maxiaoding/maxiaoding-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/AlicloudFeedback\"",
+					"\"${PODS_ROOT}/Headers/Public/AlicloudMAN\"",
+					"\"${PODS_ROOT}/Headers/Public/AlicloudUT\"",
+					"\"${PODS_ROOT}/Headers/Public/AlicloudUTDID\"",
+					"\"${PODS_ROOT}/Headers/Public/AlicloudUtils\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaHTTPServer\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
+					"\"${PODS_ROOT}/Headers/Public/FCUUID\"",
+					"\"${PODS_ROOT}/Headers/Public/FDFullscreenPopGesture\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/KTVHTTPCache\"",
+					"\"${PODS_ROOT}/Headers/Public/LKDBHelper\"",
+					"\"${PODS_ROOT}/Headers/Public/MAREXT\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/MOBFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/PinYin4Objc\"",
+					"\"${PODS_ROOT}/Headers/Public/RealReachability\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SMSSDK\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/UICKeyChainStore\"",
+					"\"${PODS_ROOT}/Headers/Public/UMengUShare\"",
+					"\"${PODS_ROOT}/Headers/Public/VTMagic\"",
+					"\"${PODS_ROOT}/Headers/Public/iCarousel\"",
+					"\"${PODS_ROOT}/Headers/Public/mobAPI\"",
+					"\"${PODS_ROOT}/Headers/Public/pop\"",
+				);
 				INFOPLIST_FILE = maxiaoding/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
