@@ -45,6 +45,15 @@
     
 //    [_magicController.magicView reloadData];
     [self categoryArray];
+    
+    if (self.isHomeStyle) {
+        self.magicController.magicView.scrollEnabled = NO;
+        UIButton *handleCategoryBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        [handleCategoryBtn setTitle:@"+" forState:UIControlStateNormal];
+        handleCategoryBtn.frame = CGRectMake(0, 0, 44, 44);
+        [handleCategoryBtn addTarget:self action:@selector(handleCategories:) forControlEvents:UIControlEventTouchUpInside];
+        self.magicController.magicView.rightNavigatoinItem = handleCategoryBtn;
+    }
 }
 
 - (void)updateRightNaviItem

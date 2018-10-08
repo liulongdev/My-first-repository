@@ -48,31 +48,31 @@ PODS:
     - LKDBHelper/standard (= 2.5.0)
   - LKDBHelper/standard (2.5.0):
     - FMDB
-  - MAREXT (0.1.0):
-    - MAREXT/ColorArt (= 0.1.0)
-    - MAREXT/Debug (= 0.1.0)
-    - MAREXT/Foundation (= 0.1.0)
-    - MAREXT/MARModel (= 0.1.0)
-    - MAREXT/Quartz (= 0.1.0)
-    - MAREXT/RuntimeOBJ (= 0.1.0)
-    - MAREXT/UIKit (= 0.1.0)
-    - MAREXT/Utility (= 0.1.0)
-  - MAREXT/ColorArt (0.1.0):
+  - MAREXT (0.1.4):
+    - MAREXT/ColorArt (= 0.1.4)
+    - MAREXT/Debug (= 0.1.4)
+    - MAREXT/Foundation (= 0.1.4)
+    - MAREXT/MARModel (= 0.1.4)
+    - MAREXT/Quartz (= 0.1.4)
+    - MAREXT/RuntimeOBJ (= 0.1.4)
+    - MAREXT/UIKit (= 0.1.4)
+    - MAREXT/Utility (= 0.1.4)
+  - MAREXT/ColorArt (0.1.4):
     - MAREXT/UIKit
-  - MAREXT/Debug (0.1.0):
+  - MAREXT/Debug (0.1.4):
     - MAREXT/Utility
-  - MAREXT/Foundation (0.1.0):
+  - MAREXT/Foundation (0.1.4):
     - MAREXT/Utility
-  - MAREXT/MARModel (0.1.0)
-  - MAREXT/Quartz (0.1.0):
+  - MAREXT/MARModel (0.1.4)
+  - MAREXT/Quartz (0.1.4):
     - MAREXT/Utility
-  - MAREXT/RuntimeOBJ (0.1.0):
+  - MAREXT/RuntimeOBJ (0.1.4):
     - MAREXT/MARModel
-  - MAREXT/UIKit (0.1.0):
+  - MAREXT/UIKit (0.1.4):
     - MAREXT/Foundation
     - MAREXT/Quartz
     - MAREXT/Utility
-  - MAREXT/Utility (0.1.0)
+  - MAREXT/Utility (0.1.4)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.15.1)
@@ -126,7 +126,7 @@ DEPENDENCIES:
   - iCarousel (~> 1.8.3)
   - KTVHTTPCache (~> 1.0.0)
   - LKDBHelper (~> 2.4)
-  - MAREXT (~> 0.1.0)
+  - MAREXT (~> 0.1.4)
   - Masonry (~> 1.0.2)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh (~> 3.1.15.1)
@@ -193,7 +193,7 @@ SPEC CHECKSUMS:
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   KTVHTTPCache: 5e13a84c6eb85cf33364ec482e9480512af4cee1
   LKDBHelper: 378aa31e334bbb4e7a64928b4e7bae8059386524
-  MAREXT: 20f251052e87c4de82439bd5e345fae8d9ff3afe
+  MAREXT: eba74e439c0e1407cdd7332e6760e2141ef174be
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
@@ -209,6 +209,6 @@ SPEC CHECKSUMS:
   UMengUShare: 5055d0e01c844379e173bdca0840fc9fa9297d88
   VTMagic: b49e5f456dbcbfd9a3588ba92417233a105bc193
 
-PODFILE CHECKSUM: 138fd55ad7639ae388f9bf70b641dfa19e045a55
+PODFILE CHECKSUM: 2a2653f4f1391f333d24308a6b238fff7b157f3f
 
 COCOAPODS: 1.5.2

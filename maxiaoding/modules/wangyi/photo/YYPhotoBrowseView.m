@@ -738,7 +738,7 @@
     
     CGSize size = [msg boundingRectWithSize:CGSizeMake(200, 200) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size;
     UILabel *label = [UILabel new];
-    label.mar_size = CGSizePixelCeil(size);
+    label.mar_size = MARCGSizePixelCeil(size);
     label.text = msg;
     label.textColor = [UIColor whiteColor];
     label.numberOfLines = 0;

@@ -15,6 +15,8 @@
 #import "MARWYVideoNewVC.h"
 #import "MARCookCategoryCollectionVC.h"
 #import "MARHomeSettingVC.h"
+#import "MARWYNewViewController.h"
+
 
 @interface MARHomeTestVC () <iCarouselDataSource, iCarouselDelegate>
 @property (nonatomic, strong) iCarousel *carousel;
@@ -22,6 +24,7 @@
 @property (nonatomic, strong) UIView *weatherView;
 @property (nonatomic, strong) UIView *carView;
 @property (nonatomic, strong) UIView *wyVideoView;
+@property (nonatomic, strong) UIView *wyNewView;
 @property (nonatomic, strong) UIView *cookView;
 @property (nonatomic, strong) UIView *settingView;
 
@@ -60,8 +63,9 @@
 {
     if (!_viewArray) {
         _viewArray = @[self.timeInfoView,
-                       self.weatherView,
-                       self.carView,
+//                       self.weatherView,
+//                       self.carView,
+                       self.wyNewView,
                        self.wyVideoView,
                        self.cookView,
                        self.settingView
@@ -129,6 +133,17 @@
         _carView = carVC.view;
     }
     return _carView;
+}
+
+- (UIView *)wyNewView
+{
+    if (!_wyNewView) {
+        MARWYNewViewController *wyNewVC = (MARWYNewViewController *)[UIViewController vcWithStoryboardName:kSBNAME_Wangyi storyboardId:kSBID_Wangyi_WYNewViewController];
+        wyNewVC.isHomeStyle = YES;
+        [self addChildViewController:wyNewVC];
+        _wyNewView = wyNewVC.view;
+    }
+    return _wyNewView;
 }
 
 - (UIView *)wyVideoView
