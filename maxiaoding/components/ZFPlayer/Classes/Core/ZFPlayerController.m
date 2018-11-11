@@ -778,19 +778,20 @@
         assetURL = self.assetURLs[indexPath.row];
         self.currentPlayIndex = indexPath.row;
     }
+    id<ZFPlayerMediaPlayback> currentPlayerManager = self.currentPlayerManager;
     if (scrollToTop) {
         @weakify(self)
         [self.scrollView zf_scrollToRowAtIndexPath:indexPath completionHandler:^{
             @strongify(self)
             if (completionHandler) completionHandler();
             self.playingIndexPath = indexPath;
-            self.currentPlayerManager.assetURL = assetURL;
+            currentPlayerManager.assetURL = assetURL;
             [self.scrollView zf_scrollViewStopScroll];
         }];
     } else {
         if (completionHandler) completionHandler();
         self.playingIndexPath = indexPath;
-        self.currentPlayerManager.assetURL = assetURL;
+        currentPlayerManager.assetURL = assetURL;
     }
 }
 

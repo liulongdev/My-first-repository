@@ -12,7 +12,7 @@
 @interface MARWYVideoPlayNewListPropertyModel : NSObject
 @property (nonatomic, strong) MARWYVideoCategoryTitleModel *categoryModel;
 @property (nonatomic, assign) CGPoint contentOffset;
-@property (nonatomic, strong) NSMutableArray *wyNewArray;
+@property (nonatomic, strong) NSMutableArray<MARWYVideoNewModel *> *wyNewArray;
 @property (nonatomic, assign) NSInteger lastLoadTimeStamp;
 @property (nonatomic, assign) NSInteger refreshLoadFn;
 @property (nonatomic, assign) BOOL isDataEmpty;

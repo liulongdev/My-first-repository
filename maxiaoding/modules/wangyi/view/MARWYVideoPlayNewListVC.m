@@ -145,6 +145,10 @@
             [MARGLOBALMANAGER postNotif:kMARNotificationType_MARWYVideoStatusChanged data:@(MARVideoStatusPlaying) object:self];
         }];
     }
+    
+    if (self.urls.count - row < 3) {
+        [self loadData];
+    }
 }
 
 - (void)clickCollecionBtnAtIndexPath:(NSIndexPath *)indexPath
@@ -206,6 +210,11 @@
         [strong_self.tableView.mj_header endRefreshing];
         [strong_self.tableView.mj_footer endRefreshing];
         [strong_self.tableView reloadData];
+        if (strong_self.tableView.playingIndexPath) {
+            [strong_self mar_gcdPerformAfterDelay:0.5 usingBlock:^(id  _Nonnull objSelf) {
+                [strong_self.tableView setContentOffset:CGPointMake(0, strong_self.tableView.contentOffset.y + 5) animated:YES];
+            }];
+        }
     } failure:^(NSURLSessionTask *task, NSError *error) {
         @strongify(self)
         if (!strong_self) return;
@@ -259,10 +268,9 @@
     if (!_player) {
         _player = [ZFPlayerController playerWithScrollView:self.tableView playerManager:self.playerManager containerViewTag:88];
         _player.controlView = self.controlView;
-        _player.shouldAutoPlay = NO;
         _player.assetURLs = self.urls;
         /// 以下设置滑出屏幕后不停止播放
-        self.player.stopWhileNotVisible = NO;
+        _player.stopWhileNotVisible = NO;
         
         @weakify(self)
         _player.orientationDidChanged = ^(ZFPlayerController * _Nonnull player, BOOL isFullScreen) {
@@ -275,17 +283,13 @@
         _player.playerDidToEnd = ^(id  _Nonnull asset) {
             @strongify(self)
             if (!strong_self) return;
-            if (!strong_self->_player.isFullScreen) {
-                [strong_self closePlayer];
+            BOOL autoPlayNext = YES;
+            if (autoPlayNext) {
+                [strong_self playNextVideo];
             }
             else
             {
-                [strong_self->_player enterFullScreen:NO animated:YES];
-                [MARGLOBALMANAGER postNotif:kMARNotificationType_MARWYVideoStatusChanged data:@(MARVideoStatusRemoved) object:nil];
-                [strong_self mar_gcdPerformAfterDelay:strong_self->_player.orientationObserver.duration * NSEC_PER_SEC usingBlock:^(id  _Nonnull objSelf) {
-                    if (!strong_self) return;
-                    [strong_self closePlayer];
-                }];
+                [strong_self _closePlayer];
             }
         };
     }
@@ -347,7 +351,9 @@
 
 - (NSURL *)generateURLWithStr:(NSString *)urlString
 {
+#if !TARGET_OS_SIMULATOR
     urlString = [KTVHTTPCache proxyURLStringWithOriginalURLString:urlString ?: @""];
+#endif
     NSURL *URL = [NSURL URLWithString:urlString ?: @""];
     
     return URL;
@@ -358,6 +364,45 @@
     if (type == kMARNotificationType_CloseWYVideoPlay)
     {
         [self closePlayer];
+    }
+}
+
+- (void)playNextVideo
+{
+    if (self.urls.count > self.player.currentPlayIndex + 1) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.player.currentPlayIndex + 1 inSection:0];
+        if (self.player.isFullScreen) {
+//            self.player.playingIndexPath = indexPath;
+            [self.player playTheNext];
+            MARWYVideoNewModel *model = self.model.wyNewArray[indexPath.row];
+            [self.controlView showTitle:model.title
+                         coverURLString:model.topicImg
+                         fullScreenMode:ZFFullScreenModeLandscape];
+        }
+        else
+            [self playTheVideoAtIndexPath:indexPath scrollToTop:YES];
+    }
+    else
+    {
+        [self closePlayer];
+    }
+}
+
+- (void)_closePlayer
+{
+    if (self.player.isFullScreen) {
+        [self closePlayer];
+    }
+    else
+    {
+        [self.player enterFullScreen:NO animated:YES];
+        [MARGLOBALMANAGER postNotif:kMARNotificationType_MARWYVideoStatusChanged data:@(MARVideoStatusRemoved) object:nil];
+        @weakify(self)
+        [self mar_gcdPerformAfterDelay:self.player.orientationObserver.duration usingBlock:^(id  _Nonnull objSelf) {
+            @strongify(self)
+            if (!strong_self) return;
+            [strong_self closePlayer];
+        }];
     }
 }
 
