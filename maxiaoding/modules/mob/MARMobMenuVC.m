@@ -17,6 +17,7 @@
 #import "MARWYVideoNewVC.h"
 #import "MAACarBrandListVC.h"
 #import "MARCitiesWeatherVC.h"
+#import <SocketRocket.h>
 
 static NSString * const mobTitle_wxArticle          = @"微信热门";
 static NSString * const mobTitle_historyToday       = @"历史上的今天";

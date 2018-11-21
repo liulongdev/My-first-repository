@@ -49,46 +49,46 @@ PODS:
   - LKDBHelper/standard (2.5.0):
     - FMDB
   - M80AttributedLabel (1.6.3)
-  - MAREXT (0.1.0):
-    - MAREXT/ColorArt (= 0.1.0)
-    - MAREXT/Debug (= 0.1.0)
-    - MAREXT/Foundation (= 0.1.0)
-    - MAREXT/MARModel (= 0.1.0)
-    - MAREXT/Quartz (= 0.1.0)
-    - MAREXT/RuntimeOBJ (= 0.1.0)
-    - MAREXT/UIKit (= 0.1.0)
-    - MAREXT/Utility (= 0.1.0)
-  - MAREXT/ColorArt (0.1.0):
+  - MAREXT (0.1.4):
+    - MAREXT/ColorArt (= 0.1.4)
+    - MAREXT/Debug (= 0.1.4)
+    - MAREXT/Foundation (= 0.1.4)
+    - MAREXT/MARModel (= 0.1.4)
+    - MAREXT/Quartz (= 0.1.4)
+    - MAREXT/RuntimeOBJ (= 0.1.4)
+    - MAREXT/UIKit (= 0.1.4)
+    - MAREXT/Utility (= 0.1.4)
+  - MAREXT/ColorArt (0.1.4):
     - MAREXT/UIKit
-  - MAREXT/Debug (0.1.0):
+  - MAREXT/Debug (0.1.4):
     - MAREXT/Utility
-  - MAREXT/Foundation (0.1.0):
+  - MAREXT/Foundation (0.1.4):
     - MAREXT/Utility
-  - MAREXT/MARModel (0.1.0)
-  - MAREXT/Quartz (0.1.0):
+  - MAREXT/MARModel (0.1.4)
+  - MAREXT/Quartz (0.1.4):
     - MAREXT/Utility
-  - MAREXT/RuntimeOBJ (0.1.0):
+  - MAREXT/RuntimeOBJ (0.1.4):
     - MAREXT/MARModel
-  - MAREXT/UIKit (0.1.0):
+  - MAREXT/UIKit (0.1.4):
     - MAREXT/Foundation
     - MAREXT/Quartz
     - MAREXT/Utility
-  - MAREXT/Utility (0.1.0)
+  - MAREXT/Utility (0.1.4)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.15.1)
   - mobAPI (2.0.1):
     - MOBFoundation
   - MOBFoundation (3.0.8)
-  - NIMKit/Core (2.7.0):
+  - NIMKit/Core (2.9.6):
     - M80AttributedLabel (~> 1.6.3)
     - SDWebImage (~> 4.2.2)
     - Toast (~> 3.0)
     - TZImagePickerController (~> 1.9.0)
-  - NIMKit/Full (2.7.0):
+  - NIMKit/Lite (2.9.6):
     - NIMKit/Core
-    - NIMSDK (~> 5.0.0)
-  - NIMSDK (5.0.0)
+    - NIMSDK_LITE (~> 5.4.0)
+  - NIMSDK_LITE (5.4.0)
   - PinYin4Objc (1.1.1)
   - pop (1.0.10)
   - RealReachability (1.1.9):
@@ -101,6 +101,7 @@ PODS:
   - SDWebImage/Core (4.2.3)
   - SMSSDK (3.0.1):
     - MOBFoundation
+  - SocketRocket (0.5.1)
   - SVProgressHUD (2.0.4)
   - Toast (3.1.0)
   - TZImagePickerController (1.9.8)
@@ -138,18 +139,18 @@ DEPENDENCIES:
   - iCarousel (~> 1.8.3)
   - KTVHTTPCache (~> 1.0.0)
   - LKDBHelper (~> 2.4)
-  - MAREXT (~> 0.1.0)
+  - MAREXT (~> 0.1.4)
   - Masonry (~> 1.0.2)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh (~> 3.1.15.1)
   - mobAPI (~> 2.0.1)
-  - NIMKit/Full (~> 2.7.0)
-  - NIMSDK (~> 5.0.0)
+  - NIMKit/Lite (~> 2.9.6)
   - PinYin4Objc (~> 1.1.1)
   - pop (~> 1.0.10)
   - RealReachability (~> 1.1.8)
   - SDWebImage (~> 4.2.2)
   - SMSSDK (~> 3.0.1)
+  - SocketRocket (~> 0.5.1)
   - SVProgressHUD (~> 2.0.4)
   - UMengUShare/Social/QQ (~> 6.4.7)
   - UMengUShare/Social/Sina (~> 6.4.7)
@@ -183,12 +184,13 @@ SPEC REPOS:
     - mobAPI
     - MOBFoundation
     - NIMKit
-    - NIMSDK
+    - NIMSDK_LITE
     - PinYin4Objc
     - pop
     - RealReachability
     - SDWebImage
     - SMSSDK
+    - SocketRocket
     - SVProgressHUD
     - Toast
     - TZImagePickerController
@@ -213,19 +215,20 @@ SPEC CHECKSUMS:
   KTVHTTPCache: 5e13a84c6eb85cf33364ec482e9480512af4cee1
   LKDBHelper: 378aa31e334bbb4e7a64928b4e7bae8059386524
   M80AttributedLabel: d06543195d3e451d2ea62ad76d04aa9cea7661d4
-  MAREXT: 20f251052e87c4de82439bd5e345fae8d9ff3afe
+  MAREXT: eba74e439c0e1407cdd7332e6760e2141ef174be
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   mobAPI: 7479e6c72caa61145120ad8bbb3cf7b8194f988b
   MOBFoundation: dc4419633249fa4f6a0c0a7ad29cbbb376421ed6
-  NIMKit: 99af1bccfb27fde7cd6e0c9875837ef234ce2d5f
-  NIMSDK: 269b2cd770da10fcc96f56cdfe29f305b4552212
+  NIMKit: 61f8b9cfeaee4466e7901ee3b9beb585ae0c580b
+  NIMSDK_LITE: 42a4826579c9ceb0248169c7aff9d66d6912724b
   PinYin4Objc: 3fa9673610368330e2dfb688b1d19a35c3930a78
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   RealReachability: a8c483900986a0f3305733961effbfbb00637a02
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   SMSSDK: a811c8ea6e89393097037b7cf6493248a40e50f0
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
   Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
   TZImagePickerController: 3b9413ae5d049b1fdc5b0c720ad283f35b679a50
@@ -233,6 +236,6 @@ SPEC CHECKSUMS:
   UMengUShare: 5055d0e01c844379e173bdca0840fc9fa9297d88
   VTMagic: b49e5f456dbcbfd9a3588ba92417233a105bc193
 
-PODFILE CHECKSUM: a1dd9a7d4c09d0243ed66618069c8a9fee2fabc1
+PODFILE CHECKSUM: 2250781fe9c485f02cba7058d5f84a1be7c5f6a3
 
 COCOAPODS: 1.5.2

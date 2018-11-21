@@ -10,6 +10,12 @@
 #import "MARALIAPINetworkManager.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIApplication+MXD.h"
+#import <SocketRocket.h>
+
+@interface MARMobUtil () <SRWebSocketDelegate>
+
+@end
+
 @implementation MARMobUtil
 
 + (instancetype)sharedInstance
@@ -53,8 +59,42 @@
     return [MARMOBUTIL errorMessageWithMobResponse:response];
 }
 
+- (void)wsTest
+{
+    SRWebSocket *wb = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:@"http://jieante.liulong.site:8080"]];
+    wb.delegate = self;
+    [wb open];
+}
+
+#pragma mark - SRWebSocketDelegate
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
+{
+    MARLog(@">>> msg: %@", message);
+}
+
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket
+{
+    MARLog(@">>> connect");
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload
+{
+    MARLog(@">>> pong");
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
+{
+    MARLog(@">>> error : %@", error);
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
+{
+    MARLog(@">>> close code : %d, reason: %@, clean? %d ", code, reason, wasClean);
+}
+
 + (void)test
 {
+    [[self sharedInstance] wsTest];
 //    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
 //    [[UIApplication sharedApplication] mxd_requestAccessToLocationWithSuccess:^{
 //        NSLog(@">>>> success ");

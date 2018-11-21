@@ -46,9 +46,9 @@
     
 //    UIViewController *settingVC = [UIViewController vcWithStoryboardName:kSBNAME_Setting storyboardId:kSBID_Setting_HomeSettingVC];
 //    UIViewController *settingVC = [UIViewController vcWithStoryboardName:kSBNAME_Mob storyboardId:kSBID_Mob_MenuVC];
-    UIViewController *settingVC = [[MARWYYXTestVC alloc] init];
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:settingVC];
-//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeTestVC alloc] init]];
+//    UIViewController *settingVC = [[MARWYYXTestVC alloc] init];
+//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:settingVC];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[MARHomeTestVC alloc] init]];
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = navi;

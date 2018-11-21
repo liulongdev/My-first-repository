@@ -13,6 +13,9 @@
 #import <NIMSDK/NIMSDK.h>
 #import <NIMKit.h>
 #import "MARSessionViewController.h"
+#import <NSFileManager+MAREX.h>
+
+
 @interface MARWYYXTestVC ()
 - (IBAction)clickTestBtnAction:(id)sender;
 - (IBAction)clickSendBtnAction:(id)sender;
@@ -24,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@">>>>> db path : %@", [NSFileManager mar_documentsDirectoryPath]);
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -40,16 +44,16 @@
     __weak __typeof(self) weakSelf = self;
     
     
-    [[[NIMSDK sharedSDK] loginManager] login:@"13218189892" token:[@"111111" mar_md5String]  completion:^(NSError * _Nullable error) {
-        if (error) {
-            MARLog(@"error : %@", error);
-            return;
-        }
-        [weakSelf clickContactBtnAction:nil];
-        MARLog(@"login success");
-    }];
-    
-    return;
+//    [[[NIMSDK sharedSDK] loginManager] login:@"13218189892" token:[@"111111" mar_md5String]  completion:^(NSError * _Nullable error) {
+//        if (error) {
+//            MARLog(@"error : %@", error);
+//            return;
+//        }
+//        [weakSelf clickContactBtnAction:nil];
+//        MARLog(@"login success");
+//    }];
+//
+//    return;
     [MARWYYXNetworkManager mar_post:url parameters:@{@"accid":@"1111"} success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"response : %@", responseObject);
         NSString *accid = responseObject[@"info"][@"accid"];
